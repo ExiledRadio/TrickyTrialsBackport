@@ -22,7 +22,8 @@ Config `breeze` (`enabled`). Entity ids 1-3; packet 0 (common's `GustMessage`). 
 ## How it works
 
 *   **`common/WindBurst`** is 1.21's wind explosion without the explosion: vanilla's 1,352 rays find the
-    blocks it reaches (so walls shield what is behind them; barrier and bedrock stop rays), and vanilla's
+    blocks it reaches (as 1.21's wind charge calculator, they fade with distance and only barrier and
+    bedrock stop them; corrected in stream 2), and vanilla's
     knockback rule pushes entities within twice the radius by (1 - distance / (2 radius)) times their
     exposure times the burst's multiplier, less Blast Protection. Spectators and flying creative players
     are left alone; breezes ignore both kinds of charge. A player it pushes is remembered until landing:

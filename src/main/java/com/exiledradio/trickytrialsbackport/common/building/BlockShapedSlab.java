@@ -123,7 +123,7 @@ public abstract class BlockShapedSlab extends BlockSlab {
     }
 
     /** The slab itself. */
-    public static final class Half extends BlockShapedSlab {
+    public static class Half extends BlockShapedSlab {
         public Half(Block base, IBlockState baseState) {
             super(base, baseState);
             this.half = this;
@@ -136,7 +136,7 @@ public abstract class BlockShapedSlab extends BlockSlab {
     }
 
     /** Two slabs stacked into one block space. */
-    public static final class Double extends BlockShapedSlab {
+    public static class Double extends BlockShapedSlab {
         public Double(Block base, IBlockState baseState, Half half) {
             super(base, baseState);
             this.half = half;

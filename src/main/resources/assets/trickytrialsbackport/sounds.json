@@ -534,5 +534,319 @@
       }
     ],
     "subtitle": "subtitles.trickytrialsbackport.block.crafter.fail"
+  },
+  "block.copper.break": {
+    "sounds": [
+      "trickytrialsbackport:block/copper/break1",
+      "trickytrialsbackport:block/copper/break2",
+      "trickytrialsbackport:block/copper/break3",
+      "trickytrialsbackport:block/copper/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.copper.step": {
+    "sounds": [
+      "trickytrialsbackport:block/copper/step1",
+      "trickytrialsbackport:block/copper/step2",
+      "trickytrialsbackport:block/copper/step3",
+      "trickytrialsbackport:block/copper/step4",
+      "trickytrialsbackport:block/copper/step5",
+      "trickytrialsbackport:block/copper/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.copper.place": {
+    "sounds": [
+      "trickytrialsbackport:block/copper/break1",
+      "trickytrialsbackport:block/copper/break2",
+      "trickytrialsbackport:block/copper/break3",
+      "trickytrialsbackport:block/copper/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.copper.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/copper/step1",
+      "trickytrialsbackport:block/copper/step2",
+      "trickytrialsbackport:block/copper/step3",
+      "trickytrialsbackport:block/copper/step4",
+      "trickytrialsbackport:block/copper/step5",
+      "trickytrialsbackport:block/copper/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.copper.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/copper/step1",
+      "trickytrialsbackport:block/copper/step2",
+      "trickytrialsbackport:block/copper/step3",
+      "trickytrialsbackport:block/copper/step4",
+      "trickytrialsbackport:block/copper/step5",
+      "trickytrialsbackport:block/copper/step6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.copper_bulb.break": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_bulb/break1",
+      "trickytrialsbackport:block/copper_bulb/break2",
+      "trickytrialsbackport:block/copper_bulb/break3",
+      "trickytrialsbackport:block/copper_bulb/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.copper_bulb.step": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_bulb/step1",
+      "trickytrialsbackport:block/copper_bulb/step2",
+      "trickytrialsbackport:block/copper_bulb/step3",
+      "trickytrialsbackport:block/copper_bulb/step4",
+      "trickytrialsbackport:block/copper_bulb/step5",
+      "trickytrialsbackport:block/copper_bulb/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.copper_bulb.place": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_bulb/place1",
+      "trickytrialsbackport:block/copper_bulb/place2",
+      "trickytrialsbackport:block/copper_bulb/place3",
+      "trickytrialsbackport:block/copper_bulb/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.copper_bulb.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_bulb/step1",
+      "trickytrialsbackport:block/copper_bulb/step2",
+      "trickytrialsbackport:block/copper_bulb/step3",
+      "trickytrialsbackport:block/copper_bulb/step4",
+      "trickytrialsbackport:block/copper_bulb/step5",
+      "trickytrialsbackport:block/copper_bulb/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.copper_bulb.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_bulb/step1",
+      "trickytrialsbackport:block/copper_bulb/step2",
+      "trickytrialsbackport:block/copper_bulb/step3",
+      "trickytrialsbackport:block/copper_bulb/step4",
+      "trickytrialsbackport:block/copper_bulb/step5",
+      "trickytrialsbackport:block/copper_bulb/step6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.copper_bulb.turn_on": {
+    "sounds": [
+      {
+        "attenuation_distance": 6,
+        "name": "trickytrialsbackport:block/copper_bulb/toggle"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_bulb.turn_on"
+  },
+  "block.copper_bulb.turn_off": {
+    "sounds": [
+      {
+        "attenuation_distance": 6,
+        "name": "trickytrialsbackport:block/copper_bulb/toggle",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_bulb.turn_off"
+  },
+  "block.copper_grate.break": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_grate/break1",
+      "trickytrialsbackport:block/copper_grate/break2",
+      "trickytrialsbackport:block/copper_grate/break3",
+      "trickytrialsbackport:block/copper_grate/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.copper_grate.step": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_grate/step1",
+      "trickytrialsbackport:block/copper_grate/step2",
+      "trickytrialsbackport:block/copper_grate/step3",
+      "trickytrialsbackport:block/copper_grate/step4",
+      "trickytrialsbackport:block/copper_grate/step5",
+      "trickytrialsbackport:block/copper_grate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.copper_grate.place": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_grate/break1",
+      {
+        "name": "trickytrialsbackport:block/copper_grate/break1",
+        "pitch": 0.95
+      },
+      "trickytrialsbackport:block/copper_grate/break2",
+      "trickytrialsbackport:block/copper_grate/break3",
+      "trickytrialsbackport:block/copper_grate/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.copper_grate.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_grate/step1",
+      "trickytrialsbackport:block/copper_grate/step2",
+      "trickytrialsbackport:block/copper_grate/step3",
+      "trickytrialsbackport:block/copper_grate/step4",
+      "trickytrialsbackport:block/copper_grate/step5",
+      "trickytrialsbackport:block/copper_grate/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.copper_grate.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_grate/step1",
+      "trickytrialsbackport:block/copper_grate/step2",
+      "trickytrialsbackport:block/copper_grate/step3",
+      "trickytrialsbackport:block/copper_grate/step4",
+      "trickytrialsbackport:block/copper_grate/step5",
+      "trickytrialsbackport:block/copper_grate/step6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.copper_door.open": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_door/toggle1",
+      "trickytrialsbackport:block/copper_door/toggle2",
+      {
+        "name": "trickytrialsbackport:block/copper_door/toggle2",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:block/copper_door/toggle3",
+      {
+        "name": "trickytrialsbackport:block/copper_door/toggle3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.copper_door.close": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_door/toggle1",
+      "trickytrialsbackport:block/copper_door/toggle2",
+      "trickytrialsbackport:block/copper_door/toggle3"
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.copper_trapdoor.open": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_trapdoor/toggle1",
+      "trickytrialsbackport:block/copper_trapdoor/toggle2",
+      "trickytrialsbackport:block/copper_trapdoor/toggle3",
+      "trickytrialsbackport:block/copper_trapdoor/toggle4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trapdoor.open"
+  },
+  "block.copper_trapdoor.close": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_trapdoor/toggle1",
+      "trickytrialsbackport:block/copper_trapdoor/toggle2",
+      "trickytrialsbackport:block/copper_trapdoor/toggle3",
+      "trickytrialsbackport:block/copper_trapdoor/toggle4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trapdoor.close"
+  },
+  "item.honeycomb.wax_on": {
+    "sounds": [
+      "trickytrialsbackport:item/honeycomb/wax_on1",
+      {
+        "name": "trickytrialsbackport:item/honeycomb/wax_on1",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/honeycomb/wax_on1",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/honeycomb/wax_on2",
+      {
+        "name": "trickytrialsbackport:item/honeycomb/wax_on2",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/honeycomb/wax_on2",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/honeycomb/wax_on3",
+      {
+        "name": "trickytrialsbackport:item/honeycomb/wax_on3",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/honeycomb/wax_on3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.honeycomb.wax_on"
+  },
+  "item.axe.wax_off": {
+    "sounds": [
+      "trickytrialsbackport:item/axe/wax_off1",
+      {
+        "name": "trickytrialsbackport:item/axe/wax_off1",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/wax_off1",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/axe/wax_off2",
+      {
+        "name": "trickytrialsbackport:item/axe/wax_off2",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/wax_off2",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/axe/wax_off3",
+      {
+        "name": "trickytrialsbackport:item/axe/wax_off3",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/wax_off3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.axe.wax_off"
+  },
+  "item.axe.scrape": {
+    "sounds": [
+      "trickytrialsbackport:item/axe/scrape1",
+      {
+        "name": "trickytrialsbackport:item/axe/scrape1",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/scrape1",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/axe/scrape2",
+      {
+        "name": "trickytrialsbackport:item/axe/scrape2",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/scrape2",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/axe/scrape3",
+      {
+        "name": "trickytrialsbackport:item/axe/scrape3",
+        "pitch": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/scrape3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.axe.scrape"
   }
 }

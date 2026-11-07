@@ -28,7 +28,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -57,7 +56,7 @@ import java.util.function.Predicate;
  *       the center, by (1 - distance / (2 radius)) times how much of it the burst can see, times the
  *       burst's knockback; Blast Protection reduces it. Creative players flying and spectators are left
  *       alone.</li>
- *   <li><b>Blocks</b> reached by vanilla explosion's rays (so walls shield what is behind them): wooden
+ *   <li><b>Blocks</b> reached by vanilla explosion's rays (only barrier and bedrock stop them): wooden
  *       doors, trapdoors and fence gates flip unless powered by redstone; buttons press; levers flip;
  *       chorus flowers and decorated pots break; lit candles go out. Iron doors and trapdoors are not
  *       moved, and neither is anything in {@link #isImmovable}. Blocks a later stream makes openable by
@@ -128,9 +127,8 @@ public final class WindBurst {
         NetworkHandler.channel.sendToAllAround(new GustMessage(x, y, z, s.large),
                 new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64));
 
-        Explosion explosion = new Explosion(world, source, x, y, z, s.radius, false, false);
         Set<BlockPos> doors = new HashSet<BlockPos>();
-        for (BlockPos pos : rayBlocks(world, source, explosion, x, y, z, s.radius)) {
+        for (BlockPos pos : rayBlocks(world, x, y, z, s.radius)) {
             affect(world, pos, doors);
         }
 
@@ -173,8 +171,11 @@ public final class WindBurst {
         }
     }
 
-    /** Vanilla explosion's rays: the blocks a burst of this radius reaches, stopped by resistant blocks. */
-    static Set<BlockPos> rayBlocks(World world, @Nullable Entity source, Explosion explosion, double x, double y, double z, float radius) {
+    /**
+     * Vanilla explosion's rays: the blocks a burst of this radius reaches. As 1.21's wind charges, the rays
+     * lose 0.225 a step and pass through every block but barrier and bedrock.
+     */
+    static Set<BlockPos> rayBlocks(World world, double x, double y, double z, float radius) {
         Set<BlockPos> out = new LinkedHashSet<BlockPos>();
         Random random = world.rand;
         for (int j = 0; j < 16; j++) {
@@ -198,10 +199,11 @@ public final class WindBurst {
                         BlockPos pos = new BlockPos(px, py, pz);
                         IBlockState state = world.getBlockState(pos);
                         if (state.getMaterial() != Material.AIR) {
-                            float resistance = isImmovable(state) ? 3600000.0F
-                                    : source != null ? source.getExplosionResistance(explosion, world, pos, state)
-                                    : state.getBlock().getExplosionResistance(world, pos, null, explosion);
-                            power -= (resistance + 0.3F) * 0.3F;
+                            // 1.21's wind charge calculator gives no resistance at all but to its immune
+                            // blocks: rays fade with distance alone, through any other block.
+                            if (isImmovable(state)) {
+                                power -= (3600000.0F + 0.3F) * 0.3F;
+                            }
                             if (power > 0.0F) {
                                 out.add(pos);
                             }

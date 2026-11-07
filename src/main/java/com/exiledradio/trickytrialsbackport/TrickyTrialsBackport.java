@@ -66,6 +66,7 @@ public final class TrickyTrialsBackport {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         com.exiledradio.trickytrialsbackport.common.Guis.init();
+        com.exiledradio.trickytrialsbackport.copper.CopperContent.init();
     }
 
     @Mod.EventHandler

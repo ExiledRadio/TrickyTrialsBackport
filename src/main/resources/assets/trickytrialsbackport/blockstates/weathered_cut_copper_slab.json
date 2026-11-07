@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "trickytrialsbackport:weathered_cut_copper_slab"
+    },
+    "half=top": {
+      "model": "trickytrialsbackport:weathered_cut_copper_slab_top"
+    }
+  }
+}

@@ -44,8 +44,16 @@ public final class TuffSelfTest implements SelfTest {
         generation(c);
     }
 
+    /** Ours, except tuff itself, which is the owner's when Caves & Cliffs is installed. */
     private static Block block(String name) {
+        if ("tuff".equals(name)) {
+            return com.exiledradio.trickytrialsbackport.common.Owners.block("tuff");
+        }
         return ForgeRegistries.BLOCKS.getValue(Content.id(name));
+    }
+
+    private static boolean owner() {
+        return com.exiledradio.trickytrialsbackport.common.Owners.present(com.exiledradio.trickytrialsbackport.common.Owners.CAVES_AND_CLIFFS);
     }
 
     private static Item item(String name) {
@@ -53,11 +61,17 @@ public final class TuffSelfTest implements SelfTest {
     }
 
     private void registration(Check c) {
-        // No Caves & Cliffs in the test run: tuff is copied.
-        c.ok(TuffContent.tuff != null && TuffContent.tuff == block("tuff"), "tuff copy registered without its owner");
+        if (owner()) {
+            c.ok(TuffContent.tuff == null && block("tuff") != null
+                    && "cavesandcliffsbackport".equals(block("tuff").getRegistryName().getNamespace()), "with its owner, the owner's tuff");
+        } else {
+            c.ok(TuffContent.tuff != null && TuffContent.tuff == block("tuff"), "tuff copy registered without its owner");
+        }
         List<String> all = new ArrayList<String>();
         for (String f : FULL) {
-            all.add(f);
+            if (!"tuff".equals(f) || !owner()) {
+                all.add(f);
+            }
         }
         for (String p : PREFIXES) {
             all.add(p + "_stairs");
@@ -98,7 +112,8 @@ public final class TuffSelfTest implements SelfTest {
             c.ok(Math.abs(b.getExplosionResistance(null) - 6.0F) < 1e-4, name + " blast resistance 6, got " + b.getExplosionResistance(null));
             c.eq("pickaxe", b.getHarvestTool(s), name + " harvest tool");
         }
-        c.eq(Content.id("block.tuff.break"), block("tuff").getSoundType().getBreakSound().getRegistryName(), "tuff sound");
+        c.eq(owner() ? new net.minecraft.util.ResourceLocation("cavesandcliffsbackport", "block.tuff.break") : Content.id("block.tuff.break"),
+                block("tuff").getSoundType().getBreakSound().getRegistryName(), "tuff sound");
         c.eq(Content.id("block.tuff.step"), block("tuff_stairs").getSoundType().getStepSound().getRegistryName(), "tuff stairs sound");
         c.eq(Content.id("block.polished_tuff.place"), block("polished_tuff_wall").getSoundType().getPlaceSound().getRegistryName(),
                 "polished tuff wall sound");
@@ -191,6 +206,10 @@ public final class TuffSelfTest implements SelfTest {
     }
 
     private void generation(Check c) {
+        if (owner()) {
+            // The owner generates its own tuff, in its deepslate.
+            return;
+        }
         // The spawn chunks were generated with our copy's generator: count tuff below y 17 around spawn.
         BlockPos spawn = c.world.getSpawnPoint();
         Block tuff = block("tuff");
