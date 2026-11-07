@@ -43,13 +43,12 @@ public final class TrickyTrialsBackport {
     @Mod.Instance(MOD_ID)
     public static TrickyTrialsBackport instance;
 
-    public TrickyTrialsBackport() {
-        // Before any registry event: tell Backport Core who owns the older blocks this mod copies.
-        Owners.declareOlderOwners();
-    }
-
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        // Before any registry event, and after the owners' own declarations: every mod's constructor runs
+        // before any pre-init, and Caves & Cliffs loads before this mod and declares from its pre-init
+        // (including the switched-off pseudo-owner), so a claim here never overrides the owner's.
+        Owners.declareOlderOwners();
         NetworkHandler.init();
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
 

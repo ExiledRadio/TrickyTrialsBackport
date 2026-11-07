@@ -24,7 +24,11 @@ import javax.annotation.Nullable;
  * <h2>Shim</h2>
  * Core 1.0.0's table only lists Village &amp; Pillage's 1.13 blocks. Until Caves &amp; Cliffs declares its
  * own (or Core lists them, {@code docs/CORE_REQUESTS.md} #1), {@link #declareOlderOwners} claims them for
- * it, so {@code BlockOwnership.shouldRegister} answers correctly whether or not it is installed.
+ * it, so {@code BlockOwnership.shouldRegister} answers correctly whether or not it is installed. It runs
+ * from pre-init, never the constructor: Caves &amp; Cliffs declares its own blocks from its pre-init, which
+ * runs first, naming a pseudo-owner for any stream it has switched off, and the first claim wins.
+ * {@link BlockOwnership#owner} can therefore return that pseudo-owner; ask {@link #present} or
+ * {@link #copy}, never compare an owner with a mod id.
  */
 public final class Owners {
 

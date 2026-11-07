@@ -78,6 +78,12 @@ What the copper test checks:
 *   Lightning on oxidized chiseled copper cleans it and scrapes the grate beside it.
 *   Alone: copper ore around spawn (over 200 blocks), dropping raw copper.
 *   The tuff test now also runs both ways (with the owner its tuff is used and ours not registered).
+*   **Caves & Cliffs installed with its copper switched off** (its main d31a9d0, `copper.enabled=false`):
+    **`SELFTEST DONE pass=869 fail=0`** for scaffold, tuff and copper: our copies registered (82 blocks),
+    its tuff still its own. This needed our ownership shim moved from the mod constructor to pre-init:
+    every constructor runs before any pre-init, and the owner declares from its pre-init (naming a
+    switched-off pseudo-owner), so a constructor claim had overridden it. With its copper on (966 pass) and
+    alone on a fresh world (1110 pass) everything still passes.
 
 ## Not tested
 
@@ -85,8 +91,5 @@ What the copper test checks:
     bulbs' lit faces.
 *   Sounds playing.
 *   Caves & Cliffs' own copper waiting for our bulbs (its table does not know ours until Core has one table).
-*   Caves & Cliffs installed but with its copper switched off: it tells Backport Core it provides its blocks
-    from its block registry event, which can run after ours; with Forge's mod order that left no copper at
-    all in one test with an old jar. Asking it to say so from its constructor or pre-init, as Core's docs say.
 *   The Wax On / Wax Off advancements for our copies (1.17's, Caves & Cliffs').
 *   Languages: Mojang's names in all 18 files; our config text is still English.

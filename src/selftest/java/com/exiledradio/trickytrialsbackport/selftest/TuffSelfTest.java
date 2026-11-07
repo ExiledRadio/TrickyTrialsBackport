@@ -52,8 +52,9 @@ public final class TuffSelfTest implements SelfTest {
         return ForgeRegistries.BLOCKS.getValue(Content.id(name));
     }
 
+    /** The owner provides tuff (installed with that stream on). */
     private static boolean owner() {
-        return com.exiledradio.trickytrialsbackport.common.Owners.present(com.exiledradio.trickytrialsbackport.common.Owners.CAVES_AND_CLIFFS);
+        return !com.exiledradio.trickytrialsbackport.common.Owners.copy("tuff");
     }
 
     private static Item item(String name) {

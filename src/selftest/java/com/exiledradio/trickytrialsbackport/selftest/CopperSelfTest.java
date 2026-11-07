@@ -55,7 +55,8 @@ public final class CopperSelfTest implements SelfTest {
     public void run(Check c) {
         // Honeycomb for the test: a slimeball takes the ore name (no bee mod in the test run).
         OreDictionary.registerOre("honeycomb", Items.SLIME_BALL);
-        boolean owner = Owners.present(Owners.CAVES_AND_CLIFFS);
+        // The owner provides copper: installed with its copper switched on (switched off, we copy).
+        boolean owner = !Owners.copy("copper_block");
         ownership(c, owner);
         blocks(c);
         recipes(c, owner);
@@ -71,10 +72,11 @@ public final class CopperSelfTest implements SelfTest {
     }
 
     private void ownership(Check c, boolean owner) {
-        c.eq(!owner, CopperContent.copies, "copies only without Caves & Cliffs");
+        c.eq(!owner, CopperContent.copies, "copies only when Caves & Cliffs does not provide copper");
         c.eq(owner ? 40 : 82, CopperContent.all().size(), "block count");
         c.eq(Content.MOD_ID, BlockOwnership.owner("copper_bulb"), "we own the 1.21 shapes");
-        c.eq(Owners.CAVES_AND_CLIFFS, BlockOwnership.owner("waxed_weathered_cut_copper_double_slab"), "Caves & Cliffs owns 1.17's");
+        c.ok(String.valueOf(BlockOwnership.owner("waxed_weathered_cut_copper_double_slab")).startsWith(Owners.CAVES_AND_CLIFFS),
+                "Caves & Cliffs owns 1.17's");
         for (CopperStage stage : CopperStage.values()) {
             for (boolean waxed : new boolean[] {false, true}) {
                 for (String shape : CopperContent.OWNED_SHAPES) {
