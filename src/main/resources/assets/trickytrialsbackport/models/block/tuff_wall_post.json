@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_wall_post",
+  "textures": {
+    "wall": "trickytrialsbackport:block/tuff"
+  }
+}

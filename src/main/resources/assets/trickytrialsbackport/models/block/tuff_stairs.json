@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/tuff",
+    "side": "trickytrialsbackport:block/tuff",
+    "top": "trickytrialsbackport:block/tuff"
+  }
+}

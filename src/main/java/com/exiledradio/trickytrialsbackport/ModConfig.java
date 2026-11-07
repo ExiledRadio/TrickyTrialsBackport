@@ -137,6 +137,11 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Tuff fields ---
+        @Config.RequiresMcRestart
+        @Config.Comment({"Without another installed mod that adds tuff, tuff generates in stone below y 16 in newly",
+                "generated chunks, as in 1.17."})
+        @Config.LangKey("config.trickytrialsbackport.tuff.generate")
+        public boolean generate = true;
         // --- end Tuff ---
     }
 
