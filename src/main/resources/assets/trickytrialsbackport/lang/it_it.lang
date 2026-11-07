@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Scalini di tufo
 tile.trickytrialsbackport.tuff_wall.name=Muretto di tufo
 subtitles.trickytrialsbackport.block.generic.fall=Caduta su blocco
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Paludoso
+subtitles.trickytrialsbackport.entity.bogged.ambient=Paludoso scricchiola
+subtitles.trickytrialsbackport.entity.bogged.death=Paludoso muore
+subtitles.trickytrialsbackport.entity.bogged.hurt=Paludoso ferito
+subtitles.trickytrialsbackport.item.shears.shear=Cesoie sferragliano
+
 # --- breeze ---
 advancements.adventure.blowback.description=Uccidi una brezza deflettendo una sua raffica di vento.
 advancements.adventure.blowback.title=Chi semina vento
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Raffica di vento scoppia
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Raffica di vento lanciata
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Raffica di vento scoppia
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Paludoso
-subtitles.trickytrialsbackport.entity.bogged.ambient=Paludoso scricchiola
-subtitles.trickytrialsbackport.entity.bogged.death=Paludoso muore
-subtitles.trickytrialsbackport.entity.bogged.hurt=Paludoso ferito
-subtitles.trickytrialsbackport.item.shears.shear=Cesoie sferragliano
+# --- mace ---
+advancements.adventure.overoverkill.description=Infliggi 50 cuori di danno in un colpo solo usando la mazza.
+advancements.adventure.overoverkill.title=Ammazza, che mazza!
+enchantment.trickytrialsbackport.breach=Breccia
+enchantment.trickytrialsbackport.density=Densità
+enchantment.trickytrialsbackport.wind_burst=Colpo di vento
+item.trickytrialsbackport.mace.name=Mazza
+tile.trickytrialsbackport.heavy_core.name=Nucleo pesante
+subtitles.trickytrialsbackport.item.mace.smash_air=Mazza fracassa
+subtitles.trickytrialsbackport.item.mace.smash_ground=Mazza fracassa

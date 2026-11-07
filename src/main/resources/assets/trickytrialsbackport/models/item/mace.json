@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:item/handheld_mace",
+  "textures": {
+    "layer0": "trickytrialsbackport:item/mace"
+  }
+}

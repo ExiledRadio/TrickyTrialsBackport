@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Туфові сходи
 tile.trickytrialsbackport.tuff_wall.name=Туфова стіна
 subtitles.trickytrialsbackport.block.generic.fall=Щось падає на блок
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Болотяник
+subtitles.trickytrialsbackport.entity.bogged.ambient=Болотяник брязкає
+subtitles.trickytrialsbackport.entity.bogged.death=Болотяник гине
+subtitles.trickytrialsbackport.entity.bogged.hurt=Болотяника поранено
+subtitles.trickytrialsbackport.item.shears.shear=Ножиці клацають
+
 # --- breeze ---
 advancements.adventure.blowback.description=Убийте вітреня його ж зарядом вітру
 advancements.adventure.blowback.title=Як вітром здуло
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Заряд вітру в
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Заряд вітру летить
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Заряд вітру вибухає
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Болотяник
-subtitles.trickytrialsbackport.entity.bogged.ambient=Болотяник брязкає
-subtitles.trickytrialsbackport.entity.bogged.death=Болотяник гине
-subtitles.trickytrialsbackport.entity.bogged.hurt=Болотяника поранено
-subtitles.trickytrialsbackport.item.shears.shear=Ножиці клацають
+# --- mace ---
+advancements.adventure.overoverkill.description=Завдайте 50 сердець шкоди одним ударом булавою
+advancements.adventure.overoverkill.title=Перебір
+enchantment.trickytrialsbackport.breach=Пробивання
+enchantment.trickytrialsbackport.density=Щільність
+enchantment.trickytrialsbackport.wind_burst=Порив вітру
+item.trickytrialsbackport.mace.name=Булава
+tile.trickytrialsbackport.heavy_core.name=Важке ядро
+subtitles.trickytrialsbackport.item.mace.smash_air=Булава розбиває
+subtitles.trickytrialsbackport.item.mace.smash_ground=Булава розбиває

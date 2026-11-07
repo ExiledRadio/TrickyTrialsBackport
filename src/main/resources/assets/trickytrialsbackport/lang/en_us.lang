@@ -129,6 +129,14 @@ tile.trickytrialsbackport.tuff_wall.name=Tuff Wall
 subtitles.trickytrialsbackport.block.generic.fall=Something falls on a block
 config.trickytrialsbackport.tuff.generate=Generate Tuff
 
+# --- bogged ---
+config.trickytrialsbackport.bogged.spawn=Spawn in Swamps
+entity.trickytrialsbackport.bogged.name=Bogged
+subtitles.trickytrialsbackport.entity.bogged.ambient=Bogged rattles
+subtitles.trickytrialsbackport.entity.bogged.death=Bogged dies
+subtitles.trickytrialsbackport.entity.bogged.hurt=Bogged hurts
+subtitles.trickytrialsbackport.item.shears.shear=Shears click
+
 # --- breeze ---
 advancements.adventure.blowback.description=Kill a Breeze with a deflected Breeze-shot Wind Charge
 advancements.adventure.blowback.title=Blowback
@@ -155,10 +163,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Wind Charge bursts
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Wind Charge flies
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Wind Charge bursts
 
-# --- bogged ---
-config.trickytrialsbackport.bogged.spawn=Spawn in Swamps
-entity.trickytrialsbackport.bogged.name=Bogged
-subtitles.trickytrialsbackport.entity.bogged.ambient=Bogged rattles
-subtitles.trickytrialsbackport.entity.bogged.death=Bogged dies
-subtitles.trickytrialsbackport.entity.bogged.hurt=Bogged hurts
-subtitles.trickytrialsbackport.item.shears.shear=Shears click
+# --- mace ---
+advancements.adventure.overoverkill.description=Deal 50 hearts of damage in a single hit using the Mace
+advancements.adventure.overoverkill.title=Over-Overkill
+enchantment.trickytrialsbackport.breach=Breach
+enchantment.trickytrialsbackport.density=Density
+enchantment.trickytrialsbackport.wind_burst=Wind Burst
+item.trickytrialsbackport.mace.name=Mace
+tile.trickytrialsbackport.heavy_core.name=Heavy Core
+subtitles.trickytrialsbackport.item.mace.smash_air=Mace smashes
+subtitles.trickytrialsbackport.item.mace.smash_ground=Mace smashes

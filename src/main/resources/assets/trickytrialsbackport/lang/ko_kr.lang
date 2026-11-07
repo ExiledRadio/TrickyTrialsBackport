@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=응회암 계단
 tile.trickytrialsbackport.tuff_wall.name=응회암 담장
 subtitles.trickytrialsbackport.block.generic.fall=무언가가 블록 위로 떨어짐
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=보그드
+subtitles.trickytrialsbackport.entity.bogged.ambient=보그드가 달그락거림
+subtitles.trickytrialsbackport.entity.bogged.death=보그드가 죽음
+subtitles.trickytrialsbackport.entity.bogged.hurt=보그드가 상처를 입음
+subtitles.trickytrialsbackport.item.shears.shear=가위가 찰칵함
+
 # --- breeze ---
 advancements.adventure.blowback.description=브리즈가 쏜 돌풍구를 튕겨내 브리즈를 죽이세요
 advancements.adventure.blowback.title=역풍
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=돌풍구가 터짐
 subtitles.trickytrialsbackport.entity.wind_charge.throw=돌풍구가 날아감
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=돌풍구가 터짐
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=보그드
-subtitles.trickytrialsbackport.entity.bogged.ambient=보그드가 달그락거림
-subtitles.trickytrialsbackport.entity.bogged.death=보그드가 죽음
-subtitles.trickytrialsbackport.entity.bogged.hurt=보그드가 상처를 입음
-subtitles.trickytrialsbackport.item.shears.shear=가위가 찰칵함
+# --- mace ---
+advancements.adventure.overoverkill.description=철퇴를 휘둘러 한 번에 하트 50개만큼 피해를 입히세요
+advancements.adventure.overoverkill.title=하늘에서 철퇴가 내린다면
+enchantment.trickytrialsbackport.breach=격파
+enchantment.trickytrialsbackport.density=육중
+enchantment.trickytrialsbackport.wind_burst=돌풍
+item.trickytrialsbackport.mace.name=철퇴
+tile.trickytrialsbackport.heavy_core.name=무거운 코어
+subtitles.trickytrialsbackport.item.mace.smash_air=철퇴로 내려침
+subtitles.trickytrialsbackport.item.mace.smash_ground=철퇴로 내려침

@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=凝灰岩階梯
 tile.trickytrialsbackport.tuff_wall.name=凝灰岩牆
 subtitles.trickytrialsbackport.block.generic.fall=某物掉落在方塊上
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=沼骸
+subtitles.trickytrialsbackport.entity.bogged.ambient=沼骸喀啦聲
+subtitles.trickytrialsbackport.entity.bogged.death=沼骸死亡
+subtitles.trickytrialsbackport.entity.bogged.hurt=沼骸受傷
+subtitles.trickytrialsbackport.item.shears.shear=剪刀咔嗒聲
+
 # --- breeze ---
 advancements.adventure.blowback.description=反彈旋風使者的風彈來擊殺它
 advancements.adventure.blowback.title=逆風翻盤
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=風彈爆裂
 subtitles.trickytrialsbackport.entity.wind_charge.throw=風彈飛行
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=風彈爆裂
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=沼骸
-subtitles.trickytrialsbackport.entity.bogged.ambient=沼骸喀啦聲
-subtitles.trickytrialsbackport.entity.bogged.death=沼骸死亡
-subtitles.trickytrialsbackport.entity.bogged.hurt=沼骸受傷
-subtitles.trickytrialsbackport.item.shears.shear=剪刀咔嗒聲
+# --- mace ---
+advancements.adventure.overoverkill.description=使用重錘一擊造成50顆心的傷害
+advancements.adventure.overoverkill.title=天賜良擊
+enchantment.trickytrialsbackport.breach=破甲
+enchantment.trickytrialsbackport.density=緻密
+enchantment.trickytrialsbackport.wind_burst=風爆
+item.trickytrialsbackport.mace.name=重錘
+tile.trickytrialsbackport.heavy_core.name=沉重核心
+subtitles.trickytrialsbackport.item.mace.smash_air=重錘重擊聲
+subtitles.trickytrialsbackport.item.mace.smash_ground=重錘重擊聲

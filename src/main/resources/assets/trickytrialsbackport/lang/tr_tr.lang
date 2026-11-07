@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Tüf Merdiven
 tile.trickytrialsbackport.tuff_wall.name=Tüf Duvar
 subtitles.trickytrialsbackport.block.generic.fall=Bir şey bloğa düştü
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Batık
+subtitles.trickytrialsbackport.entity.bogged.ambient=Batık takırdıyor
+subtitles.trickytrialsbackport.entity.bogged.death=Batık öldü
+subtitles.trickytrialsbackport.entity.bogged.hurt=Batık hasar aldı
+subtitles.trickytrialsbackport.item.shears.shear=Makas kırptı
+
 # --- breeze ---
 advancements.adventure.blowback.description=Esintinin göndermiş olduğu bir rüzgâr topunu saptırarak esintiyi öldürün
 advancements.adventure.blowback.title=Geri Tepme
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Rüzgâr Topu patladı
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Rüzgâr Topu fırlatıldı
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Rüzgâr Topu patladı
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Batık
-subtitles.trickytrialsbackport.entity.bogged.ambient=Batık takırdıyor
-subtitles.trickytrialsbackport.entity.bogged.death=Batık öldü
-subtitles.trickytrialsbackport.entity.bogged.hurt=Batık hasar aldı
-subtitles.trickytrialsbackport.item.shears.shear=Makas kırptı
+# --- mace ---
+advancements.adventure.overoverkill.description=Gürz kullanarak tek vuruşta 50 kalp hasar verin
+advancements.adventure.overoverkill.title=Vur Dedik Öldürdün
+enchantment.trickytrialsbackport.breach=Aşma
+enchantment.trickytrialsbackport.density=Yoğunluk
+enchantment.trickytrialsbackport.wind_burst=Rüzgâr Patlaması
+item.trickytrialsbackport.mace.name=Gürz
+tile.trickytrialsbackport.heavy_core.name=Ağır Çekirdek
+subtitles.trickytrialsbackport.item.mace.smash_air=Gürz parçaladı
+subtitles.trickytrialsbackport.item.mace.smash_ground=Gürz parçaladı

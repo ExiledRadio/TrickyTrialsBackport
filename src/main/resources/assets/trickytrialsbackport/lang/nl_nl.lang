@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Tufstenen trap
 tile.trickytrialsbackport.tuff_wall.name=Tufstenen muur
 subtitles.trickytrialsbackport.block.generic.fall=Iets valt op een blok
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Zomper
+subtitles.trickytrialsbackport.entity.bogged.ambient=Zomper ratelt
+subtitles.trickytrialsbackport.entity.bogged.death=Zomper sterft
+subtitles.trickytrialsbackport.entity.bogged.hurt=Zomper raakt gewond
+subtitles.trickytrialsbackport.item.shears.shear=Schaar knipt
+
 # --- breeze ---
 advancements.adventure.blowback.description=Dood een vlaag met een door een vlaag afgevuurde windvlaag
 advancements.adventure.blowback.title=Zware tegenslag
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Windvlaag barst los
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Windvlaag jaagt
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Windvlaag barst los
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Zomper
-subtitles.trickytrialsbackport.entity.bogged.ambient=Zomper ratelt
-subtitles.trickytrialsbackport.entity.bogged.death=Zomper sterft
-subtitles.trickytrialsbackport.entity.bogged.hurt=Zomper raakt gewond
-subtitles.trickytrialsbackport.item.shears.shear=Schaar knipt
+# --- mace ---
+advancements.adventure.overoverkill.description=Breng vijftig hartjes schade toe in één knotsslag
+advancements.adventure.overoverkill.title=Veel te veel van het goede
+enchantment.trickytrialsbackport.breach=Bres
+enchantment.trickytrialsbackport.density=Dichtheid
+enchantment.trickytrialsbackport.wind_burst=Valwind
+item.trickytrialsbackport.mace.name=Knots
+tile.trickytrialsbackport.heavy_core.name=Zware kern
+subtitles.trickytrialsbackport.item.mace.smash_air=Knots zwaait
+subtitles.trickytrialsbackport.item.mace.smash_ground=Knots plet

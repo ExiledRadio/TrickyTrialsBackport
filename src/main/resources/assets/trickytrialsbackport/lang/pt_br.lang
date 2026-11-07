@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Escadas de Tufo
 tile.trickytrialsbackport.tuff_wall.name=Muro de Tufo
 subtitles.trickytrialsbackport.block.generic.fall=Algo cai num bloco
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Pantanoso
+subtitles.trickytrialsbackport.entity.bogged.ambient=Pantanoso chacoalha
+subtitles.trickytrialsbackport.entity.bogged.death=Pantanoso morre
+subtitles.trickytrialsbackport.entity.bogged.hurt=Pantanoso ferido
+subtitles.trickytrialsbackport.item.shears.shear=Tesoura corta
+
 # --- breeze ---
 advancements.adventure.blowback.description=Mate um Vórtice com seu Projétil de Vento
 advancements.adventure.blowback.title=A vida é um sopro
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Projétil de Vento estou
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Projétil de Vento voa
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Projétil de Vento estoura
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Pantanoso
-subtitles.trickytrialsbackport.entity.bogged.ambient=Pantanoso chacoalha
-subtitles.trickytrialsbackport.entity.bogged.death=Pantanoso morre
-subtitles.trickytrialsbackport.entity.bogged.hurt=Pantanoso ferido
-subtitles.trickytrialsbackport.item.shears.shear=Tesoura corta
+# --- mace ---
+advancements.adventure.overoverkill.description=Cause 50 corações de dano com um só golpe de Maça
+advancements.adventure.overoverkill.title=Golpe baixo
+enchantment.trickytrialsbackport.breach=Ruptura
+enchantment.trickytrialsbackport.density=Densidade
+enchantment.trickytrialsbackport.wind_burst=Rajada de Vento
+item.trickytrialsbackport.mace.name=Maça
+tile.trickytrialsbackport.heavy_core.name=Núcleo Pesado
+subtitles.trickytrialsbackport.item.mace.smash_air=Maça esmaga
+subtitles.trickytrialsbackport.item.mace.smash_ground=Maça esmaga

@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=凝灰岩の階段
 tile.trickytrialsbackport.tuff_wall.name=凝灰岩の塀
 subtitles.trickytrialsbackport.block.generic.fall=何かがブロックに落ちる
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=ボグド
+subtitles.trickytrialsbackport.entity.bogged.ambient=ボグドが骨を鳴らす
+subtitles.trickytrialsbackport.entity.bogged.death=ボグドが死ぬ
+subtitles.trickytrialsbackport.entity.bogged.hurt=ボグドがダメージを受ける
+subtitles.trickytrialsbackport.item.shears.shear=ハサミで刈る
+
 # --- breeze ---
 advancements.adventure.blowback.description=ブリーズの放ったウィンドチャージを打ち返して倒す
 advancements.adventure.blowback.title=逆風
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=ウィンドチャージ
 subtitles.trickytrialsbackport.entity.wind_charge.throw=ウィンドチャージが投げられる
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=ウィンドチャージが炸裂する
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=ボグド
-subtitles.trickytrialsbackport.entity.bogged.ambient=ボグドが骨を鳴らす
-subtitles.trickytrialsbackport.entity.bogged.death=ボグドが死ぬ
-subtitles.trickytrialsbackport.entity.bogged.hurt=ボグドがダメージを受ける
-subtitles.trickytrialsbackport.item.shears.shear=ハサミで刈る
+# --- mace ---
+advancements.adventure.overoverkill.description=メイスを使って一撃でハート50個分のダメージを与える
+advancements.adventure.overoverkill.title=超・やり過ぎ
+enchantment.trickytrialsbackport.breach=防具貫通
+enchantment.trickytrialsbackport.density=重撃
+enchantment.trickytrialsbackport.wind_burst=ウィンドバースト
+item.trickytrialsbackport.mace.name=メイス
+tile.trickytrialsbackport.heavy_core.name=ヘビーコア
+subtitles.trickytrialsbackport.item.mace.smash_air=メイスが振り下ろされる
+subtitles.trickytrialsbackport.item.mace.smash_ground=メイスが振り下ろされる

@@ -1,0 +1,8 @@
+block.heavy_core.break
+block.heavy_core.fall
+block.heavy_core.hit
+block.heavy_core.place
+block.heavy_core.step
+item.mace.smash_air
+item.mace.smash_ground
+item.mace.smash_ground_heavy
