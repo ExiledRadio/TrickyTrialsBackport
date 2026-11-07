@@ -173,3 +173,11 @@ item.trickytrialsbackport.mace.name=Mace
 tile.trickytrialsbackport.heavy_core.name=Heavy Core
 subtitles.trickytrialsbackport.item.mace.smash_air=Mace smashes
 subtitles.trickytrialsbackport.item.mace.smash_ground=Mace smashes
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Be near a Crafter when it crafts a Crafter
+advancements.adventure.crafters_crafting_crafters.title=Crafters Crafting Crafters
+container.trickytrialsbackport.crafter=Crafter
+tile.trickytrialsbackport.crafter.name=Crafter
+subtitles.trickytrialsbackport.block.crafter.craft=Crafter crafts
+subtitles.trickytrialsbackport.block.crafter.fail=Crafter fails crafting

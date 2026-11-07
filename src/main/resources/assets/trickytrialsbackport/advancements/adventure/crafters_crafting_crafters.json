@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:crafter"
+    },
+    "title": {
+      "translate": "advancements.adventure.crafters_crafting_crafters.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.crafters_crafting_crafters.description"
+    }
+  },
+  "criteria": {
+    "crafter_crafted_crafter": {
+      "trigger": "trickytrialsbackport:crafter_crafted",
+      "conditions": {
+        "item": {
+          "item": "trickytrialsbackport:crafter"
+        }
+      }
+    }
+  }
+}

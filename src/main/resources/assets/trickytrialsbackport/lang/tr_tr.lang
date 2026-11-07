@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Gürz
 tile.trickytrialsbackport.heavy_core.name=Ağır Çekirdek
 subtitles.trickytrialsbackport.item.mace.smash_air=Gürz parçaladı
 subtitles.trickytrialsbackport.item.mace.smash_ground=Gürz parçaladı
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Bir üretici, üretici ürettiğinde üreticinin yanında olun
+advancements.adventure.crafters_crafting_crafters.title=Üreticiler Üretici Üretiyor
+container.trickytrialsbackport.crafter=Üretici
+tile.trickytrialsbackport.crafter.name=Üretici
+subtitles.trickytrialsbackport.block.crafter.craft=Üretici üretti
+subtitles.trickytrialsbackport.block.crafter.fail=Üretici üretemedi

@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Mazza
 tile.trickytrialsbackport.heavy_core.name=Nucleo pesante
 subtitles.trickytrialsbackport.item.mace.smash_air=Mazza fracassa
 subtitles.trickytrialsbackport.item.mace.smash_ground=Mazza fracassa
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Trovati vicino a un fabbricatore mentre fabbrica un fabbricatore.
+advancements.adventure.crafters_crafting_crafters.title=Da cosa nasce cosa
+container.trickytrialsbackport.crafter=Fabbricatore
+tile.trickytrialsbackport.crafter.name=Fabbricatore
+subtitles.trickytrialsbackport.block.crafter.craft=Fabbricatore in azione
+subtitles.trickytrialsbackport.block.crafter.fail=Fabbricazione non riuscita

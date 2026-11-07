@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=重錘
 tile.trickytrialsbackport.heavy_core.name=沉重核心
 subtitles.trickytrialsbackport.item.mace.smash_air=重錘重擊聲
 subtitles.trickytrialsbackport.item.mace.smash_ground=重錘重擊聲
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=靠近一台正在合成合成器的合成器
+advancements.adventure.crafters_crafting_crafters.title=合成器合成合成器
+container.trickytrialsbackport.crafter=合成器
+tile.trickytrialsbackport.crafter.name=合成器
+subtitles.trickytrialsbackport.block.crafter.craft=合成器合成物品
+subtitles.trickytrialsbackport.block.crafter.fail=合成器合成失敗

@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Булава
 tile.trickytrialsbackport.heavy_core.name=Важке ядро
 subtitles.trickytrialsbackport.item.mace.smash_air=Булава розбиває
 subtitles.trickytrialsbackport.item.mace.smash_ground=Булава розбиває
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Будьте біля майструвача, коли він майструє майструвач
+advancements.adventure.crafters_crafting_crafters.title=Нескінченний цикл
+container.trickytrialsbackport.crafter=Майструвач
+tile.trickytrialsbackport.crafter.name=Майструвач
+subtitles.trickytrialsbackport.block.crafter.craft=Майструвач змайстрував
+subtitles.trickytrialsbackport.block.crafter.fail=Майструвач не зміг змайструвати
