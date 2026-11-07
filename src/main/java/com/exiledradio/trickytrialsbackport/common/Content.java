@@ -3,9 +3,15 @@ package com.exiledradio.trickytrialsbackport.common;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nullable;
@@ -118,9 +124,80 @@ public final class Content {
      */
     public static void multipart(Block block) {
         MULTIPART.add(block);
+        MULTIPART_FILES.add(block);
+    }
+
+    /** Blocks whose blockstate file is multipart, however the client maps their states. */
+    private static final List<Block> MULTIPART_FILES = new ArrayList<Block>();
+
+    /**
+     * Declares that a block's blockstate file is multipart while its states map to variant strings as
+     * usual (walls: the parts are picked by {@code up}, {@code north}, ...), for the asset check.
+     */
+    public static void multipartFile(Block block) {
+        MULTIPART_FILES.add(block);
+    }
+
+    public static List<Block> multipartFiles() {
+        return Collections.unmodifiableList(MULTIPART_FILES);
     }
 
     public static List<Block> multipartBlocks() {
         return Collections.unmodifiableList(MULTIPART);
+    }
+
+    /** Properties the client's state mapper leaves out, per block (slabs' and walls' pinned variants). */
+    private static final Map<Block, IProperty<?>[]> IGNORED = new LinkedHashMap<Block, IProperty<?>[]>();
+
+    /** Declares properties a block's blockstate file does not mention; the client and the self-test skip them. */
+    public static void ignoreProperties(Block block, IProperty<?>... properties) {
+        IGNORED.put(block, properties);
+    }
+
+    public static Map<Block, IProperty<?>[]> ignoredProperties() {
+        return Collections.unmodifiableMap(IGNORED);
+    }
+
+    // ------------------------------------------------------------------------------------------
+    // Sounds
+    // ------------------------------------------------------------------------------------------
+
+    /** Every sound event made through {@link #sound}, registered in the sound registry event. */
+    private static final Map<String, SoundEvent> SOUNDS = new LinkedHashMap<String, SoundEvent>();
+
+    /**
+     * @return our sound event {@code <modid>:<name>} (sounds.json's key, such as {@code block.tuff.break}),
+     * made on first use. Blocks register before sounds, so a block may hold the event before it is
+     * registered; it is registered with the rest in the sound event.
+     */
+    public static synchronized SoundEvent sound(String name) {
+        SoundEvent event = SOUNDS.get(name);
+        if (event == null) {
+            event = new SoundEvent(id(name));
+            event.setRegistryName(id(name));
+            SOUNDS.put(name, event);
+        }
+        return event;
+    }
+
+    /** @return a sound type from our five events {@code block.<name>.break/step/place/hit/fall} */
+    public static SoundType soundType(String name, float volume, float pitch) {
+        return new SoundType(volume, pitch, sound("block." + name + ".break"), sound("block." + name + ".step"),
+                sound("block." + name + ".place"), sound("block." + name + ".hit"), sound("block." + name + ".fall"));
+    }
+
+    @Mod.EventBusSubscriber(modid = TrickyTrialsBackport.MOD_ID)
+    public static final class Events {
+        private Events() {
+        }
+
+        @SubscribeEvent
+        public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
+            synchronized (Content.class) {
+                for (SoundEvent sound : SOUNDS.values()) {
+                    event.getRegistry().register(sound);
+                }
+            }
+        }
     }
 }

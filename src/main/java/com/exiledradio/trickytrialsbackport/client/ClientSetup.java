@@ -4,8 +4,10 @@ import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.common.Content;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -41,6 +43,9 @@ public final class ClientSetup {
                 ModelLoader.setCustomModelResourceLocation(entry.getKey(), meta.getKey(),
                         new ModelResourceLocation(TrickyTrialsBackport.MOD_ID + ":" + meta.getValue(), "inventory"));
             }
+        }
+        for (Map.Entry<Block, IProperty<?>[]> entry : Content.ignoredProperties().entrySet()) {
+            ModelLoader.setCustomStateMapper(entry.getKey(), new StateMap.Builder().ignore(entry.getValue()).build());
         }
         for (final Block block : Content.multipartBlocks()) {
             final ModelResourceLocation one = new ModelResourceLocation(block.getRegistryName(), "multipart");

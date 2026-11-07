@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "trickytrialsbackport:tuff_slab"
+    },
+    "half=top": {
+      "model": "trickytrialsbackport:tuff_slab_top"
+    }
+  }
+}

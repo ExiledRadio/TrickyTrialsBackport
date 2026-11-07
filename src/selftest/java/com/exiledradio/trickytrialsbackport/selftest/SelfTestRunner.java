@@ -44,6 +44,7 @@ public final class SelfTestRunner {
     /** Every stream's test. A stream adds its own line. */
     private static final SelfTest[] TESTS = {
             new ScaffoldSelfTest(),
+            new TuffSelfTest(),
     };
 
     private final List<String> wanted;
@@ -102,7 +103,7 @@ public final class SelfTestRunner {
             if (!TrickyTrialsBackport.MOD_ID.equals(block.getRegistryName().getNamespace())) {
                 continue;
             }
-            String kind = Content.multipartBlocks().contains(block) ? "multipart" : "variants";
+            String kind = Content.multipartFiles().contains(block) ? "multipart" : "variants";
             for (IBlockState state : block.getBlockState().getValidStates()) {
                 out.println(block.getRegistryName() + "\t" + variant(state) + "\t" + kind);
             }
@@ -114,7 +115,12 @@ public final class SelfTestRunner {
     @SuppressWarnings({"rawtypes", "unchecked"})
     static String variant(IBlockState state) {
         Map<String, String> sorted = new TreeMap<String, String>();
+        IProperty<?>[] ignored = Content.ignoredProperties().get(state.getBlock());
+        java.util.List<IProperty<?>> skip = ignored == null ? java.util.Collections.<IProperty<?>>emptyList() : Arrays.asList(ignored);
         for (Map.Entry<IProperty<?>, Comparable<?>> e : state.getProperties().entrySet()) {
+            if (skip.contains(e.getKey())) {
+                continue;
+            }
             IProperty p = e.getKey();
             sorted.put(p.getName(), p.getName((Comparable) e.getValue()));
         }

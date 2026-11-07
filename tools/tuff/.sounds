@@ -1,0 +1,15 @@
+block.polished_tuff.break
+block.polished_tuff.fall
+block.polished_tuff.hit
+block.polished_tuff.place
+block.polished_tuff.step
+block.tuff.break
+block.tuff.fall
+block.tuff.hit
+block.tuff.place
+block.tuff.step
+block.tuff_bricks.break
+block.tuff_bricks.fall
+block.tuff_bricks.hit
+block.tuff_bricks.place
+block.tuff_bricks.step
