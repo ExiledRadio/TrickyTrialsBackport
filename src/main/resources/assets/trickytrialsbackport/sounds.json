@@ -239,5 +239,155 @@
       "trickytrialsbackport:block/tuff_bricks/step6"
     ],
     "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "entity.breeze.charge": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/charge1",
+      "trickytrialsbackport:mob/breeze/charge2",
+      "trickytrialsbackport:mob/breeze/charge3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.charge"
+  },
+  "entity.breeze.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/death1",
+      "trickytrialsbackport:mob/breeze/death2"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.death"
+  },
+  "entity.breeze.deflect": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/deflect1",
+      "trickytrialsbackport:mob/breeze/deflect2",
+      "trickytrialsbackport:mob/breeze/deflect3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.deflect"
+  },
+  "entity.breeze.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/hurt1",
+      "trickytrialsbackport:mob/breeze/hurt2",
+      "trickytrialsbackport:mob/breeze/hurt3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.hurt"
+  },
+  "entity.breeze.idle_air": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/idle_air1",
+      "trickytrialsbackport:mob/breeze/idle_air2",
+      "trickytrialsbackport:mob/breeze/idle_air3",
+      "trickytrialsbackport:mob/breeze/idle_air4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.idle_air"
+  },
+  "entity.breeze.idle_ground": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/idle1",
+      "trickytrialsbackport:mob/breeze/idle2",
+      "trickytrialsbackport:mob/breeze/idle3",
+      "trickytrialsbackport:mob/breeze/idle4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.idle_ground"
+  },
+  "entity.breeze.inhale": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/inhale1",
+      {
+        "name": "trickytrialsbackport:mob/breeze/inhale1",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:mob/breeze/inhale2",
+      {
+        "name": "trickytrialsbackport:mob/breeze/inhale2",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.inhale"
+  },
+  "entity.breeze.jump": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/jump1",
+      "trickytrialsbackport:mob/breeze/jump2"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.jump"
+  },
+  "entity.breeze.land": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/land1",
+      "trickytrialsbackport:mob/breeze/land2"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.land"
+  },
+  "entity.breeze.shoot": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/shoot",
+      {
+        "name": "trickytrialsbackport:mob/breeze/shoot",
+        "pitch": 1.1
+      },
+      {
+        "name": "trickytrialsbackport:mob/breeze/shoot",
+        "pitch": 1.2
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.shoot"
+  },
+  "entity.breeze.slide": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/slide1",
+      "trickytrialsbackport:mob/breeze/slide2",
+      "trickytrialsbackport:mob/breeze/slide3",
+      "trickytrialsbackport:mob/breeze/slide4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.slide"
+  },
+  "entity.breeze.whirl": {
+    "sounds": [
+      "trickytrialsbackport:mob/breeze/whirl"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.whirl"
+  },
+  "entity.breeze.wind_burst": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:mob/breeze/wind_burst1",
+        "pitch": 1.2
+      },
+      {
+        "name": "trickytrialsbackport:mob/breeze/wind_burst2",
+        "pitch": 1.2
+      },
+      {
+        "name": "trickytrialsbackport:mob/breeze/wind_burst3",
+        "pitch": 1.2
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.breeze.wind_burst"
+  },
+  "entity.wind_charge.throw": {
+    "sounds": [
+      "trickytrialsbackport:random/bow"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wind_charge.throw"
+  },
+  "entity.wind_charge.wind_burst": {
+    "sounds": [
+      {
+        "attenuation_distance": 8,
+        "name": "trickytrialsbackport:entity/wind_charge/wind_burst1",
+        "pitch": 1.25
+      },
+      {
+        "attenuation_distance": 8,
+        "name": "trickytrialsbackport:entity/wind_charge/wind_burst2",
+        "pitch": 1.25
+      },
+      {
+        "attenuation_distance": 8,
+        "name": "trickytrialsbackport:entity/wind_charge/wind_burst3",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wind_charge.wind_burst"
   }
 }

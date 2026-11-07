@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:wind_charge"
+    },
+    "title": {
+      "translate": "advancements.adventure.who_needs_rockets.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.who_needs_rockets.description"
+    }
+  },
+  "criteria": {
+    "who_needs_rockets": {
+      "trigger": "trickytrialsbackport:fall_after_wind_charge",
+      "conditions": {
+        "min_height": 7
+      }
+    }
+  }
+}
