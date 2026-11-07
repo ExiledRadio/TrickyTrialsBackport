@@ -172,6 +172,11 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Bogged fields ---
+        @Config.RequiresMcRestart
+        @Config.Comment({"Bogged spawn in swamps and mangrove swamps, and take 30 of the 100 skeleton spawns there,",
+                "as in 1.21."})
+        @Config.LangKey("config.trickytrialsbackport.bogged.spawn")
+        public boolean spawn = true;
         // --- end Bogged ---
     }
 

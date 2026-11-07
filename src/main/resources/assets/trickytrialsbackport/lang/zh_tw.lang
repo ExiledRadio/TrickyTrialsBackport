@@ -51,3 +51,10 @@ subtitles.trickytrialsbackport.entity.breeze.whirl=旋風使者旋轉
 subtitles.trickytrialsbackport.entity.breeze.wind_burst=風彈爆裂
 subtitles.trickytrialsbackport.entity.wind_charge.throw=風彈飛行
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=風彈爆裂
+
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=沼骸
+subtitles.trickytrialsbackport.entity.bogged.ambient=沼骸喀啦聲
+subtitles.trickytrialsbackport.entity.bogged.death=沼骸死亡
+subtitles.trickytrialsbackport.entity.bogged.hurt=沼骸受傷
+subtitles.trickytrialsbackport.item.shears.shear=剪刀咔嗒聲

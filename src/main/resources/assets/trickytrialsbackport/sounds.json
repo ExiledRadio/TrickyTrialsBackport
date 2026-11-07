@@ -389,5 +389,44 @@
       }
     ],
     "subtitle": "subtitles.trickytrialsbackport.entity.wind_charge.wind_burst"
+  },
+  "entity.bogged.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/bogged/ambient1",
+      "trickytrialsbackport:mob/bogged/ambient2",
+      "trickytrialsbackport:mob/bogged/ambient3",
+      "trickytrialsbackport:mob/bogged/ambient4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.bogged.ambient"
+  },
+  "entity.bogged.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/bogged/death"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.bogged.death"
+  },
+  "entity.bogged.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/bogged/hurt1",
+      "trickytrialsbackport:mob/bogged/hurt2",
+      "trickytrialsbackport:mob/bogged/hurt3",
+      "trickytrialsbackport:mob/bogged/hurt4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.bogged.hurt"
+  },
+  "entity.bogged.shear": {
+    "sounds": [
+      "trickytrialsbackport:mob/sheep/shear"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.shears.shear"
+  },
+  "entity.bogged.step": {
+    "sounds": [
+      "trickytrialsbackport:mob/bogged/step1",
+      "trickytrialsbackport:mob/bogged/step2",
+      "trickytrialsbackport:mob/bogged/step3",
+      "trickytrialsbackport:mob/bogged/step4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }
