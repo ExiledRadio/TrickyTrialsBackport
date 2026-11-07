@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Escaleras de toba
 tile.trickytrialsbackport.tuff_wall.name=Pared de toba
 subtitles.trickytrialsbackport.block.generic.fall=Algo cae sobre un bloque
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Ciénago
+subtitles.trickytrialsbackport.entity.bogged.ambient=Traqueteo de ciénago
+subtitles.trickytrialsbackport.entity.bogged.death=Ciénago muerto
+subtitles.trickytrialsbackport.entity.bogged.hurt=Ciénago herido
+subtitles.trickytrialsbackport.item.shears.shear=Tijeras recortando
+
 # --- breeze ---
 advancements.adventure.blowback.description=Mata un breeze devolviéndole su misma carga de viento
 advancements.adventure.blowback.title=Contrarresto
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Ráfaga de viento
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Carga de viento lanzada
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Ráfaga de viento
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Ciénago
-subtitles.trickytrialsbackport.entity.bogged.ambient=Traqueteo de ciénago
-subtitles.trickytrialsbackport.entity.bogged.death=Ciénago muerto
-subtitles.trickytrialsbackport.entity.bogged.hurt=Ciénago herido
-subtitles.trickytrialsbackport.item.shears.shear=Tijeras recortando
+# --- mace ---
+advancements.adventure.overoverkill.description=Inflige 50 corazones de daño de un solo golpe usando el mazo
+advancements.adventure.overoverkill.title=Golpe de gracia
+enchantment.trickytrialsbackport.breach=Fisura
+enchantment.trickytrialsbackport.density=Densidad
+enchantment.trickytrialsbackport.wind_burst=Aeroimpulso
+item.trickytrialsbackport.mace.name=Mazo
+tile.trickytrialsbackport.heavy_core.name=Núcleo pesado
+subtitles.trickytrialsbackport.item.mace.smash_air=Mazo impactando
+subtitles.trickytrialsbackport.item.mace.smash_ground=Mazo impactando

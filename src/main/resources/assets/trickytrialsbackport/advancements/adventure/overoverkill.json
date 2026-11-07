@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:mace"
+    },
+    "title": {
+      "translate": "advancements.adventure.overoverkill.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.overoverkill.description"
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "overoverkill": {
+      "trigger": "trickytrialsbackport:mace_smash",
+      "conditions": {
+        "min_damage": 100
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  }
+}

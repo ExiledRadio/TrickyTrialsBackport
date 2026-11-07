@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Tuffsteintreppe
 tile.trickytrialsbackport.tuff_wall.name=Tuffsteinmauer
 subtitles.trickytrialsbackport.block.generic.fall=Etwas fällt auf einen Block
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Sumpfskelett
+subtitles.trickytrialsbackport.entity.bogged.ambient=Sumpfskelett klappert
+subtitles.trickytrialsbackport.entity.bogged.death=Sumpfskelett stirbt
+subtitles.trickytrialsbackport.entity.bogged.hurt=Sumpfskelett nimmt Schaden
+subtitles.trickytrialsbackport.item.shears.shear=Schere schneidet
+
 # --- breeze ---
 advancements.adventure.blowback.description=Erlege eine Böe mit einer abgewehrten Böen‐Windkugel
 advancements.adventure.blowback.title=Gegenwind
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Windkugel platzt
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Windkugel fliegt
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Windkugel platzt
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Sumpfskelett
-subtitles.trickytrialsbackport.entity.bogged.ambient=Sumpfskelett klappert
-subtitles.trickytrialsbackport.entity.bogged.death=Sumpfskelett stirbt
-subtitles.trickytrialsbackport.entity.bogged.hurt=Sumpfskelett nimmt Schaden
-subtitles.trickytrialsbackport.item.shears.shear=Schere schneidet
+# --- mace ---
+advancements.adventure.overoverkill.description=Verursache mit dem Streitkolben 50 Herzen Schaden in einem einzigen Hieb
+advancements.adventure.overoverkill.title=Großmeister des Kampfes
+enchantment.trickytrialsbackport.breach=Durchbruch
+enchantment.trickytrialsbackport.density=Dichte
+enchantment.trickytrialsbackport.wind_burst=Windstoß
+item.trickytrialsbackport.mace.name=Streitkolben
+tile.trickytrialsbackport.heavy_core.name=Schwerer Kern
+subtitles.trickytrialsbackport.item.mace.smash_air=Streitkolben schmettert
+subtitles.trickytrialsbackport.item.mace.smash_ground=Streitkolben schmettert

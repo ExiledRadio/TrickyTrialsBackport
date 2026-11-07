@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Escalier en tuf
 tile.trickytrialsbackport.tuff_wall.name=Muret de tuf
 subtitles.trickytrialsbackport.block.generic.fall=Chute sur un bloc
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Embourbé
+subtitles.trickytrialsbackport.entity.bogged.ambient=Cliquetis d'embourbé
+subtitles.trickytrialsbackport.entity.bogged.death=Embourbé qui meurt
+subtitles.trickytrialsbackport.entity.bogged.hurt=Embourbé blessé
+subtitles.trickytrialsbackport.item.shears.shear=Pincement de cisailles
+
 # --- breeze ---
 advancements.adventure.blowback.description=Tuez un Breeze en lui renvoyant une charge de vent.
 advancements.adventure.blowback.title=Œil pour œil, vent pour vent
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Charge de vent qui explo
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Charge de vent lancée
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Charge de vent qui explose
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Embourbé
-subtitles.trickytrialsbackport.entity.bogged.ambient=Cliquetis d'embourbé
-subtitles.trickytrialsbackport.entity.bogged.death=Embourbé qui meurt
-subtitles.trickytrialsbackport.entity.bogged.hurt=Embourbé blessé
-subtitles.trickytrialsbackport.item.shears.shear=Pincement de cisailles
+# --- mace ---
+advancements.adventure.overoverkill.description=Infligez 50 cœurs de dégâts avec un seul coup de masse.
+advancements.adventure.overoverkill.title=Masse-âcre
+enchantment.trickytrialsbackport.breach=Brèche
+enchantment.trickytrialsbackport.density=Densité
+enchantment.trickytrialsbackport.wind_burst=Rafale de vent
+item.trickytrialsbackport.mace.name=Masse
+tile.trickytrialsbackport.heavy_core.name=Noyau lourd
+subtitles.trickytrialsbackport.item.mace.smash_air=Fracas de masse
+subtitles.trickytrialsbackport.item.mace.smash_ground=Fracas de masse

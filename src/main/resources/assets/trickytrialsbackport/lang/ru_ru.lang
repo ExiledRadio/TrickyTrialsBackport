@@ -26,6 +26,13 @@ tile.trickytrialsbackport.tuff_stairs.name=Туфовые ступеньки
 tile.trickytrialsbackport.tuff_wall.name=Туфовая ограда
 subtitles.trickytrialsbackport.block.generic.fall=Что-то упало на блок
 
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Болотник
+subtitles.trickytrialsbackport.entity.bogged.ambient=Болотник стучит костями
+subtitles.trickytrialsbackport.entity.bogged.death=Болотник погибает
+subtitles.trickytrialsbackport.entity.bogged.hurt=Болотник ранен
+subtitles.trickytrialsbackport.item.shears.shear=Щелчок ножниц
+
 # --- breeze ---
 advancements.adventure.blowback.description=Убейте вихря его же зарядом ветра
 advancements.adventure.blowback.title=Не дуйся
@@ -52,9 +59,13 @@ subtitles.trickytrialsbackport.entity.breeze.wind_burst=Заряд ветра в
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Заряд ветра летит
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Заряд ветра взрывается
 
-# --- bogged ---
-entity.trickytrialsbackport.bogged.name=Болотник
-subtitles.trickytrialsbackport.entity.bogged.ambient=Болотник стучит костями
-subtitles.trickytrialsbackport.entity.bogged.death=Болотник погибает
-subtitles.trickytrialsbackport.entity.bogged.hurt=Болотник ранен
-subtitles.trickytrialsbackport.item.shears.shear=Щелчок ножниц
+# --- mace ---
+advancements.adventure.overoverkill.description=Нанесите 50 сердец урона одним ударом булавы
+advancements.adventure.overoverkill.title=Есть пробитие!
+enchantment.trickytrialsbackport.breach=Пробитие
+enchantment.trickytrialsbackport.density=Плотность
+enchantment.trickytrialsbackport.wind_burst=Порыв ветра
+item.trickytrialsbackport.mace.name=Булава
+tile.trickytrialsbackport.heavy_core.name=Навершие булавы
+subtitles.trickytrialsbackport.item.mace.smash_air=Булава сокрушает
+subtitles.trickytrialsbackport.item.mace.smash_ground=Булава сокрушает

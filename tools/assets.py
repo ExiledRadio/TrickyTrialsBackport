@@ -201,6 +201,10 @@ def merge_lang(section, lines):
             out.append(line)
     while out and out[-1] == "":
         out.pop()
+    # A line another section already has (a shared subtitle such as block.generic.fall) is not repeated:
+    # 1.12.2 would keep one, and the language check counts a repeated key as an error.
+    taken = set(l.split("=", 1)[0] for l in out if "=" in l and not l.startswith("#"))
+    lines = [l for l in lines if "=" not in l or l.startswith("#") or l.split("=", 1)[0] not in taken]
     out += ["", head] + lines
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(out) + "\n")

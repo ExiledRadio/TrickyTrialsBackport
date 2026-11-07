@@ -72,7 +72,7 @@ import java.util.function.Predicate;
 public final class WindBurst {
 
     /** {@code trickytrialsbackport:fall_after_wind_charge}: landing after a wind charge launched you. */
-    public static final HeightTrigger FALL_AFTER_WIND_CHARGE = new HeightTrigger(Content.id("fall_after_wind_charge"));
+    public static final ValueTrigger FALL_AFTER_WIND_CHARGE = new ValueTrigger(Content.id("fall_after_wind_charge"), "min_height");
 
     /** Blocks that open like wooden doors though their material is metal (copper doors and trapdoors). */
     private static final Set<Block> OPENABLE = Collections.synchronizedSet(new HashSet<Block>());
@@ -168,9 +168,7 @@ public final class WindBurst {
             entity.motionZ += dz / len * push;
             entity.velocityChanged = true;
             if (entity instanceof EntityPlayerMP && push > 0.0) {
-                synchronized (LAUNCHES) {
-                    LAUNCHES.put((EntityPlayer) entity, new Launch(y, s.windCharge, entity.ticksExisted));
-                }
+                trackImpulse((EntityPlayer) entity, y, s.windCharge);
             }
         }
     }
@@ -282,6 +280,20 @@ public final class WindBurst {
             this.burstY = burstY;
             this.windCharge = windCharge;
             this.tick = tick;
+        }
+    }
+
+    /**
+     * Remembers that something launched a player from height {@code y}: until they land, only the part of
+     * their fall below {@code y} counts. The mace's smash attack uses this too.
+     *
+     * @param windCharge true if a wind charge did it, which counts for <i>Who Needs Rockets?</i>
+     */
+    public static void trackImpulse(EntityPlayer player, double y, boolean windCharge) {
+        if (player instanceof EntityPlayerMP) {
+            synchronized (LAUNCHES) {
+                LAUNCHES.put(player, new Launch(y, windCharge, player.ticksExisted));
+            }
         }
     }
 

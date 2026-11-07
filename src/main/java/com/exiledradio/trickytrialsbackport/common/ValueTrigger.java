@@ -19,18 +19,20 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * An advancement trigger that fires with a height and passes when it is at least the criterion's
- * {@code "min_height"}: 1.21's {@code fall_after_explosion} with its {@code distance.y.min}, which 1.12.2
- * lacks.
+ * An advancement trigger that fires with a number and passes when it is at least the criterion's minimum,
+ * read from one named key: {@code "min_height"} for 1.21's {@code fall_after_explosion} with its
+ * {@code distance.y.min}, {@code "min_damage"} for a mace smash's damage. 1.12.2 lacks both.
  */
-public final class HeightTrigger implements ICriterionTrigger<HeightTrigger.Instance> {
+public final class ValueTrigger implements ICriterionTrigger<ValueTrigger.Instance> {
 
     private final ResourceLocation id;
+    private final String key;
     private final Map<PlayerAdvancements, Set<Listener<Instance>>> listeners = new HashMap<PlayerAdvancements, Set<Listener<Instance>>>();
     private boolean registered;
 
-    HeightTrigger(ResourceLocation id) {
+    public ValueTrigger(ResourceLocation id, String key) {
         this.id = id;
+        this.key = key;
     }
 
     /** Registers with the advancement system; call before any server loads advancements (pre-init). */
@@ -74,10 +76,10 @@ public final class HeightTrigger implements ICriterionTrigger<HeightTrigger.Inst
 
     @Override
     public Instance deserializeInstance(JsonObject json, JsonDeserializationContext context) {
-        return new Instance(this.id, JsonUtils.getFloat(json, "min_height", 0.0F));
+        return new Instance(this.id, JsonUtils.getFloat(json, this.key, 0.0F));
     }
 
-    public void trigger(EntityPlayerMP player, double height) {
+    public void trigger(EntityPlayerMP player, double value) {
         PlayerAdvancements advancements = player.getAdvancements();
         List<Listener<Instance>> passed = new ArrayList<Listener<Instance>>();
         synchronized (this) {
@@ -86,7 +88,7 @@ public final class HeightTrigger implements ICriterionTrigger<HeightTrigger.Inst
                 return;
             }
             for (Listener<Instance> listener : set) {
-                if (height >= listener.getCriterionInstance().minHeight) {
+                if (value >= listener.getCriterionInstance().min) {
                     passed.add(listener);
                 }
             }
@@ -96,13 +98,13 @@ public final class HeightTrigger implements ICriterionTrigger<HeightTrigger.Inst
         }
     }
 
-    /** One criterion: a minimum height. */
+    /** One criterion: a minimum. */
     public static final class Instance extends AbstractCriterionInstance {
-        final float minHeight;
+        final float min;
 
-        Instance(ResourceLocation id, float minHeight) {
+        Instance(ResourceLocation id, float min) {
             super(id);
-            this.minHeight = minHeight;
+            this.min = min;
         }
     }
 }
