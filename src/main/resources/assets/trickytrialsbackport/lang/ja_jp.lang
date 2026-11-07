@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=メイス
 tile.trickytrialsbackport.heavy_core.name=ヘビーコア
 subtitles.trickytrialsbackport.item.mace.smash_air=メイスが振り下ろされる
 subtitles.trickytrialsbackport.item.mace.smash_ground=メイスが振り下ろされる
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=自動作業台が自動作業台を作る様子を観察する
+advancements.adventure.crafters_crafting_crafters.title=自動作業台製自動作業台
+container.trickytrialsbackport.crafter=自動作業台
+tile.trickytrialsbackport.crafter.name=自動作業台
+subtitles.trickytrialsbackport.block.crafter.craft=自動作業台がクラフトする
+subtitles.trickytrialsbackport.block.crafter.fail=自動作業台がクラフトに失敗する

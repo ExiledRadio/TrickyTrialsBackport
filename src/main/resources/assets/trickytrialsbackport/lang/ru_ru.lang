@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Булава
 tile.trickytrialsbackport.heavy_core.name=Навершие булавы
 subtitles.trickytrialsbackport.item.mace.smash_air=Булава сокрушает
 subtitles.trickytrialsbackport.item.mace.smash_ground=Булава сокрушает
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Будьте около сборщика, собирающего сборщик
+advancements.adventure.crafters_crafting_crafters.title=До чего дошёл прогресс
+container.trickytrialsbackport.crafter=Сборщик
+tile.trickytrialsbackport.crafter.name=Сборщик
+subtitles.trickytrialsbackport.block.crafter.craft=Сборщик собрал
+subtitles.trickytrialsbackport.block.crafter.fail=Сборщик не собрал

@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Maza
 tile.trickytrialsbackport.heavy_core.name=Núcleo pesado
 subtitles.trickytrialsbackport.item.mace.smash_air=Maza golpea
 subtitles.trickytrialsbackport.item.mace.smash_ground=Maza golpea
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Mantente cerca de un fabricador cuando fabrique otro fabricador.
+advancements.adventure.crafters_crafting_crafters.title=Fabricadores fabricando fabricadores
+container.trickytrialsbackport.crafter=Fabricador
+tile.trickytrialsbackport.crafter.name=Fabricador
+subtitles.trickytrialsbackport.block.crafter.craft=Fabricador fabrica
+subtitles.trickytrialsbackport.block.crafter.fail=Fabricador falla

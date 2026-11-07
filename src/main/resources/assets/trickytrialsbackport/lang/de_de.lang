@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Streitkolben
 tile.trickytrialsbackport.heavy_core.name=Schwerer Kern
 subtitles.trickytrialsbackport.item.mace.smash_air=Streitkolben schmettert
 subtitles.trickytrialsbackport.item.mace.smash_ground=Streitkolben schmettert
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Befinde dich in der Nähe eines Werkers, wenn dieser einen Werker herstellt
+advancements.adventure.crafters_crafting_crafters.title=Werker werkeln Werker
+container.trickytrialsbackport.crafter=Werker
+tile.trickytrialsbackport.crafter.name=Werker
+subtitles.trickytrialsbackport.block.crafter.craft=Werker werkelt
+subtitles.trickytrialsbackport.block.crafter.fail=Werker versagt

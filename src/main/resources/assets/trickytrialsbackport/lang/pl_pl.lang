@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Buzdygan
 tile.trickytrialsbackport.heavy_core.name=Ciężki rdzeń
 subtitles.trickytrialsbackport.item.mace.smash_air=Buzdygan rozbija
 subtitles.trickytrialsbackport.item.mace.smash_ground=Buzdygan rozbija
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Bądź obok wytwarzacza, kiedy ten wytworzy wytwarzacz
+advancements.adventure.crafters_crafting_crafters.title=Wytwórcza wytwórnia wytwarzaczy
+container.trickytrialsbackport.crafter=Wytwarzacz
+tile.trickytrialsbackport.crafter.name=Wytwarzacz
+subtitles.trickytrialsbackport.block.crafter.craft=Wytwarzacz wytworzył
+subtitles.trickytrialsbackport.block.crafter.fail=Wytwarzacz nie zadziałał

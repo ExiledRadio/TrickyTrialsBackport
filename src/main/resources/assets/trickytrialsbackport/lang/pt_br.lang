@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Maça
 tile.trickytrialsbackport.heavy_core.name=Núcleo Pesado
 subtitles.trickytrialsbackport.item.mace.smash_air=Maça esmaga
 subtitles.trickytrialsbackport.item.mace.smash_ground=Maça esmaga
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Veja uma Bancada Automática fabricar outra Bancada Automática
+advancements.adventure.crafters_crafting_crafters.title=Revolução industrial
+container.trickytrialsbackport.crafter=Bancada Automática
+tile.trickytrialsbackport.crafter.name=Bancada Automática
+subtitles.trickytrialsbackport.block.crafter.craft=Bancada Automática fabrica
+subtitles.trickytrialsbackport.block.crafter.fail=Bancada Automática falhou

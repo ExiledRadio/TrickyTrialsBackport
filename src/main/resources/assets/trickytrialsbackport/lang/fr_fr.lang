@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Masse
 tile.trickytrialsbackport.heavy_core.name=Noyau lourd
 subtitles.trickytrialsbackport.item.mace.smash_air=Fracas de masse
 subtitles.trickytrialsbackport.item.mace.smash_ground=Fracas de masse
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Assistez à la fabrication d'un fabricateur par un fabricateur.
+advancements.adventure.crafters_crafting_crafters.title=Méta-fabrication
+container.trickytrialsbackport.crafter=Fabricateur
+tile.trickytrialsbackport.crafter.name=Fabricateur
+subtitles.trickytrialsbackport.block.crafter.craft=Fabricateur qui fabrique
+subtitles.trickytrialsbackport.block.crafter.fail=Fabricateur qui échoue

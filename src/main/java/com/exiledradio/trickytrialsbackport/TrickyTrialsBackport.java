@@ -59,11 +59,13 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.client.ClientSetup.init();
             com.exiledradio.trickytrialsbackport.breeze.client.BreezeClient.init();
             com.exiledradio.trickytrialsbackport.bogged.client.BoggedClient.init();
+            com.exiledradio.trickytrialsbackport.crafter.client.CrafterClient.init();
         }
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        com.exiledradio.trickytrialsbackport.common.Guis.init();
     }
 
     @Mod.EventHandler

@@ -1,0 +1,9 @@
+{
+  "parent": "trickytrialsbackport:block/crafter_triggered",
+  "textures": {
+    "top": "trickytrialsbackport:block/crafter_top_crafting",
+    "north": "trickytrialsbackport:block/crafter_north_crafting",
+    "east": "trickytrialsbackport:block/crafter_east_crafting",
+    "west": "trickytrialsbackport:block/crafter_west_crafting"
+  }
+}

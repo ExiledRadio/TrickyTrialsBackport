@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=Knots
 tile.trickytrialsbackport.heavy_core.name=Zware kern
 subtitles.trickytrialsbackport.item.mace.smash_air=Knots zwaait
 subtitles.trickytrialsbackport.item.mace.smash_ground=Knots plet
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=Sta in de buurt van een vervaardigingsmachine die een vervaardigingsmachine vervaardigt
+advancements.adventure.crafters_crafting_crafters.title=Autoproductie
+container.trickytrialsbackport.crafter=Vervaardigingsmachine
+tile.trickytrialsbackport.crafter.name=Vervaardigingsmachine
+subtitles.trickytrialsbackport.block.crafter.craft=Vervaardigingsmachine vervaardigt
+subtitles.trickytrialsbackport.block.crafter.fail=Vervaardigingsmachine vervaardigde niets

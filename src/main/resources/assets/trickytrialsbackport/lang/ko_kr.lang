@@ -69,3 +69,11 @@ item.trickytrialsbackport.mace.name=철퇴
 tile.trickytrialsbackport.heavy_core.name=무거운 코어
 subtitles.trickytrialsbackport.item.mace.smash_air=철퇴로 내려침
 subtitles.trickytrialsbackport.item.mace.smash_ground=철퇴로 내려침
+
+# --- crafter ---
+advancements.adventure.crafters_crafting_crafters.description=제작기가 제작기를 제작할 때 근처에 있으세요
+advancements.adventure.crafters_crafting_crafters.title=제작기 제 자신 제작기
+container.trickytrialsbackport.crafter=제작기
+tile.trickytrialsbackport.crafter.name=제작기
+subtitles.trickytrialsbackport.block.crafter.craft=제작기가 제작함
+subtitles.trickytrialsbackport.block.crafter.fail=제작기가 제작에 실패함
