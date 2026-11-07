@@ -77,3 +77,12 @@ and wall (tuff, polished tuff, tuff brick, resin brick; pale oak stairs, slab, f
 heavy core; resin clumps; copper chests, copper golem statues, copper bars, chains and lanterns; shelves;
 the dried ghast. Not waterloggable in vanilla: copper doors and bulbs, the crafter, trial spawner and
 vault, pale moss carpet, pale hanging moss, leaf litter, copper torches.
+
+## 8. One modern wall class for the family
+
+Our tuff walls extend 1.12.2's `BlockWall` (low sides only); Caves & Cliffs has a 1.16+ wall with none,
+low and tall sides (`common/BlockCCWall` in its repo, all actual state, metadata 0) and is listing it for
+Core too. **Want:** that wall in Core, so tuff, deepslate, resin brick and every later wall look and join
+alike. **Meanwhile:** ours stay vanilla-style; moving them is a blockstate and class swap with no change to
+saved worlds (both store metadata 0).
+

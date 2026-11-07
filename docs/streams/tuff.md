@@ -28,7 +28,10 @@ Package `tuff`, shared shapes in `common/building`. Config `tuff` (`enabled`, `g
     maps. Sound types tuff, polished tuff and tuff bricks (volume and pitch 1), events copied from the
     1.21.11 asset index under our namespace (`block.tuff.*` etc.).
 *   **Generation of the copy**: 1.17's `ore_tuff`, two blobs of up to 33 per chunk, y 0-16, replacing stone,
-    Overworld only, behind `tuff.generate`.
+    Overworld only, behind `tuff.generate`. Caves & Cliffs generates its tuff differently (small blobs in
+    its deepslate below y 8); ours runs only when it is absent, where there is no deepslate, so it uses
+    1.17's stone rule. Confirmed with Caves & Cliffs 2026-11-07: the block itself (name, no properties,
+    material, map color, hardness, resistance, tool, sounds) and the slab layout match theirs exactly.
 *   **Models**: 1.21.11's models ported as they are (their `block/slab` and `template_wall_*` parents come
     along into our namespace). Wall blockstates are 1.12.2 multipart files on `up` and four booleans: no
     tall sides, since 1.12.2's walls have none.
