@@ -20,3 +20,4 @@ __pycache__/
 # Backport Core dev jar, copied from BackportCore/build/libs
 /deps/
 /build-selftest.log
+/build-selftest-owner.log

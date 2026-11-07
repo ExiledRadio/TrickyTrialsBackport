@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/cut_copper",
+    "side": "trickytrialsbackport:block/cut_copper",
+    "top": "trickytrialsbackport:block/cut_copper"
+  }
+}

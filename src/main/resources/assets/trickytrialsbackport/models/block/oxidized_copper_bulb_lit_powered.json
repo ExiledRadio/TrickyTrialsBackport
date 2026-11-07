@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "trickytrialsbackport:block/oxidized_copper_bulb_lit_powered"
+  }
+}

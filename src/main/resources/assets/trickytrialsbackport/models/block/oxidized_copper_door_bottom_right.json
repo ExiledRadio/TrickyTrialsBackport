@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/door_bottom_right",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/oxidized_copper_door_bottom",
+    "top": "trickytrialsbackport:block/oxidized_copper_door_top"
+  }
+}

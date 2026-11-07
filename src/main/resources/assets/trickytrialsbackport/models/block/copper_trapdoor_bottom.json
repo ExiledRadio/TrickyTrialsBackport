@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_trapdoor_bottom",
+  "textures": {
+    "texture": "trickytrialsbackport:block/copper_trapdoor"
+  }
+}

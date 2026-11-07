@@ -152,6 +152,40 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Copper fields ---
+        @Config.Comment("Unwaxed copper blocks slowly oxidize: exposed, weathered, then oxidized.")
+        @Config.LangKey("config.trickytrialsbackport.copper.oxidation")
+        public boolean oxidation = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Items that wax copper when used on it or crafted with it (registry names). Any item with the",
+                "ore name honeycomb works too."})
+        @Config.LangKey("config.trickytrialsbackport.copper.waxItems")
+        public String[] waxItems = {"buzzybeesbackport:honeycomb"};
+
+        @Config.Comment({"Without another installed mod that adds copper, copper ore generates in newly generated",
+                "chunks, as in 1.17."})
+        @Config.LangKey("config.trickytrialsbackport.copper.generate")
+        public boolean generate = true;
+
+        @Config.Comment("Copper ore veins per chunk.")
+        @Config.LangKey("config.trickytrialsbackport.copper.veinsPerChunk")
+        @Config.RangeInt(min = 0, max = 64)
+        public int veinsPerChunk = 6;
+
+        @Config.Comment("Blocks of copper ore per vein, at most.")
+        @Config.LangKey("config.trickytrialsbackport.copper.veinSize")
+        @Config.RangeInt(min = 1, max = 64)
+        public int veinSize = 10;
+
+        @Config.Comment("Lowest height of a copper ore vein.")
+        @Config.LangKey("config.trickytrialsbackport.copper.minY")
+        @Config.RangeInt(min = 1, max = 255)
+        public int minY = 1;
+
+        @Config.Comment("Highest height of a copper ore vein.")
+        @Config.LangKey("config.trickytrialsbackport.copper.maxY")
+        @Config.RangeInt(min = 1, max = 255)
+        public int maxY = 96;
         // --- end Copper ---
     }
 
