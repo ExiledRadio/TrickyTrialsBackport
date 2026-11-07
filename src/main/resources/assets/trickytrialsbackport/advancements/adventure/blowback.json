@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:wind_charge"
+    },
+    "title": {
+      "translate": "advancements.adventure.blowback.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.blowback.description"
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "blowback": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "trickytrialsbackport:breeze"
+        },
+        "killing_blow": {
+          "direct_entity": {
+            "type": "trickytrialsbackport:breeze_wind_charge"
+          },
+          "is_projectile": true
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 40
+  }
+}

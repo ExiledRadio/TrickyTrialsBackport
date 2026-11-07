@@ -2,6 +2,7 @@ package com.exiledradio.trickytrialsbackport.network;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * The mod's one network channel.
@@ -35,5 +36,7 @@ public final class NetworkHandler {
     public static void init() {
         channel = NetworkRegistry.INSTANCE.newSimpleChannel(CHANNEL);
         // Streams register their packets below, in id order.
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.common.GustMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.common.GustMessage.class, 0, Side.CLIENT);
     }
 }

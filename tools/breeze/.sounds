@@ -1,0 +1,15 @@
+entity.breeze.charge
+entity.breeze.death
+entity.breeze.deflect
+entity.breeze.hurt
+entity.breeze.idle_air
+entity.breeze.idle_ground
+entity.breeze.inhale
+entity.breeze.jump
+entity.breeze.land
+entity.breeze.shoot
+entity.breeze.slide
+entity.breeze.whirl
+entity.breeze.wind_burst
+entity.wind_charge.throw
+entity.wind_charge.wind_burst
