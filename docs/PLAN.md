@@ -323,7 +323,7 @@ Update's lodestone), and the rest.
 ## Order
 
 1. Scaffold and this plan: **done**.
-2. Blocks, items and mobs of 1.21 first: tuff (**done**, `docs/streams/tuff.md`), then breeze, bogged,
+2. Blocks, items and mobs of 1.21 first: tuff and breeze (**done**, `docs/streams/`), then bogged,
    mace, crafter, trials, effects, decor. Copper waits for Caves & Cliffs' copper stream, so our copies
    of its copper are built from its code (Rule 1); its names and states go in the shared notes. Then the later drops in version order: bundles, pale garden, creaking, resin, flora, animals,
    happy ghast, copper golem, copper gear, shelves, spears, nautilus, mounts. Tweaks and the locator bar
