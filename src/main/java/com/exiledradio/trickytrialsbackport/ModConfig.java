@@ -126,6 +126,34 @@ public final class ModConfig {
     @Config.Comment("1.21's smaller changes to things 1.12.2 already has.")
     public static final Tweaks tweaks = new Tweaks();
 
+    @Config.LangKey("config.trickytrialsbackport.babies")
+    @Config.Comment("26.1's golden dandelion, baby mob changes and new animal sounds.")
+    public static final Babies babies = new Babies();
+
+    @Config.LangKey("config.trickytrialsbackport.sulfur")
+    @Config.Comment("26.2's sulfur and cinnabar blocks, potent sulfur and sulfur spikes.")
+    public static final Sulfur sulfur = new Sulfur();
+
+    @Config.LangKey("config.trickytrialsbackport.sulfurCube")
+    @Config.Comment("26.2's sulfur cube.")
+    public static final SulfurCube sulfurCube = new SulfurCube();
+
+    @Config.LangKey("config.trickytrialsbackport.sulfurCaves")
+    @Config.Comment("26.2's sulfur caves and sulfur springs.")
+    public static final SulfurCaves sulfurCaves = new SulfurCaves();
+
+    @Config.LangKey("config.trickytrialsbackport.poplar")
+    @Config.Comment("26.3's poplar wood, red shrubs, shelf mushrooms and the dappled forest.")
+    public static final Poplar poplar = new Poplar();
+
+    @Config.LangKey("config.trickytrialsbackport.softBlocks")
+    @Config.Comment("26.3's wool and concrete stairs and slabs, cushions and straw beds.")
+    public static final SoftBlocks softBlocks = new SoftBlocks();
+
+    @Config.LangKey("config.trickytrialsbackport.camps")
+    @Config.Comment("26.3's abandoned camps and explorer maps.")
+    public static final Camps camps = new Camps();
+
     // ------------------------------------------------------------------------------------------
     // Categories. Each stream owns exactly one.
     // ------------------------------------------------------------------------------------------
@@ -420,6 +448,76 @@ public final class ModConfig {
 
         // --- Tweaks fields ---
         // --- end Tweaks ---
+    }
+
+    public static final class Babies {
+        @Config.RequiresMcRestart
+        @Config.Comment("The golden dandelion and the other 26.1 changes. Off, nothing is registered.")
+        @Config.LangKey("config.trickytrialsbackport.babies.enabled")
+        public boolean enabled = true;
+
+        // --- Babies fields ---
+        // --- end Babies ---
+    }
+
+    public static final class Sulfur {
+        @Config.RequiresMcRestart
+        @Config.Comment("The sulfur and cinnabar blocks. Off, nothing is registered.")
+        @Config.LangKey("config.trickytrialsbackport.sulfur.enabled")
+        public boolean enabled = true;
+
+        // --- Sulfur fields ---
+        // --- end Sulfur ---
+    }
+
+    public static final class SulfurCube {
+        @Config.RequiresMcRestart
+        @Config.Comment("The sulfur cube and its bucket. Off, nothing is registered.")
+        @Config.LangKey("config.trickytrialsbackport.sulfurCube.enabled")
+        public boolean enabled = true;
+
+        // --- SulfurCube fields ---
+        // --- end SulfurCube ---
+    }
+
+    public static final class SulfurCaves {
+        @Config.RequiresMcRestart
+        @Config.Comment("Sulfur caves and sulfur springs generate in newly generated chunks.")
+        @Config.LangKey("config.trickytrialsbackport.sulfurCaves.enabled")
+        public boolean enabled = true;
+
+        // --- SulfurCaves fields ---
+        // --- end SulfurCaves ---
+    }
+
+    public static final class Poplar {
+        @Config.RequiresMcRestart
+        @Config.Comment("The poplar blocks and the dappled forest's plants. Off, nothing is registered.")
+        @Config.LangKey("config.trickytrialsbackport.poplar.enabled")
+        public boolean enabled = true;
+
+        // --- Poplar fields ---
+        // --- end Poplar ---
+    }
+
+    public static final class SoftBlocks {
+        @Config.RequiresMcRestart
+        @Config.Comment("The wool and concrete shapes, cushions and straw beds. Off, nothing is registered.")
+        @Config.LangKey("config.trickytrialsbackport.softBlocks.enabled")
+        public boolean enabled = true;
+
+        // --- SoftBlocks fields ---
+        // --- end SoftBlocks ---
+    }
+
+    public static final class Camps {
+        @Config.RequiresMcRestart
+        @Config.Comment("Abandoned camps generate in newly generated chunks.")
+        @Config.LangKey("config.trickytrialsbackport.camps.enabled")
+        public boolean enabled = true;
+
+        // --- Camps fields ---
+        // --- end Camps ---
     }
 
     // ------------------------------------------------------------------------------------------

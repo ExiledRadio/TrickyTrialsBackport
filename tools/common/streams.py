@@ -63,6 +63,20 @@ STREAMS = [
      "The camel husk, the parched and netherite horse armor. Off, nothing is registered.", "Mounts"),
     ("tweaks", "Tweaks", "1.21's smaller changes to things 1.12.2 already has.",
      "1.21's smaller changes to existing blocks, items and mobs.", "Smaller Changes"),
+    ("babies", "Babies", "26.1's golden dandelion, baby mob changes and new animal sounds.",
+     "The golden dandelion and the other 26.1 changes. Off, nothing is registered.", "Golden Dandelion and Babies"),
+    ("sulfur", "Sulfur", "26.2's sulfur and cinnabar blocks, potent sulfur and sulfur spikes.",
+     "The sulfur and cinnabar blocks. Off, nothing is registered.", "Sulfur and Cinnabar"),
+    ("sulfurCube", "SulfurCube", "26.2's sulfur cube.",
+     "The sulfur cube and its bucket. Off, nothing is registered.", "Sulfur Cube"),
+    ("sulfurCaves", "SulfurCaves", "26.2's sulfur caves and sulfur springs.",
+     "Sulfur caves and sulfur springs generate in newly generated chunks.", "Sulfur Caves"),
+    ("poplar", "Poplar", "26.3's poplar wood, red shrubs, shelf mushrooms and the dappled forest.",
+     "The poplar blocks and the dappled forest's plants. Off, nothing is registered.", "Poplar and Dappled Forest"),
+    ("softBlocks", "SoftBlocks", "26.3's wool and concrete stairs and slabs, cushions and straw beds.",
+     "The wool and concrete shapes, cushions and straw beds. Off, nothing is registered.", "Wool, Concrete and Cushions"),
+    ("camps", "Camps", "26.3's abandoned camps and explorer maps.",
+     "Abandoned camps generate in newly generated chunks.", "Abandoned Camps"),
 ]
 
 # Restart-free: read every tick, so the switch takes effect at once.

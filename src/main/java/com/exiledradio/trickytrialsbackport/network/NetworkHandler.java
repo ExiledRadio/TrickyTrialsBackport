@@ -19,6 +19,8 @@ import net.minecraftforge.fml.relauncher.Side;
  *   20-24 bogged        55-59 bundles      85-89 happyGhast    115-119 nautilus
  *   25-29 mace          60-64 paleGarden   90-94 locatorBar    120-124 mounts
  *   30-34 crafter                                              125-129 tweaks
+ *   130-134 babies  135-139 sulfur  140-144 sulfurCube  145-149 sulfurCaves
+ *   150-154 poplar  155-159 softBlocks  160-164 camps
  * </pre>
  *
  * <p>The channel name is short because Forge caps channel names at 20 characters, one fewer than the

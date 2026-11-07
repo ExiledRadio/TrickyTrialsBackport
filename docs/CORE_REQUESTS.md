@@ -34,11 +34,11 @@ The reverse (owner removed, our copy takes over) is ours to write, in each strea
 jigsaw pools and processors read into 1.12.2 states), plus a way to place a jigsaw structure underground
 from its start piece.
 
-**Placement:** vanilla puts the chamber's start piece at y -40 to -20 (world -64 to 320). Proposed for
-1.12.2's 0-255, the same proportion of the way up from bedrock: start at **y 16-29**, the whole
-structure within y 1-55; vanilla's own range when `WorldHeights` reports a 1.18-height world. Terrain
-adapters are only needed to keep the entrance corridors from breaking into oceans or ravines
-(`TerrainHeights.isWater`), not for the surface height.
+**Placement (decided 2026-11-07):** with Caves & Cliffs installed (real height -64 to 319), vanilla's y -40 to -20
+for the start piece, read through `WorldHeights`; without it, y 16-29, the whole structure within y 1-55.
+Terrain adapters are only needed to keep the entrance corridors from breaking into oceans or ravines
+(`TerrainHeights.isWater`), not for the surface height. 26.3's abandoned camps (stream 32) need the same
+loader, on the surface.
 
 **Meanwhile:** stream 10 is not started. Trial spawners and vaults (stream 7) work on their own when
 placed.

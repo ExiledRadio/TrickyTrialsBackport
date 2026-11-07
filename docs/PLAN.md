@@ -1,6 +1,7 @@
 # Tricky Trials Backport: plan
 
 Everything Java Edition 1.21 (Tricky Trials) and the later 1.21 drops added or changed, through 1.21.11,
+and the 26.x releases after them (26.1, 26.2, 26.3 and any later 26.x; the user's decision of 2026-11-07),
 grouped into streams, each in its own package, config category and branch. Mod id `trickytrialsbackport`
 (permanent). The display name is not final ("Tricky Trials Backport" is taken on CurseForge); it lives
 only in `gradle.properties` (`mod_name`).
@@ -8,8 +9,9 @@ only in `gradle.properties` (`mod_name`).
 Sources: minecraft.wiki's *Java Edition 1.21*, *1.21.2*, *1.21.4*, *1.21.5*, *1.21.6*, *1.21.9* and
 *1.21.11* pages, current Java behavior winning, and the client jars themselves. What each drop added was
 checked by diffing the English language files and blockstate folders of 1.20.6, 1.21, 1.21.1, 1.21.3,
-1.21.4, 1.21.5, 1.21.8, 1.21.10 and 1.21.11 (`G:\MCDownloads\minecraft-<version>\client.jar`). Assets and
-names come from 1.21.11 (`tools/assets.py`).
+1.21.4, 1.21.5, 1.21.8, 1.21.10, 1.21.11, 26.1, 26.1.2, 26.2 and 26.3
+(`G:\MCDownloads\minecraft-<version>\client.jar`). Assets and names come from 1.21.11 for 1.21 content and
+from each 26.x release's own jar for its content (`tools/assets.py`).
 
 Content counts as 1.21 when it first shipped **outside experiments** in a 1.21.x release. The 1.21 blocks
 (trial spawner, crafter, tuff and copper sets) were already in 1.20.5's experiment; the pale garden was in
@@ -21,7 +23,6 @@ Content counts as 1.21 when it first shipped **outside experiments** in a 1.21.x
 | --- | --- |
 | Every new block, item, mob, effect, enchantment, potion, painting, disc, biome and structure of 1.21-1.21.11, and their changes to existing things that players see | Data-driven enchantments, item components, dialogs, the server management protocol, test blocks, game rule renames, the mannequin (command-only), and other technical changes |
 | Small visible changes to vanilla 1.12.2 things (stream `tweaks`) | Options-menu, music-frequency, cloud and fog rendering changes |
-| | 26.1 and later (a new version line; see *Still open*) |
 
 ## Content owned by another mod of the family (Rule 1) and its integrations (Rule 2)
 
@@ -75,9 +76,16 @@ and one block of entity ids. No stream calls another's classes; other streams' i
 | 23 | Nautilus | 1.21.11 | `nautilus` | `nautilus` | 60-64 | 115-119 | nothing |
 | 24 | Mounts | 1.21.11 | `mounts` | `mounts` | 65-69 | 120-124 | nothing |
 | 25 | Smaller changes | all | `tweaks` | `tweaks` | none | 125-129 | nothing |
+| 26 | Golden dandelion and babies | 26.1 | `babies` | `babies` | none | 130-134 | nothing |
+| 27 | Sulfur and cinnabar blocks | 26.2 | `sulfur` | `sulfur` | none | 135-139 | nothing |
+| 28 | Sulfur cube | 26.2 | `sulfurcube` | `sulfurCube` | 70-74 | 140-144 | sulfur blocks by name |
+| 29 | Sulfur caves and springs | 26.2 | `sulfurcaves` | `sulfurCaves` | none | 145-149 | Still open #7 |
+| 30 | Poplar and the dappled forest | 26.3 | `poplar` | `poplar` | 75-79 | 150-154 | Still open #2 for the biome only |
+| 31 | Wool and concrete shapes, cushions, straw beds | 26.3 | `softblocks` | `softBlocks` | 80-84 | 155-159 | nothing |
+| 32 | Abandoned camps and explorer maps | 26.3 | `camps` | `camps` | none | 160-164 | Backport Core (templates, terrain) |
 
 Ports: the main worktree's dev server uses 25900; a stream worktree uses `25900 + row` for rows 1-19,
-and rows 20-25 take the port of a stream already merged (`25900 + row - 19`). Streams are built one at a
+and rows 20-32 take the port of a stream already merged (`25900 + row - 19`, wrapping again past 25919). Streams are built one at a
 time while the machine is shared, so in practice one test server runs at once.
 
 ### 1. Tuff sets (1.21)
@@ -274,24 +282,92 @@ chunks, mobs preferring their weapons, experience orbs bouncing, water breathing
 spawn invulnerability, iron sounds, end portals dropping blocks, lodestone from iron (with Nether
 Update's lodestone), and the rest.
 
+### 26. Golden dandelion and babies (26.1)
+
+- **Golden dandelion** (a dandelion and 8 gold nuggets; potted form): used on a baby mob it stops it growing
+  up, used again it lets it grow; yellow dye; a Saturation suspicious stew; sold by the wandering trader
+  (Core's `TradeRegistry`, with Village & Pillage).
+- Name tags craftable from paper and any nugget; the wandering trader's name tag for 1 emerald.
+- 26.1's adult sound variants (royal cat, mini and big pig, moody cow, picky chicken), chosen per animal.
+- Skeleton and zombie horses no longer panic when hurt and their babies never grow up; baby polar bears
+  leave foxes alone (foxes are Village & Pillage's); striders inherit warmth (Nether Update's).
+- The note block's trumpet on copper (by oxidation stage), with stream 2's and Caves & Cliffs' copper.
+- **Baby models and textures**: 26.1 redrew nearly every baby mob. New models need renderers, not just
+  textures: listed for Backport Core's modern pack where a texture is enough (`CORE_REQUESTS.md` #6), and
+  as our own renderers for vanilla's babies behind a switch.
+
+### 27. Sulfur and cinnabar blocks (26.2)
+
+- **Sulfur** and **cinnabar**, each with polished, bricks and chiseled forms and their stairs, slabs and walls
+  (28 blocks, the tuff stream's shapes); **potent sulfur** (9 sulfur; bubbles, nausea gas over 1-4 water,
+  eruptions over magma every 50 s, constantly over lava); **sulfur spikes** (stalactite and stalagmite,
+  breaking unsupported, falling for damage, broken by thrown tridents; 4 make a sulfur block).
+- Music disc **Bounce** (sulfur cave minecart chests; comparator 8).
+
+### 28. Sulfur cube (26.2)
+
+- The **sulfur cube**: 8 health, hops like a slime, absorbs the block it touches (its AI stops until it is
+  sheared), immune to fall, player and explosion damage while holding a block, splits in two on death; 12
+  archetypes by the block held (bouncy, sticky, hot, explosive with TNT: a 6 s fuse from fire or redstone,
+  0.75-3 s from an explosion, ...). Large cubes can be bucketed; small ones grow on slimeballs.
+  Advancement *Uh Oh*; the hot cube's death message.
+
+### 29. Sulfur caves and springs (26.2)
+
+- The **sulfur caves** biome (bands of sulfur and cinnabar, sulfur pools with potent sulfur, cave spiders
+  instead of spiders) and **sulfur springs** above it in four sizes. 1.12.2 has no underground biomes:
+  Still open #7.
+
+### 30. Poplar and the dappled forest (26.3)
+
+- **Poplar** set: log, wood, stripped log and wood, planks, stairs, slab, fence, gate, door, trapdoor,
+  button, pressure plate, sign, sapling (red, orange or yellow leaves), potted sapling, boat and chest
+  boat (chest boats with Wild Update), hanging sign (with Trails & Tales), shelf (stream 21).
+- **Red shrub** (spread by bone meal), **shelf mushroom** (two sizes, bounces like a bed), fallen poplars.
+- The **dappled forest** biome near cold biomes: Still open #2 decides how new biomes are placed.
+
+### 31. Wool and concrete shapes, cushions and straw beds (26.3)
+
+- Wool stairs and slabs and concrete stairs and slabs in 16 colors (64 blocks plus double slabs; concrete is
+  1.12.2's; the stonecutter cuts concrete).
+- **Cushions** (16 colors, from wool slabs): a seat that does not collide and breaks with its support.
+- **Straw bed** (3 hay bales make 4): sleep through the night without setting your spawn; used up after one
+  night; villagers ignore it; never in the Nether or End.
+- Wool damping sound (Wild Update's vibrations, Rule 2).
+
+### 32. Abandoned camps and explorer maps (26.3; needs Backport Core)
+
+- **Abandoned camps** in 18 biomes, with their variants and loot.
+- 26.3's **explorer maps**: abandoned camp, ancient city (Wild Update's), mineshaft, desert and jungle
+  pyramids, the five villages, ocean monument, woodland mansion, swamp hut, warm ocean ruins (Update
+  Aquatic's), trial chambers (stream 10), and buried variants, wherever their structure exists.
+- Needs Core's template loader, as trial chambers do.
+
+### Later 26.x
+
+Each later 26.x release joins this plan as its own streams when it ships (26.4 is in snapshots now).
+
 ## Still open (the user's call)
 
-1. **Trial chambers** need Backport Core's modern structure template loader and its terrain adapters. In
-   vanilla the chambers' start sits at y -40 to -20 in a world of -64 to 320. Proposed for 1.12.2's 0-255:
-   the same proportion of the way up from bedrock, a start at **y 16-29**, so the whole structure stays in
-   y 1-55: under every village and most caves' floors, above bedrock, in diamond depth. With a
-   1.18-height mod installed (Core's `WorldHeights`), vanilla's own range. See `CORE_REQUESTS.md` #3.
+1. ~~Trial chambers' height~~ **Decided 2026-11-07**: with Caves & Cliffs installed (real extended height,
+   y -64 to 319), vanilla's y -40 to -20 for the start piece, through Core's `WorldHeights`; without it,
+   y 16-29, so the structure stays within y 1-55. They still need Core's template loader and terrain
+   adapters (`CORE_REQUESTS.md` #3).
 2. **Where the pale garden generates.** Vanilla makes it a rare variant inside dark forests. Options:
    (a) its own biome entry in Forge's biome list, so it appears as separate patches anywhere warm
    biomes go; (b) turning some roofed forest into pale garden through Forge's biome layer event (no
    patching, but it changes vanilla's biome map in new chunks); (c) no biome: pale oaks and creaking
    hearts generate inside roofed forests. Proposed: (b) behind a switch, with (a) when the switch is off.
-3. **26.1 and later** (26.1, 26.2, 26.3 are out) are a new version line the family's ownership table does
-   not cover. Do they belong here, or to a new mod?
+3. ~~26.x~~ **Decided 2026-11-07**: 26.1, 26.2, 26.3 and later 26.x belong here (streams 26-32).
 4. **The display name**, to replace "Tricky Trials Backport".
 5. **Waxing without Buzzy Bees**: honeycomb only comes from bees. Proposed: any `honeycomb` ore-dictionary
    item waxes, and with none installed the waxed blocks are craftable but waxing by hand is unavailable.
 6. **The locator bar** replaces the experience bar while players are near. Proposed: on, with a switch.
+7. **Sulfur caves underground.** 1.12.2's biomes are per column, not per block, so an underground biome
+   needs its own regions (as Caves & Cliffs plans for lush and dripstone caves). Options: (a) our own
+   noise regions under any biome; (b) Caves & Cliffs' cave-region machinery when it is installed (Rule 2),
+   (a) without it; (c) only the sulfur springs on the surface and sulfur pockets as ore-like blobs.
+   Proposed: (b) with (a) as the fallback.
 
 ## Shared files and rules
 
@@ -327,4 +403,5 @@ Update's lodestone), and the rest.
    (**done**, `docs/streams/`), then trials, effects, decor. Then the later drops in version order: bundles, pale garden, creaking, resin, flora, animals,
    happy ghast, copper golem, copper gear, shelves, spears, nautilus, mounts. Tweaks and the locator bar
    alongside.
-3. Trial chambers once Backport Core has the template loader and the user has settled the placement.
+3. Trial chambers, abandoned camps and explorer maps once Backport Core has the template loader.
+4. The 26.x streams (26-32) after the 1.21.x ones, in release order.
