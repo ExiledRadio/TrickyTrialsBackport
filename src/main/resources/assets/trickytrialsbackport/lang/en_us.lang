@@ -63,6 +63,7 @@ config.trickytrialsbackport.breeze.tooltip=The breeze, breeze rods and wind char
 config.trickytrialsbackport.breeze.enabled.tooltip=The breeze, the breeze rod and the wind charge. Off, nothing is registered.
 config.trickytrialsbackport.bogged.tooltip=The bogged, the skeleton of swamps.
 config.trickytrialsbackport.bogged.enabled.tooltip=The bogged. Off, nothing is registered.
+config.trickytrialsbackport.bogged.spawn.tooltip=Bogged spawn in swamps and mangrove swamps, and take 30 of the 100 skeleton spawns there, as in 1.21.
 config.trickytrialsbackport.mace.tooltip=The mace, the heavy core, and Density, Breach and Wind Burst.
 config.trickytrialsbackport.mace.enabled.tooltip=The mace, the heavy core and the mace's three enchantments. Off, nothing is registered.
 config.trickytrialsbackport.crafter.tooltip=The crafter.
@@ -153,3 +154,11 @@ subtitles.trickytrialsbackport.entity.breeze.whirl=Breeze whirls
 subtitles.trickytrialsbackport.entity.breeze.wind_burst=Wind Charge bursts
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Wind Charge flies
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Wind Charge bursts
+
+# --- bogged ---
+config.trickytrialsbackport.bogged.spawn=Spawn in Swamps
+entity.trickytrialsbackport.bogged.name=Bogged
+subtitles.trickytrialsbackport.entity.bogged.ambient=Bogged rattles
+subtitles.trickytrialsbackport.entity.bogged.death=Bogged dies
+subtitles.trickytrialsbackport.entity.bogged.hurt=Bogged hurts
+subtitles.trickytrialsbackport.item.shears.shear=Shears click

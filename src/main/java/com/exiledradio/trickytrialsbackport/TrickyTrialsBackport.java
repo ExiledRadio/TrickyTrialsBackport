@@ -58,6 +58,7 @@ public final class TrickyTrialsBackport {
         if (event.getSide().isClient()) {
             com.exiledradio.trickytrialsbackport.client.ClientSetup.init();
             com.exiledradio.trickytrialsbackport.breeze.client.BreezeClient.init();
+            com.exiledradio.trickytrialsbackport.bogged.client.BoggedClient.init();
         }
     }
 
@@ -67,6 +68,7 @@ public final class TrickyTrialsBackport {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
+        com.exiledradio.trickytrialsbackport.bogged.BoggedContent.postInit();
     }
 
     @Mod.EventHandler

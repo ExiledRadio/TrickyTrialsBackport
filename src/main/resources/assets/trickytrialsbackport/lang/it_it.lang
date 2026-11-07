@@ -51,3 +51,10 @@ subtitles.trickytrialsbackport.entity.breeze.whirl=Brezza turbina
 subtitles.trickytrialsbackport.entity.breeze.wind_burst=Raffica di vento scoppia
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Raffica di vento lanciata
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Raffica di vento scoppia
+
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Paludoso
+subtitles.trickytrialsbackport.entity.bogged.ambient=Paludoso scricchiola
+subtitles.trickytrialsbackport.entity.bogged.death=Paludoso muore
+subtitles.trickytrialsbackport.entity.bogged.hurt=Paludoso ferito
+subtitles.trickytrialsbackport.item.shears.shear=Cesoie sferragliano

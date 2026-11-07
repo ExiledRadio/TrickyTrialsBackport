@@ -51,3 +51,10 @@ subtitles.trickytrialsbackport.entity.breeze.whirl=브리즈가 소용돌이침
 subtitles.trickytrialsbackport.entity.breeze.wind_burst=돌풍구가 터짐
 subtitles.trickytrialsbackport.entity.wind_charge.throw=돌풍구가 날아감
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=돌풍구가 터짐
+
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=보그드
+subtitles.trickytrialsbackport.entity.bogged.ambient=보그드가 달그락거림
+subtitles.trickytrialsbackport.entity.bogged.death=보그드가 죽음
+subtitles.trickytrialsbackport.entity.bogged.hurt=보그드가 상처를 입음
+subtitles.trickytrialsbackport.item.shears.shear=가위가 찰칵함

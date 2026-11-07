@@ -51,3 +51,10 @@ subtitles.trickytrialsbackport.entity.breeze.whirl=Вихрь завертелс
 subtitles.trickytrialsbackport.entity.breeze.wind_burst=Заряд ветра взрывается
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Заряд ветра летит
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Заряд ветра взрывается
+
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Болотник
+subtitles.trickytrialsbackport.entity.bogged.ambient=Болотник стучит костями
+subtitles.trickytrialsbackport.entity.bogged.death=Болотник погибает
+subtitles.trickytrialsbackport.entity.bogged.hurt=Болотник ранен
+subtitles.trickytrialsbackport.item.shears.shear=Щелчок ножниц

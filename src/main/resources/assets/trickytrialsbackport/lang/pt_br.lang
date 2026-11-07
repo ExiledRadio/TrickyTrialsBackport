@@ -51,3 +51,10 @@ subtitles.trickytrialsbackport.entity.breeze.whirl=Vórtice gira
 subtitles.trickytrialsbackport.entity.breeze.wind_burst=Projétil de Vento estoura
 subtitles.trickytrialsbackport.entity.wind_charge.throw=Projétil de Vento voa
 subtitles.trickytrialsbackport.entity.wind_charge.wind_burst=Projétil de Vento estoura
+
+# --- bogged ---
+entity.trickytrialsbackport.bogged.name=Pantanoso
+subtitles.trickytrialsbackport.entity.bogged.ambient=Pantanoso chacoalha
+subtitles.trickytrialsbackport.entity.bogged.death=Pantanoso morre
+subtitles.trickytrialsbackport.entity.bogged.hurt=Pantanoso ferido
+subtitles.trickytrialsbackport.item.shears.shear=Tesoura corta
