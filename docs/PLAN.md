@@ -347,27 +347,26 @@ Update's lodestone), and the rest.
 
 Each later 26.x release joins this plan as its own streams when it ships (26.4 is in snapshots now).
 
-## Still open (the user's call)
+## Decisions (formerly open)
 
 1. ~~Trial chambers' height~~ **Decided 2026-11-07**: with Caves & Cliffs installed (real extended height,
    y -64 to 319), vanilla's y -40 to -20 for the start piece, through Core's `WorldHeights`; without it,
    y 16-29, so the structure stays within y 1-55. They still need Core's template loader and terrain
    adapters (`CORE_REQUESTS.md` #3).
-2. **Where the pale garden generates.** Vanilla makes it a rare variant inside dark forests. Options:
-   (a) its own biome entry in Forge's biome list, so it appears as separate patches anywhere warm
-   biomes go; (b) turning some roofed forest into pale garden through Forge's biome layer event (no
-   patching, but it changes vanilla's biome map in new chunks); (c) no biome: pale oaks and creaking
-   hearts generate inside roofed forests. Proposed: (b) behind a switch, with (a) when the switch is off.
+2. ~~Pale garden placement~~ **Decided 2026-11-07**: a real biome placed where vanilla places it, in the dark
+   forest's climate (part of the roofed forest's region turns pale garden in new chunks). The dappled forest
+   (stream 30) follows the same rule: where vanilla puts it, near cold biomes.
 3. ~~26.x~~ **Decided 2026-11-07**: 26.1, 26.2, 26.3 and later 26.x belong here (streams 26-32).
-4. **The display name**, to replace "Tricky Trials Backport".
-5. **Waxing without Buzzy Bees**: honeycomb only comes from bees. Proposed: any `honeycomb` ore-dictionary
-   item waxes, and with none installed the waxed blocks are craftable but waxing by hand is unavailable.
-6. **The locator bar** replaces the experience bar while players are near. Proposed: on, with a switch.
-7. **Sulfur caves underground.** 1.12.2's biomes are per column, not per block, so an underground biome
-   needs its own regions (as Caves & Cliffs plans for lush and dripstone caves). Options: (a) our own
-   noise regions under any biome; (b) Caves & Cliffs' cave-region machinery when it is installed (Rule 2),
-   (a) without it; (c) only the sulfur springs on the surface and sulfur pockets as ore-like blobs.
-   Proposed: (b) with (a) as the fallback.
+4. **The display name**, to replace "Tricky Trials Backport". Still the user's; the working name stays.
+5. ~~Waxing~~ **Decided 2026-11-07**: Buzzy Bees' honeycomb first, then any other mod's `honeycomb` ore item
+   (`copper.waxItems` plus the ore name, as built).
+6. ~~Locator bar~~ **Decided 2026-11-07**: on, as in vanilla.
+7. ~~Sulfur caves~~ **Decided 2026-11-07**: vanilla's heights when Caves & Cliffs' extended height is installed,
+   the proportional 0-255 placement otherwise, the same pattern as trial chambers; our own underground
+   regions under any biome.
+
+**Standing rule (the user, 2026-11-07):** build whatever is closest to vanilla; patches are fine where
+vanilla's behavior needs them. Design questions vanilla already answers are not asked.
 
 ## Shared files and rules
 
@@ -385,8 +384,9 @@ Each later 26.x release joins this plan as its own streams when it ships (26.4 i
 - **Languages (Rule 4)**: every user-facing string is an `en_us.lang` key from a generator; vanilla names
   through `assets.name(...)`; config tooltips from `python -I tools/lang/build_langs.py config`; the 18
   languages from `build_langs.py build`, our own text translated in `tools/lang/translations/`.
-- **No mixins, no coremod, no ASM.** A part that cannot be done without patching stops and goes to the
-  user first.
+- **Closest to vanilla.** Patches are allowed (the user, 2026-11-07) where vanilla's behavior needs them;
+  events and plain code stay first where they reach the same result. A patch is written up in the stream
+  doc with what it changes.
 
 ## Build and test
 
