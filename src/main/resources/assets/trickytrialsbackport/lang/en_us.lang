@@ -259,7 +259,6 @@ config.trickytrialsbackport.copper.minY=Lowest Vein
 config.trickytrialsbackport.copper.maxY=Highest Vein
 
 # --- common ---
-itemGroup.trickytrialsbackport=Tricky Trials Backport
 config.trickytrialsbackport.tuff=Tuff
 config.trickytrialsbackport.tuff.enabled=Enabled
 config.trickytrialsbackport.copper=Copper Blocks
