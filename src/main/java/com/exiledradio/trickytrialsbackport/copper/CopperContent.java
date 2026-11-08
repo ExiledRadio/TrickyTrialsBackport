@@ -215,7 +215,6 @@ public final class CopperContent {
             } else if (b instanceof CopperBlocks.Door) {
                 ItemDoor item = new ItemDoor(b);
                 item.setTranslationKey(TrickyTrialsBackport.MOD_ID + "." + e.getKey());
-                item.setCreativeTab(com.exiledradio.trickytrialsbackport.common.ModCreativeTab.TAB);
                 Content.blockItem(r, b, item);
                 ((CopperBlocks.Door) b).item = item;
             } else {

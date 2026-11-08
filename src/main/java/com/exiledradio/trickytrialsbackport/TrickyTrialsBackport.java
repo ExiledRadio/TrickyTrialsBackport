@@ -29,7 +29,7 @@ import org.apache.logging.log4j.Logger;
         name = TrickyTrialsBackport.MOD_NAME,
         version = TrickyTrialsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.0.0,)"
+        dependencies = "required-after:backportcore@[1.1.0,)"
 )
 public final class TrickyTrialsBackport {
 
@@ -45,6 +45,9 @@ public final class TrickyTrialsBackport {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        // This mod's spawn eggs in Miscellaneous where vanilla lists each mob's (Backport Core's creative
+        // placement).
+        com.exiledradio.backportcore.creative.CreativePlacement.placeSpawnEggs(MOD_ID);
         // Before any registry event, and after the owners' own declarations: every mod's constructor runs
         // before any pre-init, and Caves & Cliffs loads before this mod and declares from its pre-init
         // (including the switched-off pseudo-owner), so a claim here never overrides the owner's.
