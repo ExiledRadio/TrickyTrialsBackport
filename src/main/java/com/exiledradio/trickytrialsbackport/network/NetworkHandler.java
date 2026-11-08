@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
  */
 public final class NetworkHandler {
 
-    public static final String CHANNEL = "ttbackport";
+    public static final String CHANNEL = "trbackport";
 
     public static SimpleNetworkWrapper channel;
 
