@@ -82,10 +82,50 @@ STREAMS = [
 # Restart-free: read every tick, so the switch takes effect at once.
 LIVE = {"locatorBar", "tweaks"}
 
+# Backport Core's settings screen: the item drawn on each category's row (own item where the stream has one).
+ICONS = {
+    "tuff": "trickytrialsbackport:tuff_bricks",
+    "copper": "trickytrialsbackport:copper_bulb",
+    "breeze": "trickytrialsbackport:breeze_rod",
+    "bogged": "minecraft:brown_mushroom",
+    "mace": "trickytrialsbackport:mace",
+    "crafter": "trickytrialsbackport:crafter",
+    "trials": "minecraft:mob_spawner",
+    "effects": "minecraft:brewing_stand",
+    "decor": "minecraft:painting",
+    "chambers": "trickytrialsbackport:chiseled_tuff_bricks",
+    "bundles": "minecraft:leather",
+    "paleGarden": "minecraft:log@2",
+    "creaking": "minecraft:lit_pumpkin",
+    "resin": "minecraft:dye@14",
+    "flora": "minecraft:red_flower@8",
+    "animals": "minecraft:egg",
+    "happyGhast": "minecraft:ghast_tear",
+    "locatorBar": "minecraft:compass",
+    "copperGolem": "minecraft:chest",
+    "copperGear": "minecraft:golden_pickaxe",
+    "shelves": "minecraft:bookshelf",
+    "spears": "minecraft:arrow",
+    "nautilus": "minecraft:prismarine_shard",
+    "mounts": "minecraft:diamond_horse_armor",
+    "tweaks": "minecraft:book",
+    "babies": "minecraft:yellow_flower",
+    "sulfur": "minecraft:stained_hardened_clay@4",
+    "sulfurCube": "minecraft:magma_cream",
+    "sulfurCaves": "minecraft:water_bucket",
+    "poplar": "minecraft:sapling",
+    "softBlocks": "minecraft:wool",
+    "camps": "minecraft:map",
+}
+
+# Switches that only reach newly generated chunks (Backport Core's New chunks badge).
+NEW_CHUNKS = {"chambers", "sulfurCaves", "camps"}
+
 CONFIG = os.path.join(ROOT, "src", "main", "java", "com", "exiledradio", MODID, "ModConfig.java")
 
 HEAD = '''package com.exiledradio.trickytrialsbackport;
 
+import com.exiledradio.backportcore.settings.Setting;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -155,6 +195,7 @@ def write_config():
     extras = existing_extras()
     out = [HEAD]
     for field, cls, comment, tip, _ in STREAMS:
+        out.append('    @Setting.Feature(icon = "%s")\n' % ICONS[field])
         out.append('    @Config.LangKey("config.%s.%s")\n' % (MODID, field))
         out.append("    @Config.Comment(%s)\n" % java_string(comment))
         out.append("    public static final %s %s = new %s();\n\n" % (cls, field, cls))
@@ -165,6 +206,8 @@ def write_config():
         out.append("    public static final class %s {\n" % cls)
         if field not in LIVE:
             out.append("        @Config.RequiresMcRestart\n")
+        if field in NEW_CHUNKS:
+            out.append("        @Setting.NewChunks\n")
         out.append("        @Config.Comment(%s)\n" % java_string(tip))
         out.append('        @Config.LangKey("config.%s.%s.enabled")\n' % (MODID, field))
         out.append("        public boolean enabled = true;\n\n")

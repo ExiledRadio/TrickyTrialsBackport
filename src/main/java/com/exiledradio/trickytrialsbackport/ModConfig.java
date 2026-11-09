@@ -1,5 +1,6 @@
 package com.exiledradio.trickytrialsbackport;
 
+import com.exiledradio.backportcore.settings.Setting;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -26,130 +27,162 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = TrickyTrialsBackport.MOD_ID, name = TrickyTrialsBackport.MOD_ID)
 public final class ModConfig {
 
+    @Setting.Feature(icon = "trickytrialsbackport:tuff_bricks")
     @Config.LangKey("config.trickytrialsbackport.tuff")
     @Config.Comment("1.21's tuff stairs, slabs and walls, polished tuff, tuff bricks and the chiseled forms.")
     public static final Tuff tuff = new Tuff();
 
+    @Setting.Feature(icon = "trickytrialsbackport:copper_bulb")
     @Config.LangKey("config.trickytrialsbackport.copper")
     @Config.Comment("Copper bulbs, doors, trapdoors, grates and chiseled copper, with their oxidation and waxing.")
     public static final Copper copper = new Copper();
 
+    @Setting.Feature(icon = "trickytrialsbackport:breeze_rod")
     @Config.LangKey("config.trickytrialsbackport.breeze")
     @Config.Comment("The breeze, breeze rods and wind charges.")
     public static final Breeze breeze = new Breeze();
 
+    @Setting.Feature(icon = "minecraft:brown_mushroom")
     @Config.LangKey("config.trickytrialsbackport.bogged")
     @Config.Comment("The bogged, the skeleton of swamps.")
     public static final Bogged bogged = new Bogged();
 
+    @Setting.Feature(icon = "trickytrialsbackport:mace")
     @Config.LangKey("config.trickytrialsbackport.mace")
     @Config.Comment("The mace, the heavy core, and Density, Breach and Wind Burst.")
     public static final Mace mace = new Mace();
 
+    @Setting.Feature(icon = "trickytrialsbackport:crafter")
     @Config.LangKey("config.trickytrialsbackport.crafter")
     @Config.Comment("The crafter.")
     public static final Crafter crafter = new Crafter();
 
+    @Setting.Feature(icon = "minecraft:mob_spawner")
     @Config.LangKey("config.trickytrialsbackport.trials")
     @Config.Comment("Trial spawners, vaults, trial keys, ominous trials and Trial Omen.")
     public static final Trials trials = new Trials();
 
+    @Setting.Feature(icon = "minecraft:brewing_stand")
     @Config.LangKey("config.trickytrialsbackport.effects")
     @Config.Comment("Weaving, Oozing, Infested and Wind Charged, and their potions and arrows.")
     public static final Effects effects = new Effects();
 
+    @Setting.Feature(icon = "minecraft:painting")
     @Config.LangKey("config.trickytrialsbackport.decor")
     @Config.Comment("New paintings, banner patterns, music discs, pottery sherds and armor trim templates.")
     public static final Decor decor = new Decor();
 
+    @Setting.Feature(icon = "trickytrialsbackport:chiseled_tuff_bricks")
     @Config.LangKey("config.trickytrialsbackport.chambers")
     @Config.Comment("Trial chambers.")
     public static final Chambers chambers = new Chambers();
 
+    @Setting.Feature(icon = "minecraft:leather")
     @Config.LangKey("config.trickytrialsbackport.bundles")
     @Config.Comment("Bundles and the sixteen dyed bundles.")
     public static final Bundles bundles = new Bundles();
 
+    @Setting.Feature(icon = "minecraft:log@2")
     @Config.LangKey("config.trickytrialsbackport.paleGarden")
     @Config.Comment("The pale garden: pale oak, pale moss, hanging moss and eyeblossoms.")
     public static final PaleGarden paleGarden = new PaleGarden();
 
+    @Setting.Feature(icon = "minecraft:lit_pumpkin")
     @Config.LangKey("config.trickytrialsbackport.creaking")
     @Config.Comment("The creaking and the creaking heart.")
     public static final Creaking creaking = new Creaking();
 
+    @Setting.Feature(icon = "minecraft:dye@14")
     @Config.LangKey("config.trickytrialsbackport.resin")
     @Config.Comment("Resin clumps, resin blocks and resin bricks.")
     public static final Resin resin = new Resin();
 
+    @Setting.Feature(icon = "minecraft:red_flower@8")
     @Config.LangKey("config.trickytrialsbackport.flora")
     @Config.Comment("Spring's plants: bushes, firefly bushes, cactus flowers, dry grass, leaf litter, wildflowers and fallen trees.")
     public static final Flora flora = new Flora();
 
+    @Setting.Feature(icon = "minecraft:egg")
     @Config.LangKey("config.trickytrialsbackport.animals")
     @Config.Comment("Warm and cold cows, pigs and chickens, blue and brown eggs, and wolf sound variants.")
     public static final Animals animals = new Animals();
 
+    @Setting.Feature(icon = "minecraft:ghast_tear")
     @Config.LangKey("config.trickytrialsbackport.happyGhast")
     @Config.Comment("The happy ghast, ghastlings, the dried ghast and harnesses.")
     public static final HappyGhast happyGhast = new HappyGhast();
 
+    @Setting.Feature(icon = "minecraft:compass")
     @Config.LangKey("config.trickytrialsbackport.locatorBar")
     @Config.Comment("The locator bar, which shows other players' directions.")
     public static final LocatorBar locatorBar = new LocatorBar();
 
+    @Setting.Feature(icon = "minecraft:chest")
     @Config.LangKey("config.trickytrialsbackport.copperGolem")
     @Config.Comment("The copper golem, copper golem statues and copper chests.")
     public static final CopperGolem copperGolem = new CopperGolem();
 
+    @Setting.Feature(icon = "minecraft:golden_pickaxe")
     @Config.LangKey("config.trickytrialsbackport.copperGear")
     @Config.Comment("Copper tools, armor and nuggets; copper torches, lanterns, bars and chains.")
     public static final CopperGear copperGear = new CopperGear();
 
+    @Setting.Feature(icon = "minecraft:bookshelf")
     @Config.LangKey("config.trickytrialsbackport.shelves")
     @Config.Comment("Wooden shelves.")
     public static final Shelves shelves = new Shelves();
 
+    @Setting.Feature(icon = "minecraft:arrow")
     @Config.LangKey("config.trickytrialsbackport.spears")
     @Config.Comment("Spears and Lunge.")
     public static final Spears spears = new Spears();
 
+    @Setting.Feature(icon = "minecraft:prismarine_shard")
     @Config.LangKey("config.trickytrialsbackport.nautilus")
     @Config.Comment("The nautilus, the zombie nautilus, nautilus armor and Breath of the Nautilus.")
     public static final Nautilus nautilus = new Nautilus();
 
+    @Setting.Feature(icon = "minecraft:diamond_horse_armor")
     @Config.LangKey("config.trickytrialsbackport.mounts")
     @Config.Comment("The camel husk, the parched, zombie horses in the wild and netherite horse armor.")
     public static final Mounts mounts = new Mounts();
 
+    @Setting.Feature(icon = "minecraft:book")
     @Config.LangKey("config.trickytrialsbackport.tweaks")
     @Config.Comment("1.21's smaller changes to things 1.12.2 already has.")
     public static final Tweaks tweaks = new Tweaks();
 
+    @Setting.Feature(icon = "minecraft:yellow_flower")
     @Config.LangKey("config.trickytrialsbackport.babies")
     @Config.Comment("26.1's golden dandelion, baby mob changes and new animal sounds.")
     public static final Babies babies = new Babies();
 
+    @Setting.Feature(icon = "minecraft:stained_hardened_clay@4")
     @Config.LangKey("config.trickytrialsbackport.sulfur")
     @Config.Comment("26.2's sulfur and cinnabar blocks, potent sulfur and sulfur spikes.")
     public static final Sulfur sulfur = new Sulfur();
 
+    @Setting.Feature(icon = "minecraft:magma_cream")
     @Config.LangKey("config.trickytrialsbackport.sulfurCube")
     @Config.Comment("26.2's sulfur cube.")
     public static final SulfurCube sulfurCube = new SulfurCube();
 
+    @Setting.Feature(icon = "minecraft:water_bucket")
     @Config.LangKey("config.trickytrialsbackport.sulfurCaves")
     @Config.Comment("26.2's sulfur caves and sulfur springs.")
     public static final SulfurCaves sulfurCaves = new SulfurCaves();
 
+    @Setting.Feature(icon = "minecraft:sapling")
     @Config.LangKey("config.trickytrialsbackport.poplar")
     @Config.Comment("26.3's poplar wood, red shrubs, shelf mushrooms and the dappled forest.")
     public static final Poplar poplar = new Poplar();
 
+    @Setting.Feature(icon = "minecraft:wool")
     @Config.LangKey("config.trickytrialsbackport.softBlocks")
     @Config.Comment("26.3's wool and concrete stairs and slabs, cushions and straw beds.")
     public static final SoftBlocks softBlocks = new SoftBlocks();
 
+    @Setting.Feature(icon = "minecraft:map")
     @Config.LangKey("config.trickytrialsbackport.camps")
     @Config.Comment("26.3's abandoned camps and explorer maps.")
     public static final Camps camps = new Camps();
@@ -168,6 +201,7 @@ public final class ModConfig {
         @Config.RequiresMcRestart
         @Config.Comment({"Without another installed mod that adds tuff, tuff generates in stone below y 16 in newly",
                 "generated chunks, as in 1.17."})
+        @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.tuff.generate")
         public boolean generate = true;
         // --- end Tuff ---
@@ -187,30 +221,36 @@ public final class ModConfig {
         @Config.RequiresMcRestart
         @Config.Comment({"Items that wax copper when used on it or crafted with it (registry names). Any item with the",
                 "ore name honeycomb works too."})
+        @Setting.ListOf(Setting.Kind.ITEM)
         @Config.LangKey("config.trickytrialsbackport.copper.waxItems")
         public String[] waxItems = {"buzzybeesbackport:honeycomb"};
 
         @Config.Comment({"Without another installed mod that adds copper, copper ore generates in newly generated",
                 "chunks, as in 1.17."})
+        @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.copper.generate")
         public boolean generate = true;
 
         @Config.Comment("Copper ore veins per chunk.")
+        @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.copper.veinsPerChunk")
         @Config.RangeInt(min = 0, max = 64)
         public int veinsPerChunk = 6;
 
         @Config.Comment("Blocks of copper ore per vein, at most.")
+        @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.copper.veinSize")
         @Config.RangeInt(min = 1, max = 64)
         public int veinSize = 10;
 
         @Config.Comment("Lowest height of a copper ore vein.")
+        @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.copper.minY")
         @Config.RangeInt(min = 1, max = 255)
         public int minY = 1;
 
         @Config.Comment("Highest height of a copper ore vein.")
+        @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.copper.maxY")
         @Config.RangeInt(min = 1, max = 255)
         public int maxY = 96;
@@ -294,6 +334,7 @@ public final class ModConfig {
 
     public static final class Chambers {
         @Config.RequiresMcRestart
+        @Setting.NewChunks
         @Config.Comment("Trial chambers generate underground in newly generated chunks.")
         @Config.LangKey("config.trickytrialsbackport.chambers.enabled")
         public boolean enabled = true;
@@ -482,6 +523,7 @@ public final class ModConfig {
 
     public static final class SulfurCaves {
         @Config.RequiresMcRestart
+        @Setting.NewChunks
         @Config.Comment("Sulfur caves and sulfur springs generate in newly generated chunks.")
         @Config.LangKey("config.trickytrialsbackport.sulfurCaves.enabled")
         public boolean enabled = true;
@@ -512,6 +554,7 @@ public final class ModConfig {
 
     public static final class Camps {
         @Config.RequiresMcRestart
+        @Setting.NewChunks
         @Config.Comment("Abandoned camps generate in newly generated chunks.")
         @Config.LangKey("config.trickytrialsbackport.camps.enabled")
         public boolean enabled = true;
