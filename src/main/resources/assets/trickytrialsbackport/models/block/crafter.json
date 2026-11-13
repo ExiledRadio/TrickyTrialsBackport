@@ -7,7 +7,7 @@
     "south": "trickytrialsbackport:block/crafter_south",
     "west": "trickytrialsbackport:block/crafter_west",
     "east": "trickytrialsbackport:block/crafter_east",
-    "particle": "#north"
+    "particle": "trickytrialsbackport:block/crafter_north"
   },
   "elements": [
     {

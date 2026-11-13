@@ -12,6 +12,14 @@ M = assets.MODID
 
 for model in ("crafter", "crafter_triggered", "crafter_crafting", "crafter_crafting_triggered"):
     assets.port_model("block/" + model)
+
+# 1.12.2 cannot resolve "particle": "#north" against the same model's own north (it logs "upward reference" and the
+# break particles are the missing texture), so name the texture itself.
+import json, os
+with open(os.path.join(assets.ASSETS, "models", "block", "crafter.json"), encoding="utf-8") as f:
+    base = json.load(f)
+base["textures"]["particle"] = base["textures"]["north"]
+assets.write_json("models/block/crafter.json", base)
 # The block's properties carry 1.21's names and values, so its blockstate file is 1.21's own.
 data = assets.jar_json("assets/minecraft/blockstates/crafter.json")
 for variant in data["variants"].values():
