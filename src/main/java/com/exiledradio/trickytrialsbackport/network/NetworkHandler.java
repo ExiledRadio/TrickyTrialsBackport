@@ -49,5 +49,8 @@ public final class NetworkHandler {
                 com.exiledradio.trickytrialsbackport.bundle.BundleClickMessage.class, 55, Side.SERVER);
         channel.registerMessage(com.exiledradio.trickytrialsbackport.bundle.BundleSelectMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.bundle.BundleSelectMessage.class, 56, Side.SERVER);
+        // 65-69 creaking
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.creaking.CreakingFxMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.creaking.CreakingFxMessage.class, 65, Side.CLIENT);
     }
 }
