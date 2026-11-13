@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Skrobanie wosku
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Woskowanie
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Czarna sakwa
+item.trickytrialsbackport.blue_bundle.name=Niebieska sakwa
+item.trickytrialsbackport.brown_bundle.name=Brązowa sakwa
+item.trickytrialsbackport.bundle.empty.description=Może przechowywać stos różnorakich przedmiotów
+item.trickytrialsbackport.bundle.empty=Pusta
+item.trickytrialsbackport.bundle.full=Pełna
+item.trickytrialsbackport.bundle.name=Sakwa
+item.trickytrialsbackport.cyan_bundle.name=Błękitna sakwa
+item.trickytrialsbackport.gray_bundle.name=Szara sakwa
+item.trickytrialsbackport.green_bundle.name=Zielona sakwa
+item.trickytrialsbackport.light_blue_bundle.name=Jasnoniebieska sakwa
+item.trickytrialsbackport.light_gray_bundle.name=Jasnoszara sakwa
+item.trickytrialsbackport.lime_bundle.name=Jasnozielona sakwa
+item.trickytrialsbackport.magenta_bundle.name=Purpurowa sakwa
+item.trickytrialsbackport.orange_bundle.name=Pomarańczowa sakwa
+item.trickytrialsbackport.pink_bundle.name=Różowa sakwa
+item.trickytrialsbackport.purple_bundle.name=Fioletowa sakwa
+item.trickytrialsbackport.red_bundle.name=Czerwona sakwa
+item.trickytrialsbackport.white_bundle.name=Biała sakwa
+item.trickytrialsbackport.yellow_bundle.name=Żółta sakwa
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Opróżnianie sakwy
+subtitles.trickytrialsbackport.item.bundle.insert=Włożenie przedmiotu do sakwy
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Sakwa odrzuca przedmiot
+subtitles.trickytrialsbackport.item.bundle.remove_one=Wyjęcie przedmiotu z sakwy

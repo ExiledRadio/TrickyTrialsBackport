@@ -115,6 +115,30 @@ Tricky Trials Backport has no creative tab of its own. Each block and item is in
 | `breeze spawn egg` | `bogged spawn egg` (this mod) | `cave_spider spawn egg` |
 | `wind_charge` | `fire_charge` | `writable_book` |
 
+## Tools
+
+From Backport Core's table (Mojang's item registry order: after the compass), not yet checked with a dev client's dump.
+
+| Item | After | Before |
+|---|---|---|
+| `bundle` | `compass` | `white_bundle` (this mod) |
+| `white_bundle` | `bundle` (this mod) | `orange_bundle` (this mod) |
+| `orange_bundle` | `white_bundle` (this mod) | `magenta_bundle` (this mod) |
+| `magenta_bundle` | `orange_bundle` (this mod) | `light_blue_bundle` (this mod) |
+| `light_blue_bundle` | `magenta_bundle` (this mod) | `yellow_bundle` (this mod) |
+| `yellow_bundle` | `light_blue_bundle` (this mod) | `lime_bundle` (this mod) |
+| `lime_bundle` | `yellow_bundle` (this mod) | `pink_bundle` (this mod) |
+| `pink_bundle` | `lime_bundle` (this mod) | `gray_bundle` (this mod) |
+| `gray_bundle` | `pink_bundle` (this mod) | `light_gray_bundle` (this mod) |
+| `light_gray_bundle` | `gray_bundle` (this mod) | `cyan_bundle` (this mod) |
+| `cyan_bundle` | `light_gray_bundle` (this mod) | `purple_bundle` (this mod) |
+| `purple_bundle` | `cyan_bundle` (this mod) | `blue_bundle` (this mod) |
+| `blue_bundle` | `purple_bundle` (this mod) | `brown_bundle` (this mod) |
+| `brown_bundle` | `blue_bundle` (this mod) | `green_bundle` (this mod) |
+| `green_bundle` | `brown_bundle` (this mod) | `red_bundle` (this mod) |
+| `red_bundle` | `green_bundle` (this mod) | `black_bundle` (this mod) |
+| `black_bundle` | `red_bundle` (this mod) | `fishing_rod` |
+
 ## Combat
 
 | Item | After | Before |

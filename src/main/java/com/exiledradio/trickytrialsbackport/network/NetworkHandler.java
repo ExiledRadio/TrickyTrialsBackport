@@ -40,5 +40,10 @@ public final class NetworkHandler {
         // Streams register their packets below, in id order.
         channel.registerMessage(com.exiledradio.trickytrialsbackport.common.GustMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.common.GustMessage.class, 0, Side.CLIENT);
+        // 55-59 bundles
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.bundle.BundleClickMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.bundle.BundleClickMessage.class, 55, Side.SERVER);
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.bundle.BundleSelectMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.bundle.BundleSelectMessage.class, 56, Side.SERVER);
     }
 }

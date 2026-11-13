@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Quitando cera
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Encerando
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Saco negro
+item.trickytrialsbackport.blue_bundle.name=Saco azul
+item.trickytrialsbackport.brown_bundle.name=Saco café
+item.trickytrialsbackport.bundle.empty.description=Puede contener una pila mixta de ítems
+item.trickytrialsbackport.bundle.empty=Vacío
+item.trickytrialsbackport.bundle.full=Lleno
+item.trickytrialsbackport.bundle.name=Saco
+item.trickytrialsbackport.cyan_bundle.name=Saco cian
+item.trickytrialsbackport.gray_bundle.name=Saco gris
+item.trickytrialsbackport.green_bundle.name=Saco verde
+item.trickytrialsbackport.light_blue_bundle.name=Saco azul claro
+item.trickytrialsbackport.light_gray_bundle.name=Saco gris claro
+item.trickytrialsbackport.lime_bundle.name=Saco verde lima
+item.trickytrialsbackport.magenta_bundle.name=Saco magenta
+item.trickytrialsbackport.orange_bundle.name=Saco naranja
+item.trickytrialsbackport.pink_bundle.name=Saco rosa
+item.trickytrialsbackport.purple_bundle.name=Saco morado
+item.trickytrialsbackport.red_bundle.name=Saco rojo
+item.trickytrialsbackport.white_bundle.name=Saco blanco
+item.trickytrialsbackport.yellow_bundle.name=Saco amarillo
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Saco vaciado
+subtitles.trickytrialsbackport.item.bundle.insert=Objeto empaquetado
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Saco lleno
+subtitles.trickytrialsbackport.item.bundle.remove_one=Objeto desempaquetado

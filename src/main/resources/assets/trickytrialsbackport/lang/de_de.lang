@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Entwachsen
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Wachsen
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Schwarzes Bündel
+item.trickytrialsbackport.blue_bundle.name=Blaues Bündel
+item.trickytrialsbackport.brown_bundle.name=Braunes Bündel
+item.trickytrialsbackport.bundle.empty.description=Nimmt einen gemischten Stapel Gegenstände auf
+item.trickytrialsbackport.bundle.empty=Leer
+item.trickytrialsbackport.bundle.full=Voll
+item.trickytrialsbackport.bundle.name=Bündel
+item.trickytrialsbackport.cyan_bundle.name=Türkises Bündel
+item.trickytrialsbackport.gray_bundle.name=Graues Bündel
+item.trickytrialsbackport.green_bundle.name=Grünes Bündel
+item.trickytrialsbackport.light_blue_bundle.name=Hellblaues Bündel
+item.trickytrialsbackport.light_gray_bundle.name=Hellgraues Bündel
+item.trickytrialsbackport.lime_bundle.name=Hellgrünes Bündel
+item.trickytrialsbackport.magenta_bundle.name=Magenta Bündel
+item.trickytrialsbackport.orange_bundle.name=Oranges Bündel
+item.trickytrialsbackport.pink_bundle.name=Rosa Bündel
+item.trickytrialsbackport.purple_bundle.name=Violettes Bündel
+item.trickytrialsbackport.red_bundle.name=Rotes Bündel
+item.trickytrialsbackport.white_bundle.name=Weißes Bündel
+item.trickytrialsbackport.yellow_bundle.name=Gelbes Bündel
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Bündel entleert
+subtitles.trickytrialsbackport.item.bundle.insert=Gegenstand wird eingepackt
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Bündel voll
+subtitles.trickytrialsbackport.item.bundle.remove_one=Gegenstand wird ausgepackt

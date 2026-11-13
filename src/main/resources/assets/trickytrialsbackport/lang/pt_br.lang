@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Cera removida
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Cera aplicada
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Trouxa Preta
+item.trickytrialsbackport.blue_bundle.name=Trouxa Azul
+item.trickytrialsbackport.brown_bundle.name=Trouxa Marrom
+item.trickytrialsbackport.bundle.empty.description=Pode carregar um conjunto diverso de itens
+item.trickytrialsbackport.bundle.empty=Vazia
+item.trickytrialsbackport.bundle.full=Cheia
+item.trickytrialsbackport.bundle.name=Trouxa
+item.trickytrialsbackport.cyan_bundle.name=Trouxa Ciano
+item.trickytrialsbackport.gray_bundle.name=Trouxa Cinza
+item.trickytrialsbackport.green_bundle.name=Trouxa Verde
+item.trickytrialsbackport.light_blue_bundle.name=Trouxa Azul-Clara
+item.trickytrialsbackport.light_gray_bundle.name=Trouxa Cinza-Clara
+item.trickytrialsbackport.lime_bundle.name=Trouxa Verde-Limão
+item.trickytrialsbackport.magenta_bundle.name=Trouxa Magenta
+item.trickytrialsbackport.orange_bundle.name=Trouxa Laranja
+item.trickytrialsbackport.pink_bundle.name=Trouxa Rosa
+item.trickytrialsbackport.purple_bundle.name=Trouxa Roxa
+item.trickytrialsbackport.red_bundle.name=Trouxa Vermelha
+item.trickytrialsbackport.white_bundle.name=Trouxa Branca
+item.trickytrialsbackport.yellow_bundle.name=Trouxa Amarela
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Trouxa esvaziada
+subtitles.trickytrialsbackport.item.bundle.insert=Item guardado
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Trouxa cheia
+subtitles.trickytrialsbackport.item.bundle.remove_one=Item retirado

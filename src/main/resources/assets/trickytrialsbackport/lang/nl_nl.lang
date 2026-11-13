@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Inwassen wordt ongedaan gemaakt
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Blok wordt ingewassen
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Zwarte bundel
+item.trickytrialsbackport.blue_bundle.name=Blauwe bundel
+item.trickytrialsbackport.brown_bundle.name=Bruine bundel
+item.trickytrialsbackport.bundle.empty.description=Kan een stapel van verschillende voorwerpen vasthouden
+item.trickytrialsbackport.bundle.empty=Leeg
+item.trickytrialsbackport.bundle.full=Vol
+item.trickytrialsbackport.bundle.name=Bundel
+item.trickytrialsbackport.cyan_bundle.name=Turquoise bundel
+item.trickytrialsbackport.gray_bundle.name=Grijze bundel
+item.trickytrialsbackport.green_bundle.name=Groene bundel
+item.trickytrialsbackport.light_blue_bundle.name=Lichtblauwe bundel
+item.trickytrialsbackport.light_gray_bundle.name=Lichtgrijze bundel
+item.trickytrialsbackport.lime_bundle.name=Lichtgroene bundel
+item.trickytrialsbackport.magenta_bundle.name=Magenta bundel
+item.trickytrialsbackport.orange_bundle.name=Oranje bundel
+item.trickytrialsbackport.pink_bundle.name=Roze bundel
+item.trickytrialsbackport.purple_bundle.name=Paarse bundel
+item.trickytrialsbackport.red_bundle.name=Rode bundel
+item.trickytrialsbackport.white_bundle.name=Witte bundel
+item.trickytrialsbackport.yellow_bundle.name=Gele bundel
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Bundel wordt geleegd
+subtitles.trickytrialsbackport.item.bundle.insert=Voorwerp wordt ingepakt
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Voorwerp past niet in bundel
+subtitles.trickytrialsbackport.item.bundle.remove_one=Voorwerp wordt uitgepakt

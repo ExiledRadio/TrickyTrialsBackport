@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=蝋を落とす
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=蝋を引く
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=黒色のバンドル
+item.trickytrialsbackport.blue_bundle.name=青色のバンドル
+item.trickytrialsbackport.brown_bundle.name=茶色のバンドル
+item.trickytrialsbackport.bundle.empty.description=複数種類のアイテムを1スタック分まで一緒にしまうことができます
+item.trickytrialsbackport.bundle.empty=空
+item.trickytrialsbackport.bundle.full=満杯
+item.trickytrialsbackport.bundle.name=バンドル
+item.trickytrialsbackport.cyan_bundle.name=青緑色のバンドル
+item.trickytrialsbackport.gray_bundle.name=灰色のバンドル
+item.trickytrialsbackport.green_bundle.name=緑色のバンドル
+item.trickytrialsbackport.light_blue_bundle.name=空色のバンドル
+item.trickytrialsbackport.light_gray_bundle.name=薄灰色のバンドル
+item.trickytrialsbackport.lime_bundle.name=黄緑色のバンドル
+item.trickytrialsbackport.magenta_bundle.name=赤紫色のバンドル
+item.trickytrialsbackport.orange_bundle.name=橙色のバンドル
+item.trickytrialsbackport.pink_bundle.name=桃色のバンドル
+item.trickytrialsbackport.purple_bundle.name=紫色のバンドル
+item.trickytrialsbackport.red_bundle.name=赤色のバンドル
+item.trickytrialsbackport.white_bundle.name=白色のバンドル
+item.trickytrialsbackport.yellow_bundle.name=黄色のバンドル
+subtitles.trickytrialsbackport.item.bundle.drop_contents=バンドルが空になる
+subtitles.trickytrialsbackport.item.bundle.insert=アイテムが収納される
+subtitles.trickytrialsbackport.item.bundle.insert_fail=バンドルがいっぱいになる
+subtitles.trickytrialsbackport.item.bundle.remove_one=アイテムを取り出す

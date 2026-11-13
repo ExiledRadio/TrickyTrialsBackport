@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Віск знято
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Віск нанесено
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Чорний мішечок
+item.trickytrialsbackport.blue_bundle.name=Синій мішечок
+item.trickytrialsbackport.brown_bundle.name=Коричневий мішечок
+item.trickytrialsbackport.bundle.empty.description=Може містити мішаний стіс предметів
+item.trickytrialsbackport.bundle.empty=Порожній
+item.trickytrialsbackport.bundle.full=Повний
+item.trickytrialsbackport.bundle.name=Мішечок
+item.trickytrialsbackport.cyan_bundle.name=Бірюзовий мішечок
+item.trickytrialsbackport.gray_bundle.name=Сірий мішечок
+item.trickytrialsbackport.green_bundle.name=Зелений мішечок
+item.trickytrialsbackport.light_blue_bundle.name=Блакитний мішечок
+item.trickytrialsbackport.light_gray_bundle.name=Світло-сірий мішечок
+item.trickytrialsbackport.lime_bundle.name=Лаймовий мішечок
+item.trickytrialsbackport.magenta_bundle.name=Пурпуровий мішечок
+item.trickytrialsbackport.orange_bundle.name=Помаранчевий мішечок
+item.trickytrialsbackport.pink_bundle.name=Рожевий мішечок
+item.trickytrialsbackport.purple_bundle.name=Фіолетовий мішечок
+item.trickytrialsbackport.red_bundle.name=Червоний мішечок
+item.trickytrialsbackport.white_bundle.name=Білий мішечок
+item.trickytrialsbackport.yellow_bundle.name=Жовтий мішечок
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Мішечок спорожнюється
+subtitles.trickytrialsbackport.item.bundle.insert=Предмет упаковано
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Мішечок заповнений
+subtitles.trickytrialsbackport.item.bundle.remove_one=Предмет вийнято

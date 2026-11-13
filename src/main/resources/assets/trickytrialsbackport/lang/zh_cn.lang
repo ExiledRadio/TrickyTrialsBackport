@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=脱蜡
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=涂蜡
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=黑色收纳袋
+item.trickytrialsbackport.blue_bundle.name=蓝色收纳袋
+item.trickytrialsbackport.brown_bundle.name=棕色收纳袋
+item.trickytrialsbackport.bundle.empty.description=可容纳一组混合的物品
+item.trickytrialsbackport.bundle.empty=空
+item.trickytrialsbackport.bundle.full=满
+item.trickytrialsbackport.bundle.name=收纳袋
+item.trickytrialsbackport.cyan_bundle.name=青色收纳袋
+item.trickytrialsbackport.gray_bundle.name=灰色收纳袋
+item.trickytrialsbackport.green_bundle.name=绿色收纳袋
+item.trickytrialsbackport.light_blue_bundle.name=淡蓝色收纳袋
+item.trickytrialsbackport.light_gray_bundle.name=淡灰色收纳袋
+item.trickytrialsbackport.lime_bundle.name=黄绿色收纳袋
+item.trickytrialsbackport.magenta_bundle.name=品红色收纳袋
+item.trickytrialsbackport.orange_bundle.name=橙色收纳袋
+item.trickytrialsbackport.pink_bundle.name=粉红色收纳袋
+item.trickytrialsbackport.purple_bundle.name=紫色收纳袋
+item.trickytrialsbackport.red_bundle.name=红色收纳袋
+item.trickytrialsbackport.white_bundle.name=白色收纳袋
+item.trickytrialsbackport.yellow_bundle.name=黄色收纳袋
+subtitles.trickytrialsbackport.item.bundle.drop_contents=收纳袋：倒空
+subtitles.trickytrialsbackport.item.bundle.insert=物品：被装入袋中
+subtitles.trickytrialsbackport.item.bundle.insert_fail=收纳袋：拒绝物品
+subtitles.trickytrialsbackport.item.bundle.remove_one=物品：被取出袋中

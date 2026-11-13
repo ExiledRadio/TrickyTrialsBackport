@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=밀랍칠을 벗김
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=밀랍칠함
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=검은색 꾸러미
+item.trickytrialsbackport.blue_bundle.name=파란색 꾸러미
+item.trickytrialsbackport.brown_bundle.name=갈색 꾸러미
+item.trickytrialsbackport.bundle.empty.description=여러 종류의 아이템을 섞어 한 묶음 보관할 수 있습니다
+item.trickytrialsbackport.bundle.empty=비어 있음
+item.trickytrialsbackport.bundle.full=꽉 참
+item.trickytrialsbackport.bundle.name=꾸러미
+item.trickytrialsbackport.cyan_bundle.name=청록색 꾸러미
+item.trickytrialsbackport.gray_bundle.name=회색 꾸러미
+item.trickytrialsbackport.green_bundle.name=초록색 꾸러미
+item.trickytrialsbackport.light_blue_bundle.name=하늘색 꾸러미
+item.trickytrialsbackport.light_gray_bundle.name=회백색 꾸러미
+item.trickytrialsbackport.lime_bundle.name=연두색 꾸러미
+item.trickytrialsbackport.magenta_bundle.name=자홍색 꾸러미
+item.trickytrialsbackport.orange_bundle.name=주황색 꾸러미
+item.trickytrialsbackport.pink_bundle.name=분홍색 꾸러미
+item.trickytrialsbackport.purple_bundle.name=보라색 꾸러미
+item.trickytrialsbackport.red_bundle.name=빨간색 꾸러미
+item.trickytrialsbackport.white_bundle.name=하얀색 꾸러미
+item.trickytrialsbackport.yellow_bundle.name=노란색 꾸러미
+subtitles.trickytrialsbackport.item.bundle.drop_contents=꾸러미를 비움
+subtitles.trickytrialsbackport.item.bundle.insert=아이템을 넣음
+subtitles.trickytrialsbackport.item.bundle.insert_fail=꾸러미가 아이템을 담지 못함
+subtitles.trickytrialsbackport.item.bundle.remove_one=아이템을 꺼냄

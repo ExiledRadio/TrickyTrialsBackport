@@ -178,3 +178,29 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Cera tolta
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Cera data
 
 # --- common ---
+
+# --- bundle ---
+item.trickytrialsbackport.black_bundle.name=Sacchetto nero
+item.trickytrialsbackport.blue_bundle.name=Sacchetto blu
+item.trickytrialsbackport.brown_bundle.name=Sacchetto marrone
+item.trickytrialsbackport.bundle.empty.description=Può contenere una pila mista di oggetti
+item.trickytrialsbackport.bundle.empty=Vuoto
+item.trickytrialsbackport.bundle.full=Pieno
+item.trickytrialsbackport.bundle.name=Sacchetto
+item.trickytrialsbackport.cyan_bundle.name=Sacchetto ciano
+item.trickytrialsbackport.gray_bundle.name=Sacchetto grigio
+item.trickytrialsbackport.green_bundle.name=Sacchetto verde
+item.trickytrialsbackport.light_blue_bundle.name=Sacchetto azzurro
+item.trickytrialsbackport.light_gray_bundle.name=Sacchetto grigio chiaro
+item.trickytrialsbackport.lime_bundle.name=Sacchetto lime
+item.trickytrialsbackport.magenta_bundle.name=Sacchetto magenta
+item.trickytrialsbackport.orange_bundle.name=Sacchetto arancione
+item.trickytrialsbackport.pink_bundle.name=Sacchetto rosa
+item.trickytrialsbackport.purple_bundle.name=Sacchetto viola
+item.trickytrialsbackport.red_bundle.name=Sacchetto rosso
+item.trickytrialsbackport.white_bundle.name=Sacchetto bianco
+item.trickytrialsbackport.yellow_bundle.name=Sacchetto giallo
+subtitles.trickytrialsbackport.item.bundle.drop_contents=Sacchetto svuotato
+subtitles.trickytrialsbackport.item.bundle.insert=Oggetto inserito
+subtitles.trickytrialsbackport.item.bundle.insert_fail=Sacchetto pieno
+subtitles.trickytrialsbackport.item.bundle.remove_one=Oggetto estratto
