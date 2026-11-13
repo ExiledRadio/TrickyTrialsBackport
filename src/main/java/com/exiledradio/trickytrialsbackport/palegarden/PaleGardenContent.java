@@ -24,7 +24,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -182,7 +181,9 @@ public final class PaleGardenContent {
         Compost.add(0.65F, moss, open, closed);
     }
 
-    @SubscribeEvent(priority = EventPriority.LOW)
+    // Normal priority, as the family's other wood sets: at LOW, Quark's any-planks trapdoor recipe (registered
+    // earlier) matched the pale oak trapdoor's grid first.
+    @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         if (!enabled()) {
             return;
