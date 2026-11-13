@@ -16,6 +16,8 @@ import shutil
 import urllib.request
 import zipfile
 
+import png_rgba  # noqa: E402 (tools/png_rgba.py)
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODID = "trickytrialsbackport"
 ASSETS = os.path.join(ROOT, "src", "main", "resources", "assets", MODID)
@@ -79,7 +81,8 @@ def texture(src, dst=None):
     @return our texture name, 'trickytrialsbackport:<dst>'
     """
     dst = dst or src
-    write("textures/%s.png" % dst, jar_bytes("assets/minecraft/textures/%s.png" % src))
+    # Keyed (tRNS) transparency, which newer jars use, draws black in 1.12.2: written as RGBA instead.
+    write("textures/%s.png" % dst, png_rgba.keyed_to_rgba(jar_bytes("assets/minecraft/textures/%s.png" % src)))
     meta = "assets/minecraft/textures/%s.png.mcmeta" % src
     if meta in JAR.namelist():
         write("textures/%s.png.mcmeta" % dst, jar_bytes(meta))
