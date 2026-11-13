@@ -323,3 +323,25 @@ config.trickytrialsbackport.softBlocks=Wool, Concrete and Cushions
 config.trickytrialsbackport.softBlocks.enabled=Enabled
 config.trickytrialsbackport.camps=Abandoned Camps
 config.trickytrialsbackport.camps.enabled=Enabled
+
+# --- effects ---
+effect.trickytrialsbackport.infested=Infested
+effect.trickytrialsbackport.oozing=Oozing
+effect.trickytrialsbackport.weaving=Weaving
+effect.trickytrialsbackport.wind_charged=Wind Charged
+lingering_potion.effect.trickytrialsbackport.infested=Lingering Potion of Infestation
+lingering_potion.effect.trickytrialsbackport.oozing=Lingering Potion of Oozing
+lingering_potion.effect.trickytrialsbackport.weaving=Lingering Potion of Weaving
+lingering_potion.effect.trickytrialsbackport.wind_charged=Lingering Potion of Wind Charging
+potion.effect.trickytrialsbackport.infested=Potion of Infestation
+potion.effect.trickytrialsbackport.oozing=Potion of Oozing
+potion.effect.trickytrialsbackport.weaving=Potion of Weaving
+potion.effect.trickytrialsbackport.wind_charged=Potion of Wind Charging
+splash_potion.effect.trickytrialsbackport.infested=Splash Potion of Infestation
+splash_potion.effect.trickytrialsbackport.oozing=Splash Potion of Oozing
+splash_potion.effect.trickytrialsbackport.weaving=Splash Potion of Weaving
+splash_potion.effect.trickytrialsbackport.wind_charged=Splash Potion of Wind Charging
+tipped_arrow.effect.trickytrialsbackport.infested=Arrow of Infestation
+tipped_arrow.effect.trickytrialsbackport.oozing=Arrow of Oozing
+tipped_arrow.effect.trickytrialsbackport.weaving=Arrow of Weaving
+tipped_arrow.effect.trickytrialsbackport.wind_charged=Arrow of Wind Charging

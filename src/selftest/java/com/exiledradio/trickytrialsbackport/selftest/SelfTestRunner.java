@@ -50,6 +50,7 @@ public final class SelfTestRunner {
             new BoggedSelfTest(),
             new BreezeSelfTest(),
             new TuffSelfTest(),
+            new EffectsSelfTest(),
     };
 
     private final List<String> wanted;
