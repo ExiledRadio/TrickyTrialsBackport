@@ -11,7 +11,7 @@ import com.exiledradio.trickytrialsbackport.resin.ResinSpread;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
-import net.minecraft.block.BlockWall;
+import com.exiledradio.backportcore.block.ModernWall;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
@@ -84,8 +84,8 @@ public final class ResinSelfTest implements SelfTest {
         c.ok(item("resin_brick") != null, "resin brick item registered");
         c.ok(item("resin_clump") instanceof ItemResinClump, "the clump's item adds faces");
         c.ok(item("resin_brick_slab") instanceof ItemSlab, "resin brick slab item joins slabs");
-        c.ok(block("resin_brick_stairs") instanceof BlockStairs && block("resin_brick_wall") instanceof BlockWall
-                && block("resin_brick_slab") instanceof BlockSlab, "shapes are vanilla kinds");
+        c.ok(block("resin_brick_stairs") instanceof BlockStairs && block("resin_brick_wall") instanceof ModernWall
+                && block("resin_brick_slab") instanceof BlockSlab, "shapes are vanilla stairs and slab and Core's modern wall");
         for (String name : new String[] {"resin_clump", "resin_clump_down", "resin_clump_up", "resin_clump_up_down",
                 "resin_block", "resin_bricks", "chiseled_resin_bricks"}) {
             Block b = block(name);
