@@ -91,7 +91,7 @@ OPTION_KEYS = [
     "options.invertMouseX",
     "options.sprintWindow", "options.sprintWindow.tooltip", "options.value",
     "options.chat.drafts", "options.chat.drafts.tooltip",
-]
+] + ["music.game." + t for t in MENU_TRACKS]  # the music toast's track names (Core reads music.<path>)
 lines = []
 for key in OPTION_KEYS:
     assert key not in assets.OLD_LANG, key

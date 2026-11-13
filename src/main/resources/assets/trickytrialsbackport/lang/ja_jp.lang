@@ -180,6 +180,11 @@ subtitles.trickytrialsbackport.item.honeycomb.wax_on=蝋を引く
 # --- common ---
 
 # --- lookfeel ---
+music.game.below_and_above=Amos Roddy - Below and Above
+music.game.broken_clocks=Amos Roddy - Broken Clocks
+music.game.fireflies=Amos Roddy - Fireflies
+music.game.lilypad=Amos Roddy - Lilypad
+music.game.os_piano=Amos Roddy - O's Piano
 options.accessibility.high_contrast_block_outline.tooltip=視点を合わせたブロックの輪郭のコントラストを強調します。
 options.accessibility.high_contrast_block_outline=ブロック輪郭のコントラスト強化
 options.chat.drafts.tooltip=未送信のメッセージを保存し、次にチャット欄を開いた際に送れるようにします。

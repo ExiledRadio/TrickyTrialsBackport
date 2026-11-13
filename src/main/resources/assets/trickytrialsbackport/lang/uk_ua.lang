@@ -180,6 +180,11 @@ subtitles.trickytrialsbackport.item.honeycomb.wax_on=Віск нанесено
 # --- common ---
 
 # --- lookfeel ---
+music.game.below_and_above=Еймос Родді — Below and Above
+music.game.broken_clocks=Еймос Родді — Broken Clocks
+music.game.fireflies=Еймос Родді — Fireflies
+music.game.lilypad=Еймос Родді — Lilypad
+music.game.os_piano=Еймос Родді — O’s Piano
 options.accessibility.high_contrast_block_outline.tooltip=Збільшує контрастність контурів виділеного блоку.
 options.accessibility.high_contrast_block_outline=Виразніші к-ри б-ків
 options.chat.drafts.tooltip=Ненадіслані повідомлення буде збережено і їх можна буде надіслати наступного разу, коли чат буде відкрито.

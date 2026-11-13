@@ -1,9 +1,16 @@
 # Requests for Backport Core
 
+**Status (2026-11-13):** built in Backport Core 1.2.0 on its branch `tr-core-requests` (not merged): #1, #2, #4 (the
+hook), #5, #8 and most of #9; #3 and #7 were already in Core and #7 is now used here; #6 is answered below. What
+is still open is marked **Open**.
+
 What Tricky Trials Backport needs from Backport Core (`backportcore` 1.0.0) or from another family mod
 through Core. Nothing here is built in Core's repo by this mod; each request says what we do meanwhile.
 
 ## 1. Caves & Cliffs' 1.17 blocks in the ownership table
+
+**Done (Core 1.2.0):** in `BlockOwnership`'s table, with a per-name `provides`; items and effects in the new
+`ItemOwnership`. `Owners.declareOlderOwners` is gone.
 
 **Want:** `BlockOwnership`'s static table to list Caves & Cliffs (`cavesandcliffsbackport`) as the owner
 of tuff and the copper set, as it lists Village & Pillage's 1.13 blocks:
@@ -19,6 +26,9 @@ ominous bottle), so `Owners.item` can move into Core.
 
 ## 2. Owner remapping of our copies (Rule 1, third bullet)
 
+**Done (Core 1.2.0):** `ownership.CopyRemapping` renames a family mod's copies to the owner's on `MissingMappings`
+(blocks, items, effects).
+
 When Caves & Cliffs or Village & Pillage is added to a world that has our copies, the owner (or Core's
 migration code) should remap `trickytrialsbackport:<name>` to `<owner>:<name>` in
 `RegistryEvent.MissingMappings` for blocks and items. Our copies, all with the owner's states and metadata:
@@ -29,6 +39,9 @@ migration code) should remap `trickytrialsbackport:<name>` to `<owner>:<name>` i
 The reverse (owner removed, our copy takes over) is ours to write, in each stream that copies.
 
 ## 3. Trial chambers: structure templates and placement
+
+**In Core already:** Core 1.1.0/1.2.0 has the modern template loader, jigsaw pools, processors, `StartRules` and
+`TerrainAdaptation` (`docs/API.md`, Structures). Stream 10 can start on them; nothing more is asked of Core.
 
 **Want:** Core's modern structure template loader (1.21 NBT structure files with block palettes,
 jigsaw pools and processors read into 1.12.2 states), plus a way to place a jigsaw structure underground
@@ -45,6 +58,8 @@ placed.
 
 ## 4. Lightning rods oxidize (1.21.9) - a change to Caves & Cliffs' block (Rule 2)
 
+**Hook done (Core 1.2.0):** `copper.Oxidation` is the shared table; stream 20 can add the rods' stages to it.
+
 1.21.9 gives the lightning rod four oxidation stages and waxed forms, like other copper. The rod is
 Caves & Cliffs' block. **Want:** either Caves & Cliffs registers the eleven new rod blocks itself when
 Tricky Trials is installed, or Core offers a hook such as
@@ -56,6 +71,9 @@ stream 20 only when Caves & Cliffs is installed and does not.
 
 ## 5. Shared oxidation and waxing
 
+**Done (Core 1.2.0):** `copper.Oxidation` (table and aging rule); our `copper/Weathering` delegates to it. **Open
+for Caves & Cliffs:** entering its own copper there (until then `Weathering.addOwnersBlocks` enters it by name).
+
 Copper blocks come from three mods (Caves & Cliffs' 1.17 set, our 1.21 and 1.21.9 sets). **Want:** one
 oxidation table in Core (block to next stage, waxed form, scraped form) so an axe, honeycomb and lightning
 treat all of them alike, and the "nearby less-oxidized copper slows aging" rule counts every mod's copper.
@@ -65,11 +83,19 @@ treat all of them alike, and the "nearby less-oxidized copper slows aging" rule 
 
 ## 6. Retextures for Core's modern pack
 
+**Answered:** not Core's modern pack (that is the 1.14 Texture Update, on whatever is installed). 1.21.6's ghast is
+the same layout at twice the size, so this mod replaces it by version through `replaceAsset` (stream 33). 1.21.5's
+cows, mooshrooms and spawn eggs are new models, not textures: they belong with stream 16's renderers. The
+iron-block and iron-door sounds are block sound types: stream 25 (tweaks), as the spawner's are in stream 33.
+
 1.21's changes to vanilla textures 1.12.2 already has belong in Core's `modern` pack: none in 1.21 itself
 that we know of; 1.21.5's new cow, mooshroom and spawn-egg textures and 1.21.6's new ghast texture are
 the ones to add (`manual_map.py`), and 1.21.5's iron-block and iron-door sounds are a resound.
 
 ## 7. Waterloggable blocks (for the adapter, later)
+
+**Done here:** Core's adapter exists; stairs, slabs (not double slabs), copper grates and trapdoors, the heavy core
+and the walls (Core's `ModernWall`) implement `Waterloggable`. Later streams' blocks do the same as they come.
 
 1.21-1.21.11 blocks that vanilla makes waterloggable, to move onto Core's `Waterloggable` adapter when it
 exists (until then they are not waterloggable): copper grates and copper trapdoors; every stairs, slab
@@ -80,6 +106,9 @@ vault, pale moss carpet, pale hanging moss, leaf litter, copper torches.
 
 ## 8. One modern wall class for the family
 
+**Done (Core 1.2.0):** `block.ModernWall`; tuff walls use it (1.21.11's multipart blockstates). **Open for Caves &
+Cliffs:** moving its `BlockCCWall` walls onto it.
+
 Our tuff walls extend 1.12.2's `BlockWall` (low sides only); Caves & Cliffs has a 1.16+ wall with none,
 low and tall sides (`common/BlockCCWall` in its repo, all actual state, metadata 0) and is listing it for
 Core too. **Want:** that wall in Core, so tuff, deepslate, resin brick and every later wall look and join
@@ -88,6 +117,14 @@ saved worlds (both store metadata 0).
 
 
 ## 9. Presentation: what 1.21.x's look and feel needs from Core
+
+**Status:** done in Core 1.2.0: 1 (volume), 2 (removal by path), 3 (Music Frequency, music while paused, Music
+Toast, UI volume), 4 (volume preview), 6's Hold/Toggle for attack and use, 7 (per-value tooltips), 8 (blurred
+panorama), 9 (P22), 10 (P23), 12 (snap on release), 13 (P24 sunrise, P25 clouds). **Open:** 5 (1.21.11's Video
+Settings layout and presets, Cloud Distance, Chunk Fade, texture filtering), 6's moves between Accessibility and
+Controls and Allow Cursor Changes, 11 (1.21.9's F3 rework and Debug key category), 12's arrow keys (1.12.2 screens
+have no keyboard focus), 14 (the 1.20 logo layout, which Trails & Tales' own request #10.1 also asks for), and the
+music note's color cycling in the toast (drawn white).
 
 Stream 33 (`lookfeel`, `docs/streams/lookfeel.md`) hands Core everything its API takes. These pieces of 1.21 to
 1.21.11 are Core's single slots (or need a Core hook) and are not built:

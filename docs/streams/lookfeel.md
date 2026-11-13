@@ -2,7 +2,7 @@
 
 Package `lookfeel` (client side in `lookfeel/client`). No config category: the options are Backport Core's
 presentation options, on vanilla's screens. Packet ids 165-169 (none used). Dev-server port 25933. Branch
-`tr-lookfeel`. Requires Backport Core 1.1.0 (`presentation`).
+`tr-lookfeel`. Requires Backport Core 1.2.0 (`presentation`).
 
 Backport Core shows the newest installed version's single pieces (panorama, splashes, menu music, loading
 screen, options screens); with this mod installed the newest version is 1.21.11. Sources: the 1.21.11 client jar
@@ -108,11 +108,14 @@ missing key of this stream (the 2628 errors left are other streams', the same co
 
 ## Not in this stream
 
-*   **Core's** (`CORE_REQUESTS.md` #9): menu track volume (vanilla's 0.4), removal by path, Music Frequency, Music
-    Toast, music while paused, the UI volume slider, the volume preview, 1.21.11's Video Settings (presets,
-    sections, Cloud Distance, Chunk Fade, texture filtering), 1.21.9's Accessibility/Controls moves, Hold/Toggle
-    for attack and use, per-value tooltips, the blurred panorama, 60 fps menus, the slot highlight, F3's rework
-    and Debug key category, slider snapping, the sunrise in rain and cloud timing, the 1.20 logo layout.
+*   **Core 1.2.0** (`CORE_REQUESTS.md` #9, branch `tr-core-requests`) now gives: menu tracks at vanilla's 0.4 volume
+    and older tracks removed by path; Music Frequency, Music Toast (this mod supplies the sprites and its track names),
+    music while paused, the UI volume and the 1.21.9 volume preview; Hold/Toggle for attack and use; per-value
+    tooltips (Reduce FPS when); the blurred panorama on the loading screen; 60 fps menus; the 1.21.2 slot highlight
+    (sprites from this mod); slider snapping; the sunrise dimmed by rain and thunder and clouds by world time (this
+    mod's 1.21.11 step). **Still open in Core:** 1.21.11's Video Settings (presets, sections, Cloud Distance, Chunk
+    Fade, texture filtering), 1.21.9's Accessibility/Controls moves and Allow Cursor Changes, the F3 rework and Debug
+    key category, slider arrow keys, the 1.20 logo layout, the toast's note colors.
 *   **Other streams**: in-game music of 1.21 and 1.21.6 (biome music, with Core's game music request, Mu-2 in
     Caves & Cliffs), the Bad Omen icon (effects), spawn invulnerability, sprint-ending actions, piston break
     sounds and desert ambience (tweaks; dry grass is flora's), crossbow and firework tooltips, the locator bar.
