@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Skrobanie wosku
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Woskowanie
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Odblokuj złowieszczy skarbiec, używając złowieszczego klucza próby
+advancements.adventure.revaulting.title=Skarbie, wróciłem
+advancements.adventure.under_lock_and_key.description=Otwórz skarbiec za pomocą klucza próby
+advancements.adventure.under_lock_and_key.title=Na cztery spusty
+effect.trickytrialsbackport.bad_omen=Zły omen
+effect.trickytrialsbackport.trial_omen=Omen próby
+entity.trickytrialsbackport.ominous_item_spawner.name=Złowieszczy przywoływacz przedmiotów
+item.trickytrialsbackport.ominous_bottle.name=Złowieszcza butelka
+item.trickytrialsbackport.ominous_trial_key.name=Złowieszczy klucz próby
+item.trickytrialsbackport.trial_key.name=Klucz próby
+tile.trickytrialsbackport.trial_spawner.name=Przyzywacz prób
+tile.trickytrialsbackport.vault.name=Skarbiec
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Przygotowanie złowieszczego przedmiotu
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Przyzywacz prób trzaska
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Złowieszcze trzaskanie
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Przyzywacz prób zamyka się
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Przyzywacz prób ładuje się
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Przyzywacz prób wyrzuca przedmioty
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Omen ogarnia przyzywacz prób
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Przyzywacz prób otwiera się
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Złowieszczy przedmiot upada
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Złowieszczy przedmiot pojawia się
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Przyzywanie stworzenia
+subtitles.trickytrialsbackport.block.vault.activate=Skarbiec się zapala
+subtitles.trickytrialsbackport.block.vault.ambient=Skarbiec trzaska
+subtitles.trickytrialsbackport.block.vault.close_shutter=Skarbiec się zamyka
+subtitles.trickytrialsbackport.block.vault.deactivate=Skarbiec gaśnie
+subtitles.trickytrialsbackport.block.vault.eject_item=Skarbiec wyrzuca przedmiot
+subtitles.trickytrialsbackport.block.vault.insert_item=Skarbiec się odblokowuje
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Skarbiec odrzuca przedmiot
+subtitles.trickytrialsbackport.block.vault.open_shutter=Skarbiec się otwiera
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Skarbiec odrzuca gracza
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Omen ogarnia gracza
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=W pobliżu szykuje się złowieszcza próba
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Butelka się tłucze

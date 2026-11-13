@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=脱蜡
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=涂蜡
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=用不祥试炼钥匙解锁不祥宝库
+advancements.adventure.revaulting.title=宝经磨炼
+advancements.adventure.under_lock_and_key.description=用试炼钥匙解锁宝库
+advancements.adventure.under_lock_and_key.title=珍藏密敛
+effect.trickytrialsbackport.bad_omen=不祥之兆
+effect.trickytrialsbackport.trial_omen=试炼之兆
+entity.trickytrialsbackport.ominous_item_spawner.name=不祥之物生成器
+item.trickytrialsbackport.ominous_bottle.name=不祥之瓶
+item.trickytrialsbackport.ominous_trial_key.name=不祥试炼钥匙
+item.trickytrialsbackport.trial_key.name=试炼钥匙
+tile.trickytrialsbackport.trial_spawner.name=试炼刷怪笼
+tile.trickytrialsbackport.vault.name=宝库
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=不祥之物：准备
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=试炼刷怪笼：噼啪作响
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=不祥试炼刷怪笼：噼啪作响
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=试炼刷怪笼：关闭
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=试炼刷怪笼：充能
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=试炼刷怪笼：喷出物品
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=试炼刷怪笼：不祥涌动
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=试炼刷怪笼：开启
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=不祥之物：掉落
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=不祥之物：出现
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=试炼刷怪笼：生成生物
+subtitles.trickytrialsbackport.block.vault.activate=宝库：燃起
+subtitles.trickytrialsbackport.block.vault.ambient=宝库：噼啪作响
+subtitles.trickytrialsbackport.block.vault.close_shutter=宝库：关闭
+subtitles.trickytrialsbackport.block.vault.deactivate=宝库：熄灭
+subtitles.trickytrialsbackport.block.vault.eject_item=宝库：喷出物品
+subtitles.trickytrialsbackport.block.vault.insert_item=宝库：解锁
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=宝库：解锁失败
+subtitles.trickytrialsbackport.block.vault.open_shutter=宝库：打开
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=宝库：拒绝已奖励玩家
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=不祥之兆：显现
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=不祥试炼：迫在眉睫
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=玻璃瓶：碎裂

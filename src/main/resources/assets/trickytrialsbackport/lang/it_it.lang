@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Cera tolta
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Cera data
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Sblocca una cassaforte infausta con una chiave della sfida infausta.
+advancements.adventure.revaulting.title=Scassaforte
+advancements.adventure.under_lock_and_key.description=Apri una cassaforte con una chiave della sfida.
+advancements.adventure.under_lock_and_key.title=Sottochiave
+effect.trickytrialsbackport.bad_omen=Cattivo presagio
+effect.trickytrialsbackport.trial_omen=Presagio sfidante
+entity.trickytrialsbackport.ominous_item_spawner.name=Generatore di oggetti infausti
+item.trickytrialsbackport.ominous_bottle.name=Ampolla infausta
+item.trickytrialsbackport.ominous_trial_key.name=Chiave della sfida infausta
+item.trickytrialsbackport.trial_key.name=Chiave della sfida
+tile.trickytrialsbackport.trial_spawner.name=Generatore della sfida
+tile.trickytrialsbackport.vault.name=Cassaforte
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Oggetto infausto pronto
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Generatore della sfida crepita
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Crepito infausto
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Generatore della sfida si chiude
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Generatore della sfida caricato
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Oggetto della sfida espulso
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Generatore della sfida reso infausto
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Generatore della sfida si apre
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Oggetto infausto rilasciato
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Oggetto infausto appare
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Creatura della sfida generata
+subtitles.trickytrialsbackport.block.vault.activate=Cassaforte si accende
+subtitles.trickytrialsbackport.block.vault.ambient=Cassaforte crepita
+subtitles.trickytrialsbackport.block.vault.close_shutter=Cassaforte si chiude
+subtitles.trickytrialsbackport.block.vault.deactivate=Cassaforte si spegne
+subtitles.trickytrialsbackport.block.vault.eject_item=Cassaforte espelle un oggetto
+subtitles.trickytrialsbackport.block.vault.insert_item=Cassaforte si sblocca
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Cassaforte respinge oggetto
+subtitles.trickytrialsbackport.block.vault.open_shutter=Cassaforte si apre
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Cassaforte respinge giocatore
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Presagio in azione
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Sfida infausta nelle vicinanze
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Ampolla distrutta

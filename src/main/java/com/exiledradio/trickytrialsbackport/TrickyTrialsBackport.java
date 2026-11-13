@@ -62,6 +62,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.breeze.client.BreezeClient.init();
             com.exiledradio.trickytrialsbackport.bogged.client.BoggedClient.init();
             com.exiledradio.trickytrialsbackport.crafter.client.CrafterClient.init();
+            com.exiledradio.trickytrialsbackport.trial.client.TrialFx.init();
         }
     }
 

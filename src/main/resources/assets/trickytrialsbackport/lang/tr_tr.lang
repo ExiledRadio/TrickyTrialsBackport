@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Bal mumu temizlendi
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Bal mumu sürüldü
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Uğursuz sınama anahtarı kullanarak bir uğursuz kasayı açın
+advancements.adventure.revaulting.title=Kasabada Başkaldırı
+advancements.adventure.under_lock_and_key.description=Sınama anahtarı ile bir kasayı açın
+advancements.adventure.under_lock_and_key.title=Kilit Nokta
+effect.trickytrialsbackport.bad_omen=Kötü Kehanet
+effect.trickytrialsbackport.trial_omen=Sınama Kehaneti
+entity.trickytrialsbackport.ominous_item_spawner.name=Uğursuz Eşya Çağırıcısı
+item.trickytrialsbackport.ominous_bottle.name=Uğursuz Şişe
+item.trickytrialsbackport.ominous_trial_key.name=Uğursuz Sınama Anahtarı
+item.trickytrialsbackport.trial_key.name=Sınama Anahtarı
+tile.trickytrialsbackport.trial_spawner.name=Sınama Çağırıcısı
+tile.trickytrialsbackport.vault.name=Kasa
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Uğursuz eşya hazırlanıyor
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Sınama Çağırıcısı çatırdıyor
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Uğursuz çatırdama
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Sınama Çağırıcısı kapandı
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Sınama Çağırıcısı hazırlanıyor
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Sınama Çağırıcısı eşyaları çıkardı
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Kehanet, Sınama Çağırıcısını ele geçiriyor
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Sınama Çağırıcısı açıldı
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Uğursuz eşya düştü
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Uğursuz eşya belirdi
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Sınama Çağırıcısı canavar çağırdı
+subtitles.trickytrialsbackport.block.vault.activate=Kasa alevlendi
+subtitles.trickytrialsbackport.block.vault.ambient=Kasa çatırdıyor
+subtitles.trickytrialsbackport.block.vault.close_shutter=Kasa kapandı
+subtitles.trickytrialsbackport.block.vault.deactivate=Kasa söndü
+subtitles.trickytrialsbackport.block.vault.eject_item=Kasa eşya çıkardı
+subtitles.trickytrialsbackport.block.vault.insert_item=Kasa kilidi açıldı
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Kasa eşyayı reddetti
+subtitles.trickytrialsbackport.block.vault.open_shutter=Kasa açıldı
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Kasa oyuncuyu reddetti
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Kehanet etki gösteriyor
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Uğursuz sınama yakınlarda hissediliyor
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Şişe kırıldı

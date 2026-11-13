@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Cire retirée
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Cire appliquée
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Déverrouillez un coffre-fort funeste avec une clé des épreuves funeste.
+advancements.adventure.revaulting.title=Coffre-très-fort
+advancements.adventure.under_lock_and_key.description=Déverrouillez un coffre-fort avec une clé des épreuves.
+advancements.adventure.under_lock_and_key.title=La clé du succès
+effect.trickytrialsbackport.bad_omen=Mauvais présage
+effect.trickytrialsbackport.trial_omen=Présage d'épreuve
+entity.trickytrialsbackport.ominous_item_spawner.name=Générateur d'objets funeste
+item.trickytrialsbackport.ominous_bottle.name=Fiole funeste
+item.trickytrialsbackport.ominous_trial_key.name=Clé des épreuves funeste
+item.trickytrialsbackport.trial_key.name=Clé des épreuves
+tile.trickytrialsbackport.trial_spawner.name=Générateur des épreuves
+tile.trickytrialsbackport.vault.name=Coffre-fort
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Objet funeste qui se prépare
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Générateur des épreuves qui crépite
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Crépitement funeste
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Générateur des épreuves qui se ferme
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Générateur des épreuves qui se charge
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Générateur des épreuves qui éjecte
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Présage qui affecte un générateur des épreuves
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Générateur des épreuves qui s'ouvre
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Objet funeste éjecté
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Objet funeste qui apparaît
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Créature générée
+subtitles.trickytrialsbackport.block.vault.activate=Coffre-fort qui s'active
+subtitles.trickytrialsbackport.block.vault.ambient=Coffre-fort qui crépite
+subtitles.trickytrialsbackport.block.vault.close_shutter=Coffre-fort qui se ferme
+subtitles.trickytrialsbackport.block.vault.deactivate=Coffre-fort qui se désactive
+subtitles.trickytrialsbackport.block.vault.eject_item=Coffre-fort qui éjecte un objet
+subtitles.trickytrialsbackport.block.vault.insert_item=Coffre-fort qui se déverrouille
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Coffre-fort qui rejette un objet
+subtitles.trickytrialsbackport.block.vault.open_shutter=Coffre-fort qui s'ouvre
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Coffre-fort qui rejette un joueur
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Présage qui s'installe
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Épreuve funeste qui se profile
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Fiole brisée

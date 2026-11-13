@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Entwachsen
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Wachsen
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Schließe einen unheilvollen Tresor mit einem unheilvollen Prüfungsschlüssel auf
+advancements.adventure.revaulting.title=Panzerknacker
+advancements.adventure.under_lock_and_key.description=Entriegle einen Tresor mit einem Prüfungsschlüssel
+advancements.adventure.under_lock_and_key.title=Hinter Schloss und Riegel
+effect.trickytrialsbackport.bad_omen=Drohendes Unheil
+effect.trickytrialsbackport.trial_omen=Drohende Prüfung
+entity.trickytrialsbackport.ominous_item_spawner.name=Unheilvoller Gegenstands-Spawner
+item.trickytrialsbackport.ominous_bottle.name=Unheilvolle Flasche
+item.trickytrialsbackport.ominous_trial_key.name=Unheilvoller Prüfungsschlüssel
+item.trickytrialsbackport.trial_key.name=Prüfungsschlüssel
+tile.trickytrialsbackport.trial_spawner.name=Prüfungs-Spawner
+tile.trickytrialsbackport.vault.name=Tresor
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Unheilvoller Gegenstand bereitet vor
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Prüfungs‐Spawner knistert
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Unheilvolles Geknister
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Prüfungs‐Spawner schließt
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Prüfungs‐Spawner lädt auf
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Prüfungs‐Spawner wirft Beute aus
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Unheil umhüllt Prüfungs‐Spawner
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Prüfungs‐Spawner öffnet
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Unheilvoller Gegenstand fallen gelassen
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Unheilvoller Gegenstand erscheint
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Prüfungs‐Spawner erschafft Kreatur
+subtitles.trickytrialsbackport.block.vault.activate=Tresor zündet
+subtitles.trickytrialsbackport.block.vault.ambient=Tresor knistert
+subtitles.trickytrialsbackport.block.vault.close_shutter=Tresor schließt
+subtitles.trickytrialsbackport.block.vault.deactivate=Tresor erlischt
+subtitles.trickytrialsbackport.block.vault.eject_item=Tresor wirft Gegenstand aus
+subtitles.trickytrialsbackport.block.vault.insert_item=Tresor entriegelt
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Tresor akzeptiert Öffner nicht
+subtitles.trickytrialsbackport.block.vault.open_shutter=Tresor öffnet
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Tresor weist Spieler ab
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Unheil ergreift Besitz
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Unheilvolle Prüfung naht
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Flasche zerbricht

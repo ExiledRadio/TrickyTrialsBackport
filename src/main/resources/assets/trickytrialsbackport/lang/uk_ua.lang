@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Віск знято
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Віск нанесено
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Розблокуйте зловісне сховище зловісним ключем випробувань
+advancements.adventure.revaulting.title=Розкриття
+advancements.adventure.under_lock_and_key.description=Використайте ключ випробувань на сховищі
+advancements.adventure.under_lock_and_key.title=Під замком і ключем
+effect.trickytrialsbackport.bad_omen=Погана прикмета
+effect.trickytrialsbackport.trial_omen=Прикмета випробувань
+entity.trickytrialsbackport.ominous_item_spawner.name=Зловісний породжувач предметів
+item.trickytrialsbackport.ominous_bottle.name=Зловісна пляшка
+item.trickytrialsbackport.ominous_trial_key.name=Зловісний ключ випробувань
+item.trickytrialsbackport.trial_key.name=Ключ випробувань
+tile.trickytrialsbackport.trial_spawner.name=Породжувач випробувань
+tile.trickytrialsbackport.vault.name=Сховище
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Зловісний предмет готується
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Породжувач випробувань потріскує
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Зловісне потріскування
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Породжувач випробувань зачиняється
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Породжувач випробувань заряджається
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Породжувач випробувань викидає предмети
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Прикмета охоплює породжувач випробувань
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Породжувач випробувань відчиняється
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Зловісний предмет випадає
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Зловісний предмет з’являється
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Породжувач випробувань породжує моба
+subtitles.trickytrialsbackport.block.vault.activate=Сховище запалюється
+subtitles.trickytrialsbackport.block.vault.ambient=Сховище потріскує
+subtitles.trickytrialsbackport.block.vault.close_shutter=Сховище зачиняється
+subtitles.trickytrialsbackport.block.vault.deactivate=Сховище гасне
+subtitles.trickytrialsbackport.block.vault.eject_item=Сховище викидає предмет
+subtitles.trickytrialsbackport.block.vault.insert_item=Сховище відмикається
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Сховище відхиляє предмет
+subtitles.trickytrialsbackport.block.vault.open_shutter=Сховище відчиняється
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Сховище відхиляє гравця
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Прикмета набуває сили
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Зловісне випробування поблизу
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Пляшка розбивається

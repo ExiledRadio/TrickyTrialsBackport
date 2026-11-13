@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Desencerado
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Encerado
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Desbloquea un arca ominosa con una llave de desafío ominosa.
+advancements.adventure.revaulting.title=La caja de Pandora
+advancements.adventure.under_lock_and_key.description=Abre un arca usando una llave de desafío.
+advancements.adventure.under_lock_and_key.title=Bajo llave
+effect.trickytrialsbackport.bad_omen=Mal presagio
+effect.trickytrialsbackport.trial_omen=Presagio de desafío
+entity.trickytrialsbackport.ominous_item_spawner.name=Generador de objetos ominoso
+item.trickytrialsbackport.ominous_bottle.name=Frasco ominoso
+item.trickytrialsbackport.ominous_trial_key.name=Llave de desafío ominosa
+item.trickytrialsbackport.trial_key.name=Llave de desafío
+tile.trickytrialsbackport.trial_spawner.name=Generador de desafío
+tile.trickytrialsbackport.vault.name=Arca
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Objeto ominoso se prepara
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Generador de desafío chisporrotea
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Chisporroteo ominoso
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Generador de desafío se cierra
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Generador de desafío cargado
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Generador de desafío expulsa objetos
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Presagio envuelve un generador de desafío
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Generador de desafío se abre
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Objeto ominoso cae
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Objeto ominoso aparece
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Generador de desafío en marcha
+subtitles.trickytrialsbackport.block.vault.activate=Arca activada
+subtitles.trickytrialsbackport.block.vault.ambient=Arca chisporrotea
+subtitles.trickytrialsbackport.block.vault.close_shutter=Arca se cierra
+subtitles.trickytrialsbackport.block.vault.deactivate=Arca desactivada
+subtitles.trickytrialsbackport.block.vault.eject_item=Arca expulsa un objeto
+subtitles.trickytrialsbackport.block.vault.insert_item=Arca se desbloquea
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Arca rechaza un objeto
+subtitles.trickytrialsbackport.block.vault.open_shutter=Arca se abre
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Arca rechaza a un jugador
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Un presagio se manifiesta
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Se avecina un desafío ominoso
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Frasco se quiebra

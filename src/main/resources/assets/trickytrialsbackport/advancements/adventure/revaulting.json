@@ -1,0 +1,25 @@
+{
+  "parent": "trickytrialsbackport:adventure/under_lock_and_key",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:ominous_trial_key"
+    },
+    "title": {
+      "translate": "advancements.adventure.revaulting.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.revaulting.description"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "revaulting": {
+      "trigger": "trickytrialsbackport:ominous_vault_used",
+      "conditions": {
+        "item": {
+          "item": "trickytrialsbackport:ominous_trial_key"
+        }
+      }
+    }
+  }
+}

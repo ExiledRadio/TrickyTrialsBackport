@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Quitando cera
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Encerando
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Abre un arcón siniestro con una llave de desafío siniestra
+advancements.adventure.revaulting.title=Caja de Pandora
+advancements.adventure.under_lock_and_key.description=Abre un arcón con una llave de desafío
+advancements.adventure.under_lock_and_key.title=Bajo llave
+effect.trickytrialsbackport.bad_omen=Mal presagio
+effect.trickytrialsbackport.trial_omen=Presagio de desafío
+entity.trickytrialsbackport.ominous_item_spawner.name=Generador de ítems siniestro
+item.trickytrialsbackport.ominous_bottle.name=Botella siniestra
+item.trickytrialsbackport.ominous_trial_key.name=Llave de desafío siniestra
+item.trickytrialsbackport.trial_key.name=Llave de desafío
+tile.trickytrialsbackport.trial_spawner.name=Generador de desafío
+tile.trickytrialsbackport.vault.name=Arcón
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Ítem siniestro preparándose
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Chispas de generador de desafío
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Chispas siniestras
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Generador de desafío cerrado
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Generador de desafío cargándose
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Generador de desafío lanzando ítems
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Presagio envolviendo un generador de desafío
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Generador de desafío abierto
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Ítem siniestro soltado
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Ítem siniestro apareciendo
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Generador de desafío generando
+subtitles.trickytrialsbackport.block.vault.activate=Arcón activado
+subtitles.trickytrialsbackport.block.vault.ambient=Chispas de arcón
+subtitles.trickytrialsbackport.block.vault.close_shutter=Arcón cerrado
+subtitles.trickytrialsbackport.block.vault.deactivate=Arcón desactivado
+subtitles.trickytrialsbackport.block.vault.eject_item=Arcón soltando objetos
+subtitles.trickytrialsbackport.block.vault.insert_item=Arcón desbloqueado
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Arcón rechazando ítem
+subtitles.trickytrialsbackport.block.vault.open_shutter=Arcón abierto
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Arcón rechazando jugador
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Afianzando un presagio
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Desafío siniestro avecinándose
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Botella rompiéndose

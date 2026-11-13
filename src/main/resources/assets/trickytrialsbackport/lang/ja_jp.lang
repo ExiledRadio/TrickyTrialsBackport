@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=蝋を落とす
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=蝋を引く
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=不吉な試練の鍵を使って不吉な宝物庫を解錠する
+advancements.adventure.revaulting.title=怪錠
+advancements.adventure.under_lock_and_key.description=試練の鍵を使って宝物庫を解錠する
+advancements.adventure.under_lock_and_key.title=錠と鍵に隠されしもの
+effect.trickytrialsbackport.bad_omen=不吉な予感
+effect.trickytrialsbackport.trial_omen=試練の予感
+entity.trickytrialsbackport.ominous_item_spawner.name=不吉なアイテムスポナー
+item.trickytrialsbackport.ominous_bottle.name=不吉な瓶
+item.trickytrialsbackport.ominous_trial_key.name=不吉な試練の鍵
+item.trickytrialsbackport.trial_key.name=試練の鍵
+tile.trickytrialsbackport.trial_spawner.name=試練のスポナー
+tile.trickytrialsbackport.vault.name=宝物庫
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=不吉なアイテムが用意される
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=試練のスポナーが燃える
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=不吉なパチパチ音がする
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=試練のスポナーが閉じる
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=試練のスポナーが作動する
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=試練のスポナーがアイテムを出す
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=不吉な予感が試練のスポナーを飲み込む
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=試練のスポナーが開く
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=不吉なアイテムが落ちる
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=不吉なアイテムが出現する
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=試練のスポナーがMobを召喚する
+subtitles.trickytrialsbackport.block.vault.activate=宝物庫が燃え上がる
+subtitles.trickytrialsbackport.block.vault.ambient=宝物庫が燃える
+subtitles.trickytrialsbackport.block.vault.close_shutter=宝物庫が閉じる
+subtitles.trickytrialsbackport.block.vault.deactivate=宝物庫が鎮まる
+subtitles.trickytrialsbackport.block.vault.eject_item=宝物庫がアイテムを出す
+subtitles.trickytrialsbackport.block.vault.insert_item=宝物庫が解錠される
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=宝物庫の解錠に失敗する
+subtitles.trickytrialsbackport.block.vault.open_shutter=宝物庫が開く
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=宝物庫がプレイヤーを拒絶する
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=不吉な予感に囚われる
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=不吉な試練が差し迫る
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=瓶が割れる

@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Cera removida
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Cera aplicada
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Abra um Cofre Sombrio com uma Chave Sombria do Desafio
+advancements.adventure.revaulting.title=Caixa-forte
+advancements.adventure.under_lock_and_key.description=Abra um Cofre com uma Chave do Desafio
+advancements.adventure.under_lock_and_key.title=A sete chaves
+effect.trickytrialsbackport.bad_omen=Mau Presságio
+effect.trickytrialsbackport.trial_omen=Presságio de Desafio
+entity.trickytrialsbackport.ominous_item_spawner.name=Gerador de Itens Sombrios
+item.trickytrialsbackport.ominous_bottle.name=Frasco Sombrio
+item.trickytrialsbackport.ominous_trial_key.name=Chave Sombria do Desafio
+item.trickytrialsbackport.trial_key.name=Chave do Desafio
+tile.trickytrialsbackport.trial_spawner.name=Gerador do Desafio
+tile.trickytrialsbackport.vault.name=Cofre
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Item sombrio prepara-se
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Gerador do Desafio crepita
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Crepitação ameaçadora
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Gerador do Desafio fecha-se
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Gerador do Desafio carrega
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Gerador do Desafio ejeta itens
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Presságio afeta Gerador do Desafio
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Gerador do Desafio abre-se
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Item sombrio largado
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Item sombrio aparece
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Gerador do Desafio gera uma criatura
+subtitles.trickytrialsbackport.block.vault.activate=Cofre acende-se
+subtitles.trickytrialsbackport.block.vault.ambient=Cofre crepita
+subtitles.trickytrialsbackport.block.vault.close_shutter=Cofre fecha-se
+subtitles.trickytrialsbackport.block.vault.deactivate=Cofre apaga-se
+subtitles.trickytrialsbackport.block.vault.eject_item=Cofre ejeta item
+subtitles.trickytrialsbackport.block.vault.insert_item=Cofre destranca-se
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Cofre rejeita item
+subtitles.trickytrialsbackport.block.vault.open_shutter=Cofre abre-se
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Cofre ignora jogador
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Presságio manifestado
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Desafio sombrio iminente
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Frasco quebrado

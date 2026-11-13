@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Воск счищен
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Воск нанесён
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Отоприте зловещее хранилище зловещим ключом испытаний
+advancements.adventure.revaulting.title=Непросто ларчик открывался
+advancements.adventure.under_lock_and_key.description=Отоприте хранилище ключом испытаний
+advancements.adventure.under_lock_and_key.title=Золотой ключик
+effect.trickytrialsbackport.bad_omen=Дурной знак
+effect.trickytrialsbackport.trial_omen=Знак испытаний
+entity.trickytrialsbackport.ominous_item_spawner.name=Зловещий рассадник предметов
+item.trickytrialsbackport.ominous_bottle.name=Зловещая бутылочка
+item.trickytrialsbackport.ominous_trial_key.name=Зловещий ключ испытаний
+item.trickytrialsbackport.trial_key.name=Ключ испытаний
+tile.trickytrialsbackport.trial_spawner.name=Рассадник испытаний
+tile.trickytrialsbackport.vault.name=Хранилище
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Зловещий предмет подготавливается
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Рассадник испытаний потрескивает
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Зловещее потрескивание
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Рассадник испытаний закрывается
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Рассадник испытаний заряжается
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Рассадник испытаний выбрасывает предметы
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Знамение охватывает рассадник испытаний
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Рассадник испытаний открывается
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Зловещий предмет выпадает
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Зловещий предмет появляется
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Моб появляется
+subtitles.trickytrialsbackport.block.vault.activate=Хранилище зажигается
+subtitles.trickytrialsbackport.block.vault.ambient=Хранилище потрескивает
+subtitles.trickytrialsbackport.block.vault.close_shutter=Хранилище закрывается
+subtitles.trickytrialsbackport.block.vault.deactivate=Хранилище гаснет
+subtitles.trickytrialsbackport.block.vault.eject_item=Хранилище выбрасывает предмет
+subtitles.trickytrialsbackport.block.vault.insert_item=Хранилище отпирается
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Хранилище отвергает предмет
+subtitles.trickytrialsbackport.block.vault.open_shutter=Хранилище открывается
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Хранилище отвергает игрока
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Знамение сбылось
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Зловещее испытание приближается
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Бутылочка разбивается

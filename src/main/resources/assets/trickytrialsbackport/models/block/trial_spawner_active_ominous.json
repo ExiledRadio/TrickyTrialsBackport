@@ -1,0 +1,8 @@
+{
+  "parent": "trickytrialsbackport:block/cube_bottom_top_inner_faces",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/trial_spawner_bottom",
+    "side": "trickytrialsbackport:block/trial_spawner_side_active_ominous",
+    "top": "trickytrialsbackport:block/trial_spawner_top_active_ominous"
+  }
+}

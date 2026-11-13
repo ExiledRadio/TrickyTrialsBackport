@@ -178,3 +178,40 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Inwassen wordt ongedaan gemaakt
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Blok wordt ingewassen
 
 # --- common ---
+
+# --- trial ---
+advancements.adventure.revaulting.description=Haal een onheilspellende kluis van het slot met een onheilspellende beproevingssleutel
+advancements.adventure.revaulting.title=De verschrikking overwonnen
+advancements.adventure.under_lock_and_key.description=Open een kluis met een beproevingssleutel
+advancements.adventure.under_lock_and_key.title=Achter slot en grendel
+effect.trickytrialsbackport.bad_omen=Slecht voorteken
+effect.trickytrialsbackport.trial_omen=Beproevingsonheil
+entity.trickytrialsbackport.ominous_item_spawner.name=Onheilspellende voorwerpspawner
+item.trickytrialsbackport.ominous_bottle.name=Onheilspellende fles
+item.trickytrialsbackport.ominous_trial_key.name=Onheilspellende beproevingssleutel
+item.trickytrialsbackport.trial_key.name=Beproevingssleutel
+tile.trickytrialsbackport.trial_spawner.name=Beproevingskooi
+tile.trickytrialsbackport.vault.name=Kluis
+subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item=Onheilspellende beproevingskooi bereidt zich voor
+subtitles.trickytrialsbackport.block.trial_spawner.ambient=Beproevingskooi knettert
+subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous=Onheilspellende beproevingskooi knettert
+subtitles.trickytrialsbackport.block.trial_spawner.close_shutter=Beproevingskooi sluit
+subtitles.trickytrialsbackport.block.trial_spawner.detect_player=Beproevingskooi laadt op
+subtitles.trickytrialsbackport.block.trial_spawner.eject_item=Beproevingskooi spuwt voorwerpen uit
+subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate=Onheil neemt beproevingskooi in bezit
+subtitles.trickytrialsbackport.block.trial_spawner.open_shutter=Beproevingskooi opent
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item=Onheilspellend voorwerp valt
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin=Onheilspellend voorwerp verschijnt
+subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob=Beproevingskooi spawnt een wezen
+subtitles.trickytrialsbackport.block.vault.activate=Kluis ontvlamt
+subtitles.trickytrialsbackport.block.vault.ambient=Kluis knettert
+subtitles.trickytrialsbackport.block.vault.close_shutter=Kluis sluit
+subtitles.trickytrialsbackport.block.vault.deactivate=Kluis dooft
+subtitles.trickytrialsbackport.block.vault.eject_item=Kluis werpt voorwerp uit
+subtitles.trickytrialsbackport.block.vault.insert_item=Kluis ontgrendelt
+subtitles.trickytrialsbackport.block.vault.insert_item_fail=Kluis blijft op slot
+subtitles.trickytrialsbackport.block.vault.open_shutter=Kluis opent
+subtitles.trickytrialsbackport.block.vault.reject_rewarded_player=Kluis wijst al beloonde speler af
+subtitles.trickytrialsbackport.event.mob_effect.bad_omen=Onheil neemt in bezit
+subtitles.trickytrialsbackport.event.mob_effect.trial_omen=Een onheilspellende beproeving ligt op de loer
+subtitles.trickytrialsbackport.item.ominous_bottle.dispose=Fles breekt

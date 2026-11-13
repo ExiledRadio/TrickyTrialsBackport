@@ -848,5 +848,288 @@
       }
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.axe.scrape"
+  },
+  "block.trial_spawner.about_to_spawn_item": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/about_to_spawn_item"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.about_to_spawn_item"
+  },
+  "block.trial_spawner.ambient": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/ambient1",
+      "trickytrialsbackport:block/trial_spawner/ambient2",
+      "trickytrialsbackport:block/trial_spawner/ambient3",
+      "trickytrialsbackport:block/trial_spawner/ambient4",
+      "trickytrialsbackport:block/trial_spawner/ambient5"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.ambient"
+  },
+  "block.trial_spawner.ambient_ominous": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/ambient_ominous1",
+      "trickytrialsbackport:block/trial_spawner/ambient_ominous2",
+      "trickytrialsbackport:block/trial_spawner/ambient_ominous3",
+      "trickytrialsbackport:block/trial_spawner/ambient_ominous4",
+      "trickytrialsbackport:block/trial_spawner/ambient_ominous5"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.ambient_ominous"
+  },
+  "block.trial_spawner.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/trial_spawner/break1",
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/trial_spawner/break2",
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/trial_spawner/break3",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.trial_spawner.close_shutter": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/close_shutter"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.close_shutter"
+  },
+  "block.trial_spawner.detect_player": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/detect_player1",
+      {
+        "name": "trickytrialsbackport:block/trial_spawner/detect_player1",
+        "pitch": 0.95
+      },
+      "trickytrialsbackport:block/trial_spawner/detect_player2",
+      {
+        "name": "trickytrialsbackport:block/trial_spawner/detect_player2",
+        "pitch": 0.95
+      },
+      "trickytrialsbackport:block/trial_spawner/detect_player3",
+      {
+        "name": "trickytrialsbackport:block/trial_spawner/detect_player3",
+        "pitch": 0.95
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.detect_player"
+  },
+  "block.trial_spawner.eject_item": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/eject_item1"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.eject_item"
+  },
+  "block.trial_spawner.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/step1",
+      "trickytrialsbackport:block/trial_spawner/step2",
+      "trickytrialsbackport:block/trial_spawner/step3",
+      "trickytrialsbackport:block/trial_spawner/step4",
+      "trickytrialsbackport:block/trial_spawner/step5"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.trial_spawner.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/step1",
+      "trickytrialsbackport:block/trial_spawner/step2",
+      "trickytrialsbackport:block/trial_spawner/step3",
+      "trickytrialsbackport:block/trial_spawner/step4",
+      "trickytrialsbackport:block/trial_spawner/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.trial_spawner.ominous_activate": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/ominous_activate"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.ominous_activate"
+  },
+  "block.trial_spawner.open_shutter": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/open_shutter"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.open_shutter"
+  },
+  "block.trial_spawner.place": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/place1",
+      "trickytrialsbackport:block/trial_spawner/place2",
+      "trickytrialsbackport:block/trial_spawner/place3"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.trial_spawner.spawn_item": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/spawn_item1",
+      "trickytrialsbackport:block/trial_spawner/spawn_item2",
+      "trickytrialsbackport:block/trial_spawner/spawn_item3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.spawn_item"
+  },
+  "block.trial_spawner.spawn_item_begin": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/spawn_item_begin1",
+      "trickytrialsbackport:block/trial_spawner/spawn_item_begin2",
+      "trickytrialsbackport:block/trial_spawner/spawn_item_begin3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.spawn_item_begin"
+  },
+  "block.trial_spawner.spawn_mob": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/spawn1",
+      "trickytrialsbackport:block/trial_spawner/spawn2",
+      "trickytrialsbackport:block/trial_spawner/spawn3",
+      "trickytrialsbackport:block/trial_spawner/spawn4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.trial_spawner.spawn_mob"
+  },
+  "block.trial_spawner.step": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/step1",
+      "trickytrialsbackport:block/trial_spawner/step2",
+      "trickytrialsbackport:block/trial_spawner/step3",
+      "trickytrialsbackport:block/trial_spawner/step4",
+      "trickytrialsbackport:block/trial_spawner/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.vault.activate": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/activate"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.activate"
+  },
+  "block.vault.ambient": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/ambient1",
+      "trickytrialsbackport:block/vault/ambient2",
+      "trickytrialsbackport:block/vault/ambient3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.ambient"
+  },
+  "block.vault.break": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/break1",
+      "trickytrialsbackport:block/vault/break2",
+      "trickytrialsbackport:block/vault/break3",
+      "trickytrialsbackport:block/vault/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.vault.close_shutter": {
+    "sounds": [
+      "trickytrialsbackport:block/trial_spawner/close_shutter"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.close_shutter"
+  },
+  "block.vault.deactivate": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/deactivate"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.deactivate"
+  },
+  "block.vault.eject_item": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/eject1",
+      "trickytrialsbackport:block/vault/eject2",
+      "trickytrialsbackport:block/vault/eject3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.eject_item"
+  },
+  "block.vault.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/step1",
+      "trickytrialsbackport:block/vault/step2",
+      "trickytrialsbackport:block/vault/step3",
+      "trickytrialsbackport:block/vault/step4",
+      "trickytrialsbackport:block/vault/step5",
+      "trickytrialsbackport:block/vault/step6",
+      "trickytrialsbackport:block/vault/step7",
+      "trickytrialsbackport:block/vault/step8"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.vault.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/step1",
+      "trickytrialsbackport:block/vault/step2",
+      "trickytrialsbackport:block/vault/step3",
+      "trickytrialsbackport:block/vault/step4",
+      "trickytrialsbackport:block/vault/step5",
+      "trickytrialsbackport:block/vault/step6",
+      "trickytrialsbackport:block/vault/step7",
+      "trickytrialsbackport:block/vault/step8"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.vault.insert_item": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/insert"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.insert_item"
+  },
+  "block.vault.insert_item_fail": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/insert_fail"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.insert_item_fail"
+  },
+  "block.vault.open_shutter": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/open_shutter"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.open_shutter"
+  },
+  "block.vault.place": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/place1",
+      "trickytrialsbackport:block/vault/place2",
+      "trickytrialsbackport:block/vault/place3",
+      "trickytrialsbackport:block/vault/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.vault.reject_rewarded_player": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/reject_rewarded_player"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.vault.reject_rewarded_player"
+  },
+  "block.vault.step": {
+    "sounds": [
+      "trickytrialsbackport:block/vault/step1",
+      "trickytrialsbackport:block/vault/step2",
+      "trickytrialsbackport:block/vault/step3",
+      "trickytrialsbackport:block/vault/step4",
+      "trickytrialsbackport:block/vault/step5",
+      "trickytrialsbackport:block/vault/step6",
+      "trickytrialsbackport:block/vault/step7",
+      "trickytrialsbackport:block/vault/step8"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "event.mob_effect.trial_omen": {
+    "sounds": [
+      "trickytrialsbackport:event/mob_effects/trial_omen"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.event.mob_effect.trial_omen"
+  },
+  "event.mob_effect.bad_omen": {
+    "sounds": [
+      "trickytrialsbackport:event/mob_effects/bad_omen"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.event.mob_effect.bad_omen"
+  },
+  "item.ominous_bottle.dispose": {
+    "sounds": [
+      "trickytrialsbackport:item/ominous_bottle/dispose"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.ominous_bottle.dispose"
   }
 }
