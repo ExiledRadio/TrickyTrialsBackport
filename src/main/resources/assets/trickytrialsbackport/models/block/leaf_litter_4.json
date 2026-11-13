@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_leaf_litter_4",
+  "textures": {
+    "texture": "trickytrialsbackport:block/leaf_litter"
+  }
+}

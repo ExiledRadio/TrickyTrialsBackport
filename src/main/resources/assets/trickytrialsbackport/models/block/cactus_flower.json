@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "trickytrialsbackport:block/cactus_flower"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/cross_emissive",
+  "textures": {
+    "cross": "trickytrialsbackport:block/firefly_bush",
+    "cross_emissive": "trickytrialsbackport:block/firefly_bush_emissive"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/flowerbed_1",
+  "textures": {
+    "flowerbed": "trickytrialsbackport:block/wildflowers",
+    "stem": "trickytrialsbackport:block/wildflowers_stem"
+  }
+}
