@@ -71,8 +71,9 @@ stream 20 only when Caves & Cliffs is installed and does not.
 
 ## 5. Shared oxidation and waxing
 
-**Done (Core 1.2.0):** `copper.Oxidation` (table and aging rule); our `copper/Weathering` delegates to it. **Open
-for Caves & Cliffs:** entering its own copper there (until then `Weathering.addOwnersBlocks` enters it by name).
+**Done (Core 1.2.0):** `copper.Oxidation` (table and aging rule); our `copper/Weathering` delegates to it. Caves &
+Cliffs enters its own copper there on its branch `cc-core-adoption` (not merged); until that ships,
+`Weathering.addOwnersBlocks` also enters it by name (harmless twice).
 
 Copper blocks come from three mods (Caves & Cliffs' 1.17 set, our 1.21 and 1.21.9 sets). **Want:** one
 oxidation table in Core (block to next stage, waxed form, scraped form) so an axe, honeycomb and lightning
@@ -106,8 +107,8 @@ vault, pale moss carpet, pale hanging moss, leaf litter, copper torches.
 
 ## 8. One modern wall class for the family
 
-**Done (Core 1.2.0):** `block.ModernWall`; tuff walls use it (1.21.11's multipart blockstates). **Open for Caves &
-Cliffs:** moving its `BlockCCWall` walls onto it.
+**Done (Core 1.2.0):** `block.ModernWall`; tuff walls use it (1.21.11's multipart blockstates). Caves & Cliffs'
+deepslate walls use it too on its branch `cc-core-adoption` (not merged).
 
 Our tuff walls extend 1.12.2's `BlockWall` (low sides only); Caves & Cliffs has a 1.16+ wall with none,
 low and tall sides (`common/BlockCCWall` in its repo, all actual state, metadata 0) and is listing it for
