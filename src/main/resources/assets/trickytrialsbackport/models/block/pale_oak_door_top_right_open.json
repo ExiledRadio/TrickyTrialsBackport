@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/door_top_right_open",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/pale_oak_door_bottom",
+    "top": "trickytrialsbackport:block/pale_oak_door_top"
+  }
+}

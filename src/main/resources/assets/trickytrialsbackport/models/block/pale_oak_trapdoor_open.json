@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_orientable_trapdoor_open",
+  "textures": {
+    "texture": "trickytrialsbackport:block/pale_oak_trapdoor"
+  }
+}

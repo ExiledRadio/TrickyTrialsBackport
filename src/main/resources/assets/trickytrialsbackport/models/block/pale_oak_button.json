@@ -1,0 +1,6 @@
+{
+  "parent": "block/button",
+  "textures": {
+    "texture": "trickytrialsbackport:block/pale_oak_planks"
+  }
+}

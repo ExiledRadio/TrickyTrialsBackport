@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/flower_pot_cross_emissive",
+  "textures": {
+    "cross_emissive": "trickytrialsbackport:block/open_eyeblossom_emissive",
+    "plant": "trickytrialsbackport:block/open_eyeblossom"
+  }
+}

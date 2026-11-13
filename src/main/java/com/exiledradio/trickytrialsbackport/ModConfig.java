@@ -82,14 +82,14 @@ public final class ModConfig {
     @Config.Comment("Bundles and the sixteen dyed bundles.")
     public static final Bundles bundles = new Bundles();
 
-    @Setting.Feature(icon = "minecraft:log@2")
+    @Setting.Feature(icon = "trickytrialsbackport:pale_oak_sapling")
     @Config.LangKey("config.trickytrialsbackport.paleGarden")
-    @Config.Comment("The pale garden: pale oak, pale moss, hanging moss and eyeblossoms.")
+    @Config.Comment("The pale garden: pale oak, pale moss, hanging moss, eyeblossoms, the creaking heart and the biome.")
     public static final PaleGarden paleGarden = new PaleGarden();
 
     @Setting.Feature(icon = "minecraft:lit_pumpkin")
     @Config.LangKey("config.trickytrialsbackport.creaking")
-    @Config.Comment("The creaking and the creaking heart.")
+    @Config.Comment("The creaking.")
     public static final Creaking creaking = new Creaking();
 
     @Setting.Feature(icon = "minecraft:dye@14")
@@ -360,12 +360,18 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- PaleGarden fields ---
+        @Config.RequiresMcRestart
+        @Config.Comment({"Part of every roofed forest becomes a pale garden, in newly generated chunks, as 1.21.4 put",
+                "the pale garden in the dark forest's climate."})
+        @Setting.NewChunks
+        @Config.LangKey("config.trickytrialsbackport.paleGarden.generateBiome")
+        public boolean generateBiome = true;
         // --- end PaleGarden ---
     }
 
     public static final class Creaking {
         @Config.RequiresMcRestart
-        @Config.Comment("The creaking and the creaking heart. Off, nothing is registered.")
+        @Config.Comment("The creaking. Off, nothing is registered.")
         @Config.LangKey("config.trickytrialsbackport.creaking.enabled")
         public boolean enabled = true;
 

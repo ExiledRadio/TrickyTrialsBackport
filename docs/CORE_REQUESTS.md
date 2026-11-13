@@ -73,7 +73,8 @@ the ones to add (`manual_map.py`), and 1.21.5's iron-block and iron-door sounds 
 
 1.21-1.21.11 blocks that vanilla makes waterloggable, to move onto Core's `Waterloggable` adapter when it
 exists (until then they are not waterloggable): copper grates and copper trapdoors; every stairs, slab
-and wall (tuff, polished tuff, tuff brick, resin brick; pale oak stairs, slab, fence and trapdoor); the
+and wall (tuff, polished tuff, tuff brick, resin brick; pale oak stairs, slab, fence, trapdoor, leaves and
+signs); the
 heavy core; resin clumps; copper chests, copper golem statues, copper bars, chains and lanterns; shelves;
 the dried ghast. Not waterloggable in vanilla: copper doors and bulbs, the crafter, trial spawner and
 vault, pale moss carpet, pale hanging moss, leaf litter, copper torches.
@@ -85,4 +86,15 @@ low and tall sides (`common/BlockCCWall` in its repo, all actual state, metadata
 Core too. **Want:** that wall in Core, so tuff, deepslate, resin brick and every later wall look and join
 alike. **Meanwhile:** ours stay vanilla-style; moving them is a blockstate and class swap with no change to
 saved worlds (both store metadata 0).
+
+## 9. One wood set and one boat entity for the family
+
+Pale oak (stream 12) needed a whole wood set, signs with their own tile and renderer, and a boat entity.
+Trails & Tales has the same code for cherry and bamboo (`common/wood`, `boat`), Wild Update has mangrove, and
+26.3's poplar (stream 30) will need it again. **Want:** Core's own wood set (blocks extending vanilla's
+shapes, sign tile and renderer, axe stripping, boat and chest boat entities with the wood in their data),
+so each mod registers a wood by name and every boat and sign is one entity and one tile across the family.
+**Meanwhile:** `palegarden/wood` and `palegarden/boat` are copies of Trails & Tales' code under our ids
+(`trickytrialsbackport:sign`, `trickytrialsbackport:boat`, entity id 30); moving onto Core's is a rename
+in `MissingMappings`.
 

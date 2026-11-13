@@ -1,0 +1,8 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/pale_oak_planks",
+    "side": "trickytrialsbackport:block/pale_oak_planks",
+    "top": "trickytrialsbackport:block/pale_oak_planks"
+  }
+}

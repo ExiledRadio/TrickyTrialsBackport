@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "trickytrialsbackport:block/creaking_heart_top_dormant",
+    "side": "trickytrialsbackport:block/creaking_heart_dormant"
+  }
+}

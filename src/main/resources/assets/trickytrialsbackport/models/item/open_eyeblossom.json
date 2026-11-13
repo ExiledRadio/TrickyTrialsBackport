@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "trickytrialsbackport:block/open_eyeblossom",
+    "layer1": "trickytrialsbackport:block/open_eyeblossom_emissive"
+  }
+}
