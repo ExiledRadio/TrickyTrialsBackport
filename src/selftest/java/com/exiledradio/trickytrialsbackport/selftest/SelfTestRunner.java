@@ -56,6 +56,7 @@ public final class SelfTestRunner {
             new DecorSelfTest(),
             new PaleGardenSelfTest(),
             new CreakingSelfTest(),
+            new ResinSelfTest(),
             new LookfeelSelfTest(),
     };
 

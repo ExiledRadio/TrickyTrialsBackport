@@ -1833,5 +1833,82 @@
       "trickytrialsbackport:block/creaking_heart/spawnmob/creaking_heart_spawnmob"
     ],
     "subtitle": "subtitles.trickytrialsbackport.block.creaking_heart.spawn"
+  },
+  "block.resin.break": {
+    "sounds": [
+      "trickytrialsbackport:block/resin/resin_break1",
+      "trickytrialsbackport:block/resin/resin_break2",
+      "trickytrialsbackport:block/resin/resin_break3",
+      "trickytrialsbackport:block/resin/resin_break4",
+      "trickytrialsbackport:block/resin/resin_break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.resin.step": {
+    "sounds": [
+      "trickytrialsbackport:block/resin/resin_step1",
+      "trickytrialsbackport:block/resin/resin_step2",
+      "trickytrialsbackport:block/resin/resin_step3",
+      "trickytrialsbackport:block/resin/resin_step4",
+      "trickytrialsbackport:block/resin/resin_step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.resin.place": {
+    "sounds": [
+      "trickytrialsbackport:block/resin/resin_place1",
+      "trickytrialsbackport:block/resin/resin_place2",
+      "trickytrialsbackport:block/resin/resin_place3",
+      "trickytrialsbackport:block/resin/resin_place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.resin.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/resin/resin_fall"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.resin_bricks.break": {
+    "sounds": [
+      "trickytrialsbackport:block/resin_bricks/resin_brick_break"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.resin_bricks.step": {
+    "sounds": [
+      "trickytrialsbackport:block/resin_bricks/resin_brick_step1",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_step2",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_step3",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_step4",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.resin_bricks.place": {
+    "sounds": [
+      "trickytrialsbackport:block/resin_bricks/resin_brick_place1",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_place2",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_place3",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_place4",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_place5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.resin_bricks.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/resin_bricks/resin_brick_hit1",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_hit2",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_hit3",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_hit4",
+      "trickytrialsbackport:block/resin_bricks/resin_brick_hit5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.resin_bricks.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/resin_bricks/resin_brick_fall"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
   }
 }

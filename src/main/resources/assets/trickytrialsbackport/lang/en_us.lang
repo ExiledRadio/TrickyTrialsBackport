@@ -548,3 +548,17 @@ subtitles.trickytrialsbackport.entity.creaking.spawn=Creaking manifests
 subtitles.trickytrialsbackport.entity.creaking.sway=Creaking is hit
 subtitles.trickytrialsbackport.entity.creaking.twitch=Creaking twitches
 subtitles.trickytrialsbackport.entity.creaking.unfreeze=Creaking moves
+
+# --- resin ---
+item.trickytrialsbackport.resin_brick.name=Resin Brick
+tile.trickytrialsbackport.chiseled_resin_bricks.name=Chiseled Resin Bricks
+tile.trickytrialsbackport.resin_block.name=Block of Resin
+tile.trickytrialsbackport.resin_brick_double_slab.name=Resin Brick Slab
+tile.trickytrialsbackport.resin_brick_slab.name=Resin Brick Slab
+tile.trickytrialsbackport.resin_brick_stairs.name=Resin Brick Stairs
+tile.trickytrialsbackport.resin_brick_wall.name=Resin Brick Wall
+tile.trickytrialsbackport.resin_bricks.name=Resin Bricks
+tile.trickytrialsbackport.resin_clump.name=Resin Clump
+tile.trickytrialsbackport.resin_clump_down.name=Resin Clump
+tile.trickytrialsbackport.resin_clump_up.name=Resin Clump
+tile.trickytrialsbackport.resin_clump_up_down.name=Resin Clump

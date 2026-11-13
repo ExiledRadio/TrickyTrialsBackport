@@ -1,0 +1,118 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump"
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump"
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "x": 90
+      }
+    }
+  ]
+}

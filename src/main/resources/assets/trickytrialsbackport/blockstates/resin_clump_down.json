@@ -1,0 +1,49 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump"
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "y": 270
+      }
+    },
+    {
+      "apply": {
+        "model": "trickytrialsbackport:resin_clump",
+        "uvlock": true,
+        "x": 90
+      }
+    }
+  ]
+}
