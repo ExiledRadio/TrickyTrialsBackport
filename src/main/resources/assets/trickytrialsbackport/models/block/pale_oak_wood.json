@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "trickytrialsbackport:block/pale_oak_log",
+    "side": "trickytrialsbackport:block/pale_oak_log"
+  }
+}

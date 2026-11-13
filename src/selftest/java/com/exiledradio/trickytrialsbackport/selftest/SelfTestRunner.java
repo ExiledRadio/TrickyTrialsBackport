@@ -54,6 +54,7 @@ public final class SelfTestRunner {
             new BundleSelfTest(),
             new EffectsSelfTest(),
             new DecorSelfTest(),
+            new PaleGardenSelfTest(),
     };
 
     private final List<String> wanted;

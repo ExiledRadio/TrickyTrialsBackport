@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=top,variant=default": {
+      "model": "trickytrialsbackport:pale_oak_slab_top"
+    },
+    "half=bottom,variant=default": {
+      "model": "trickytrialsbackport:pale_oak_slab"
+    }
+  }
+}

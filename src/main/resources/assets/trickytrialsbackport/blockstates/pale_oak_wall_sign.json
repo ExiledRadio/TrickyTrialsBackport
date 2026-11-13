@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "facing=south": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "facing=west": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "facing=east": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    }
+  }
+}

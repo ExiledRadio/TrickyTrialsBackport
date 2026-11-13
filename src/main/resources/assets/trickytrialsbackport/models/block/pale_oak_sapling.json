@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "trickytrialsbackport:block/pale_oak_sapling"
+  }
+}

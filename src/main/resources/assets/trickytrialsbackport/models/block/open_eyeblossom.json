@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/cross_emissive",
+  "textures": {
+    "cross": "trickytrialsbackport:block/open_eyeblossom",
+    "cross_emissive": "trickytrialsbackport:block/open_eyeblossom_emissive"
+  }
+}

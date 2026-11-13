@@ -1272,5 +1272,408 @@
         "stream": true
       }
     ]
+  },
+  "block.moss.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/break1",
+        "volume": 0.95
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break2",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break3",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break4",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break5",
+        "volume": 0.93
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.moss.step": {
+    "sounds": [
+      "trickytrialsbackport:block/moss/step1",
+      "trickytrialsbackport:block/moss/step2",
+      "trickytrialsbackport:block/moss/step3",
+      "trickytrialsbackport:block/moss/step4",
+      "trickytrialsbackport:block/moss/step5",
+      "trickytrialsbackport:block/moss/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.moss.place": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/break1",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break2",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break3",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break4",
+        "volume": 0.93
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break5",
+        "volume": 0.93
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.moss.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/moss/step1",
+      "trickytrialsbackport:block/moss/step2",
+      "trickytrialsbackport:block/moss/step3",
+      "trickytrialsbackport:block/moss/step4",
+      "trickytrialsbackport:block/moss/step5",
+      "trickytrialsbackport:block/moss/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.moss.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/moss/step1",
+      "trickytrialsbackport:block/moss/step2",
+      "trickytrialsbackport:block/moss/step3",
+      "trickytrialsbackport:block/moss/step4",
+      "trickytrialsbackport:block/moss/step5",
+      "trickytrialsbackport:block/moss/step6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.moss_carpet.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/break1",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break2",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break3",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break4",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break5",
+        "pitch": 1.1,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.moss_carpet.step": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/step1",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step2",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step3",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step4",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step5",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step6",
+        "pitch": 1.1,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.moss_carpet.place": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/break1",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break2",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break3",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break4",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/break5",
+        "pitch": 1.1,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.moss_carpet.hit": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/step1",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step2",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step3",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step4",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step5",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step6",
+        "pitch": 1.1,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.moss_carpet.fall": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/moss/step1",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step2",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step3",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step4",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step5",
+        "pitch": 1.1,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:block/moss/step6",
+        "pitch": 1.1,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.creaking_heart.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/creaking_heart/break/creaking_heart_break",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.creaking_heart.step": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/step/creaking_heart_step1",
+      "trickytrialsbackport:block/creaking_heart/step/creaking_heart_step2",
+      "trickytrialsbackport:block/creaking_heart/step/creaking_heart_step3",
+      "trickytrialsbackport:block/creaking_heart/step/creaking_heart_step4",
+      "trickytrialsbackport:block/creaking_heart/step/creaking_heart_step5",
+      "trickytrialsbackport:block/creaking_heart/step/creaking_heart_step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.creaking_heart.place": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/place/creaking_heart_place1",
+      "trickytrialsbackport:block/creaking_heart/place/creaking_heart_place2",
+      "trickytrialsbackport:block/creaking_heart/place/creaking_heart_place3",
+      "trickytrialsbackport:block/creaking_heart/place/creaking_heart_place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.creaking_heart.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/hit/creaking_heart_hit1",
+      "trickytrialsbackport:block/creaking_heart/hit/creaking_heart_hit2",
+      "trickytrialsbackport:block/creaking_heart/hit/creaking_heart_hit3",
+      "trickytrialsbackport:block/creaking_heart/hit/creaking_heart_hit4",
+      "trickytrialsbackport:block/creaking_heart/hit/creaking_heart_hit5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.creaking_heart.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/fall/creaking_heart_fall"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.creaking_heart.idle": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/idle/creaking_heart_idle1",
+      "trickytrialsbackport:block/creaking_heart/idle/creaking_heart_idle2",
+      "trickytrialsbackport:block/creaking_heart/idle/creaking_heart_idle3",
+      "trickytrialsbackport:block/creaking_heart/idle/creaking_heart_idle4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.ambient.sound"
+  },
+  "block.pale_hanging_moss.idle": {
+    "sounds": [
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss1",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss2",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss3",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss4",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss5",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss6",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss7",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss8",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss9",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss10",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss11",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss12",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss13",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss14",
+      "trickytrialsbackport:block/pale_hanging_moss/pale_hanging_moss15"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.ambient.sound"
+  },
+  "block.eyeblossom.idle": {
+    "sounds": [
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_idle1",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_idle2",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_idle3",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_idle4",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_idle5",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_idle6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.ambient.sound"
+  },
+  "block.eyeblossom.open": {
+    "sounds": [
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_open1",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_open2",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_open3",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_open4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.eyeblossom.open"
+  },
+  "block.eyeblossom.open_long": {
+    "sounds": [
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_open_long"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.eyeblossom.open"
+  },
+  "block.eyeblossom.close": {
+    "sounds": [
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_close1",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_close2",
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_close3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.eyeblossom.close"
+  },
+  "block.eyeblossom.close_long": {
+    "sounds": [
+      "trickytrialsbackport:block/eyeblossom/eyeblossom_close_long"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.eyeblossom.close"
+  },
+  "item.axe.strip": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:item/axe/strip1",
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip1",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip2",
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip2",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip3",
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip3",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip4",
+        "volume": 0.9
+      },
+      {
+        "name": "trickytrialsbackport:item/axe/strip4",
+        "pitch": 0.85,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.axe.strip"
   }
 }

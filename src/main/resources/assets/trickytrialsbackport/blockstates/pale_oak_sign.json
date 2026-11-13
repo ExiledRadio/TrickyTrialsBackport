@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=1": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=2": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=3": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=4": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=5": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=6": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=7": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=8": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=9": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=10": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=11": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=12": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=13": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=14": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    },
+    "rotation=15": {
+      "model": "trickytrialsbackport:pale_oak_sign"
+    }
+  }
+}

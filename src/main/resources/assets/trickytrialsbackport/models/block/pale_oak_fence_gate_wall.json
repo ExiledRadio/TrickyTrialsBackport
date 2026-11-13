@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_fence_gate_wall",
+  "textures": {
+    "texture": "trickytrialsbackport:block/pale_oak_planks"
+  }
+}
