@@ -86,3 +86,42 @@ Core too. **Want:** that wall in Core, so tuff, deepslate, resin brick and every
 alike. **Meanwhile:** ours stay vanilla-style; moving them is a blockstate and class swap with no change to
 saved worlds (both store metadata 0).
 
+
+## Decor-1. Jukebox comparator signal for discs added after 1.12.2 (stream 9)
+
+1.12.2's `BlockJukebox.getComparatorInputOverride` counts the signal from the disc's item id, right for vanilla's
+twelve discs only; any modded disc gives a number far above 15. Caves & Cliffs asks for the same (its `Mu-1`).
+**Want:** Core's jukebox patch answering with the disc's own signal when the record has one:
+
+```java
+// com.exiledradio.backportcore.item.ComparatorDisc (an interface for ItemRecord subclasses)
+int comparatorSignal();
+```
+
+**Meanwhile:** `decor/ItemDecorDisc` has `comparatorSignal()` under that name with 1.21.11's values (Creator 12,
+Creator (Music Box) 11, Precipice 13, Tears 10, Lava Chicken 9); nothing reads it yet.
+
+## Decor-2. Trails & Tales' smithing finds our trim templates (stream 9)
+
+Flow and Bolt (1.21) are our items; the trim is Trails & Tales' (its stream Sm, not built yet). **Want**, in its
+smithing stream: a template is any item in the `armorTrimTemplate` ore name named
+`<ns>:<pattern>_armor_trim_smithing_template`; the pattern's name is `<pattern>`, its English name the lang key
+`trim_pattern.<ns>.<pattern>`, and its grayscale textures
+`<ns>:textures/trims/entity/humanoid/<pattern>.png` and `.../humanoid_leggings/<pattern>.png` (1.21.11's, which we
+ship). Our two: `trickytrialsbackport:flow_armor_trim_smithing_template`, `..:bolt_armor_trim_smithing_template`.
+
+**Meanwhile:** the templates exist, duplicate (7 diamonds, the template and a breeze rod / copper block), and do
+nothing else. Our sherds need nothing: Trails & Tales' pot takes any `potterySherd` item and draws
+`<ns>:textures/entity/decorated_pot/<x>_pottery_pattern.png`, which we ship.
+
+## Decor-3. Village & Pillage's loom: patterns that need an item (stream 9)
+
+V&P's `block/BannerPatterns` puts every enum pattern it does not list as special on the loom's free list, so
+Flow and Guster (added to the enum by us) would be free there; and 1.21.2 moved bricks and curly border behind
+the Field Masoned and Bordure Indented items. **Want**, in V&P: `BannerPatterns.requireItem(BannerPattern...)`,
+callable before the loom is first used, or a rule that a pattern whose item another mod registers is special.
+Also wanted: a `rarity` argument on `ItemBannerPattern` (1.21's Flow and Guster items are rare).
+
+**Meanwhile:** `decor/LoomPatterns.arrangeLoom` (post-init) reorders V&P's private `ORDER` array in place and sets
+its `FREE_COUNT` through `sun.misc.Unsafe`, so the four sit with the special patterns. Every step is checked; if
+V&P's class changes shape or `Unsafe` is unavailable, nothing is changed and the four stay free at its loom.
