@@ -1,60 +1,99 @@
 {
   "multipart": [
     {
+      "apply": {
+        "model": "trickytrialsbackport:polished_tuff_wall_post"
+      },
       "when": {
         "OR": [
           {
             "up": "true"
           },
           {
-            "north": "false",
-            "east": "false",
-            "south": "false",
-            "west": "false"
+            "north": "none",
+            "east": "none",
+            "south": "none",
+            "west": "none"
           }
         ]
-      },
-      "apply": {
-        "model": "trickytrialsbackport:polished_tuff_wall_post"
       }
     },
     {
-      "when": {
-        "north": "true"
-      },
       "apply": {
         "model": "trickytrialsbackport:polished_tuff_wall_side",
         "uvlock": true
+      },
+      "when": {
+        "north": "low"
       }
     },
     {
-      "when": {
-        "east": "true"
-      },
       "apply": {
         "model": "trickytrialsbackport:polished_tuff_wall_side",
         "uvlock": true,
         "y": 90
+      },
+      "when": {
+        "east": "low"
       }
     },
     {
-      "when": {
-        "south": "true"
-      },
       "apply": {
         "model": "trickytrialsbackport:polished_tuff_wall_side",
         "uvlock": true,
         "y": 180
+      },
+      "when": {
+        "south": "low"
       }
     },
     {
-      "when": {
-        "west": "true"
-      },
       "apply": {
         "model": "trickytrialsbackport:polished_tuff_wall_side",
         "uvlock": true,
         "y": 270
+      },
+      "when": {
+        "west": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "trickytrialsbackport:polished_tuff_wall_side_tall",
+        "uvlock": true
+      },
+      "when": {
+        "north": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "trickytrialsbackport:polished_tuff_wall_side_tall",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "trickytrialsbackport:polished_tuff_wall_side_tall",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "trickytrialsbackport:polished_tuff_wall_side_tall",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "tall"
       }
     }
   ]

@@ -122,8 +122,8 @@ public final class LookfeelSelfTest implements SelfTest {
         for (int i = 1; i <= 4; i++) {
             base.add(new MenuMusic.Track("minecraft:music/menu/menu" + i, 1));
         }
-        // An earlier backport's 1.18 track, as if Caves & Cliffs' 1.18 contribution had added it.
-        Contribution older = Presentation.detached("1.18").addMenuMusic("cavesandcliffsbackport:music/game/wending", 1);
+        // An earlier backport's 1.18 track, under any mod id: 1.21 removes it by path.
+        Contribution older = Presentation.detached("1.18").addMenuMusic("somebackport:music/game/wending", 1);
         List<Contribution> installed = new ArrayList<Contribution>();
         installed.add(older);
         installed.addAll(Presentation.installed());
@@ -142,11 +142,17 @@ public final class LookfeelSelfTest implements SelfTest {
         // Other installed family mods may add tracks of their own versions after 1.21.11; only ours and vanilla's here.
         List<String> mine = new ArrayList<String>();
         for (String s : pool) {
-            if (s.startsWith("minecraft:") || s.startsWith(ID + ":") || s.startsWith("cavesandcliffsbackport:")) {
+            if (s.startsWith("minecraft:") || s.startsWith(ID + ":") || s.startsWith("somebackport:")) {
                 mine.add(s);
             }
         }
         check.eq(expected, mine, "menu pool at 1.21.11 (1.21 dropped 1.18's wending)");
+        for (MenuMusic.Track t : MenuMusic.pool(base, installed)) {
+            if (t.soundName.startsWith(ID + ":")) {
+                check.ok(Math.abs(t.volume - 0.4F) < 1e-6, t.soundName + " at volume 0.4");
+            }
+        }
+        check.eq("options.inactivityFpsLimit.afk.tooltip", LookAndFeel.INACTIVITY_FPS_LIMIT.tooltipKey(), "AFK's own tooltip");
         check.ok(MenuMusic.changed(Presentation.installed()), "menu pool changed");
         check.eq(12, LookAndFeel.OLDER_MENU_TRACKS.length, "1.18, 1.19 and 1.20 menu tracks removed");
     }
@@ -255,6 +261,12 @@ public final class LookfeelSelfTest implements SelfTest {
         check.eq(96.0F, Rules.rainFogEnd(192.0F, 1.0F), "rain fog end never nearer than 96");
         check.eq(64.0F, Rules.rainFogEnd(64.0F, 1.0F), "rain fog end keeps a nearer render distance");
         check.eq(160.0F, Rules.rainFogEnd(192.0F, 0.125F), "light rain pulls the end in a little");
+        float[] glow = {1.0F, 0.8F, 0.6F, 0.5F};
+        Rules.weatherSunrise(glow, 1.0F, 0.0F);
+        check.ok(Math.abs(glow[0] - 0.5F) < 1e-6 && Math.abs(glow[2] - 0.36F) < 1e-6 && glow[3] == 0.5F, "full rain dims the sunrise: " + Arrays.toString(glow));
+        float[] storm = {1.0F, 1.0F, 1.0F, 1.0F};
+        Rules.weatherSunrise(storm, 0.0F, 1.0F);
+        check.ok(Math.abs(storm[0] - 0.25F) < 1e-6 && Math.abs(storm[2] - 0.3F) < 1e-6, "thunder dims it more: " + Arrays.toString(storm));
         check.eq(10.0F, Rules.NETHER_FOG_START, "nether fog start");
         check.eq(96.0F, Rules.NETHER_FOG_END, "nether fog end");
     }

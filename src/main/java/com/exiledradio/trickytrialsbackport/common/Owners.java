@@ -18,17 +18,15 @@ import javax.annotation.Nullable;
  * The mod for the version line in which a thing first shipped owns it. When the owner is installed this
  * mod registers nothing for it and uses the owner's; when it is not, this mod registers its own copy
  * under its own id, with the same states and metadata, so the owner can later rename it in place.
- * Blocks go through Backport Core's {@link BlockOwnership}; items and effects, which Core's table does
- * not cover yet, are looked up here by registry name.
+ * Blocks go through Backport Core's {@link BlockOwnership}; items and effects are looked up here by name,
  *
- * <h2>Shim</h2>
- * Core 1.0.0's table only lists Village &amp; Pillage's 1.13 blocks. Until Caves &amp; Cliffs declares its
- * own (or Core lists them, {@code docs/CORE_REQUESTS.md} #1), {@link #declareOlderOwners} claims them for
- * it, so {@code BlockOwnership.shouldRegister} answers correctly whether or not it is installed. It runs
- * from pre-init, never the constructor: Caves &amp; Cliffs declares its own blocks from its pre-init, which
- * runs first, naming a pseudo-owner for any stream it has switched off, and the first claim wins.
- * {@link BlockOwnership#owner} can therefore return that pseudo-owner; ask {@link #present} or
- * {@link #copy}, never compare an owner with a mod id.
+ * <h2>Core's tables</h2>
+ * Caves &amp; Cliffs' tuff and copper set are in Core's {@code BlockOwnership} table, and the items and effects
+ * this mod copies (copper ingot, raw copper, honeycomb, the ominous bottle, Bad Omen) in its {@code ItemOwnership}
+ * (Backport Core 1.2.0, CORE_REQUESTS #1). Caves &amp; Cliffs hands a switched-off stream's blocks to a
+ * pseudo-owner, so {@link BlockOwnership#owner} can return one; ask {@link #present} or {@link #copy}, never
+ * compare an owner with a mod id. When an owner is added to a world that has our copies, Core renames them
+ * ({@code ownership.CopyRemapping}, #2).
  */
 public final class Owners {
 
@@ -50,20 +48,6 @@ public final class Owners {
     public static final String[] OXIDATION = {"", "exposed_", "weathered_", "oxidized_"};
 
     private Owners() {
-    }
-
-    /** Claims Caves &amp; Cliffs' 1.17 blocks this mod copies, in Backport Core's table, for their owner. */
-    public static void declareOlderOwners() {
-        BlockOwnership.declare(CAVES_AND_CLIFFS, "tuff");
-        for (String stage : OXIDATION) {
-            String block = stage.isEmpty() ? "copper_block" : stage + "copper";
-            for (String waxed : new String[] {"", "waxed_"}) {
-                BlockOwnership.declare(CAVES_AND_CLIFFS, waxed + block, waxed + stage + "cut_copper",
-                        waxed + stage + "cut_copper_stairs", waxed + stage + "cut_copper_slab",
-                        waxed + stage + "cut_copper_double_slab");
-            }
-        }
-        BlockOwnership.declare(CAVES_AND_CLIFFS, "copper_ore", "raw_copper_block");
     }
 
     /** @return true if the owning mod is installed */

@@ -1,5 +1,7 @@
 package com.exiledradio.trickytrialsbackport.copper;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import com.exiledradio.trickytrialsbackport.common.Content;
 import com.exiledradio.trickytrialsbackport.common.building.BlockShapedSlab;
 import com.exiledradio.trickytrialsbackport.common.building.BlockShapedStairs;
@@ -60,7 +62,7 @@ public final class CopperBlocks {
     }
 
     /** A copper grate (1.21): a see-through full block that lets light through. */
-    public static class Grate extends Full {
+    public static class Grate extends Full implements Waterloggable {
         public Grate(CopperStage stage, SoundType sound, boolean ages) {
             super(stage, sound, ages);
             setLightOpacity(0);
@@ -302,7 +304,7 @@ public final class CopperBlocks {
     }
 
     /** The copper trapdoor (1.21): opened by hand and by wind, unlike iron. */
-    public static class Trapdoor extends BlockTrapDoor {
+    public static class Trapdoor extends BlockTrapDoor implements Waterloggable {
         private final CopperStage stage;
 
         public Trapdoor(CopperStage stage, SoundType sound, boolean ages) {

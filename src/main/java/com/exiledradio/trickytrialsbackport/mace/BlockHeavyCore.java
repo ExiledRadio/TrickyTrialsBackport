@@ -1,5 +1,7 @@
 package com.exiledradio.trickytrialsbackport.mace;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -16,7 +18,7 @@ import net.minecraft.world.IBlockAccess;
  * The heavy core (1.21): an 8-pixel cube of metal, hardness 10 and blast resistance 1200, mined by hand in
  * 15 seconds (no tool needed or helps), dropping itself unless blown up.
  */
-public final class BlockHeavyCore extends Block {
+public final class BlockHeavyCore extends Block implements Waterloggable {
 
     /** Metal that any hand can mine, as 1.21's heavy core is. */
     static final Material METAL = new Material(MapColor.IRON) {

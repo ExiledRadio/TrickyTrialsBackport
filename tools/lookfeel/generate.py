@@ -31,6 +31,13 @@ for face in ["0", "1", "2", "3", "4", "5", "overlay"]:
 
 assets.write("textures/gui/title/mojangstudios.png", assets.jar_bytes("assets/minecraft/textures/gui/title/mojangstudios.png"))
 assets.write("textures/gui/menu_background.png", assets.jar_bytes("assets/minecraft/textures/gui/menu_background.png"))
+# Vanilla assets 1.21.x replaced, served at their minecraft: paths through Backport Core's replaceAsset: 1.21.2's
+# slot highlight, 1.21.6's ghast (the same layout at twice the size) and its music toast sprites.
+VANILLA = ["textures/gui/sprites/container/slot_highlight_back.png", "textures/gui/sprites/container/slot_highlight_front.png",
+           "textures/entity/ghast/ghast.png", "textures/entity/ghast/ghast_shooting.png",
+           "textures/gui/sprites/toast/now_playing.png", "textures/gui/sprites/icon/music_notes.png"]
+for path in VANILLA:
+    assets.write("vanilla/" + path, assets.jar_bytes("assets/minecraft/" + path))
 for sprite in ("air", "air_bursting", "air_empty"):
     assets.write("textures/gui/sprites/hud/%s.png" % sprite, assets.jar_bytes("assets/minecraft/textures/gui/sprites/hud/%s.png" % sprite))
 

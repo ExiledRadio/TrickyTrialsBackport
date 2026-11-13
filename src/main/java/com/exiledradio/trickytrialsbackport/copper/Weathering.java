@@ -1,11 +1,10 @@
 package com.exiledradio.trickytrialsbackport.copper;
 
+import com.exiledradio.backportcore.copper.Oxidation;
 import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.common.Owners;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,8 +16,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -34,9 +31,9 @@ import java.util.Random;
  * ages with chance {@code ((b + 1) / (a + b + 1))^2}, times 0.75 while unaffected.
  *
  * <h2>Two mods' copper</h2>
- * With Caves &amp; Cliffs installed its blocks are entered here by name too ({@link #addOwnersBlocks}), so
- * our bulbs and doors wait for its copper and age with it. Its own table does not know ours yet; one table
- * in Backport Core ends that ({@code docs/CORE_REQUESTS.md} #5).
+ * The table is Backport Core's ({@code copper.Oxidation}, CORE_REQUESTS #5), shared by every mod's copper. Until
+ * Caves &amp; Cliffs enters its own blocks there, they are entered by name ({@link #addOwnersBlocks}), so our
+ * bulbs and doors wait for its copper and age with it.
  *
  * <p>States carry across by property (stairs keep facing, half and shape; bulbs stay lit; a door's two
  * halves change together).
@@ -44,156 +41,75 @@ import java.util.Random;
 public final class Weathering {
 
     /** 64/1125: the chance a random tick tries to age a block at all. */
-    public static final float TRY_CHANCE = 0.05688889F;
-
-    private static final Map<Block, Block> NEXT = new HashMap<Block, Block>();
-    private static final Map<Block, Block> PREVIOUS = new HashMap<Block, Block>();
-    private static final Map<Block, Block> WAXED = new HashMap<Block, Block>();
-    private static final Map<Block, Block> UNWAXED = new HashMap<Block, Block>();
-    /** Oxidation stage of every unwaxed copper block, 0-3. */
-    private static final Map<Block, Integer> STAGE = new HashMap<Block, Integer>();
+    public static final float TRY_CHANCE = Oxidation.TRY_CHANCE;
 
     private Weathering() {
     }
 
-    /** Declares one shape's four stages, unaffected first. */
+    /** Declares one shape's four stages, unaffected first, in Backport Core's table. */
     public static void chain(Block... stages) {
-        for (int i = 0; i < stages.length; i++) {
-            STAGE.put(stages[i], i);
-            if (i + 1 < stages.length) {
-                NEXT.put(stages[i], stages[i + 1]);
-                PREVIOUS.put(stages[i + 1], stages[i]);
-            }
-        }
+        Oxidation.chain(stages);
     }
 
-    /** Declares a block and its waxed form. */
+    /** Declares a block and its waxed form, in Backport Core's table. */
     public static void waxed(Block plain, Block waxed) {
-        WAXED.put(plain, waxed);
-        UNWAXED.put(waxed, plain);
+        Oxidation.waxed(plain, waxed);
     }
 
     @Nullable
     public static Block next(Block b) {
-        return NEXT.get(b);
+        return Oxidation.next(b);
     }
 
     @Nullable
     public static Block previous(Block b) {
-        return PREVIOUS.get(b);
+        return Oxidation.previous(b);
     }
 
     @Nullable
     public static Block waxedOf(Block b) {
-        return WAXED.get(b);
+        return Oxidation.waxedOf(b);
     }
 
     @Nullable
     public static Block unwaxed(Block b) {
-        return UNWAXED.get(b);
+        return Oxidation.unwaxed(b);
     }
 
     /** @return the unaffected form of an unwaxed copper block (itself if unaffected) */
     public static Block first(Block b) {
-        Block p;
-        while ((p = PREVIOUS.get(b)) != null) {
-            b = p;
-        }
-        return b;
+        return Oxidation.first(b);
     }
 
     /** @return 0-3 for unwaxed copper blocks, -1 for anything else (waxed copper included) */
     public static int stage(Block b) {
-        Integer s = STAGE.get(b);
-        return s == null ? -1 : s;
+        return Oxidation.stage(b);
     }
 
     public static boolean isCopper(Block b) {
-        return STAGE.containsKey(b) || UNWAXED.containsKey(b);
+        return Oxidation.isCopper(b);
     }
 
     /** The same state on another block of the chain: every property both blocks have is copied. */
-    @SuppressWarnings({"rawtypes", "unchecked"})
     public static IBlockState copy(IBlockState from, Block to) {
-        IBlockState out = to.getDefaultState();
-        for (IProperty p : from.getPropertyKeys()) {
-            if (out.getPropertyKeys().contains(p)) {
-                out = out.withProperty(p, from.getValue(p));
-            }
-        }
-        return out;
+        return Oxidation.copy(from, to);
     }
 
-    /**
-     * Changes a copper block to another block of its chain, keeping its state; for a door, both halves.
-     */
+    /** Changes a copper block to another block of its chain, keeping its state; for a door, both halves. */
     public static void change(World world, BlockPos pos, IBlockState state, Block to) {
-        if (state.getBlock() instanceof BlockDoor) {
-            boolean lower = state.getValue(BlockDoor.HALF) == BlockDoor.EnumDoorHalf.LOWER;
-            BlockPos other = lower ? pos.up() : pos.down();
-            IBlockState otherState = world.getBlockState(other);
-            // The upper half first, so the lower half never sees a mismatched partner and breaks.
-            if (otherState.getBlock() == state.getBlock()) {
-                world.setBlockState(lower ? other : pos, copy(lower ? otherState : state, to), 2);
-                world.setBlockState(lower ? pos : other, copy(lower ? state : otherState, to), 3);
-                return;
-            }
-        }
-        world.setBlockState(pos, copy(state, to), 3);
+        Oxidation.change(world, pos, state, to);
     }
 
-    /** A random tick on an unwaxed copper block. */
+    /** A random tick on an unwaxed copper block: Backport Core's rule, while {@code copper.oxidation} is on. */
     public static void randomTick(World world, BlockPos pos, IBlockState state, Random rand) {
-        if (!ModConfig.copper.oxidation) {
-            return;
-        }
-        if (state.getBlock() instanceof BlockDoor && state.getValue(BlockDoor.HALF) == BlockDoor.EnumDoorHalf.UPPER) {
-            // A door ages as one block: its lower half decides.
-            return;
-        }
-        Block next = NEXT.get(state.getBlock());
-        if (next == null || rand.nextFloat() >= TRY_CHANCE) {
-            return;
-        }
-        if (rand.nextFloat() < ageChance(world, pos, stage(state.getBlock()))) {
-            change(world, pos, state, next);
+        if (ModConfig.copper.oxidation) {
+            Oxidation.randomTick(world, pos, state, rand);
         }
     }
 
-    /** @return the chance this block ages, given the copper around it; 0 if a less oxidized one is near */
+    /** @return the chance this block ages, given every mod's copper around it */
     public static float ageChance(World world, BlockPos pos, int age) {
-        int same = 0;
-        int older = 0;
-        BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
-        for (int dx = -4; dx <= 4; dx++) {
-            int rx = 4 - Math.abs(dx);
-            for (int dy = -rx; dy <= rx; dy++) {
-                int rz = rx - Math.abs(dy);
-                for (int dz = -rz; dz <= rz; dz++) {
-                    if (dx == 0 && dy == 0 && dz == 0) {
-                        continue;
-                    }
-                    p.setPos(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
-                    if (!world.isBlockLoaded(p)) {
-                        continue;
-                    }
-                    int other = stage(world.getBlockState(p).getBlock());
-                    if (other < 0) {
-                        continue;
-                    }
-                    if (other < age) {
-                        return 0;
-                    }
-                    if (other > age) {
-                        older++;
-                    } else {
-                        same++;
-                    }
-                }
-            }
-        }
-        float f = (older + 1) / (float) (older + same + 1);
-        return f * f * (age == 0 ? 0.75F : 1.0F);
+        return Oxidation.ageChance(world, pos, age);
     }
 
     /**

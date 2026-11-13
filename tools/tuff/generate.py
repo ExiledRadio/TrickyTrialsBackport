@@ -45,20 +45,19 @@ def slab(name, double_model):
 
 
 def wall(name):
-    """1.12.2's wall states are up and four booleans (no tall sides): post when up, a low side per side."""
-    post = bs(assets.port_model("block/%s_post" % name))
-    side = bs(assets.port_model("block/%s_side" % name))
-    assets.port_model("block/%s_inventory" % name)
-    # A wall with no sides always stands up as a post (getActualState); the OR also covers the stored
+    """Backport Core's ModernWall has 1.16+'s states (up, and none/low/tall per side): 1.21.11's own multipart."""
+    data = assets.jar_json("assets/minecraft/blockstates/%s.json" % name)
+    for part in data["multipart"]:
+        model = part["apply"]["model"].rpartition(":")[2]
+        part["apply"]["model"] = bs(assets.port_model(model))
+    # A wall with no sides always stands up as a post (ModernWall.getActualState); the OR also covers the stored
     # state, which 1.12.2 never draws but lists among the valid ones.
-    lone = {"north": "false", "east": "false", "south": "false", "west": "false"}
-    parts = [{"when": {"OR": [{"up": "true"}, lone]}, "apply": {"model": post}}]
-    for face, y in (("north", 0), ("east", 90), ("south", 180), ("west", 270)):
-        apply = {"model": side, "uvlock": True}
-        if y:
-            apply["y"] = y
-        parts.append({"when": {face: "true"}, "apply": apply})
-    assets.write_json("blockstates/%s.json" % name, {"multipart": parts})
+    lone = {"north": "none", "east": "none", "south": "none", "west": "none"}
+    for part in data["multipart"]:
+        if part.get("when") == {"up": "true"}:
+            part["when"] = {"OR": [{"up": "true"}, lone]}
+    assets.port_model("block/%s_inventory" % name)
+    assets.write_json("blockstates/%s.json" % name, data)
     assets.item_from_block(name, name + "_inventory")
 
 
