@@ -190,6 +190,10 @@ port_item_model("pale_moss_block")
 named("pale_moss_block")
 port_blockstate("pale_moss_carpet", "pale_moss_carpet", None)
 port_item_model("pale_moss_carpet")
+# 1.12.2's block/carpet names no particle (each 1.12 carpet sets its own; 1.21's parent has "particle": "#wool"),
+# so without this the carpet's break particles, and its item's, are the missing texture.
+assets.write_json("models/block/pale_moss_carpet.json", {"parent": "block/carpet", "textures": {
+    "particle": M + ":block/pale_moss_carpet", "wool": M + ":block/pale_moss_carpet"}})
 named("pale_moss_carpet")
 port_blockstate("pale_hanging_moss", "pale_hanging_moss", {"tip": BOOL})
 port_item_model("pale_hanging_moss")

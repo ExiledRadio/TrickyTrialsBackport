@@ -1,6 +1,7 @@
 {
   "parent": "block/carpet",
   "textures": {
+    "particle": "trickytrialsbackport:block/pale_moss_carpet",
     "wool": "trickytrialsbackport:block/pale_moss_carpet"
   }
 }
