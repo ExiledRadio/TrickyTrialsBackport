@@ -63,6 +63,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.bogged.client.BoggedClient.init();
             com.exiledradio.trickytrialsbackport.crafter.client.CrafterClient.init();
             com.exiledradio.trickytrialsbackport.trial.client.TrialFx.init();
+            com.exiledradio.trickytrialsbackport.bundle.client.BundleClient.init();
         }
     }
 

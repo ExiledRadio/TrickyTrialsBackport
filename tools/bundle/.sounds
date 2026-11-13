@@ -1,0 +1,4 @@
+item.bundle.drop_contents
+item.bundle.insert
+item.bundle.insert_fail
+item.bundle.remove_one

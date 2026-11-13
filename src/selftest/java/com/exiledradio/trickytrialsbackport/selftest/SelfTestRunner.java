@@ -51,6 +51,7 @@ public final class SelfTestRunner {
             new BreezeSelfTest(),
             new TuffSelfTest(),
             new TrialSelfTest(),
+            new BundleSelfTest(),
     };
 
     private final List<String> wanted;

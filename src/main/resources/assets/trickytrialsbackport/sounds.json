@@ -1131,5 +1131,95 @@
       "trickytrialsbackport:item/ominous_bottle/dispose"
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.ominous_bottle.dispose"
+  },
+  "item.bundle.insert": {
+    "sounds": [
+      "trickytrialsbackport:item/bundle/insert1",
+      {
+        "name": "trickytrialsbackport:item/bundle/insert1",
+        "pitch": 0.95
+      },
+      {
+        "name": "trickytrialsbackport:item/bundle/insert1",
+        "pitch": 1.05
+      },
+      "trickytrialsbackport:item/bundle/insert2",
+      {
+        "name": "trickytrialsbackport:item/bundle/insert2",
+        "pitch": 0.95
+      },
+      {
+        "name": "trickytrialsbackport:item/bundle/insert2",
+        "pitch": 1.05
+      },
+      "trickytrialsbackport:item/bundle/insert3",
+      {
+        "name": "trickytrialsbackport:item/bundle/insert3",
+        "pitch": 0.95
+      },
+      {
+        "name": "trickytrialsbackport:item/bundle/insert3",
+        "pitch": 1.05
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.bundle.insert"
+  },
+  "item.bundle.insert_fail": {
+    "sounds": [
+      "trickytrialsbackport:item/bundle/insert_fail"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.bundle.insert_fail"
+  },
+  "item.bundle.remove_one": {
+    "sounds": [
+      "trickytrialsbackport:item/bundle/remove_one1",
+      {
+        "name": "trickytrialsbackport:item/bundle/remove_one1",
+        "pitch": 1.05
+      },
+      {
+        "name": "trickytrialsbackport:item/bundle/remove_one1",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/bundle/remove_one2",
+      {
+        "name": "trickytrialsbackport:item/bundle/remove_one2",
+        "pitch": 1.05
+      },
+      {
+        "name": "trickytrialsbackport:item/bundle/remove_one2",
+        "pitch": 1.1
+      },
+      "trickytrialsbackport:item/bundle/remove_one3",
+      {
+        "name": "trickytrialsbackport:item/bundle/remove_one3",
+        "pitch": 1.05
+      },
+      {
+        "name": "trickytrialsbackport:item/bundle/remove_one3",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.bundle.remove_one"
+  },
+  "item.bundle.drop_contents": {
+    "sounds": [
+      "trickytrialsbackport:item/bundle/drop_contents1",
+      {
+        "name": "trickytrialsbackport:item/bundle/drop_contents1",
+        "pitch": 0.95
+      },
+      "trickytrialsbackport:item/bundle/drop_contents2",
+      {
+        "name": "trickytrialsbackport:item/bundle/drop_contents2",
+        "pitch": 0.95
+      },
+      "trickytrialsbackport:item/bundle/drop_contents3",
+      {
+        "name": "trickytrialsbackport:item/bundle/drop_contents3",
+        "pitch": 0.95
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.bundle.drop_contents"
   }
 }

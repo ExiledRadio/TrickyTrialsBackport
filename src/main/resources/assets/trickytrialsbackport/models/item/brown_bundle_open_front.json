@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:item/template_bundle_open_front",
+  "textures": {
+    "layer0": "trickytrialsbackport:item/brown_bundle_open_front"
+  }
+}
