@@ -178,3 +178,19 @@ subtitles.trickytrialsbackport.item.axe.wax_off=除蠟
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=上蠟
 
 # --- common ---
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=增強目標方塊的輪廓對比度。
+options.accessibility.high_contrast_block_outline=高對比度方塊輪廓
+options.chat.drafts.tooltip=未傳送的訊息將被儲存，並可在下次開啟聊天欄時傳送。
+options.chat.drafts=儲存未傳送的聊天訊息
+options.inactivityFpsLimit.afk.tooltip=當玩家超過一分鐘沒有進行操作時，將 FPS 限制為 30。再過 9 分鐘後，進一步將其限制為 10。
+options.inactivityFpsLimit.afk=無操作時
+options.inactivityFpsLimit.minimized.tooltip=只在遊戲視窗最小化時限制 FPS。
+options.inactivityFpsLimit.minimized=最小化時
+options.inactivityFpsLimit=限制 FPS
+options.invertMouseX=反轉滑鼠 X 軸
+options.sprintWindow.tooltip=連按兩下前進鍵觸發跑步的最大間隔，時間以刻為單位。
+options.sprintWindow=跑步觸發間隔
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=氧氣值消耗

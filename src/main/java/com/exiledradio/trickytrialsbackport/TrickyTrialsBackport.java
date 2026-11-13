@@ -54,6 +54,7 @@ public final class TrickyTrialsBackport {
         Owners.declareOlderOwners();
         NetworkHandler.init();
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
+        com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.preInit();
 
         // Client-only setup lives in a class a dedicated server never loads. The call names no client
         // type, so this class verifies on a server - a guarded method here would not.
@@ -62,6 +63,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.breeze.client.BreezeClient.init();
             com.exiledradio.trickytrialsbackport.bogged.client.BoggedClient.init();
             com.exiledradio.trickytrialsbackport.crafter.client.CrafterClient.init();
+            com.exiledradio.trickytrialsbackport.lookfeel.client.LookAndFeelClient.init();
         }
     }
 
@@ -69,6 +71,7 @@ public final class TrickyTrialsBackport {
     public void init(FMLInitializationEvent event) {
         com.exiledradio.trickytrialsbackport.common.Guis.init();
         com.exiledradio.trickytrialsbackport.copper.CopperContent.init();
+        com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.init();
     }
 
     @Mod.EventHandler

@@ -1,0 +1,11 @@
+{
+  "ambient.cave": {
+    "replace": false,
+    "sounds": [
+      "trickytrialsbackport:ambient/cave/cave20",
+      "trickytrialsbackport:ambient/cave/cave21",
+      "trickytrialsbackport:ambient/cave/cave22",
+      "trickytrialsbackport:ambient/cave/cave23"
+    ]
+  }
+}

@@ -178,3 +178,19 @@ subtitles.trickytrialsbackport.item.axe.wax_off=脱蜡
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=涂蜡
 
 # --- common ---
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=提高选中方块的轮廓对比度。
+options.accessibility.high_contrast_block_outline=高对比度方块轮廓
+options.chat.drafts.tooltip=未发送的消息将被保存，可以在下次打开聊天时发送。
+options.chat.drafts=保存未发送的聊天消息
+options.inactivityFpsLimit.afk.tooltip=若超过1分钟无操作，帧率将被限制至30。9分钟后进一步降至10。
+options.inactivityFpsLimit.afk=无操作时
+options.inactivityFpsLimit.minimized.tooltip=仅在游戏窗口最小化时限制帧率。
+options.inactivityFpsLimit.minimized=最小化时
+options.inactivityFpsLimit=降低帧率
+options.invertMouseX=反转鼠标X轴
+options.sprintWindow.tooltip=双击前进键激活疾跑的最大时间间隔，以刻为单位。
+options.sprintWindow=疾跑间隔
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=氧气值：减少

@@ -86,3 +86,45 @@ Core too. **Want:** that wall in Core, so tuff, deepslate, resin brick and every
 alike. **Meanwhile:** ours stay vanilla-style; moving them is a blockstate and class swap with no change to
 saved worlds (both store metadata 0).
 
+
+## 9. Presentation: what 1.21.x's look and feel needs from Core
+
+Stream 33 (`lookfeel`, `docs/streams/lookfeel.md`) hands Core everything its API takes. These pieces of 1.21 to
+1.21.11 are Core's single slots (or need a Core hook) and are not built:
+
+1. **Menu track volume.** `addMenuMusic` plays every track at full volume; 1.21.6's five menu tracks are `music.menu`
+   entries at volume 0.4 (1.21's were 0.4 and 0.8; 1.20's 0.4). **Want:** `addMenuMusic(sound, weight, volume)`.
+   **Meanwhile:** full volume.
+2. **Removing another backport's menu track by its vanilla path.** Vanilla 1.21 has no 1.18, 1.19 or 1.20 tracks
+   in the menu, but Core applies a version's removals only while that version is installed, so a pack of Caves &
+   Cliffs and Tricky Trials would still play 1.18's. **Want:** `removeMenuMusic` matching the path whatever the
+   namespace (`music/game/wending`), or `replaceMenuMusic(...)` for "the pool is exactly these". **Meanwhile:**
+   `LookAndFeel.OLDER_MENU_TRACKS` removes the twelve by the names the family uses
+   (`<modid>:music/game/<vanilla path>`); a backport that names them otherwise keeps them.
+3. **1.21.6's music options and ticker** (Sounds screen and Core's music ticker): Music Frequency (Default 10-20
+   minutes, Frequent, Constant), Music Toast (Never, Pause Menu, Toast and Pause Menu: the track's title),
+   music playing on while paused, and the "UI" volume slider for button clicks (with Friendly/Hostile Mobs, now
+   vanilla text). **Meanwhile:** none.
+4. **1.21.9's Sounds screen**: volume sliders play a preview sound outside a world.
+5. **1.21.11's Video Settings**: the Preset slider (Fast, Fancy, Fabulous! as presets) and the three sections
+   (Display, Quality & Performance, Preferences), Cloud Distance (1.21.6, 2-128 chunks, Core's cloud renderer),
+   Chunk Fade, texture filtering. **Meanwhile:** our Reduce FPS when sits after VSync in 1.12.2's list.
+6. **1.21.9's Accessibility and Controls layout**: Auto-Jump, Toggle Sneak and Toggle Sprint leave Accessibility
+   for Controls, which gains a "Controls..." button there; Attack/Destroy and Use Item/Place Block get Hold/Toggle
+   (needs Core's key state handling, as Toggle Sneak); Allow Cursor Changes (LWJGL 2 has no system cursors).
+7. **Per-value tooltips on `CycleOption`.** 1.21.2's Reduce FPS when explains each value. **Meanwhile:** the AFK
+   value's tooltip.
+8. **1.20.5's blurred panorama.** 1.21.9's loading screen (and every 1.20.5+ menu) draws the panorama blurred.
+   **Want:** `PanoramaRenderer.renderBlurred(...)`. **Meanwhile:** our loading screen draws it sharp under the
+   menu tile.
+9. **Menus without a world at 60 frames a second** (1.21.2's `FramerateLimitTracker`; 1.12.2 holds them at 30 in
+   `Minecraft.getLimitFramerate`, a patch).
+10. **1.21.2's slot highlight** (`slot_highlight_back` under the item, `slot_highlight_front` over it, so the
+    item stays visible): `GuiContainer.drawScreen` draws 1.12.2's white overlay; a patch or a Core-drawn slot.
+11. **1.21.9's F3 rework** (F3 in menus, the Debug Options screen on F3+F6, each part off, on with F3 or always)
+    and **1.21.11's Debug key category** (rebindable debug keys). Core owns F3.
+12. **Slider snapping** (1.21.11: sliders snap on release, arrow keys move one value) in Core's option widgets.
+13. **1.21.11's sky**: sunrise and sunset color react to rain and thunder (`WorldProvider.calcSunriseSunsetColors`
+    is not in `FogPipeline.Sky`); clouds following world time. **Want:** a `sunrise(...)` step, a cloud offset.
+14. **The 1.20 title logo layout** (shared with Trails & Tales): 1.21.11's `minecraft.png` and `edition.png` only
+    fit 1.20's layout, which Core does not draw, so this mod does not register a title logo.

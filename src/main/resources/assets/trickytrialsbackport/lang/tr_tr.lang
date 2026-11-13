@@ -178,3 +178,19 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Bal mumu temizlendi
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Bal mumu sürüldü
 
 # --- common ---
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Hedef alınan bloğun vurgu kontrastını iyileştirir.
+options.accessibility.high_contrast_block_outline=Yüksek Kontrast Blok Vurguları
+options.chat.drafts.tooltip=Gönderilmemiş mesajlar kaydedilir ve sohbet tekrar açıldığında gönderilebilirler.
+options.chat.drafts=Gönderilmemiş Mesajları Kaydet
+options.inactivityFpsLimit.afk.tooltip=Oyun, bir dakika boyu oyuncu girdisi almaz ise kare hızını 30’a sınırlar.\n9 dakika daha sürerse kare hızı 10’a sınırlanır.
+options.inactivityFpsLimit.afk=Durgunken
+options.inactivityFpsLimit.minimized.tooltip=Kare hızını sadece oyun penceresi küçültülmüşken sınırlar.
+options.inactivityFpsLimit.minimized=Arka plandayken
+options.inactivityFpsLimit=FPS Düşürme Koşulu
+options.invertMouseX=Fare X Eksenini Ters Çevir
+options.sprintWindow.tooltip=Birim zaman formatında ileri tuşuna çift-basmanın koşmayı etkinleştirdiği zaman aralığı.
+options.sprintWindow=Koşma Zaman Aralığı
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Nefes çubuğu düştü

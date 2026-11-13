@@ -178,3 +178,19 @@ subtitles.trickytrialsbackport.item.axe.wax_off=Cera removida
 subtitles.trickytrialsbackport.item.honeycomb.wax_on=Cera aplicada
 
 # --- common ---
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Aumenta o contraste do contorno do bloco-alvo.
+options.accessibility.high_contrast_block_outline=Contorno de blocos em alto contraste
+options.chat.drafts.tooltip=Mensagens não enviadas serão salvas e podem ser enviadas ao abrir o chat.
+options.chat.drafts=Salvar mensagens não enviadas
+options.inactivityFpsLimit.afk.tooltip=Limita a taxa de quadros para 30 após a inatividade do jogador por mais de um minuto. Redução para 10 quadros após mais 9 minutos.
+options.inactivityFpsLimit.afk=Ausentar-se
+options.inactivityFpsLimit.minimized.tooltip=Limita a taxa de quadros ao minimizar o jogo.
+options.inactivityFpsLimit.minimized=Minimizar
+options.inactivityFpsLimit=Reduzir FPS ao
+options.invertMouseX=Inverter eixo X do mouse
+options.sprintWindow.tooltip=Intervalo de tempo (em tiques) no qual o toque duplo na tecla para a frente ativa a corrida.
+options.sprintWindow=Intervalo de corrida
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Oxigenação baixa
