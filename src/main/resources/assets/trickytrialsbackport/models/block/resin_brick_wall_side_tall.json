@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_wall_side_tall",
+  "textures": {
+    "wall": "trickytrialsbackport:block/resin_bricks"
+  }
+}
