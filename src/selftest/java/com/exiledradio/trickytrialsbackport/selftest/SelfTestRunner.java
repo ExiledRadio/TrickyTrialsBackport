@@ -55,6 +55,7 @@ public final class SelfTestRunner {
             new EffectsSelfTest(),
             new DecorSelfTest(),
             new PaleGardenSelfTest(),
+            new LookfeelSelfTest(),
     };
 
     private final List<String> wanted;

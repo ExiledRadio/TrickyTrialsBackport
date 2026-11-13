@@ -242,3 +242,19 @@ subtitles.trickytrialsbackport.item.bundle.drop_contents=Bundel wordt geleegd
 subtitles.trickytrialsbackport.item.bundle.insert=Voorwerp wordt ingepakt
 subtitles.trickytrialsbackport.item.bundle.insert_fail=Voorwerp past niet in bundel
 subtitles.trickytrialsbackport.item.bundle.remove_one=Voorwerp wordt uitgepakt
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Verhoogt het blokomlijningscontrast van het aangekeken blok.
+options.accessibility.high_contrast_block_outline=Hoog contrast blokomlijning
+options.chat.drafts.tooltip=Niet-verzonden berichten worden opgeslagen en kunnen verstuurd worden wanneer de chat weer geopend wordt.
+options.chat.drafts=Niet-verzonden chats opslaan
+options.inactivityFpsLimit.afk.tooltip=Beperkt de framerate tot dertig wanneer het spel geen invoer van een speler krijgt voor langer dan een minuut. Na negen minuten wordt dit beperkt tot tien.
+options.inactivityFpsLimit.afk=AFK
+options.inactivityFpsLimit.minimized.tooltip=Beperkt de framerate alleen wanneer het spel geminimaliseerd is.
+options.inactivityFpsLimit.minimized=geminimaliseerd
+options.inactivityFpsLimit=FPS verminderen wanneer
+options.invertMouseX=X-as muis spiegelen
+options.sprintWindow.tooltip=Tijdinterval in ticks waarin rennen wordt geactiveerd bij dubbel drukken op de vooruitknop.
+options.sprintWindow=Reninterval
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Zuurstofmeter daalt

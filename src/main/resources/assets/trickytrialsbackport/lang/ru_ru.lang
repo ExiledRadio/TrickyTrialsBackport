@@ -242,3 +242,19 @@ subtitles.trickytrialsbackport.item.bundle.drop_contents=Мешок опусто
 subtitles.trickytrialsbackport.item.bundle.insert=Предмет добавлен
 subtitles.trickytrialsbackport.item.bundle.insert_fail=Мешок отвергает предмет
 subtitles.trickytrialsbackport.item.bundle.remove_one=Предмет извлечён
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Улучшает видимость обводки при наведении на блок.
+options.accessibility.high_contrast_block_outline=Контрастная обводка блоков
+options.chat.drafts.tooltip=Неотправленные сообщения сохранятся и могут быть отправлены при следующем открытии чата.
+options.chat.drafts=Сохранять черновики
+options.inactivityFpsLimit.afk.tooltip=Ограничивает частоту кадров до 30 спустя минуту ожидания действий со стороны игрока. Спустя ещё 9 минут ограничивает до 10.
+options.inactivityFpsLimit.afk=В простое
+options.inactivityFpsLimit.minimized.tooltip=Ограничивает частоту кадров только при сворачивании игры.
+options.inactivityFpsLimit.minimized=В фоне
+options.inactivityFpsLimit=Ограничение FPS
+options.invertMouseX=Инверсия оси мыши X
+options.sprintWindow.tooltip=Временной промежуток в тактах, в котором двойное нажатие клавиши движения вперёд включает бег.
+options.sprintWindow=Интервал разбега
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Запас воздуха убывает

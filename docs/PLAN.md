@@ -83,10 +83,12 @@ and one block of entity ids. No stream calls another's classes; other streams' i
 | 30 | Poplar and the dappled forest | 26.3 | `poplar` | `poplar` | 75-79 | 150-154 | Still open #2 for the biome only |
 | 31 | Wool and concrete shapes, cushions, straw beds | 26.3 | `softblocks` | `softBlocks` | 80-84 | 155-159 | nothing |
 | 32 | Abandoned camps and explorer maps | 26.3 | `camps` | `camps` | none | 160-164 | Backport Core (templates, terrain) |
+| 33 | Look and feel | 1.21-1.21.11 | `lookfeel` | none (Backport Core's presentation options) | none | 165-169 | Backport Core 1.1.0 (`presentation`) |
 
 Ports: the main worktree's dev server uses 25900; a stream worktree uses `25900 + row` for rows 1-19,
 and rows 20-32 take the port of a stream already merged (`25900 + row - 19`, wrapping again past 25919). Streams are built one at a
-time while the machine is shared, so in practice one test server runs at once.
+time while the machine is shared, so in practice one test server runs at once. Row 33 (look and feel) uses 25933, outside the
+wrapping block, so it never meets a stream worktree's server.
 
 ### 1. Tuff sets (1.21)
 
@@ -346,6 +348,21 @@ Update's lodestone), and the rest.
 ### Later 26.x
 
 Each later 26.x release joins this plan as its own streams when it ships (26.4 is in snapshots now).
+
+### 33. Look and feel (1.21-1.21.11's non-content changes)
+
+Registered with Backport Core's `presentation` module, which shows the newest installed version's pieces
+(`family-notes/PRESENTATION_PLAN.md`; research in `family-notes/RESEARCH_NON_CONTENT_CHANGES.md`, section 1.21).
+The newest installed version with this mod is 1.21.11, so its panorama (Mounts of Mayhem) is the one shipped.
+What is in, what is out and why: `docs/streams/lookfeel.md`; what Core would have to add: `CORE_REQUESTS.md` #10.
+
+- 1.21: the menu music drops 1.18's, 1.19's and 1.20's tracks; four cave ambience sounds.
+- 1.21.2: Reduce FPS when, High Contrast Block Outlines, the air bubbles, the spawner's sounds, item rarities,
+  F3's entity line without "B".
+- 1.21.6: splashes, the five menu tracks, fog in rain.
+- 1.21.9: Invert Mouse X, Sprint Window, Save Unsent Chats and chat drafts, chat in portals and through a
+  dimension change, the loading screen.
+- 1.21.11: panorama and overlay, splashes, nether fog, the startup logo, vanilla text as 1.21.11 words it.
 
 ## Decisions (formerly open)
 

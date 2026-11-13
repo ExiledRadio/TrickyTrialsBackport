@@ -242,3 +242,19 @@ subtitles.trickytrialsbackport.item.bundle.drop_contents=Bündel entleert
 subtitles.trickytrialsbackport.item.bundle.insert=Gegenstand wird eingepackt
 subtitles.trickytrialsbackport.item.bundle.insert_fail=Bündel voll
 subtitles.trickytrialsbackport.item.bundle.remove_one=Gegenstand wird ausgepackt
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Erhöht den Kontrast der Umrisslinien des angezielten Blocks.
+options.accessibility.high_contrast_block_outline=Kontrastreiche Blockumrisse
+options.chat.drafts.tooltip=Nicht gesendete Nachrichten werden gespeichert und können beim nächsten Öffnen des Chats gesendet werden.
+options.chat.drafts=Ungesendete Chatnachrichten speichern
+options.inactivityFpsLimit.afk.tooltip=Begrenzt die Bildwiederholrate auf 30 Bilder pro Sekunde, wenn der Spieler länger als 1 Minute keine Eingabe tätigt. Begrenzt sie nach 9 weiteren Minuten auf 10 Bilder pro Sekunde.
+options.inactivityFpsLimit.afk=Abwesend
+options.inactivityFpsLimit.minimized.tooltip=Begrenzt die Bildwiederholrate nur dann, wenn das Spielfenster minimiert ist.
+options.inactivityFpsLimit.minimized=Minimiert
+options.inactivityFpsLimit=FPS verringern, wenn
+options.invertMouseX=X‐Mausachse umkehren
+options.sprintWindow.tooltip=Zeitfenster in Ticks, innerhalb dessen ein doppelter Anschlag der Vorwärtstaste den Spieler sprinten lässt.
+options.sprintWindow=Sprint‐Zeitfenster
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Luftvorrat nimmt ab

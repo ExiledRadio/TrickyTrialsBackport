@@ -242,3 +242,19 @@ subtitles.trickytrialsbackport.item.bundle.drop_contents=Sacchetto svuotato
 subtitles.trickytrialsbackport.item.bundle.insert=Oggetto inserito
 subtitles.trickytrialsbackport.item.bundle.insert_fail=Sacchetto pieno
 subtitles.trickytrialsbackport.item.bundle.remove_one=Oggetto estratto
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Aumenta il contrasto del contorno del blocco puntato.
+options.accessibility.high_contrast_block_outline=Contorni evidenti
+options.chat.drafts.tooltip=I messaggi non inviati verranno salvati e potranno essere inviati aprendo la chat.
+options.chat.drafts=Salva le bozze
+options.inactivityFpsLimit.afk.tooltip=Limita la frequenza dei fotogrammi a 30 quando il gioco non riceve alcun comando dal giocatore per più di un minuto, dunque a 10 dopo altri 9 minuti.
+options.inactivityFpsLimit.afk=Se inattivo
+options.inactivityFpsLimit.minimized.tooltip=Limita la frequenza dei fotogrammi solo quando la finestra di gioco è ridotta a icona.
+options.inactivityFpsLimit.minimized=Se ridotto
+options.inactivityFpsLimit=Riduci frequenza
+options.invertMouseX=Inverti asse x del mouse
+options.sprintWindow.tooltip=Intervallo di tempo in tick entro cui il doppio tocco sul tasto «Cammina in avanti» attiva la corsa.
+options.sprintWindow=Intervallo di corsa
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Ossigeno in calo

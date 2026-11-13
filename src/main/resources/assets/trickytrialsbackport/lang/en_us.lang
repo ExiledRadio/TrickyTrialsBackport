@@ -510,3 +510,19 @@ subtitles.trickytrialsbackport.ambient.sound=Eerie noise
 subtitles.trickytrialsbackport.block.eyeblossom.close=Eyeblossom closes
 subtitles.trickytrialsbackport.block.eyeblossom.open=Eyeblossom opens
 subtitles.trickytrialsbackport.item.axe.strip=Axe strips
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Enhances the block outline contrast of the targeted block.
+options.accessibility.high_contrast_block_outline=High Contrast Block Outlines
+options.chat.drafts.tooltip=Unsent messages will be saved and can be sent the next time chat is opened.
+options.chat.drafts=Save Unsent Chats
+options.inactivityFpsLimit.afk.tooltip=Limits framerate to 30 when the game is not getting any player input for more than a minute. Further limits it to 10 after 9 more minutes.
+options.inactivityFpsLimit.afk=AFK
+options.inactivityFpsLimit.minimized.tooltip=Limits framerate only when the game window is minimized.
+options.inactivityFpsLimit.minimized=Minimized
+options.inactivityFpsLimit=Reduce FPS when
+options.invertMouseX=Invert Mouse X
+options.sprintWindow.tooltip=Time window in ticks where double-tapping the forward key activates sprint.
+options.sprintWindow=Sprint Window
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Breath meter dropping

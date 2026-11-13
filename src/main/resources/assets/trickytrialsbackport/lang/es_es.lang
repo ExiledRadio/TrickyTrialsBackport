@@ -242,3 +242,19 @@ subtitles.trickytrialsbackport.item.bundle.drop_contents=Saco vaciado
 subtitles.trickytrialsbackport.item.bundle.insert=Objeto guardado
 subtitles.trickytrialsbackport.item.bundle.insert_fail=Saco lleno
 subtitles.trickytrialsbackport.item.bundle.remove_one=Objeto sacado
+
+# --- lookfeel ---
+options.accessibility.high_contrast_block_outline.tooltip=Aumenta el contraste del contorno del bloque al que estés apuntando.
+options.accessibility.high_contrast_block_outline=Bordes de alto contraste
+options.chat.drafts.tooltip=Los mensajes no enviados se guardarán y se podrán enviar la próxima vez que se abra el chat.
+options.chat.drafts=Guardar mensajes no enviados
+options.inactivityFpsLimit.afk.tooltip=Limita los FPS a 30 al pasar un minuto sin actividad. El límite aumentará a 10 FPS tras pasar 10 minutos sin actividad.
+options.inactivityFpsLimit.afk=Por inactividad
+options.inactivityFpsLimit.minimized.tooltip=Solo se limitarán los FPS cuando el juego esté minimizado.
+options.inactivityFpsLimit.minimized=Al minimizar
+options.inactivityFpsLimit=Reducir FPS
+options.invertMouseX=Invertir eje X del ratón
+options.sprintWindow.tooltip=Intervalo de tiempo en tics necesario para empezar a correr cuando se pulsa dos veces la tecla de avance.
+options.sprintWindow=Intervalo para correr
+options.value=%s
+subtitles.trickytrialsbackport.ui.hud.bubble_pop=Oxígeno se agota
