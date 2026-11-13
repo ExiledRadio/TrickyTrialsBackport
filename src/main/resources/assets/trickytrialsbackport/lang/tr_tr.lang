@@ -244,6 +244,11 @@ subtitles.trickytrialsbackport.item.bundle.insert_fail=Kese eşya reddetti
 subtitles.trickytrialsbackport.item.bundle.remove_one=Keseden çıkarıldı
 
 # --- lookfeel ---
+music.game.below_and_above=Amos Roddy - Below and Above
+music.game.broken_clocks=Amos Roddy - Broken Clocks
+music.game.fireflies=Amos Roddy - Fireflies
+music.game.lilypad=Amos Roddy - Lilypad
+music.game.os_piano=Amos Roddy - O's Piano
 options.accessibility.high_contrast_block_outline.tooltip=Hedef alınan bloğun vurgu kontrastını iyileştirir.
 options.accessibility.high_contrast_block_outline=Yüksek Kontrast Blok Vurguları
 options.chat.drafts.tooltip=Gönderilmemiş mesajlar kaydedilir ve sohbet tekrar açıldığında gönderilebilirler.

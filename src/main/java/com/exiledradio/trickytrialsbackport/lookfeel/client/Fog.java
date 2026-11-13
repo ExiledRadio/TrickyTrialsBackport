@@ -70,6 +70,29 @@ public final class Fog {
     };
 
     /**
+     * 1.21.11 ({@code WeatherAttributes}): rain multiplies the sunrise glow's red and green by 0.5 and blue by 0.6, and
+     * thunder by 0.25, 0.25 and 0.3, each eased in by its level (rain by what is not thunder); and the clouds drift by
+     * world time, the same for every player (Backport Core's P24 and P25).
+     */
+    public static final FogPipeline.Step SKY = new FogPipeline.Step() {
+        @Override
+        public void sunrise(FogPipeline.Sunrise s) {
+            World world = Minecraft.getMinecraft().world;
+            if (s.rgba == null || world == null || world.provider != s.provider) {
+                return;
+            }
+            float thunder = world.getThunderStrength(s.partialTicks);
+            float rain = world.getRainStrength(s.partialTicks) - thunder;
+            Rules.weatherSunrise(s.rgba, rain, thunder);
+        }
+
+        @Override
+        public boolean cloudsFollowWorldTime() {
+            return true;
+        }
+    };
+
+    /**
      * 1.21.11 ({@code the_nether}'s {@code fog_start_distance} 10 and {@code fog_end_distance} 96): the nether's fog no
      * longer follows the render distance (1.12.2's 5% to 50% of it, capped at 192); it reaches no farther than the
      * render distance itself.

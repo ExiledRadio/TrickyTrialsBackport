@@ -244,6 +244,11 @@ subtitles.trickytrialsbackport.item.bundle.insert_fail=Bündel voll
 subtitles.trickytrialsbackport.item.bundle.remove_one=Gegenstand wird ausgepackt
 
 # --- lookfeel ---
+music.game.below_and_above=Amos Roddy – Below and Above
+music.game.broken_clocks=Amos Roddy – Broken Clocks
+music.game.fireflies=Amos Roddy – Fireflies
+music.game.lilypad=Amos Roddy – Lilypad
+music.game.os_piano=Amos Roddy – O’s Piano
 options.accessibility.high_contrast_block_outline.tooltip=Erhöht den Kontrast der Umrisslinien des angezielten Blocks.
 options.accessibility.high_contrast_block_outline=Kontrastreiche Blockumrisse
 options.chat.drafts.tooltip=Nicht gesendete Nachrichten werden gespeichert und können beim nächsten Öffnen des Chats gesendet werden.

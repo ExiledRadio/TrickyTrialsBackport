@@ -65,18 +65,18 @@ public final class LookAndFeel {
     public static final ToggleOption SAVE_CHAT_DRAFTS = new ToggleOption(ID + ":save_chat_drafts",
             "options.chat.drafts", OptionScreen.CHAT, false);
 
-    /** The menu tracks of the versions before 1.21, as the family's backports name them; vanilla 1.21 has none. */
+    /**
+     * The menu tracks of the versions before 1.21, by vanilla path, whichever backport plays them (Core 1.2.0's removal
+     * by path); vanilla 1.21 has none of them.
+     */
     public static final String[] OLDER_MENU_TRACKS = {
             // 1.18 (1.19 removed them)
-            "cavesandcliffsbackport:music/game/infinite_amethyst", "cavesandcliffsbackport:music/game/left_to_bloom",
-            "cavesandcliffsbackport:music/game/one_more_day", "cavesandcliffsbackport:music/game/stand_tall",
-            "cavesandcliffsbackport:music/game/wending",
+            "music/game/infinite_amethyst", "music/game/left_to_bloom", "music/game/one_more_day", "music/game/stand_tall",
+            "music/game/wending",
             // 1.19 (1.20 removed them)
-            "wildupdatebackport:music/game/swamp/aerie", "wildupdatebackport:music/game/swamp/firebugs",
-            "wildupdatebackport:music/game/swamp/labyrinthine",
+            "music/game/swamp/aerie", "music/game/swamp/firebugs", "music/game/swamp/labyrinthine",
             // 1.20 (1.21 removed them)
-            "trailsandtalesbackport:music/game/a_familiar_room", "trailsandtalesbackport:music/game/bromeliad",
-            "trailsandtalesbackport:music/game/crescent_dunes", "trailsandtalesbackport:music/game/echo_in_the_wind",
+            "music/game/a_familiar_room", "music/game/bromeliad", "music/game/crescent_dunes", "music/game/echo_in_the_wind",
     };
 
     /** 1.21.2's {@code ui.hud.bubble_pop}: an air bubble bursting while the player is under water. */
@@ -103,17 +103,24 @@ public final class LookAndFeel {
         }
 
         // 1.21.2: Video Settings has Reduce FPS when after VSync; Accessibility Settings ends with the outline.
-        INACTIVITY_FPS_LIMIT.tooltip("options.inactivityFpsLimit.afk.tooltip");
+        INACTIVITY_FPS_LIMIT.valueTooltips("options.inactivityFpsLimit.minimized.tooltip", "options.inactivityFpsLimit.afk.tooltip");
         HIGH_CONTRAST_OUTLINE.tooltip("options.accessibility.high_contrast_block_outline.tooltip");
         Presentation.version("1.21.2")
+                .replaceAsset("textures/gui/sprites/container/slot_highlight_back.png", vanilla("textures/gui/sprites/container/slot_highlight_back.png"))
+                .replaceAsset("textures/gui/sprites/container/slot_highlight_front.png", vanilla("textures/gui/sprites/container/slot_highlight_front.png"))
                 .option(INACTIVITY_FPS_LIMIT.after("ENABLE_VSYNC"))
                 .option(HIGH_CONTRAST_OUTLINE);
 
         Contribution v1216 = Presentation.version("1.21.6")
+                .replaceAsset("textures/entity/ghast/ghast.png", vanilla("textures/entity/ghast/ghast.png"))
+                .replaceAsset("textures/entity/ghast/ghast_shooting.png", vanilla("textures/entity/ghast/ghast_shooting.png"))
+                .replaceAsset("textures/gui/sprites/toast/now_playing.png", vanilla("textures/gui/sprites/toast/now_playing.png"))
+                .replaceAsset("textures/gui/sprites/icon/music_notes.png", vanilla("textures/gui/sprites/icon/music_notes.png"))
                 .addSplashes(new ResourceLocation(ID, "texts/splashes_1.21.6_added.txt"))
                 .removeSplashes(new ResourceLocation(ID, "texts/splashes_1.21.6_removed.txt"));
         for (String track : lines("/assets/" + ID + "/texts/menu_music_1.21.6.txt")) {
-            v1216.addMenuMusic(track, 1);
+            // music.menu's 1.21.6 entries: weight 1, volume 0.4.
+            v1216.addMenuMusic(track, 1, 0.4F);
         }
 
         // 1.21.9: Mouse Settings' Invert Mouse X sits before Invert Mouse Y (1.12.2's Invert Mouse).
@@ -132,6 +139,11 @@ public final class LookAndFeel {
                 .addSplashes(new ResourceLocation(ID, "texts/splashes_1.21.11_added.txt"))
                 .startupLogo("textures/gui/title/mojangstudios.png", new ResourceLocation(ID, "textures/gui/title/mojangstudios.png"))
                 .vanillaText(new ResourceLocation(ID, "vanilla_text"));
+    }
+
+    /** @return our copy of one of vanilla's 1.21.11 assets ({@code assets/<modid>/vanilla/<path>}) */
+    private static ResourceLocation vanilla(String path) {
+        return new ResourceLocation(ID, "vanilla/" + path);
     }
 
     /** Init, both sides: the spawner's 1.21.2 sounds. */

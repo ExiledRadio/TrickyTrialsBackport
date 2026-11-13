@@ -244,6 +244,11 @@ subtitles.trickytrialsbackport.item.bundle.insert_fail=Saco lleno
 subtitles.trickytrialsbackport.item.bundle.remove_one=Objeto desempaquetado
 
 # --- lookfeel ---
+music.game.below_and_above=Amos Roddy - Below and Above
+music.game.broken_clocks=Amos Roddy - Broken Clocks
+music.game.fireflies=Amos Roddy - Fireflies
+music.game.lilypad=Amos Roddy - Lilypad
+music.game.os_piano=Amos Roddy - O's Piano
 options.accessibility.high_contrast_block_outline.tooltip=Mejora el contraste del borde del bloque apuntado.
 options.accessibility.high_contrast_block_outline=Bordes de alto contraste
 options.chat.drafts.tooltip=Los mensajes no enviados se guardarán y se podrán enviar la próxima vez que se abra el chat.

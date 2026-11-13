@@ -43,6 +43,7 @@ public final class LookAndFeelClient {
         LoadingScreens.register(LoadingRevision.SPAWN_VIEW_1_21_9, new LoadingScreen1219());
         FogPipeline.add("1.21.6", "fog thickens in rain", Fog.RAIN);
         FogPipeline.add("1.21.11", "nether fog from 10 to 96 blocks", Fog.NETHER);
+        FogPipeline.add("1.21.11", "sunrise dimmed by rain and thunder, clouds by world time", Fog.SKY);
         DebugText.add("1.21.2", "no B on the entity line", lines -> {
             for (int i = 0; i < lines.left.size(); i++) {
                 String line = lines.left.get(i);

@@ -22,12 +22,12 @@ import javax.annotation.Nullable;
 
 /**
  * 1.21.9's world-loading screen ({@code LevelLoadingScreen}), Backport Core's {@code SPAWN_VIEW_1_21_9} revision:
- * the panorama with 1.20.5's dark menu tile over it, "Loading terrain...", a 200 by 2 progress bar under it (black,
+ * the blurred panorama with 1.20.5's dark menu tile over it, "Loading terrain...", a 200 by 2 progress bar under it (black,
  * filled green), and the chunks being prepared as a 33 by 33 grid of 2 by 2 cells below, in 1.21.9's status colors.
  *
  * <p>1.12.2 prepares the area around the world spawn before the player joins, so the grid is centered there (Core's
  * {@code SpawnProgress}); the progress is 1.12.2's own count of that area, eased as 1.21.9 eases it (a fifth of the
- * way each tick). The panorama is drawn sharp: 1.20.5's blur is not here.
+ * way each tick). The panorama is blurred as 1.20.5's menus blur it (Core's {@code renderBlurred}, radius 5).
  */
 @SideOnly(Side.CLIENT)
 public final class LoadingScreen1219 implements LoadingScreens.Drawer {
@@ -44,7 +44,7 @@ public final class LoadingScreen1219 implements LoadingScreens.Drawer {
     public void draw(Minecraft mc, int width, int height, LoadingScreens.Frame frame) {
         // 1.12.2 draws this from launchIntegratedServer's wait loop, not as a screen; the screen (or none) only keys
         // the panorama's clock.
-        PanoramaRenderer.render(mc.currentScreen);
+        PanoramaRenderer.renderBlurred(mc.currentScreen, PanoramaRenderer.MENU_BLUR);
         drawMenuBackground(mc, width, height);
         long now = Minecraft.getSystemTime();
         float ticks = this.last < 0 ? 0.0F : Math.min(20.0F, (now - this.last) / 50.0F);

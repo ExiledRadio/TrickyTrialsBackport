@@ -110,6 +110,24 @@ public final class Rules {
     public static final float NETHER_FOG_START = 10.0F;
     public static final float NETHER_FOG_END = 96.0F;
 
+    // ---- 1.21.11: the sunrise in rain and thunder (WeatherAttributes) ----
+
+    /** Scales a sunrise glow's red, green and blue in place: rain toward (0.5, 0.5, 0.6), then thunder toward (0.25, 0.25, 0.3). */
+    public static void weatherSunrise(float[] rgba, float rain, float thunder) {
+        if (rain > 0.0F) {
+            scale(rgba, rain, 0.5F, 0.5F, 0.6F);
+        }
+        if (thunder > 0.0F) {
+            scale(rgba, thunder, 0.25F, 0.25F, 0.3F);
+        }
+    }
+
+    private static void scale(float[] rgba, float amount, float r, float g, float b) {
+        rgba[0] += (rgba[0] * r - rgba[0]) * amount;
+        rgba[1] += (rgba[1] * g - rgba[1]) * amount;
+        rgba[2] += (rgba[2] * b - rgba[2]) * amount;
+    }
+
     // ---- 1.21.9: chat drafts (ChatScreen.removed, ChatComponent.createScreen) ----
 
     /** Why the chat screen closed. */

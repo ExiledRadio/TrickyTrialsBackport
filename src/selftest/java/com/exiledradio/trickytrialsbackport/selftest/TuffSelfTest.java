@@ -7,6 +7,7 @@ import com.exiledradio.trickytrialsbackport.tuff.TuffContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockStairs;
+import com.exiledradio.backportcore.block.ModernWall;
 import net.minecraft.block.BlockWall;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -86,7 +87,7 @@ public final class TuffSelfTest implements SelfTest {
             c.ok(i != null && Content.id(name).equals(i.getRegistryName()), name + " has an item");
             for (IBlockState state : b.getBlockState().getValidStates()) {
                 IBlockState back = b.getStateFromMeta(b.getMetaFromState(state));
-                if (b instanceof BlockStairs || b instanceof BlockWall) {
+                if (b instanceof BlockStairs || b instanceof ModernWall) {
                     // Stairs' shape and walls' sides are actual-state properties, never stored.
                     c.eq(b.getMetaFromState(state), b.getMetaFromState(back), name + " metadata round trip");
                 } else {
@@ -100,7 +101,7 @@ public final class TuffSelfTest implements SelfTest {
             Item none = item(p + "_double_slab");
             c.ok(none == null || !Content.id(p + "_double_slab").equals(none.getRegistryName()), p + "_double_slab has no item");
             c.ok(item(p + "_slab") instanceof ItemSlab, p + "_slab item joins slabs");
-            c.ok(block(p + "_stairs") instanceof BlockStairs && block(p + "_wall") instanceof BlockWall, p + " shapes are vanilla kinds");
+            c.ok(block(p + "_stairs") instanceof BlockStairs && block(p + "_wall") instanceof ModernWall, p + " shapes are vanilla stairs and Core's modern wall");
         }
     }
 
@@ -183,8 +184,8 @@ public final class TuffSelfTest implements SelfTest {
         c.world.setBlockState(w.north(), Blocks.COBBLESTONE_WALL.getDefaultState());
         c.world.setBlockState(w.east(), block("polished_tuff_wall").getDefaultState());
         IBlockState actual = c.world.getBlockState(w).getActualState(c.world, w);
-        c.ok(actual.getValue(BlockWall.NORTH) && actual.getValue(BlockWall.EAST) && !actual.getValue(BlockWall.SOUTH),
-                "wall joins walls: " + actual);
+        c.ok(actual.getValue(ModernWall.NORTH) != ModernWall.Side.NONE && actual.getValue(ModernWall.EAST) != ModernWall.Side.NONE
+                && actual.getValue(ModernWall.SOUTH) == ModernWall.Side.NONE, "wall joins walls: " + actual);
         c.ok(c.world.getBlockState(w.north()).getActualState(c.world, w.north()).getValue(BlockWall.SOUTH),
                 "cobblestone wall joins the tuff wall");
 

@@ -1,6 +1,5 @@
 package com.exiledradio.trickytrialsbackport;
 
-import com.exiledradio.trickytrialsbackport.common.Owners;
 import com.exiledradio.trickytrialsbackport.network.NetworkHandler;
 
 import net.minecraftforge.fml.common.Mod;
@@ -29,7 +28,7 @@ import org.apache.logging.log4j.Logger;
         name = TrickyTrialsBackport.MOD_NAME,
         version = TrickyTrialsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.1.0,);before:quark"
+        dependencies = "required-after:backportcore@[1.2.0,);before:quark"
 )
 public final class TrickyTrialsBackport {
 
@@ -48,10 +47,6 @@ public final class TrickyTrialsBackport {
         // This mod's spawn eggs in Miscellaneous where vanilla lists each mob's (Backport Core's creative
         // placement).
         com.exiledradio.backportcore.creative.CreativePlacement.placeSpawnEggs(MOD_ID);
-        // Before any registry event, and after the owners' own declarations: every mod's constructor runs
-        // before any pre-init, and Caves & Cliffs loads before this mod and declares from its pre-init
-        // (including the switched-off pseudo-owner), so a claim here never overrides the owner's.
-        Owners.declareOlderOwners();
         NetworkHandler.init();
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.preInit();

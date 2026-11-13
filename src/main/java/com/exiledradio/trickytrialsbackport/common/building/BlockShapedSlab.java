@@ -1,5 +1,7 @@
 package com.exiledradio.trickytrialsbackport.common.building;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.properties.IProperty;
@@ -30,7 +32,14 @@ import java.util.Random;
  * <p>{@link #isDouble()} is answered by the subclass rather than read from a field, because
  * {@code BlockSlab}'s constructor calls it before any field of this class is assigned.
  */
-public abstract class BlockShapedSlab extends BlockSlab {
+public abstract class BlockShapedSlab extends BlockSlab implements Waterloggable {
+
+    /** 1.13+: a slab holds water, a double slab does not (Backport Core's adapter, with Fluidlogged API). */
+    @Override
+    public boolean canHoldWater(IBlockState state, net.minecraft.world.IBlockAccess world, net.minecraft.util.math.BlockPos pos) {
+        return !isDouble();
+    }
+
 
     public static final PropertyEnum<Variant> VARIANT = PropertyEnum.create("variant", Variant.class);
 

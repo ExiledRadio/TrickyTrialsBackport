@@ -244,6 +244,11 @@ subtitles.trickytrialsbackport.item.bundle.insert_fail=Voorwerp past niet in bun
 subtitles.trickytrialsbackport.item.bundle.remove_one=Voorwerp wordt uitgepakt
 
 # --- lookfeel ---
+music.game.below_and_above=Amos Roddy - Below and Above
+music.game.broken_clocks=Amos Roddy - Broken Clocks
+music.game.fireflies=Amos Roddy - Fireflies
+music.game.lilypad=Amos Roddy - Lilypad
+music.game.os_piano=Amos Roddy - O's Piano
 options.accessibility.high_contrast_block_outline.tooltip=Verhoogt het blokomlijningscontrast van het aangekeken blok.
 options.accessibility.high_contrast_block_outline=Hoog contrast blokomlijning
 options.chat.drafts.tooltip=Niet-verzonden berichten worden opgeslagen en kunnen verstuurd worden wanneer de chat weer geopend wordt.

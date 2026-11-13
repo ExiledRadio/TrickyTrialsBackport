@@ -1,10 +1,11 @@
 package com.exiledradio.trickytrialsbackport.common.building;
 
+import com.exiledradio.backportcore.block.ModernWall;
+
 import com.exiledradio.trickytrialsbackport.common.Content;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
-import net.minecraft.block.BlockWall;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
@@ -25,10 +26,10 @@ public final class Shapes {
     @Nullable public final BlockShapedStairs stairs;
     @Nullable public final BlockShapedSlab.Half slab;
     @Nullable public final BlockShapedSlab.Double doubleSlab;
-    @Nullable public final BlockShapedWall wall;
+    @Nullable public final ModernWall wall;
 
     private Shapes(String prefix, BlockShapedStairs stairs, BlockShapedSlab.Half slab, BlockShapedSlab.Double doubleSlab,
-                   BlockShapedWall wall) {
+                   ModernWall wall) {
         this.prefix = prefix;
         this.stairs = stairs;
         this.slab = slab;
@@ -44,7 +45,7 @@ public final class Shapes {
         BlockShapedStairs st = null;
         BlockShapedSlab.Half half = null;
         BlockShapedSlab.Double full = null;
-        BlockShapedWall wa = null;
+        ModernWall wa = null;
         if (stairs) {
             st = Content.block(registry, prefix + "_stairs", new BlockShapedStairs(state), tool);
         }
@@ -56,8 +57,8 @@ public final class Shapes {
             Content.ignoreProperties(full, BlockShapedSlab.VARIANT);
         }
         if (wall) {
-            wa = Content.block(registry, prefix + "_wall", new BlockShapedWall(base, state), tool);
-            Content.ignoreProperties(wa, BlockWall.VARIANT);
+            // Backport Core's 1.16+ wall (low and tall sides), the family's one wall class (CORE_REQUESTS #8).
+            wa = Content.block(registry, prefix + "_wall", new ModernWall(state), tool);
             Content.multipartFile(wa);
         }
         return new Shapes(prefix, st, half, full, wa);
