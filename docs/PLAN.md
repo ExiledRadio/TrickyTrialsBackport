@@ -204,9 +204,9 @@ wrapping block, so it never meets a stream worktree's server.
 
 ### 13. Creaking (1.21.4)
 
-- **Creaking heart** (between two pale oak logs; active at night; dormant by day; spawns and links one
-  creaking within 32 blocks; shows the link by particles; drops resin when the creaking is hit; 20-24 XP
-  naturally, silk touch only).
+- **Creaking heart**: the block is stream 12's; this stream adds its creaking (spawns and links one creaking
+  within 16 blocks when a player is within 32; shows the link by particles; resin when the creaking is hit).
+  Built: `docs/streams/creaking.md`.
 - **Creaking**: freezes while a survival player looks at it (a carved pumpkin hides you), 3 damage,
   invulnerable while its heart lives, crumbles when the heart breaks; spawn-egg creakings are standalone
   (1 HP to kill). Advancement *Heart Transplanter* (1.21.6).

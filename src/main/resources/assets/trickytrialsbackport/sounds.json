@@ -1729,5 +1729,109 @@
       "trickytrialsbackport:block/spawner/step5"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.creaking.activate": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_activate"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.activate"
+  },
+  "entity.creaking.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_idle1",
+      "trickytrialsbackport:mob/creaking/creaking_idle2",
+      "trickytrialsbackport:mob/creaking/creaking_idle3",
+      "trickytrialsbackport:mob/creaking/creaking_idle4",
+      "trickytrialsbackport:mob/creaking/creaking_idle5",
+      "trickytrialsbackport:mob/creaking/creaking_idle6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.ambient"
+  },
+  "entity.creaking.attack": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_attack1",
+      "trickytrialsbackport:mob/creaking/creaking_attack2",
+      "trickytrialsbackport:mob/creaking/creaking_attack3",
+      "trickytrialsbackport:mob/creaking/creaking_attack4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.attack"
+  },
+  "entity.creaking.deactivate": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_deactivate"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.deactivate"
+  },
+  "entity.creaking.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_death"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.death"
+  },
+  "entity.creaking.freeze": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_freeze1",
+      "trickytrialsbackport:mob/creaking/creaking_freeze2",
+      "trickytrialsbackport:mob/creaking/creaking_freeze3",
+      "trickytrialsbackport:mob/creaking/creaking_freeze4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.freeze"
+  },
+  "entity.creaking.spawn": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_spawn"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.spawn"
+  },
+  "entity.creaking.step": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_step1",
+      "trickytrialsbackport:mob/creaking/creaking_step2",
+      "trickytrialsbackport:mob/creaking/creaking_step3",
+      "trickytrialsbackport:mob/creaking/creaking_step4",
+      "trickytrialsbackport:mob/creaking/creaking_step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.creaking.sway": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_sway1",
+      "trickytrialsbackport:mob/creaking/creaking_sway2",
+      "trickytrialsbackport:mob/creaking/creaking_sway3",
+      "trickytrialsbackport:mob/creaking/creaking_sway4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.sway"
+  },
+  "entity.creaking.twitch": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_twitch"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.twitch"
+  },
+  "entity.creaking.unfreeze": {
+    "sounds": [
+      "trickytrialsbackport:mob/creaking/creaking_unfreeze1",
+      "trickytrialsbackport:mob/creaking/creaking_unfreeze2",
+      "trickytrialsbackport:mob/creaking/creaking_unfreeze3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.creaking.unfreeze"
+  },
+  "block.creaking_heart.hurt": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/hurt/trail1",
+      "trickytrialsbackport:block/creaking_heart/hurt/trail2",
+      "trickytrialsbackport:block/creaking_heart/hurt/trail3",
+      "trickytrialsbackport:block/creaking_heart/hurt/trail4",
+      "trickytrialsbackport:block/creaking_heart/hurt/trail5",
+      "trickytrialsbackport:block/creaking_heart/hurt/trail6",
+      "trickytrialsbackport:block/creaking_heart/hurt/trail7"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.creaking_heart.hurt"
+  },
+  "block.creaking_heart.spawn": {
+    "sounds": [
+      "trickytrialsbackport:block/creaking_heart/spawnmob/creaking_heart_spawnmob"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.creaking_heart.spawn"
   }
 }

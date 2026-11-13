@@ -55,6 +55,7 @@ public final class TrickyTrialsBackport {
         NetworkHandler.init();
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.preInit();
+        com.exiledradio.trickytrialsbackport.creaking.CreakingContent.preInit();
         com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.preInit();
 
         // Client-only setup lives in a class a dedicated server never loads. The call names no client
@@ -69,6 +70,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.effects.client.EffectsClient.init();
             com.exiledradio.trickytrialsbackport.decor.client.DecorClient.init();
             com.exiledradio.trickytrialsbackport.palegarden.client.PaleGardenClient.init();
+            com.exiledradio.trickytrialsbackport.creaking.client.CreakingClient.init();
             com.exiledradio.trickytrialsbackport.lookfeel.client.LookAndFeelClient.init();
         }
     }

@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:creaking_heart"
+    },
+    "title": {
+      "translate": "advancements.adventure.heart_transplanter.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.heart_transplanter.description"
+    }
+  },
+  "criteria": {
+    "heart_transplanter": {
+      "trigger": "trickytrialsbackport:heart_transplanted",
+      "conditions": {
+        "item": {
+          "item": "trickytrialsbackport:creaking_heart"
+        }
+      }
+    }
+  }
+}

@@ -526,3 +526,20 @@ options.sprintWindow.tooltip=Time window in ticks where double-tapping the forwa
 options.sprintWindow=Sprint Window
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Breath meter dropping
+
+# --- creaking ---
+advancements.adventure.heart_transplanter.description=Place a Creaking Heart with the correct alignment between two Pale Oak Log blocks
+advancements.adventure.heart_transplanter.title=Heart Transplanter
+entity.trickytrialsbackport.creaking.name=Creaking
+subtitles.trickytrialsbackport.block.creaking_heart.hurt=Creaking Heart grumbles
+subtitles.trickytrialsbackport.block.creaking_heart.spawn=Creaking Heart awakens
+subtitles.trickytrialsbackport.entity.creaking.activate=Creaking watches
+subtitles.trickytrialsbackport.entity.creaking.ambient=Creaking creaks
+subtitles.trickytrialsbackport.entity.creaking.attack=Creaking attacks
+subtitles.trickytrialsbackport.entity.creaking.deactivate=Creaking calms
+subtitles.trickytrialsbackport.entity.creaking.death=Creaking crumbles
+subtitles.trickytrialsbackport.entity.creaking.freeze=Creaking stops
+subtitles.trickytrialsbackport.entity.creaking.spawn=Creaking manifests
+subtitles.trickytrialsbackport.entity.creaking.sway=Creaking is hit
+subtitles.trickytrialsbackport.entity.creaking.twitch=Creaking twitches
+subtitles.trickytrialsbackport.entity.creaking.unfreeze=Creaking moves

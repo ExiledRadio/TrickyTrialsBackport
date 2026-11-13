@@ -1,0 +1,13 @@
+block.creaking_heart.hurt
+block.creaking_heart.spawn
+entity.creaking.activate
+entity.creaking.ambient
+entity.creaking.attack
+entity.creaking.deactivate
+entity.creaking.death
+entity.creaking.freeze
+entity.creaking.spawn
+entity.creaking.step
+entity.creaking.sway
+entity.creaking.twitch
+entity.creaking.unfreeze
