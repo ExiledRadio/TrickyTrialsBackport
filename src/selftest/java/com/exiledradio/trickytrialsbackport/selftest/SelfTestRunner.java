@@ -52,6 +52,7 @@ public final class SelfTestRunner {
             new TuffSelfTest(),
             new TrialSelfTest(),
             new BundleSelfTest(),
+            new EffectsSelfTest(),
     };
 
     private final List<String> wanted;

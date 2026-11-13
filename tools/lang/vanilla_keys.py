@@ -39,6 +39,12 @@ def candidates(key):
         return ["item.minecraft." + name, "block.minecraft." + name]
     if key.startswith("subtitles.%s." % M):
         return ["subtitles." + key[len("subtitles.%s." % M):]]
+    if key.startswith("effect.%s." % M):
+        return ["effect.minecraft." + key[len("effect.%s." % M):]]
+    for kind in ("potion", "splash_potion", "lingering_potion", "tipped_arrow"):
+        prefix = "%s.effect.%s." % (kind, M)
+        if key.startswith(prefix):
+            return ["item.minecraft.%s.effect.%s" % (kind, key[len(prefix):])]
     return []
 
 

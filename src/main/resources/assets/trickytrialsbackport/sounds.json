@@ -1221,5 +1221,16 @@
       }
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.bundle.drop_contents"
+  },
+  "block.cobweb.place": {
+    "sounds": [
+      "trickytrialsbackport:block/cobweb/break1",
+      "trickytrialsbackport:block/cobweb/break2",
+      "trickytrialsbackport:block/cobweb/break3",
+      "trickytrialsbackport:block/cobweb/break4",
+      "trickytrialsbackport:block/cobweb/break5",
+      "trickytrialsbackport:block/cobweb/break6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
   }
 }

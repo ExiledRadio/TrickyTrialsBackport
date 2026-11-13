@@ -42,6 +42,8 @@ public final class NetworkHandler {
                 com.exiledradio.trickytrialsbackport.common.GustMessage.class, 0, Side.CLIENT);
         channel.registerMessage(com.exiledradio.trickytrialsbackport.trial.TrialMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.trial.TrialMessage.class, 35, Side.CLIENT);
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.effects.EffectParticlesMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.effects.EffectParticlesMessage.class, 40, Side.CLIENT);
         // 55-59 bundles
         channel.registerMessage(com.exiledradio.trickytrialsbackport.bundle.BundleClickMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.bundle.BundleClickMessage.class, 55, Side.SERVER);
