@@ -53,6 +53,7 @@ public final class SelfTestRunner {
             new TrialSelfTest(),
             new BundleSelfTest(),
             new EffectsSelfTest(),
+            new DecorSelfTest(),
     };
 
     private final List<String> wanted;

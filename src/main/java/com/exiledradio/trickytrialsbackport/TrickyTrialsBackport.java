@@ -65,6 +65,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.trial.client.TrialFx.init();
             com.exiledradio.trickytrialsbackport.bundle.client.BundleClient.init();
             com.exiledradio.trickytrialsbackport.effects.client.EffectsClient.init();
+            com.exiledradio.trickytrialsbackport.decor.client.DecorClient.init();
         }
     }
 
@@ -78,6 +79,7 @@ public final class TrickyTrialsBackport {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         com.exiledradio.trickytrialsbackport.bogged.BoggedContent.postInit();
+        com.exiledradio.trickytrialsbackport.decor.DecorContent.postInit();
     }
 
     @Mod.EventHandler

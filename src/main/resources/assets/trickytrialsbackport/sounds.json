@@ -1232,5 +1232,45 @@
       "trickytrialsbackport:block/cobweb/break6"
     ],
     "subtitle": "subtitles.block.generic.place"
+  },
+  "music_disc.creator": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:records/creator",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creator_music_box": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:records/creator_music_box",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.precipice": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:records/precipice",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.tears": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:records/tears",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.lava_chicken": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:records/lava_chicken",
+        "stream": true
+      }
+    ]
   }
 }
