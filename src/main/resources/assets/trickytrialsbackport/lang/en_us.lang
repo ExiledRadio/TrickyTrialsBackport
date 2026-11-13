@@ -526,3 +526,16 @@ options.sprintWindow.tooltip=Time window in ticks where double-tapping the forwa
 options.sprintWindow=Sprint Window
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Breath meter dropping
+
+# --- flora ---
+tile.trickytrialsbackport.bush.name=Bush
+tile.trickytrialsbackport.cactus_flower.name=Cactus Flower
+tile.trickytrialsbackport.firefly_bush.name=Firefly Bush
+tile.trickytrialsbackport.leaf_litter.name=Leaf Litter
+tile.trickytrialsbackport.short_dry_grass.name=Short Dry Grass
+tile.trickytrialsbackport.tall_dry_grass.name=Tall Dry Grass
+tile.trickytrialsbackport.wildflowers.name=Wildflowers
+subtitles.trickytrialsbackport.block.deadbush.idle=Dry sounds
+subtitles.trickytrialsbackport.block.dry_grass.ambient=Windy sounds
+subtitles.trickytrialsbackport.block.firefly_bush.idle=Fireflies buzz
+subtitles.trickytrialsbackport.block.sand.idle=Sandy sounds

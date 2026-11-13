@@ -55,6 +55,7 @@ public final class SelfTestRunner {
             new EffectsSelfTest(),
             new DecorSelfTest(),
             new PaleGardenSelfTest(),
+            new FloraSelfTest(),
             new LookfeelSelfTest(),
     };
 

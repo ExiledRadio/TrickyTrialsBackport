@@ -1729,5 +1729,506 @@
       "trickytrialsbackport:block/spawner/step5"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.pink_petals.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break5",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.pink_petals.step": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step5",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.pink_petals.place": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/break5",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.pink_petals.hit": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step5",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.pink_petals.fall": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step3",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step4",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/cherry_leaves/step5",
+        "pitch": 1.2,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.leaf_litter.break": {
+    "sounds": [
+      "trickytrialsbackport:block/leaf_litter/break1",
+      "trickytrialsbackport:block/leaf_litter/break2",
+      "trickytrialsbackport:block/leaf_litter/break3",
+      "trickytrialsbackport:block/leaf_litter/break4",
+      "trickytrialsbackport:block/leaf_litter/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.leaf_litter.step": {
+    "sounds": [
+      "trickytrialsbackport:block/leaf_litter/step1",
+      "trickytrialsbackport:block/leaf_litter/step2",
+      "trickytrialsbackport:block/leaf_litter/step3",
+      "trickytrialsbackport:block/leaf_litter/step4",
+      "trickytrialsbackport:block/leaf_litter/step5",
+      "trickytrialsbackport:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.leaf_litter.place": {
+    "sounds": [
+      "trickytrialsbackport:block/leaf_litter/place1",
+      "trickytrialsbackport:block/leaf_litter/place2",
+      "trickytrialsbackport:block/leaf_litter/place3",
+      "trickytrialsbackport:block/leaf_litter/place4",
+      "trickytrialsbackport:block/leaf_litter/place5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.leaf_litter.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/leaf_litter/step1",
+      "trickytrialsbackport:block/leaf_litter/step2",
+      "trickytrialsbackport:block/leaf_litter/step3",
+      "trickytrialsbackport:block/leaf_litter/step4",
+      "trickytrialsbackport:block/leaf_litter/step5",
+      "trickytrialsbackport:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.leaf_litter.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/leaf_litter/step1",
+      "trickytrialsbackport:block/leaf_litter/step2",
+      "trickytrialsbackport:block/leaf_litter/step3",
+      "trickytrialsbackport:block/leaf_litter/step4",
+      "trickytrialsbackport:block/leaf_litter/step5",
+      "trickytrialsbackport:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.cactus_flower.break": {
+    "sounds": [
+      "trickytrialsbackport:block/cactus_flower/break1",
+      "trickytrialsbackport:block/cactus_flower/break2",
+      "trickytrialsbackport:block/cactus_flower/break3",
+      "trickytrialsbackport:block/cactus_flower/break4",
+      "trickytrialsbackport:block/cactus_flower/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.cactus_flower.place": {
+    "sounds": [
+      "trickytrialsbackport:block/cactus_flower/place1",
+      "trickytrialsbackport:block/cactus_flower/place2",
+      "trickytrialsbackport:block/cactus_flower/place3",
+      "trickytrialsbackport:block/cactus_flower/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.sweet_berry_bush.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/break4",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.sweet_berry_bush.place": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/place1",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/place2",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/place3",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/place4",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/place5",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/sweet_berry_bush/place6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.firefly_bush.idle": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush1",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush2",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush3",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush4",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush5",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush6",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush7",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush8",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush9",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush10",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/firefly_bush/firefly_bush11",
+        "volume": 4.0
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.firefly_bush.idle"
+  },
+  "block.deadbush.idle": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/bushrustle1",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/bushrustle2",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/bushrustle3",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/creakysand1",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/crickets",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/howlingwind1",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/insect1",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/leaves",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/movingsand1",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/movingsand2",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/deadbush/sandblock_version/movingsand3",
+        "volume": 4.0,
+        "weight": 2
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.deadbush.idle"
+  },
+  "block.dry_grass.ambient": {
+    "sounds": [
+      "trickytrialsbackport:block/dry_grass/wind1",
+      "trickytrialsbackport:block/dry_grass/wind2",
+      "trickytrialsbackport:block/dry_grass/wind3",
+      "trickytrialsbackport:block/dry_grass/wind4",
+      "trickytrialsbackport:block/dry_grass/wind5",
+      "trickytrialsbackport:block/dry_grass/wind6",
+      "trickytrialsbackport:block/dry_grass/wind7",
+      "trickytrialsbackport:block/dry_grass/wind8",
+      "trickytrialsbackport:block/dry_grass/wind9",
+      "trickytrialsbackport:block/dry_grass/wind10",
+      "trickytrialsbackport:block/dry_grass/wind11",
+      "trickytrialsbackport:block/dry_grass/wind12"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.dry_grass.ambient"
+  },
+  "block.sand.idle": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/sand/sand1",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand2",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand3",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand4",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand5",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand6",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand7",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand8",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand9",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand10",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand10",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand11",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand12",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand12",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand13",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand14",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand15",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand16",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand17",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand18",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand19",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand20",
+        "volume": 4.0
+      },
+      {
+        "name": "trickytrialsbackport:block/sand/sand21",
+        "volume": 4.0
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.sand.idle"
+  },
+  "intentionally_empty": {
+    "sounds": []
   }
 }

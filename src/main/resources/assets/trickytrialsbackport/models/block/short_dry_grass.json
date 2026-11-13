@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "trickytrialsbackport:block/short_dry_grass"
+  }
+}

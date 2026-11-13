@@ -179,3 +179,25 @@ Stream 33 (`lookfeel`, `docs/streams/lookfeel.md`) hands Core everything its API
     is not in `FogPipeline.Sky`); clouds following world time. **Want:** a `sunrise(...)` step, a cloud offset.
 14. **The 1.20 title logo layout** (shared with Trails & Tales): 1.21.11's `minecraft.png` and `edition.png` only
     fit 1.20's layout, which Core does not draw, so this mod does not register a title logo.
+
+## 11. Backports' placed features in Caves & Cliffs' 1.18 generator (stream 15)
+
+1.21.5's spring plants (`docs/streams/flora.md`) are placed features in the vegetal step, and some of them live inside
+the trees' random selectors (fallen trees) and the trees' decorators (leaf litter). 1.12.2's decoration reaches them
+through `DecorateBiomeEvent.Post`; Caves & Cliffs' 1.18 generator does not run 1.12.2's biome decorator, and Core's
+`FeatureSource`/`DecorationSource` only tell a backport to step aside. **Want**, on `cc118-all`:
+
+1. A registry the 1.18 generator calls in its vegetal step, per chunk and biome, after its own features of that step:
+   `ModernFeatures.register(String modId, int step, BiConsumer<...>)`, or simply a call by name into each installed
+   backport. Ours is one static call and needs nothing else:
+   `com.exiledradio.trickytrialsbackport.flora.FloraFeatures.vegetation(World world, Random rand, BlockPos origin, String biome)`
+   (`origin` = the chunk's north-west corner, `biome` = the 1.21.5 name: `meadow`, `birch_forest`, `swamp`, ...).
+2. Its `patch_cactus_desert` and `patch_cactus_decorated` replaced by ours (1.21.5 added a flower to the column):
+   `FloraFeatures.place(world, rand, origin, "patch_cactus_desert")`.
+3. Its tree selectors given 1.21.5's entries: `FallenTrees.place(world, rand, pos, FallenTrees.Fallen.OAK)` (and
+   `BIRCH`, `SUPER_BIRCH`, `SPRUCE`, `JUNGLE`) at the chances in `FallenTrees.SELECTORS`, and the forest's and dark
+   forest's trees followed by `FallenTrees.leafLitter(world, rand, lowestLogs)`.
+
+**Meanwhile:** nothing grows from this stream in 1.18-terrain worlds. Everything above is public, height-independent
+(Core's `WorldHeights`) and does not depend on how the biome was placed. A hand-over note for the Caves & Cliffs
+session is in the family's notes folder (`tr-flora.md`).
