@@ -45,6 +45,11 @@ public final class VaultSettings {
         return new VaultSettings(REWARD_OMINOUS, 4.0, 4.5, key(TrialContent.ominousTrialKey), null);
     }
 
+    /** @return true for the ominous vault's settings: the ominous trial key and the ominous reward table */
+    boolean isOminousReward() {
+        return REWARD_OMINOUS.equals(this.lootTable) && !this.keyItem.isEmpty() && this.keyItem.getItem() == TrialContent.ominousTrialKey;
+    }
+
     private static ItemStack key(@Nullable Item item) {
         return item == null ? ItemStack.EMPTY : new ItemStack(item);
     }

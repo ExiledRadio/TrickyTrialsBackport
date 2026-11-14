@@ -34,10 +34,11 @@ import javax.annotation.Nullable;
  * and turns every other projectile back ({@code BreezeEvents}). Drops 1-2 breeze rods when a player kills it.
  *
  * <h2>Behavior</h2>
- * Shooting: an inhale of 15 ticks, the shot (0.7 blocks a tick), then 20-40 ticks before the next.
- * Long jump: from the ground, when the target is too far (over 8 blocks), too near (under 3) or hidden,
- * to a safe landing spot 3-8 blocks from it, 2-5 seconds apart. Otherwise it slides about near its target.
- * Timers live on the entity's own tick, never in a goal's {@code shouldExecute}.
+ * 1.21.11's {@code BreezeAi} ({@link BreezeAI.Fight}): with a target more than 4 blocks away and four free blocks
+ * above, a 10-tick inhale, then a long jump to a spot 4-8 blocks behind the target, flying without drag; on landing a
+ * 100-tick window to shoot one wind charge (15 ticks charging), then the next jump 10 ticks after landing. Where it
+ * cannot jump it slides about its target and shoots after each slide. The brain's memories are the timers below,
+ * counted down on the entity's own tick.
  */
 public class EntityBreeze extends EntityMob {
 
@@ -51,11 +52,26 @@ public class EntityBreeze extends EntityMob {
     public static final ResourceLocation LOOT = Content.id("entities/breeze");
 
     static final float SHOOT_RANGE = 16.0F;
-    static final int INHALE_TICKS = 15;
-    static final int SHOOT_RECOVER_TICKS = 10;
 
+    /** 1.21's breeze memories, in ticks left: BREEZE_SHOOT, _SHOOT_COOLDOWN, _SHOOT_CHARGING, _SHOOT_RECOVERING,
+     * _JUMP_COOLDOWN, _JUMP_INHALING. */
+    int shootWindow;
     int shootCooldown;
+    int shootCharging;
+    int shootRecovering;
     int jumpCooldown;
+    int jumpInhaling;
+    /** BREEZE_JUMP_TARGET. */
+    @Nullable BlockPos jumpTarget;
+    /** {@code LivingEntity.discardFriction}: set for the flight of a long jump. */
+    boolean discardFriction;
+    /** Long jumps made, for the self-test. */
+    public int jumps;
+
+    /** @return true while a long jump's flight ignores drag */
+    public boolean discardsFriction() {
+        return this.discardFriction;
+    }
 
     public EntityBreeze(World world) {
         super(world);
@@ -81,9 +97,7 @@ public class EntityBreeze extends EntityMob {
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new BreezeAI.Shoot(this));
-        this.tasks.addTask(2, new BreezeAI.LongJump(this));
-        this.tasks.addTask(3, new BreezeAI.Slide(this));
+        this.tasks.addTask(1, new BreezeAI.Fight(this));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 0.6D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
@@ -103,15 +117,56 @@ public class EntityBreeze extends EntityMob {
 
     @Override
     public void onLivingUpdate() {
-        super.onLivingUpdate();
         if (!this.world.isRemote) {
-            if (this.shootCooldown > 0) {
-                this.shootCooldown--;
-            }
-            if (this.jumpCooldown > 0 && this.onGround) {
-                this.jumpCooldown--;
-            }
+            // The brain forgets expired memories before its behaviors run.
+            this.shootWindow = Math.max(0, this.shootWindow - 1);
+            this.shootCooldown = Math.max(0, this.shootCooldown - 1);
+            this.shootCharging = Math.max(0, this.shootCharging - 1);
+            this.shootRecovering = Math.max(0, this.shootRecovering - 1);
+            this.jumpCooldown = Math.max(0, this.jumpCooldown - 1);
+            this.jumpInhaling = Math.max(0, this.jumpInhaling - 1);
         }
+        super.onLivingUpdate();
+    }
+
+    /**
+     * 1.21's {@code travelInAir} with {@code discardFriction}: the movement, then gravity, and no drag at all, so a
+     * long jump flies the arc {@code LongJumpUtil} aimed. Anything else is 1.12.2's own travel.
+     */
+    @Override
+    public void travel(float strafe, float vertical, float forward) {
+        if (!this.discardFriction || !this.isServerWorld() || this.isInWater() || this.isInLava()) {
+            super.travel(strafe, vertical, forward);
+            return;
+        }
+        float slip = 0.91F;
+        if (this.onGround) {
+            BlockPos below = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
+            IBlockState under = this.world.getBlockState(below);
+            slip = under.getBlock().getSlipperiness(under, this.world, below, this) * 0.91F;
+        }
+        float speed = this.onGround ? getAIMoveSpeed() * (0.16277136F / (slip * slip * slip)) : this.jumpMovementFactor;
+        moveRelative(strafe, vertical, forward, speed);
+        move(net.minecraft.entity.MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+        if (!hasNoGravity()) {
+            this.motionY -= BreezeAI.GRAVITY;
+        }
+    }
+
+    /** {@code withinInnerCircleRange}: within 4 blocks across and 10 up or down of the breeze's block's center. */
+    boolean withinInnerCircle(net.minecraft.util.math.Vec3d p) {
+        BlockPos at = new BlockPos(this);
+        double dx = p.x - (at.getX() + 0.5);
+        double dz = p.z - (at.getZ() + 0.5);
+        double dy = p.y - (at.getY() + 0.5);
+        return dx * dx + dz * dz < 16.0 && Math.abs(dy) < 10.0;
+    }
+
+    /** Turns body and head to face a point, as {@code lookAt(EYES, ...)} for a jump's direction. */
+    void faceTowards(double x, double z) {
+        this.rotationYaw = yawTo(x, z);
+        this.rotationYawHead = this.rotationYaw;
+        this.renderYawOffset = this.rotationYaw;
     }
 
     /** @return true if a living target is set and alive */

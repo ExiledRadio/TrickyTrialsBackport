@@ -90,6 +90,8 @@ public final class ChambersContent {
         for (String[] f : FALLBACKS) {
             ModernPalette.fallback(f[0], f[1]);
         }
+        // Floor and ceiling buttons and levers in every facing (Core's table knows them facing north only).
+        FaceAttached.register();
         ENTERED.register();
     }
 

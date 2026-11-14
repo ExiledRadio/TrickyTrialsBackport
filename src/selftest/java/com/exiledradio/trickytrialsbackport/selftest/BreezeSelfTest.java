@@ -52,6 +52,7 @@ public final class BreezeSelfTest implements SelfTest {
         falls(c);
         deflection(c);
         ai(c);
+        jumps(c);
     }
 
     private void registration(Check c) {
@@ -349,6 +350,74 @@ public final class BreezeSelfTest implements SelfTest {
         c.ok(jumped && maxY > startY + 1.5, "the breeze long-jumps toward a far target: rose " + (maxY - startY));
         c.ok(charges >= 2, "the breeze shoots wind charges: " + charges);
         c.ok(breeze.isEntityAlive() && breeze.getHealth() == 30.0F, "unhurt by its own jumps and charges");
-        c.ok(breeze.getDistance(target) < 13.0, "it closed in: " + breeze.getDistance(target));
+        // 1.21's breeze does not close in: it jumps behind its target and slides 4-8 blocks from it (jumps(), below).
+    }
+
+    /** 1.21.11's LongJump and the brain's memories, by vanilla's numbers. */
+    private void jumps(Check c) {
+        c.eq(10, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.JUMP_INHALE_TICKS, "LongJump: 10 ticks inhaling");
+        c.eq(10, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.JUMP_COOLDOWN_TICKS, "LongJump: 10 ticks of cooldown");
+        c.eq(2, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.JUMP_COOLDOWN_WHEN_HURT_TICKS, "LongJump: 2 when hurt");
+        c.eq(4, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.REQUIRED_AIR_BLOCKS_ABOVE, "LongJump: four air blocks above");
+        c.eq(java.util.Arrays.asList(40, 55, 60, 75, 80), com.exiledradio.trickytrialsbackport.breeze.BreezeAI.ALLOWED_ANGLES, "LongJump angles");
+        c.ok(Math.abs(com.exiledradio.trickytrialsbackport.breeze.BreezeAI.MAX_JUMP_VELOCITY_MULTIPLIER * 24.0F - 1.4F) < 1e-5F,
+                "the fastest jump: 1.4 blocks a tick at follow range 24");
+        c.eq(100, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.SHOOT_WINDOW_AFTER_JUMP, "BREEZE_SHOOT after a jump: 100 ticks");
+        c.eq(60, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.SHOOT_WINDOW_AFTER_SLIDE, "BREEZE_SHOOT after a slide: 60 ticks");
+        c.eq(20, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.SHOOT_DURATION_TICKS, "Shoot: 15 + 1 + 4 ticks");
+        c.eq(10, com.exiledradio.trickytrialsbackport.breeze.BreezeAI.SHOOT_COOLDOWN_TICKS, "Shoot: 10 ticks of cooldown");
+        // LongJumpUtil.calculateJumpVectorForAngle, worked by hand: 6 blocks across on the level at 40 degrees.
+        net.minecraft.util.math.Vec3d v = com.exiledradio.trickytrialsbackport.breeze.BreezeAI.jumpVectorForAngle(
+                new net.minecraft.util.math.Vec3d(0, 0, 0), new net.minecraft.util.math.Vec3d(6.5, 0, 0), 1.4F, 40);
+        double speed = Math.sqrt(6.0 * 0.08 / Math.sin(2 * Math.toRadians(40)));
+        c.ok(v != null && Math.abs(v.x - speed * Math.cos(Math.toRadians(40)) * 0.95) < 1e-4 && Math.abs(v.y - speed * Math.sin(Math.toRadians(40)) * 0.95) < 1e-4
+                && Math.abs(v.z) < 1e-9, "a 40 degree jump of 6 blocks: " + v);
+        c.ok(com.exiledradio.trickytrialsbackport.breeze.BreezeAI.jumpVectorForAngle(new net.minecraft.util.math.Vec3d(0, 0, 0),
+                new net.minecraft.util.math.Vec3d(40.5, 0, 0), 1.4F, 40) == null, "too far for 1.4 blocks a tick: no jump");
+
+        BlockPos area = c.area();
+        EntityBreeze breeze = spawnBreeze(c, area.add(6, 0, 16));
+        EntityPig target = pig(c, area.getX() + 16.5, area.getY(), area.getZ() + 16.5);
+        target.setNoAI(true);
+        int charges = 0;
+        double flightX = Double.NaN;
+        boolean noDrag = true;
+        boolean sawFlight = false;
+        String dragSeen = "";
+        for (int tick = 0; tick < 600; tick++) {
+            breeze.setAttackTarget(target);
+            breeze.ticksExisted++;
+            double mx = breeze.motionX;
+            double my = breeze.motionY;
+            boolean flying = breeze.discardsFriction() && !breeze.onGround;
+            breeze.onUpdate();
+            // Both versions zero a motion under 0.003 (LivingEntity.aiStep), so only real motion is compared.
+            if (flying && breeze.discardsFriction() && !breeze.onGround && !breeze.collidedHorizontally && Math.abs(mx) >= 0.003
+                    && Math.abs(my) >= 0.003 && Math.abs(my - 0.08) >= 0.003) {
+                sawFlight = true;
+                // No drag: across stays, down gains exactly gravity.
+                boolean same = Math.abs(breeze.motionX - mx) < 1e-9 && Math.abs(breeze.motionY - (my - 0.08)) < 1e-9;
+                if (!same && noDrag) {
+                    dragSeen = String.format("x %.5f -> %.5f, y %.5f -> %.5f", mx, breeze.motionX, my, breeze.motionY);
+                }
+                noDrag &= same;
+            }
+            for (Entity e : c.world.getEntitiesWithinAABB(EntityBreezeWindCharge.class, breeze.getEntityBoundingBox().grow(30))) {
+                if (!e.getEntityData().getBoolean("ttbCounted")) {
+                    e.getEntityData().setBoolean("ttbCounted", true);
+                    charges++;
+                }
+                e.setDead();
+            }
+            target.heal(100);
+            target.setPosition(area.getX() + 16.5, area.getY(), area.getZ() + 16.5);
+        }
+        com.exiledradio.trickytrialsbackport.TrickyTrialsBackport.LOGGER.info("SELFTEST breeze jumps: {} jumps and {} charges in 600 ticks", breeze.jumps, charges);
+        c.ok(sawFlight && noDrag, "a long jump flies without drag, as 1.21's discardFriction " + dragSeen);
+        // Vanilla's cycle: 10 ticks inhaling, the flight, one shot (20 ticks), then the next jump: about one a 50 ticks.
+        c.ok(breeze.jumps >= 6, "it jumps as often as 1.21's breeze: " + breeze.jumps + " jumps in 30 seconds");
+        c.ok(charges >= breeze.jumps - 1 && charges <= breeze.jumps + 2, "one shot after each landing: " + charges + " charges, " + breeze.jumps + " jumps");
+        breeze.setDead();
+        target.setDead();
     }
 }

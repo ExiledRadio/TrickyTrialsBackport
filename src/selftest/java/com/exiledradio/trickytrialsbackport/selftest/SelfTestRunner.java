@@ -60,6 +60,7 @@ public final class SelfTestRunner {
             new FloraSelfTest(),
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
+            new TweaksSelfTest(),
     };
 
     private final List<String> wanted;

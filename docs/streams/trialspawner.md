@@ -70,7 +70,9 @@ Behavior and numbers are 1.21.11's, read from its decompiled code (`TrialSpawner
 *   **Vault** (`BlockVault`, `TileEntityVault`, `VaultSettings`): `facing`, `vault_state` (light 6/12) and
     `ominous`; 32 states, so the metadata holds facing and phase and the tile entity holds `ominous`
     (fixed for a vault's life), shown through the actual state; placing `ominous=true` (as a structure
-    does) makes an ominous vault with the ominous key and reward table. Its NBT is 1.21's: `config`
+    does) makes an ominous vault with the ominous key and reward table. Reading NBT keeps that flag when the data has
+    no `ominous` (1.21's block entity data, as a structure file's, never has it); and a vault saved as normal with the
+    ominous key and table (trial chambers generated before this fix, `tr-chambers-fixes`) is read back as ominous. Its NBT is 1.21's: `config`
     (`loot_table`, `activation_range` 4, `deactivation_range` 4.5, `key_item`,
     `override_loot_table_to_display`; `key_item` also read in 1.21's form with a 1.21 name),
     `server_data` (`rewarded_players`, the last 128; `items_to_eject`; ...), `shared_data` (sent to

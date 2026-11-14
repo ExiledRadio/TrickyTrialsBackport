@@ -35,11 +35,19 @@ Config `breeze` (`enabled`). Entity ids 1-3; packet 0 (common's `GustMessage`). 
     dispenser speed 1.0 with 6.67 spread; breeze charge radius 3, knockback 1, speed 0.7; one damage on a
     direct hit (1.21's `wind_charge` damage: message "mob", a projectile). No gravity and no air drag;
     slowed in water; bursts if it climbs 30 blocks over the build limit.
-*   **Breeze**: 30 health, speed 0.63, follow range 24, 10 experience, never despawns. Goals: shoot
-    (15-tick inhale, the shot, 10 ticks to recover, then 20-40 ticks of cooldown), long jump (from the
-    ground, when the target is under 3 or over 8 blocks away or hidden: to a safe landing 3-8 blocks from
-    it, with a clear line, aimed with vanilla's gravity and drag, 2-5 s apart), slide (to a spot 4-8 blocks
-    from the target). Cooldowns count down on the breeze's own tick.
+*   **Breeze**: 30 health, speed 0.63, follow range 24, 10 experience, never despawns. The fight is 1.21.11's
+    `BreezeAi` (`BreezeAI.Fight`, rewritten on `tr-chambers-fixes`): each tick `Shoot`, then `LongJump`, then `Slide`,
+    with the brain's memories as timers (one tick longer than the expiry, as `Brain.forgetOutdatedMemories` erases
+    before it counts down). **Long jump**: from the ground (or water) with four free blocks above and the target more
+    than 4 blocks away: a 10-tick inhale, then a jump to the surface 4-8 blocks behind where the target's head faces
+    (`randomPointBehindTarget`, `snapToSurface`, line of sight to it or 4 above), at the first of the shuffled angles
+    40, 55, 60, 75, 80 that reaches it under 1.4 blocks a tick (`LongJumpUtil`, scaled 0.95), flying without drag
+    (`discardFriction`: `travel` adds gravity and nothing else). Landing: 10 ticks of jump cooldown (2 when hurt in the
+    last 40 ticks) and a 100-tick `BREEZE_SHOOT` window. **Shoot**: only in that window, under 16 blocks, standing:
+    15 ticks charging, one charge, 4 ticks recovering, then 10 ticks of cooldown and the window closes. **Slide**: when
+    it can neither: to a spot away from a close target, behind it, or in the 4-8 block ring, at 0.6; a 60-tick shoot
+    window when it ends. So with a target 4-16 blocks away it jumps, shoots once, and jumps again: 10-12 jumps in 30
+    seconds in the self-test arena (the old goals jumped every 2-5 s only when the target was out of 3-8 blocks).
 *   **Deflection**: `ProjectileImpactEvent` on a breeze is cancelled and the projectile reversed at half
     speed and turned 170-190 degrees (1.21's `REVERSE`), put back where it was a tick earlier so it does
     not hit again. Wind charges are not deflected.

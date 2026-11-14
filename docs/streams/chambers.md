@@ -111,3 +111,32 @@ files, 0 errors**. Release jar built last with `--rerun-tasks`: 0 `/selftest/` e
 *   The cascading-worldgen warnings in the Default world (383 in the chambers run, 382 in the playtest suite
     before this stream) are not this stream's: the chamber driver loads no chunk (checked by counting loaded
     chunks around its layout and build), and the C&C world run had none.
+
+## Fixes after the first playtest (`tr-chambers-fixes`)
+
+*   **Floating buttons.** The wall dispensers' button is a floor button facing east. Backport Core's palette reads
+    Minecraft's Flattening table backwards, which has floor and ceiling buttons only facing north; `face=floor,
+    facing=east` scored the same against the wall button facing east, which came first, so it was placed as a wall
+    button on air. `FaceAttached` maps every `face`/`facing` of oak and stone buttons and levers to 1.12.2's one
+    `facing` (floor `up`, ceiling `down`; levers `up_x`/`up_z`/`down_x`/`down_z` by axis). `CORE_REQUESTS.md` #12.
+*   **Ominous vaults looking normal.** A structure places the vault with `ominous=true`, and `createTileEntity` set the
+    tile's flag from it, but the template's block entity data (no `ominous` key) was then read over it as false. The
+    vault kept the ominous key and table, so it looked normal and refused a trial key. That is the playtest's vault: a
+    normal trial key refused by an ominous vault drawn as a normal one. The click itself reaches the server (a key is
+    not an `ItemBlock`; 1.12.2's client sends the click). Fixed in `TileEntityVault`, with a repair for vaults already
+    generated (ominous settings mean ominous).
+*   **Fast, spinning skeletons.** Not the spawner (it sets up mobs as 1.21's: `onInitialSpawn`, persistence,
+    equipment). 1.12.2's strafing gives a mob that cannot step aside its full speed; patch P4 (`docs/PATCHES.md`).
+    It applies to every strafing mob, as in 1.16 onwards.
+*   **Breezes jumping too little.** The breeze's goals were not 1.21's; `docs/streams/breeze.md` has the port of
+    `BreezeAi`.
+
+Tests added: `chambers` checks the buttons and levers against the palette, every button, lever, ladder, hook and
+torch of a built chamber for its support (100 checked, 30 floor buttons, none floating), every vault's look against
+its key, through a save and load, the repair, and a real player's click through `processRightClickBlock` (a key from
+the spawner's key table opens a normal vault; an ominous vault refuses it and takes an ominous key). `breeze` pins
+`LongJump`'s and `Shoot`'s numbers, a hand-worked jump vector, the drag-free flight, and the cycle (at least 6 jumps in
+600 ticks, one charge per landing). `tweaks` (new) pins P4: 0.0625 for a blocked strafe, 0.25 with the tweak off.
+
+Results (`tr-chambers-fixes`): `-Pselftest=all` **3011 pass, 0 fail** (Default world, rerun on the same world);
+`check_assets` 0 errors; P4 verified on Mojang's SRG `EntityMoveHelper`; release jar built last with `--rerun-tasks`.

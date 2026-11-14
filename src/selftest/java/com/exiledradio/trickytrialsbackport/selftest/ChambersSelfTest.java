@@ -90,6 +90,24 @@ public final class ChambersSelfTest implements SelfTest {
         c.ok(!s.biomes.contains("minecraft:deep_dark") && s.biomes.contains("minecraft:plains") && s.biomes.contains("minecraft:lush_caves"),
                 "the biome tag: every overworld biome but the deep dark");
         c.ok(ChambersContent.enabled(), "the stream is on");
+        // Buttons and levers of the files: face and facing to 1.12.2's one facing (Core's table knows floor and
+        // ceiling only facing north, and read a floor button facing east as a wall button).
+        String[][] states = {
+                {"minecraft:oak_button[face=floor,facing=east,powered=false]", "minecraft:wooden_button[facing=up,powered=false]"},
+                {"minecraft:oak_button[face=floor,facing=south,powered=false]", "minecraft:wooden_button[facing=up,powered=false]"},
+                {"minecraft:oak_button[face=ceiling,facing=west,powered=false]", "minecraft:wooden_button[facing=down,powered=false]"},
+                {"minecraft:oak_button[face=wall,facing=east,powered=false]", "minecraft:wooden_button[facing=east,powered=false]"},
+                {"minecraft:stone_button[face=floor,facing=west,powered=true]", "minecraft:stone_button[facing=up,powered=true]"},
+                {"minecraft:stone_button[face=wall,facing=south,powered=false]", "minecraft:stone_button[facing=south,powered=false]"},
+                {"minecraft:lever[face=floor,facing=east,powered=false]", "minecraft:lever[facing=up_x,powered=false]"},
+                {"minecraft:lever[face=floor,facing=south,powered=false]", "minecraft:lever[facing=up_z,powered=false]"},
+                {"minecraft:lever[face=ceiling,facing=north,powered=false]", "minecraft:lever[facing=down_z,powered=false]"},
+                {"minecraft:lever[face=wall,facing=west,powered=false]", "minecraft:lever[facing=west,powered=false]"},
+        };
+        for (String[] st : states) {
+            IBlockState got = com.exiledradio.backportcore.structure.ModernPalette.resolve(st[0]).state;
+            c.eq(st[1], String.valueOf(got), st[0]);
+        }
     }
 
     /** Every template of every pool reachable from the start loads, and what its blocks become here. */
@@ -361,6 +379,8 @@ public final class ChambersSelfTest implements SelfTest {
             c.eq(layout.size(), n, "the saved start has the layout's pieces");
         }
         contents(c, world, all, layout);
+        attached(c, world, all);
+        vaults(c, world, all);
     }
 
     private void contents(Check c, WorldServer world, StructureBoundingBox all, List<ChamberPiece> layout) {
@@ -397,7 +417,7 @@ public final class ChambersSelfTest implements SelfTest {
                 TileEntity te = world.getTileEntity(p);
                 if (te instanceof TileEntityVault) {
                     NBTTagCompound cfg = te.writeToNBT(new NBTTagCompound()).getCompoundTag("config");
-                    vaults.add((st.getValue(BlockVault.OMINOUS) ? "ominous " : "normal ") + cfg.getString("loot_table") + " key "
+                    vaults.add((st.getActualState(world, p).getValue(BlockVault.OMINOUS) ? "ominous " : "normal ") + cfg.getString("loot_table") + " key "
                             + cfg.getCompoundTag("key_item").getString("id"));
                 }
             } else {
@@ -459,7 +479,16 @@ public final class ChambersSelfTest implements SelfTest {
         }
         List<EntityItem> drops = world.getEntitiesWithinAABB(EntityItem.class,
                 new AxisAlignedBB(all.minX, all.minY, all.minZ, all.maxX + 1, all.maxY + 1, all.maxZ + 1));
-        c.eq(0, drops.size(), "nothing popped off while the chambers were built");
+        // Rewards an earlier run's vault test ejected lie beside the vaults; anything else popped off a block.
+        int popped = 0;
+        for (EntityItem item : drops) {
+            boolean byVault = false;
+            for (BlockPos p : BlockPos.getAllInBox(new BlockPos(item).add(-3, -3, -3), new BlockPos(item).add(3, 3, 3))) {
+                byVault |= world.getBlockState(p).getBlock() == vaultBlock;
+            }
+            popped += byVault ? 0 : 1;
+        }
+        c.eq(0, popped, "nothing popped off while the chambers were built");
         c.ok(inside != null, "a place inside a piece: " + inside);
         if (inside != null) {
             List<Biome.SpawnListEntry> list = new ArrayList<Biome.SpawnListEntry>(world.getBiome(inside).getSpawnableList(EnumCreatureType.MONSTER));
@@ -475,6 +504,151 @@ public final class ChambersSelfTest implements SelfTest {
         Advancement adv = world.getMinecraftServer().getAdvancementManager().getAdvancement(Content.id("adventure/minecraft_trials_edition"));
         Advancement lock = world.getMinecraftServer().getAdvancementManager().getAdvancement(Content.id("adventure/under_lock_and_key"));
         c.ok(adv != null && lock != null && lock.getParent() == adv, "Minecraft: Trial(s) Edition is Under Lock and Key's parent");
+    }
+
+    /**
+     * Every block that hangs on another (buttons, levers, ladders, tripwire hooks, torches) has its support: none
+     * floats. A floor button is 1.12.2's facing=up.
+     */
+    private void attached(Check c, WorldServer world, StructureBoundingBox all) {
+        int checked = 0, floating = 0, floorButtons = 0;
+        List<String> bad = new ArrayList<String>();
+        for (BlockPos p : BlockPos.getAllInBoxMutable(new BlockPos(all.minX, all.minY, all.minZ), new BlockPos(all.maxX, all.maxY, all.maxZ))) {
+            IBlockState st = world.getBlockState(p);
+            Block b = st.getBlock();
+            net.minecraft.util.EnumFacing facing;
+            if (b instanceof net.minecraft.block.BlockButton) {
+                facing = st.getValue(net.minecraft.block.BlockButton.FACING);
+                floorButtons += facing == net.minecraft.util.EnumFacing.UP ? 1 : 0;
+            } else if (b instanceof net.minecraft.block.BlockLadder) {
+                facing = st.getValue(net.minecraft.block.BlockLadder.FACING);
+            } else if (b instanceof net.minecraft.block.BlockTripWireHook) {
+                facing = st.getValue(net.minecraft.block.BlockTripWireHook.FACING);
+            } else if (b instanceof net.minecraft.block.BlockTorch) {
+                facing = st.getValue(net.minecraft.block.BlockTorch.FACING);
+            } else if (b instanceof net.minecraft.block.BlockLever) {
+                facing = st.getValue(net.minecraft.block.BlockLever.FACING).getFacing();
+            } else {
+                continue;
+            }
+            checked++;
+            BlockPos support = p.offset(facing.getOpposite());
+            IBlockState s = world.getBlockState(support);
+            if (s.getBlockFaceShape(world, support, facing) != net.minecraft.block.state.BlockFaceShape.SOLID) {
+                floating++;
+                if (bad.size() < 8) {
+                    bad.add(b.getRegistryName() + " " + facing + " at " + p.toImmutable() + " on " + s.getBlock().getRegistryName());
+                }
+            }
+        }
+        TrickyLog.info("chambers: " + checked + " attached blocks, " + floorButtons + " floor buttons, floating " + bad);
+        c.ok(checked > 10, "attached blocks to check: " + checked);
+        c.eq(0, floating, "no button, lever, ladder, hook or torch hangs on nothing: " + bad);
+    }
+
+    /**
+     * Every vault looks like what it opens for: an ominous vault's tile keeps the ominous flag of its block state
+     * (1.21's block entity data has none), through a save and load too. A real player's click through the server's
+     * click path opens a normal vault with a key from the trial spawner's key table, and an ominous one with an
+     * ominous key only.
+     */
+    private void vaults(Check c, WorldServer world, StructureBoundingBox all) {
+        Block vaultBlock = Block.getBlockFromName(Content.MOD_ID + ":vault");
+        BlockPos normal = null, ominous = null;
+        int vaults = 0, consistent = 0, reloaded = 0;
+        for (BlockPos p : BlockPos.getAllInBoxMutable(new BlockPos(all.minX, all.minY, all.minZ), new BlockPos(all.maxX, all.maxY, all.maxZ))) {
+            if (world.getBlockState(p).getBlock() != vaultBlock) {
+                continue;
+            }
+            vaults++;
+            TileEntityVault te = (TileEntityVault) world.getTileEntity(p);
+            boolean looks = world.getBlockState(p).getActualState(world, p).getValue(BlockVault.OMINOUS);
+            String key = te.writeToNBT(new NBTTagCompound()).getCompoundTag("config").getCompoundTag("key_item").getString("id");
+            boolean opensOminous = key.endsWith(":ominous_trial_key");
+            consistent += looks == opensOminous ? 1 : 0;
+            TileEntityVault copy = new TileEntityVault();
+            copy.readFromNBT(te.writeToNBT(new NBTTagCompound()));
+            reloaded += copy.ominousFlag() == opensOminous ? 1 : 0;
+            if (opensOminous && ominous == null) {
+                ominous = p.toImmutable();
+            } else if (!opensOminous && normal == null) {
+                normal = p.toImmutable();
+            }
+        }
+        c.eq(vaults, consistent, "every vault looks ominous exactly when it takes the ominous key (" + consistent + "/" + vaults + ")");
+        c.eq(vaults, reloaded, "and still after a save and load");
+        // The repair for chambers generated before the fix: saved as normal with the ominous settings.
+        if (ominous != null) {
+            NBTTagCompound saved = world.getTileEntity(ominous).writeToNBT(new NBTTagCompound());
+            saved.setBoolean("ominous", false);
+            TileEntityVault old = new TileEntityVault();
+            old.readFromNBT(saved);
+            c.ok(old.ominousFlag(), "an ominous vault saved as a normal one is read back as ominous");
+        }
+        // A structure file's block entity data (no "ominous") into the tile an ominous state made.
+        TileEntityVault made = (TileEntityVault) vaultBlock.createTileEntity(world, vaultBlock.getDefaultState().withProperty(BlockVault.OMINOUS, true));
+        NBTTagCompound file = new NBTTagCompound();
+        NBTTagCompound config = new NBTTagCompound();
+        NBTTagCompound keyItem = new NBTTagCompound();
+        keyItem.setString("id", "minecraft:ominous_trial_key");
+        keyItem.setInteger("count", 1);
+        config.setTag("key_item", keyItem);
+        config.setString("loot_table", "minecraft:chests/trial_chambers/reward_ominous");
+        file.setTag("config", config);
+        made.readFromNBT(file);
+        c.ok(made.ominousFlag(), "a structure file's ominous vault keeps the ominous flag of its state");
+
+        c.ok(normal != null && ominous != null, "the chambers have normal and ominous vaults");
+        if (normal == null || ominous == null) {
+            return;
+        }
+        List<ItemStack> keys = com.exiledradio.trickytrialsbackport.trial.ModernLoot.roll(world, "minecraft:spawners/trial_chamber/key", world.rand, 0.0F);
+        c.ok(keys.size() == 1, "the trial spawner's key table gives one key: " + keys);
+        if (keys.isEmpty()) {
+            return;
+        }
+        // A new player each run: a vault opens once per player, and the test world keeps its vaults.
+        net.minecraft.entity.player.EntityPlayerMP player = Players.real(world, "chambervaulter" + System.nanoTime());
+        try {
+            c.eq(0, useVault(world, player, normal, keys.get(0).copy()), "a normal vault takes a trial spawner's trial key (server's click path)");
+            ItemStack plain = new ItemStack(com.exiledradio.trickytrialsbackport.trial.TrialContent.trialKey);
+            c.eq(1, useVault(world, player, ominous, plain), "an ominous vault refuses a trial key");
+            ItemStack ominousKey = new ItemStack(com.exiledradio.trickytrialsbackport.trial.TrialContent.ominousTrialKey);
+            c.eq(0, useVault(world, player, ominous, ominousKey), "and takes an ominous trial key");
+        } finally {
+            world.removeEntity(player);
+            for (EntityItem item : world.getEntitiesWithinAABB(EntityItem.class,
+                    new AxisAlignedBB(all.minX, all.minY, all.minZ, all.maxX + 1, all.maxY + 1, all.maxZ + 1))) {
+                item.setDead();
+            }
+        }
+    }
+
+    /** Stands a player beside the vault, lets it light, clicks it as the server handles a click; @return keys left */
+    private static int useVault(WorldServer world, net.minecraft.entity.player.EntityPlayerMP player, BlockPos pos, ItemStack key) {
+        TileEntityVault te = (TileEntityVault) world.getTileEntity(pos);
+        BlockPos stand = pos;
+        for (net.minecraft.util.EnumFacing f : net.minecraft.util.EnumFacing.HORIZONTALS) {
+            if (world.isAirBlock(pos.offset(f)) && world.isAirBlock(pos.offset(f).up())) {
+                stand = pos.offset(f);
+                break;
+            }
+        }
+        player.setPosition(stand.getX() + 0.5, stand.getY(), stand.getZ() + 0.5);
+        if (!world.playerEntities.contains(player)) {
+            world.spawnEntity(player);
+        }
+        te.onlySelectPlayers(java.util.Collections.singletonList(player));
+        // A vault an earlier run opened may still be ejecting its reward: wait for it to light again.
+        for (int i = 0; i < 2400 && world.getBlockState(pos).getValue(BlockVault.STATE) != com.exiledradio.trickytrialsbackport.trial.VaultPhase.ACTIVE; i++) {
+            world.getWorldInfo().setWorldTotalTime(world.getTotalWorldTime() + 1);
+            te.update();
+        }
+        player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND, key);
+        player.interactionManager.processRightClickBlock(player, world, key, net.minecraft.util.EnumHand.MAIN_HAND, pos,
+                net.minecraft.util.EnumFacing.UP, 0.5F, 1.0F, 0.5F);
+        te.onlySelectPlayers(null);
+        return key.getCount();
     }
 
     /** The self-test log line, through the mod's logger. */

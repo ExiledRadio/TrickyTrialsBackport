@@ -25,6 +25,7 @@ public final class TrickyTrialsCore implements IFMLLoadingPlugin {
                 CactusFlowerTransformer.class.getName(),
                 DeadBushSoilTransformer.class.getName(),
                 DesertSoundsTransformer.class.getName(),
+                StrafeSpeedTransformer.class.getName(),
         };
     }
 

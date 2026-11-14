@@ -386,8 +386,17 @@ public class TileEntityVault extends TileEntity implements ITickable {
             }
             this.totalEjectionsNeeded = s.getInteger("total_ejections_needed");
         }
-        this.ominous = tag.getBoolean("ominous");
+        // 1.21's own block entity data (a structure file's) has no "ominous": the block state says it, and
+        // createTileEntity already set it from that state, so it is kept.
+        if (tag.hasKey("ominous")) {
+            this.ominous = tag.getBoolean("ominous");
+        }
         this.config = tag.hasKey("config", 10) ? VaultSettings.read(tag.getCompoundTag("config")) : VaultSettings.normal();
+        // Trial chambers generated before that fix saved their ominous vaults as normal ones with the ominous key and
+        // table; such a vault is the ominous vault.
+        if (!this.ominous && this.config.isOminousReward()) {
+            this.ominous = true;
+        }
         if (tag.hasKey("shared_data", 10)) {
             readShared(tag.getCompoundTag("shared_data"));
         }

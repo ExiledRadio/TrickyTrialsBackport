@@ -243,3 +243,15 @@ through `DecorateBiomeEvent.Post`; Caves & Cliffs' 1.18 generator does not run 1
 **Meanwhile:** nothing grows from this stream in 1.18-terrain worlds. Everything above is public, height-independent
 (Core's `WorldHeights`) and does not depend on how the biome was placed. A hand-over note for the Caves & Cliffs
 session is in the family's notes folder (`tr-flora.md`).
+
+## 12. Palette: buttons and levers on floors and ceilings (stream 10)
+
+**Want:** `ModernPalette` to map `face=floor|ceiling` with any `facing` for buttons (to 1.12.2's `up`/`down`) and
+levers (`up_x`/`up_z`/`down_x`/`down_z` by axis). The Flattening table lists them only facing north, and the scoring
+ties a floor button facing east with the wall button facing east, picking the wall button (it floats).
+
+**Meanwhile:** `chambers.FaceAttached` registers `ModernPalette.map` for `oak_button`, `stone_button` and `lever`,
+which every structure then uses.
+
+Also nice to have from that work: `ModernTemplate.Jigsaw` keeping the 1.20.3+ jigsaw priorities, and
+`EntityMoveHelper`'s blocked strafe (patch P4 here) is family-wide behavior that could move to Core.
