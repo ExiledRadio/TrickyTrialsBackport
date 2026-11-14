@@ -49,10 +49,10 @@ for name in assets.JAR.namelist():
         assets.write("trials/minecraft/" + rel, assets.jar_bytes(name).decode("utf-8").replace("\r\n", "\n"))
         copied += 1
 
-# --- Advancements. Their 1.21 parent, Minecraft: Trial(s) Edition (entering trial chambers), comes with
-# stream 10; until then Under Lock and Key hangs from Adventure.
+# --- Advancements. Under Lock and Key hangs from Minecraft: Trial(s) Edition (entering trial chambers),
+# which stream 10 (chambers) writes.
 for name, parent, key, trigger, frame in (
-        ("under_lock_and_key", "minecraft:adventure/root", "trial_key", "vault_used", None),
+        ("under_lock_and_key", "%s:adventure/minecraft_trials_edition" % M, "trial_key", "vault_used", None),
         ("revaulting", "%s:adventure/under_lock_and_key" % M, "ominous_trial_key", "ominous_vault_used", "goal")):
     display = {"icon": {"item": "%s:%s" % (M, key)},
                "title": {"translate": "advancements.adventure.%s.title" % name},

@@ -53,8 +53,12 @@ Terrain adapters are only needed to keep the entrance corridors from breaking in
 (`TerrainHeights.isWater`), not for the surface height. 26.3's abandoned camps (stream 32) need the same
 loader, on the surface.
 
-**Meanwhile:** stream 10 is not started. Trial spawners and vaults (stream 7) work on their own when
-placed.
+**Built (stream 10, `docs/streams/chambers.md`):** on Core's templates, pools, palette, `ScatteredStructure`,
+`StructureLocate` and `TerrainAdaptation`. Core's `Jigsaw` is 1.16.5's, so the 1.21 assembly (selection and
+placement priorities, pool aliases, dimension padding) is the stream's own `ChamberLayout`. **Open, nice to have:**
+`ModernTemplate.Jigsaw` keeping `placement_priority` and `selection_priority` (the stream reads the NBT itself);
+`ModernProcessors` reading `protected_blocks`; a public 3D noise biome query (the stream reaches C&C's by
+reflection, as Wild Update's DD-1).
 
 ## 4. Lightning rods oxidize (1.21.9) - a change to Caves & Cliffs' block (Rule 2)
 

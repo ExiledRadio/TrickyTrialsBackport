@@ -575,3 +575,7 @@ subtitles.trickytrialsbackport.block.deadbush.idle=Dry sounds
 subtitles.trickytrialsbackport.block.dry_grass.ambient=Windy sounds
 subtitles.trickytrialsbackport.block.firefly_bush.idle=Fireflies buzz
 subtitles.trickytrialsbackport.block.sand.idle=Sandy sounds
+
+# --- chambers ---
+advancements.adventure.minecraft_trials_edition.description=Step foot in a Trial Chamber
+advancements.adventure.minecraft_trials_edition.title=Minecraft: Trial(s) Edition

@@ -185,6 +185,7 @@ wrapping block, so it never meets a stream worktree's server.
 
 - The structure, its pieces and loot, trial spawners for each mob pool, vaults, the trial explorer map.
   See *Still open* #1 and `CORE_REQUESTS.md` #3.
+  Built (all but the explorer map): `docs/streams/chambers.md`.
 
 ### 11. Bundles (1.21.2)
 

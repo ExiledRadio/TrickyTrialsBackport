@@ -49,6 +49,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.backportcore.creative.CreativePlacement.placeSpawnEggs(MOD_ID);
         NetworkHandler.init();
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
+        com.exiledradio.trickytrialsbackport.chambers.ChambersContent.preInit();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.preInit();
         com.exiledradio.trickytrialsbackport.creaking.CreakingContent.preInit();
         com.exiledradio.trickytrialsbackport.resin.ResinContent.preInit();
@@ -78,6 +79,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.common.Guis.init();
         com.exiledradio.trickytrialsbackport.copper.CopperContent.init();
         com.exiledradio.trickytrialsbackport.effects.EffectsContent.init();
+        com.exiledradio.trickytrialsbackport.chambers.ChambersContent.init();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.init();
         com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.init();
     }

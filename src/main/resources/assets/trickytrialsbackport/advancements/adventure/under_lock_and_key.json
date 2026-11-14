@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:adventure/root",
+  "parent": "trickytrialsbackport:adventure/minecraft_trials_edition",
   "display": {
     "icon": {
       "item": "trickytrialsbackport:trial_key"

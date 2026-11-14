@@ -59,6 +59,7 @@ public final class SelfTestRunner {
             new ResinSelfTest(),
             new FloraSelfTest(),
             new LookfeelSelfTest(),
+            new ChambersSelfTest(),
     };
 
     private final List<String> wanted;
