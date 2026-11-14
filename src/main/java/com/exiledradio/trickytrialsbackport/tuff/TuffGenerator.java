@@ -1,5 +1,6 @@
 package com.exiledradio.trickytrialsbackport.tuff;
 
+import com.exiledradio.backportcore.worldgen.FlatWorlds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
@@ -15,7 +16,7 @@ import java.util.Random;
 /**
  * Our tuff copy's generation, only registered when we register the copy: 1.17's {@code ore_tuff}, two
  * blobs of up to 33 blocks per chunk, evenly between y 0 and 16, replacing stone (and granite, diorite
- * and andesite, which are stone in 1.12.2), in the Overworld only.
+ * and andesite, which are stone in 1.12.2), in the Overworld only, and in superflat only with {@code decoration}.
  */
 final class TuffGenerator implements IWorldGenerator {
 
@@ -31,7 +32,7 @@ final class TuffGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
-        if (world.provider.getDimension() != 0) {
+        if (world.provider.getDimension() != 0 || !FlatWorlds.decoration(world)) {
             return;
         }
         for (int i = 0; i < PER_CHUNK; i++) {

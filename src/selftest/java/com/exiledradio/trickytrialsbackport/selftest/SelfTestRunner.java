@@ -61,6 +61,7 @@ public final class SelfTestRunner {
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
             new TweaksSelfTest(),
+            new FlatSelfTest(),
     };
 
     private final List<String> wanted;

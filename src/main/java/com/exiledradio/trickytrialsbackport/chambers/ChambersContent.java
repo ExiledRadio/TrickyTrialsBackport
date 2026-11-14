@@ -6,6 +6,7 @@ import com.exiledradio.backportcore.structure.ModernPalette;
 import com.exiledradio.backportcore.structure.ScatteredStructure;
 import com.exiledradio.backportcore.structure.Structures;
 import com.exiledradio.backportcore.structure.TerrainAdaptation;
+import com.exiledradio.backportcore.worldgen.FlatWorlds;
 import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.common.Content;
@@ -103,7 +104,9 @@ public final class ChambersContent {
         MapGenStructureIO.registerStructure(TrialChambersStructure.Start.class, TrialChambersStructure.SAVE_NAME);
         MapGenStructureIO.registerStructureComponent(ChamberPiece.class, "TTB_TrialChambersPiece");
         ScatteredStructure.register(Structures.TRIAL_CHAMBERS,
-                world -> generates() && world.provider.getDimension() == 0 ? new TrialChambersStructure() : null);
+                // Never in superflat (Core gates it too; a 1.12 preset has no option for trial chambers).
+                world -> generates() && world.provider.getDimension() == 0 && FlatWorlds.structure(world, Structures.TRIAL_CHAMBERS)
+                        ? new TrialChambersStructure() : null);
         StructureLocate.scattered("minecraft:trial_chambers", Structures.TRIAL_CHAMBERS, null, "minecraft:trial_chambers");
         // 1.21's terrain_adaptation: encapsulate. A terrain that adapts to structures does it in its own noise.
         TerrainAdaptation.register(Structures.TRIAL_CHAMBERS, TerrainAdaptation.Kind.ENCAPSULATE, (world, cx, cz, out) -> {

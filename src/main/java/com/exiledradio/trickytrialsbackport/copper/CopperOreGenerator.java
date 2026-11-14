@@ -1,5 +1,6 @@
 package com.exiledradio.trickytrialsbackport.copper;
 
+import com.exiledradio.backportcore.worldgen.FlatWorlds;
 import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.common.Owners;
 
@@ -9,7 +10,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
@@ -19,7 +19,8 @@ import java.util.Random;
 /**
  * Our copy of Caves &amp; Cliffs' copper ore veins, registered only with the copies: {@code veinsPerChunk} veins
  * (6) of up to {@code veinSize} (10), evenly between {@code minY} and {@code maxY} (1-96), in the
- * Overworld's stone (granite, diorite and andesite included), never in superflat. Its deepslate copper ore
+ * Overworld's stone (granite, diorite and andesite included), in superflat only with {@code decoration} (ores are
+ * decoration there, as 1.12's). Its deepslate copper ore
  * is not copied: without that mod there is no deepslate. Placed inside the population window.
  *
  * <p>A vein is a line of overlapping blobs: a random direction and length from the vein size, with a
@@ -29,7 +30,7 @@ public final class CopperOreGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
-        if (!ModConfig.copper.generate || world.provider.getDimension() != 0 || world.getWorldType() == WorldType.FLAT) {
+        if (!ModConfig.copper.generate || world.provider.getDimension() != 0 || !FlatWorlds.decoration(world)) {
             return;
         }
         int lo = Math.max(1, ModConfig.copper.minY);
