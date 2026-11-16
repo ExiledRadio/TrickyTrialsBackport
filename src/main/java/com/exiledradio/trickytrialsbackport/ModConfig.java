@@ -57,12 +57,12 @@ public final class ModConfig {
     @Config.Comment("The crafter.")
     public static final Crafter crafter = new Crafter();
 
-    @Setting.Feature(icon = "minecraft:mob_spawner")
+    @Setting.Feature(icon = "trickytrialsbackport:trial_key")
     @Config.LangKey("config.trickytrialsbackport.trials")
     @Config.Comment("Trial spawners, vaults, trial keys, ominous trials and Trial Omen.")
     public static final Trials trials = new Trials();
 
-    @Setting.Feature(icon = "minecraft:brewing_stand")
+    @Setting.Feature(icon = "trickytrialsbackport:ominous_bottle")
     @Config.LangKey("config.trickytrialsbackport.effects")
     @Config.Comment("Weaving, Oozing, Infested and Wind Charged, and their potions and arrows.")
     public static final Effects effects = new Effects();
@@ -77,7 +77,7 @@ public final class ModConfig {
     @Config.Comment("Trial chambers.")
     public static final Chambers chambers = new Chambers();
 
-    @Setting.Feature(icon = "minecraft:leather")
+    @Setting.Feature(icon = "trickytrialsbackport:bundle")
     @Config.LangKey("config.trickytrialsbackport.bundles")
     @Config.Comment("Bundles and the sixteen dyed bundles.")
     public static final Bundles bundles = new Bundles();
@@ -87,17 +87,17 @@ public final class ModConfig {
     @Config.Comment("The pale garden: pale oak, pale moss, hanging moss, eyeblossoms, the creaking heart and the biome.")
     public static final PaleGarden paleGarden = new PaleGarden();
 
-    @Setting.Feature(icon = "minecraft:lit_pumpkin")
+    @Setting.Feature(icon = "trickytrialsbackport:creaking_heart")
     @Config.LangKey("config.trickytrialsbackport.creaking")
     @Config.Comment("The creaking.")
     public static final Creaking creaking = new Creaking();
 
-    @Setting.Feature(icon = "minecraft:dye@14")
+    @Setting.Feature(icon = "trickytrialsbackport:resin_clump")
     @Config.LangKey("config.trickytrialsbackport.resin")
     @Config.Comment("Resin clumps, resin blocks and resin bricks.")
     public static final Resin resin = new Resin();
 
-    @Setting.Feature(icon = "minecraft:red_flower@8")
+    @Setting.Feature(icon = "trickytrialsbackport:wildflowers")
     @Config.LangKey("config.trickytrialsbackport.flora")
     @Config.Comment("Spring's plants: bushes, firefly bushes, cactus flowers, dry grass, leaf litter, wildflowers and fallen trees.")
     public static final Flora flora = new Flora();
