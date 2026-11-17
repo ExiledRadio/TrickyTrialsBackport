@@ -71,6 +71,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.creaking.client.CreakingClient.init();
             com.exiledradio.trickytrialsbackport.flora.client.FloraClient.init();
             com.exiledradio.trickytrialsbackport.lookfeel.client.LookAndFeelClient.init();
+            com.exiledradio.trickytrialsbackport.tweaks.client.TweaksClient.init();
         }
     }
 
@@ -82,6 +83,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.chambers.ChambersContent.init();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.init();
         com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.init();
+        com.exiledradio.trickytrialsbackport.tweaks.EnderPearlChunks.init();
     }
 
     @Mod.EventHandler
@@ -89,6 +91,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.bogged.BoggedContent.postInit();
         com.exiledradio.trickytrialsbackport.decor.DecorContent.postInit();
         com.exiledradio.trickytrialsbackport.flora.FloraContent.postInit();
+        com.exiledradio.trickytrialsbackport.tweaks.SpawnChunks.postInit();
     }
 
     @Mod.EventHandler

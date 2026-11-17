@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -61,6 +62,7 @@ public final class SelfTestRunner {
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
             new TweaksSelfTest(),
+            new MechanicsSelfTest(),
             new FlatSelfTest(),
     };
 
@@ -84,6 +86,7 @@ public final class SelfTestRunner {
         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
         WorldServer world = server.getWorld(0);
         Check check = new Check(world);
+        spawnArea(world);
         try {
             dumpStates(server.getFile("selftest-states.txt"));
             dumpItems(server.getFile("selftest-items.txt"));
@@ -112,6 +115,22 @@ public final class SelfTestRunner {
         } catch (Exception ignored) {
         }
         server.initiateShutdown();
+    }
+
+    /**
+     * Without spawn chunks (1.21.9, stream 25) nothing around the spawn was generated at start; the world-generation
+     * tests read that area, so it is generated here, 13 by 13 chunks (populated inside), as 1.12.2's start did.
+     */
+    private static void spawnArea(WorldServer world) {
+        BlockPos spawn = world.getSpawnPoint();
+        if (world.isSpawnChunk(spawn.getX() >> 4, spawn.getZ() >> 4)) {
+            return;
+        }
+        for (int dx = -6; dx <= 6; dx++) {
+            for (int dz = -6; dz <= 6; dz++) {
+                world.getChunkProvider().provideChunk((spawn.getX() >> 4) + dx, (spawn.getZ() >> 4) + dz);
+            }
+        }
     }
 
     private static void dumpStates(File file) throws Exception {

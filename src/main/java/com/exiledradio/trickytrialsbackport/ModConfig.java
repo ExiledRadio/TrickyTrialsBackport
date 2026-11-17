@@ -494,6 +494,145 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Tweaks fields ---
+        @Config.Comment("Mounts and vehicles go through nether and end portals with their riders (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.ridersThroughPortals")
+        public boolean ridersThroughPortals = true;
+
+        @Config.Comment("An ender pearl thrown through a portal teleports its thrower to the other dimension (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.pearlsAcrossDimensions")
+        public boolean pearlsAcrossDimensions = true;
+
+        @Config.Comment({"Thrown ender pearls load and tick the 3x3 chunks around them, and leave with their thrower when",
+                "they log out (1.21.2)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.pearlsLoadChunks")
+        public boolean pearlsLoadChunks = true;
+
+        @Config.Comment("Primed TNT goes through nether portals, and cannot break portal blocks afterwards (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.tntThroughPortals")
+        public boolean tntThroughPortals = true;
+
+        @Config.Comment({"Portal cooldowns: 0.5 seconds for boats and minecarts, 0.1 seconds for projectiles, a rider's",
+                "own for a ridden mount (1.21.2)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.portalCooldowns")
+        public boolean portalCooldowns = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Saddles are crafted from 3 leather and an iron ingot (1.21.6).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.saddleRecipe")
+        public boolean saddleRecipe = true;
+
+        @Config.Comment("Dungeon, temple and stronghold chests have 1-5 leather where they had a saddle (1.21.6).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.saddleLoot")
+        public boolean saddleLoot = true;
+
+        @Config.Comment({"Shears take off a mob's leads, then its horse armor or carpet, then its saddle, when no one rides",
+                "it (1.21.6)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.shearsRemoveEquipment")
+        public boolean shearsRemoveEquipment = true;
+
+        @Config.Comment("Horses, donkeys and mules eat carrots, as they eat apples (1.21.6).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.horsesEatCarrots")
+        public boolean horsesEatCarrots = true;
+
+        @Config.Comment({"Sneak-use a mob to tie the mobs you lead to it; leads snap at 12 blocks instead of 10",
+                "(1.21.6)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.leads")
+        public boolean leads = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Leads are crafted from 5 string, without a slimeball (1.21.6).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.leadRecipe")
+        public boolean leadRecipe = true;
+
+        @Config.Comment({"Projectiles knock back in the direction they fly (potions away from themselves), and",
+                "projectiles from dispensers knock back too (1.21)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.projectileKnockback")
+        public boolean projectileKnockback = true;
+
+        @Config.Comment("With an axe in the main hand and a shield in the off hand, use raises the shield (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.axeShield")
+        public boolean axeShield = true;
+
+        @Config.Comment("Witches always drop 4-8 redstone dust (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.witchRedstone")
+        public boolean witchRedstone = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"No spawn chunks: the area around the world spawn is not kept loaded nor prepared at start",
+                "(1.21.9). With Trails & Tales, its spawn chunk radius is set to 0."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.noSpawnChunks")
+        public boolean noSpawnChunks = true;
+
+        @Config.Comment("Players get no damage immunity when they spawn, respawn or join (1.21.4).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.noSpawnInvulnerability")
+        public boolean noSpawnInvulnerability = true;
+
+        @Config.Comment("Water Breathing and Conduit Power refill air under water (1.21.4).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.waterBreathingRefillsAir")
+        public boolean waterBreathingRefillsAir = true;
+
+        @Config.Comment("Gliding with an elytra ends sprinting (1.21.4).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.elytraEndsSprint")
+        public boolean elytraEndsSprint = true;
+
+        @Config.Comment({"Gliding into a ladder or other climbable block ends the flight; vines can be glided through",
+                "(1.21.5, 1.21.11)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.elytraClimbables")
+        public boolean elytraClimbables = true;
+
+        @Config.Comment({"Fire Protection's shorter burning and Blast Protection's lower knockback add up over every",
+                "piece worn (1.21)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.protectionStacks")
+        public boolean protectionStacks = true;
+
+        @Config.Comment({"Animals panic for 2 seconds after damage that causes panic, not after any hit; adult polar",
+                "bears only from fire, cactus and lightning; mounts ridden by mobs never (1.21, 1.21.11)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.panic")
+        public boolean panic = true;
+
+        @Config.Comment("End crystals are immune to fire (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.crystalsFireImmune")
+        public boolean crystalsFireImmune = true;
+
+        @Config.Comment("Doors of different materials placed side by side form a double door (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.mixedDoubleDoors")
+        public boolean mixedDoubleDoors = true;
+
+        @Config.Comment({"A splash potion's strength depends on the distance from where it lands to the nearest part of",
+                "a mob, not to its feet (1.21.2)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.splashDistance")
+        public boolean splashDistance = true;
+
+        @Config.Comment("A pumpkin worn on the head hides you from other players' maps (1.21.2).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.pumpkinHidesMapMarker")
+        public boolean pumpkinHidesMapMarker = true;
+
+        @Config.Comment({"Iron doors, pressure plates, brewing stands, ender chests, bells and lanterns drop when",
+                "broken without the right tool (1.21.4)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.toolFreeDrops")
+        public boolean toolFreeDrops = true;
+
+        @Config.Comment("Thorns on a saddle hurts whoever attacks the mob wearing it (1.21.5).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.saddleThorns")
+        public boolean saddleThorns = true;
+
+        @Config.Comment("The End's obsidian platform drops the blocks it replaces instead of deleting them (1.21).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.portalsDropBlocks")
+        public boolean portalsDropBlocks = true;
+
+        @Config.Comment({"Fire only burns and spreads within 128 blocks of a player, unless the game rule",
+                "allowFireTicksAwayFromPlayer is true (1.21.5)."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.fireNearPlayers")
+        public boolean fireNearPlayers = true;
+
+        @Config.Comment("A mob head keeps its custom name when placed and mined again (1.21.9).")
+        @Config.LangKey("config.trickytrialsbackport.tweaks.headNames")
+        public boolean headNames = true;
+
+        @Config.Comment({"The game rules of 1.21.5 and 1.21.9: tntExplodes, allowFireTicksAwayFromPlayer,",
+                "allowEnteringNetherUsingPortals, spawnMonsters, pvp, commandBlocksEnabled, spawnerBlocksEnabled."})
+        @Config.LangKey("config.trickytrialsbackport.tweaks.gameRules")
+        public boolean gameRules = true;
         // --- end Tweaks ---
     }
 

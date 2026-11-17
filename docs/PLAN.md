@@ -235,8 +235,8 @@ wrapping block, so it never meets a stream worktree's server.
 - **Dried ghast** block (rehydrates in water over ~20 minutes, hatching a ghastling), **ghastling**,
   **happy ghast** (20 HP, up to four riders, flies with the first, can be stood on, tempted by snowballs
   and harnesses, heals in rain), **harnesses** (16 colors plus white). Leads that join two mobs, the new
-  saddle recipe, shears taking off saddles, horse armor and carpets, carrots for horses.
-  Advancement *Stay Hydrated!*.
+  saddle recipe, shears taking off saddles, horse armor and carpets, carrots for horses (these five built in stream 25,
+  `docs/streams/tweaks.md`; harness shearing comes with the harness). Advancement *Stay Hydrated!*.
 
 ### 18. Locator bar (1.21.6)
 
@@ -283,7 +283,7 @@ One switch per change, each listed in `docs/streams/tweaks.md`: bats spawning at
 squid babies, wolves eating fish, Nether portal cooldowns for boats and minecarts, ender pearls loading
 chunks, mobs preferring their weapons, experience orbs bouncing, water breathing refilling air, no
 spawn invulnerability, iron sounds, end portals dropping blocks, lodestone from iron (with Nether
-Update's lodestone), and the rest.
+Update's lodestone), and the rest. The 2026-11-16 audit's 1.21-1.21.11 items are built: `docs/streams/tweaks.md`.
 
 ### 26. Golden dandelion and babies (26.1)
 

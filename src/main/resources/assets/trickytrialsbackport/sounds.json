@@ -2411,5 +2411,37 @@
   },
   "intentionally_empty": {
     "sounds": []
+  },
+  "item.saddle.unequip": {
+    "sounds": [
+      "trickytrialsbackport:mob/horse/saddle_unequip"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.saddle.unequip"
+  },
+  "item.horse_armor.unequip": {
+    "sounds": [
+      "trickytrialsbackport:mob/horse/armor_unequip"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.horse_armor.unequip"
+  },
+  "item.llama_carpet.unequip": {
+    "sounds": [
+      "trickytrialsbackport:mob/llama/unequip"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.llama_carpet.unequip"
+  },
+  "item.lead.tied": {
+    "sounds": [
+      "trickytrialsbackport:entity/leashknot/leash1",
+      "trickytrialsbackport:entity/leashknot/leash2",
+      "trickytrialsbackport:entity/leashknot/leash3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.lead.tied"
+  },
+  "item.shears.snip": {
+    "sounds": [
+      "trickytrialsbackport:mob/sheep/shear"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.shears.snip"
   }
 }
