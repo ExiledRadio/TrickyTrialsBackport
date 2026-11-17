@@ -6,6 +6,7 @@ import com.exiledradio.trickytrialsbackport.bundle.BundleClicks;
 import com.exiledradio.trickytrialsbackport.bundle.BundleContent;
 import com.exiledradio.trickytrialsbackport.bundle.BundleContents;
 import com.exiledradio.trickytrialsbackport.bundle.BundleSelectMessage;
+import com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines;
 import com.exiledradio.trickytrialsbackport.bundle.ItemBundle;
 import com.exiledradio.trickytrialsbackport.network.NetworkHandler;
 
@@ -286,14 +287,12 @@ public final class BundleClient {
         if (!BundleContents.isBundle(event.getStack())) {
             return;
         }
-        List<String> lines = event.getLines();
-        for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).startsWith(BundleTooltip.MARKER)) {
-                // GuiUtils.drawHoveringText: 10 pixels a line, 2 more after the first.
-                int top = event.getY() + i * 10 + (i >= 1 ? 2 : 0);
-                BundleTooltip.render(event.getStack(), event.getX(), top, event.getWidth(), event.getFontRenderer());
-                return;
-            }
+        // Found anywhere in a line: the screen has put gray before every line after the name.
+        int i = BundleTooltipLines.firstPlaceholder(event.getLines());
+        if (i >= 0) {
+            // GuiUtils.drawHoveringText: 10 pixels a line, 2 more after the first.
+            int top = event.getY() + i * 10 + (i >= 1 ? 2 : 0);
+            BundleTooltip.render(event.getStack(), event.getX(), top, event.getWidth(), event.getFontRenderer());
         }
     }
 }
