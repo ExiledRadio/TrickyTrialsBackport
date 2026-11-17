@@ -2,6 +2,7 @@ package com.exiledradio.trickytrialsbackport.bundle.client;
 
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.bundle.BundleContents;
+import com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -23,14 +24,9 @@ import java.util.List;
  *
  * <p>1.12.2's tooltips are text lines only, so the bundle's tooltip gets blank placeholder lines right after
  * its name (where vanilla puts the image), as many as the image is tall, each wide enough for the 96-pixel
- * grid; when the tooltip is drawn the image is drawn over them.
+ * grid; when the tooltip is drawn the image is drawn over them ({@link BundleTooltipLines}).
  */
 final class BundleTooltip {
-
-    /** Starts every placeholder line: two formatting codes that draw nothing and take no width. */
-    static final String MARKER = "§z§z";
-    /** 24 spaces: 96 pixels in the default font. */
-    private static final String PLACEHOLDER = MARKER + "                        ";
 
     private static final int SLOT_SIZE = 24;
     private static final int GRID_WIDTH = 96;
@@ -63,7 +59,7 @@ final class BundleTooltip {
         int count = (height + TEXT_LINE - 1) / TEXT_LINE;
         int at = Math.min(1, lines.size());
         for (int i = 0; i < count; i++) {
-            lines.add(at, PLACEHOLDER);
+            lines.add(at, BundleTooltipLines.PLACEHOLDER);
         }
     }
 

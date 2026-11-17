@@ -82,6 +82,7 @@ final class BundleSelfTest implements SelfTest {
         destroyed(c);
         loot(c);
         nbt(c);
+        tooltipLines(c);
     }
 
     private void registration(Check c) {
@@ -412,6 +413,34 @@ final class BundleSelfTest implements SelfTest {
         c.ok(bundles > 900 && bundles < 1100, "one in three chests, got " + bundles + " of 3000");
         LootTable plains = c.world.getLootTableManager().getLootTableFromLocation(new ResourceLocation("minecraft", "chests/simple_dungeon"));
         c.ok(plains.getPool(TrickyTrialsBackport.MOD_ID + ":bundle") == null, "dungeons have no bundle");
+    }
+
+    /**
+     * The tooltip image's placeholder lines are found where a screen draws them. GuiScreen.getItemToolTip puts
+     * the rarity color before the name and gray before every other line, so a placeholder never starts with
+     * its marker by the time it is drawn (the image was never drawn while the search looked at the start).
+     */
+    private void tooltipLines(Check c) {
+        List<String> lines = new ArrayList<String>();
+        lines.add("White Bundle (#5173)");
+        for (int i = 0; i < 5; i++) {
+            lines.add(com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines.PLACEHOLDER);
+        }
+        lines.add("trickytrialsbackport:white_bundle");
+        lines.add("NBT: 1 tag(s)");
+        lines.add("");
+        // What GuiScreen.getItemToolTip does to the lines.
+        for (int i = 0; i < lines.size(); i++) {
+            lines.set(i, (i == 0 ? net.minecraft.util.text.TextFormatting.WHITE : net.minecraft.util.text.TextFormatting.GRAY) + lines.get(i));
+        }
+        c.ok(!lines.get(1).startsWith(com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines.MARKER),
+                "a screen's gray comes before the marker");
+        c.eq(1, com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines.firstPlaceholder(lines), "the first placeholder is found after the name");
+        // Another mod's own codes in front as well.
+        lines.set(1, "§o§r" + lines.get(1));
+        c.eq(1, com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines.firstPlaceholder(lines), "and with more codes in front");
+        c.ok(!com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines.isPlaceholder(lines.get(7)), "an ordinary line is not one");
+        c.eq(-1, com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines.firstPlaceholder(lines.subList(6, lines.size())), "none among the others");
     }
 
     private void nbt(Check c) {
