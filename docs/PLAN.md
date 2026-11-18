@@ -1,7 +1,8 @@
 # Tricky Trials Backport: plan
 
-Everything Java Edition 1.21 (Tricky Trials) and the later 1.21 drops added or changed, through 1.21.11,
-and the 26.x releases after them (26.1, 26.2, 26.3 and any later 26.x; the user's decision of 2026-11-07),
+Everything Java Edition 1.21 (Tricky Trials) and the later 1.21 drops added or changed, through 1.21.11. The 26.x
+releases (streams 26-32 below) moved to their own mod, **Game Drops Backport**, by the user's decision of 2026-11-17;
+they are kept here only as that mod's starting plan. Everything else is
 grouped into streams, each in its own package, config category and branch. Mod id `trickytrialsbackport`
 (permanent). The display name is not final ("Tricky Trials Backport" is taken on CurseForge); it lives
 only in `gradle.properties` (`mod_name`).
@@ -374,7 +375,9 @@ What is in, what is out and why: `docs/streams/lookfeel.md`; what Core would hav
 2. ~~Pale garden placement~~ **Decided 2026-11-07**: a real biome placed where vanilla places it, in the dark
    forest's climate (part of the roofed forest's region turns pale garden in new chunks). The dappled forest
    (stream 30) follows the same rule: where vanilla puts it, near cold biomes.
-3. ~~26.x~~ **Decided 2026-11-07**: 26.1, 26.2, 26.3 and later 26.x belong here (streams 26-32).
+3. ~~26.x~~ **Decided 2026-11-07**: 26.1, 26.2, 26.3 and later 26.x belong here (streams 26-32). **Changed 2026-11-17**:
+   they go to their own mod, Game Drops Backport ("game drop" is Mojang's name for these releases; the drop names,
+   Tiny Takeover and the rest, are its sections). None of streams 26-32 was built, so nothing moves in worlds.
 4. **The display name**, to replace "Tricky Trials Backport". Still the user's; the working name stays.
 5. ~~Waxing~~ **Decided 2026-11-07**: Buzzy Bees' honeycomb first, then any other mod's `honeycomb` ore item
    (`copper.waxItems` plus the ore name, as built).
