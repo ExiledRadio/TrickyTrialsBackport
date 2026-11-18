@@ -33,7 +33,7 @@ public final class HighContrastOutline {
     public void highlight(DrawBlockHighlightEvent event) {
         RayTraceResult target = event.getTarget();
         if (event.getSubID() != 0 || target == null || target.typeOfHit != RayTraceResult.Type.BLOCK
-                || !LookAndFeel.HIGH_CONTRAST_OUTLINE.get()) {
+                || !LookAndFeel.HIGH_CONTRAST_OUTLINE.isShown() || !LookAndFeel.HIGH_CONTRAST_OUTLINE.get()) {
             return;
         }
         EntityPlayer player = event.getPlayer();

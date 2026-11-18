@@ -38,7 +38,8 @@ public final class SprintWindow {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayerSP player = mc.player;
         // A paused game does not update the player, so its timer did not count down.
-        if (player == null || mc.isGamePaused()) {
+        // A hidden option (Core's Look & Feel page turned its part off) leaves 1.12.2's 7 ticks.
+        if (player == null || mc.isGamePaused() || !LookAndFeel.SPRINT_WINDOW.isShown()) {
             return;
         }
         int window = (int) Math.round(LookAndFeel.SPRINT_WINDOW.get());

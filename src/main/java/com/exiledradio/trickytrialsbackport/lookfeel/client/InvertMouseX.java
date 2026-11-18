@@ -48,7 +48,7 @@ public final class InvertMouseX {
         @Override
         public void mouseXYChange() {
             this.wrapped.mouseXYChange();
-            this.deltaX = LookAndFeel.INVERT_MOUSE_X.get() ? -this.wrapped.deltaX : this.wrapped.deltaX;
+            this.deltaX = LookAndFeel.INVERT_MOUSE_X.isShown() && LookAndFeel.INVERT_MOUSE_X.get() ? -this.wrapped.deltaX : this.wrapped.deltaX;
             this.deltaY = this.wrapped.deltaY;
         }
     }
