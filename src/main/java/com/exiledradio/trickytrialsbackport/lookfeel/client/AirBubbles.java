@@ -46,7 +46,8 @@ public final class AirBubbles {
 
     @SubscribeEvent
     public void air(RenderGameOverlayEvent.Pre event) {
-        if (event.getType() != RenderGameOverlayEvent.ElementType.AIR) {
+        // 1.12.2's bar while the game does not look like 1.21.2 (Core's Look & Feel page).
+        if (event.getType() != RenderGameOverlayEvent.ElementType.AIR || !com.exiledradio.backportcore.presentation.Presentation.isAtLeast("1.21.2")) {
             return;
         }
         Minecraft mc = Minecraft.getMinecraft();

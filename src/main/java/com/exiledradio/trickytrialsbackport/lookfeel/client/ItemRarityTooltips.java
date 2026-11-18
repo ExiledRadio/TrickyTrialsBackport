@@ -21,7 +21,7 @@ public final class ItemRarityTooltips {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void tooltip(ItemTooltipEvent event) {
-        if (event.getToolTip().isEmpty()) {
+        if (event.getToolTip().isEmpty() || !com.exiledradio.backportcore.presentation.Presentation.isAtLeast("1.21.2")) {
             return;
         }
         EnumRarity rarity = Rarities.of(event.getItemStack());

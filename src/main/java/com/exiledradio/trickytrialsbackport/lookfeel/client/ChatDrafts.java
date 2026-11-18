@@ -85,8 +85,9 @@ public final class ChatDrafts {
         }
     }
 
+    /** @return true for vanilla's chat screen while the game looks like 1.21.9 (Core's Look &amp; Feel page): else 1.12.2's chat */
     private static boolean plainChat(@Nullable GuiScreen screen) {
-        return screen != null && screen.getClass() == GuiChat.class;
+        return screen != null && screen.getClass() == GuiChat.class && com.exiledradio.backportcore.presentation.Presentation.isAtLeast("1.21.9");
     }
 
     @SubscribeEvent

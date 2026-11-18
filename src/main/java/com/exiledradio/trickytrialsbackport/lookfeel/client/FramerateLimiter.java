@@ -54,6 +54,10 @@ public final class FramerateLimiter {
         if (event.phase != TickEvent.Phase.END) {
             return;
         }
+        if (!LookAndFeel.INACTIVITY_FPS_LIMIT.isShown()) {
+            this.lastFrame = System.nanoTime();
+            return;
+        }
         Minecraft mc = Minecraft.getMinecraft();
         boolean afk = "afk".equals(LookAndFeel.INACTIVITY_FPS_LIMIT.get());
         int limit = Rules.framerateLimit(afk, Minecraft.getSystemTime() - this.lastInput, !Display.isVisible(),
