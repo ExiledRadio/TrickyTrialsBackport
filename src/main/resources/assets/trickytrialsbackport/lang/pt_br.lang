@@ -524,3 +524,25 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Itens trocados
 subtitles.trickytrialsbackport.block.shelf.place_item=Item colocado
 subtitles.trickytrialsbackport.block.shelf.single_swap=Item trocado
 subtitles.trickytrialsbackport.block.shelf.take_item=Item retirado
+
+# --- spear ---
+advancements.adventure.spear_many_mobs.description=Acerte cinco criaturas com uma investida usando a Lança
+advancements.adventure.spear_many_mobs.title=Espetinho misto
+death.attack.spear.item=%2$s perfurou %1$s com %3$s
+death.attack.spear=%2$s perfurou %1$s
+enchantment.trickytrialsbackport.lunge=Estocada
+entity.trickytrialsbackport.fireproof_item.name=Item
+item.trickytrialsbackport.copper_spear.name=Lança de Cobre
+item.trickytrialsbackport.diamond_spear.name=Lança de Diamante
+item.trickytrialsbackport.golden_spear.name=Lança de Ouro
+item.trickytrialsbackport.iron_spear.name=Lança de Ferro
+item.trickytrialsbackport.netherite_spear.name=Lança de Netherita
+item.trickytrialsbackport.stone_spear.name=Lança de Pedra
+item.trickytrialsbackport.wooden_spear.name=Lança de Madeira
+subtitles.trickytrialsbackport.item.spear.attack=Lança espeta
+subtitles.trickytrialsbackport.item.spear.hit=Lança atinge
+subtitles.trickytrialsbackport.item.spear.lunge=Lança estoca
+subtitles.trickytrialsbackport.item.spear.use=Investida com Lança
+subtitles.trickytrialsbackport.item.spear_wood.attack=Lança espeta
+subtitles.trickytrialsbackport.item.spear_wood.hit=Lança atinge
+subtitles.trickytrialsbackport.item.spear_wood.use=Investida com Lança

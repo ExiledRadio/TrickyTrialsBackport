@@ -69,6 +69,7 @@ public final class SelfTestRunner {
             new MechanicsSelfTest(),
             new FlatSelfTest(),
             new CopperGearSelfTest(),
+            new SpearsSelfTest(),
     };
 
     private final List<String> wanted;

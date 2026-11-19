@@ -524,3 +524,25 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=物品：交换
 subtitles.trickytrialsbackport.block.shelf.place_item=物品：被放入
 subtitles.trickytrialsbackport.block.shelf.single_swap=物品：交换
 subtitles.trickytrialsbackport.block.shelf.take_item=物品：被取出
+
+# --- spear ---
+advancements.adventure.spear_many_mobs.description=用矛在一次冲锋攻击内命中五只生物
+advancements.adventure.spear_many_mobs.title=生物串串香
+death.attack.spear.item=%1$s被%2$s用%3$s刺穿了
+death.attack.spear=%1$s被%2$s刺穿了
+enchantment.trickytrialsbackport.lunge=突进
+entity.trickytrialsbackport.fireproof_item.name=物品
+item.trickytrialsbackport.copper_spear.name=铜矛
+item.trickytrialsbackport.diamond_spear.name=钻石矛
+item.trickytrialsbackport.golden_spear.name=金矛
+item.trickytrialsbackport.iron_spear.name=铁矛
+item.trickytrialsbackport.netherite_spear.name=下界合金矛
+item.trickytrialsbackport.stone_spear.name=石矛
+item.trickytrialsbackport.wooden_spear.name=木矛
+subtitles.trickytrialsbackport.item.spear.attack=矛：戳刺
+subtitles.trickytrialsbackport.item.spear.hit=矛：击中
+subtitles.trickytrialsbackport.item.spear.lunge=矛：突进
+subtitles.trickytrialsbackport.item.spear.use=持矛冲锋
+subtitles.trickytrialsbackport.item.spear_wood.attack=矛：戳刺
+subtitles.trickytrialsbackport.item.spear_wood.hit=矛：击中
+subtitles.trickytrialsbackport.item.spear_wood.use=持矛冲锋

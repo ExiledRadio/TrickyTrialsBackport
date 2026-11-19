@@ -80,6 +80,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.tweaks.client.TweaksClient.init();
             com.exiledradio.trickytrialsbackport.locator.client.LocatorClient.init();
             com.exiledradio.trickytrialsbackport.coppergear.client.CopperGearClient.init();
+            com.exiledradio.trickytrialsbackport.spear.client.SpearClient.init();
         }
     }
 

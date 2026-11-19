@@ -524,3 +524,25 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Предметы заме�
 subtitles.trickytrialsbackport.block.shelf.place_item=Предмет поставлен
 subtitles.trickytrialsbackport.block.shelf.single_swap=Предмет заменён
 subtitles.trickytrialsbackport.block.shelf.take_item=Предмет взят
+
+# --- spear ---
+advancements.adventure.spear_many_mobs.description=Поразите пять мобов таранным ударом копья
+advancements.adventure.spear_many_mobs.title=Шашлык-мобшлык
+death.attack.spear.item=%1$s был проткнут %2$s с помощью %3$s
+death.attack.spear=%1$s был проткнут %2$s
+enchantment.trickytrialsbackport.lunge=Рывок
+entity.trickytrialsbackport.fireproof_item.name=Предмет
+item.trickytrialsbackport.copper_spear.name=Медное копьё
+item.trickytrialsbackport.diamond_spear.name=Алмазное копьё
+item.trickytrialsbackport.golden_spear.name=Золотое копьё
+item.trickytrialsbackport.iron_spear.name=Железное копьё
+item.trickytrialsbackport.netherite_spear.name=Незеритовое копьё
+item.trickytrialsbackport.stone_spear.name=Каменное копьё
+item.trickytrialsbackport.wooden_spear.name=Деревянное копьё
+subtitles.trickytrialsbackport.item.spear.attack=Тычок копьём
+subtitles.trickytrialsbackport.item.spear.hit=Удар копьём
+subtitles.trickytrialsbackport.item.spear.lunge=Рывок с копьём
+subtitles.trickytrialsbackport.item.spear.use=Выставление копья
+subtitles.trickytrialsbackport.item.spear_wood.attack=Тычок копьём
+subtitles.trickytrialsbackport.item.spear_wood.hit=Удар копьём
+subtitles.trickytrialsbackport.item.spear_wood.use=Выставление копья

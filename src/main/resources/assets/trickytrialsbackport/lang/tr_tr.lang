@@ -524,3 +524,25 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Eşyalar değişti
 subtitles.trickytrialsbackport.block.shelf.place_item=Eşya yerleştirildi
 subtitles.trickytrialsbackport.block.shelf.single_swap=Eşya değiştirildi
 subtitles.trickytrialsbackport.block.shelf.take_item=Eşya alındı
+
+# --- spear ---
+advancements.adventure.spear_many_mobs.description=Beş canlıyı tek mızrak hücum saldırısı ile vurun
+advancements.adventure.spear_many_mobs.title=Şiş Kebap
+death.attack.spear.item=%1$s, %2$s tarafından %3$s kullanılarak mızraklandı
+death.attack.spear=%1$s, %2$s tarafından mızraklandı
+enchantment.trickytrialsbackport.lunge=Atılma
+entity.trickytrialsbackport.fireproof_item.name=Eşya
+item.trickytrialsbackport.copper_spear.name=Bakır Mızrak
+item.trickytrialsbackport.diamond_spear.name=Elmas Mızrak
+item.trickytrialsbackport.golden_spear.name=Altın Mızrak
+item.trickytrialsbackport.iron_spear.name=Demir Mızrak
+item.trickytrialsbackport.netherite_spear.name=Netherit Mızrak
+item.trickytrialsbackport.stone_spear.name=Taş Mızrak
+item.trickytrialsbackport.wooden_spear.name=Tahta Mızrak
+subtitles.trickytrialsbackport.item.spear.attack=Mızrak sapladı
+subtitles.trickytrialsbackport.item.spear.hit=Mızrak isabet etti
+subtitles.trickytrialsbackport.item.spear.lunge=Mızrakla atılındı
+subtitles.trickytrialsbackport.item.spear.use=Mızrak ile hücum ediyor
+subtitles.trickytrialsbackport.item.spear_wood.attack=Mızrak sapladı
+subtitles.trickytrialsbackport.item.spear_wood.hit=Mızrak isabet etti
+subtitles.trickytrialsbackport.item.spear_wood.use=Mızrak ile hücum ediyor

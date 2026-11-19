@@ -30,6 +30,8 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P18 | animals | `EntityAnimal.readEntityFromNBT` / `writeEntityToNBT` (`func_70037_a` / `func_70014_b`) | head: `AnimalsHooks.read(this, tag)` / `write(this, tag)` |
 | P19 | animals | `EntityWolf.getAmbientSound` / `getHurtSound` / `getDeathSound` (`func_184639_G` / `func_184601_bQ` / `func_184615_bR`) | each returned sound becomes `AnimalsHooks.wolfSound(sound, this)` |
 | P16 | copperGear | `EntityLiving.setEquipmentBasedOnDifficulty` (`func_180481_a`) | head: `if (CopperGearHooks.equipArmor(this, difficulty)) return;` |
+| P20 | spears | `EntityZombie.setEquipmentBasedOnDifficulty` / `EntityPigZombie.setEquipmentBasedOnDifficulty` (`func_180481_a`) | before each return: `SpearEvents.spawnWeapon(this, difficulty)` |
+| P21 | spears (client) | `ModelBiped.setRotationAngles` (`func_78087_a`) | head: `SpearModelHooks.pre(this, entity)`; before each return: `SpearModelHooks.post(this, entity)` |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -122,3 +124,26 @@ copper 32.23%, gold 33.29%, chainmail 9.73%, iron 1.10%, diamond 0.04%, minecraf
 the bogged get their armor (each calls it before choosing its weapon), the same mobs 1.21.9 puts copper on. The hook
 returns false, and 1.12.2's roll runs, while `copperGear.enabled` or `copperGear.mobArmor` is off. Weapons and
 enchanting are unchanged.
+
+## P20: zombies and zombie pigmen spawn with spears (1.21.11, stream 22)
+
+1.21.11's `Zombie.populateDefaultEquipmentSlots` arms a zombie with chance 0.05 on Hard (0.01 otherwise), as 1.12.2
+does, but picks `nextInt(6)`: 0 an iron sword, 1 an iron spear, else an iron shovel, where 1.12.2 picks `nextInt(3)`:
+0 a sword, else a shovel. Half of 1.12.2's swords becoming spears gives exactly 1.21.11's 1 : 1 : 4, so the hook runs
+after 1.12.2's own roll and swaps an iron sword for an iron spear with chance 1/2. `ZombifiedPiglin` holds a golden
+spear 1 time in 20 instead of its golden sword; 1.12.2's zombie pigman always gets the sword, which the hook swaps with
+chance 1/20. Husks and zombie villagers roll in `EntityZombie`'s method, as they inherit it in 1.21.11. Enchanting
+comes after (`setEnchantmentBasedOnDifficulty`), so a spear is enchanted as the sword would have been. Off
+(`spears.enabled` or `spears.mobSpears`), nothing changes. Forge's `SpecialSpawn` would reach only natural spawns, not
+spawn eggs, `/summon`, reinforcements or spawners, hence the patch.
+
+## P21: the spear's third-person arm (1.21.11, stream 22, client)
+
+1.21.11's `HumanoidModel` has an `ArmPose.SPEAR` (the arm held out along the look while charging, swaying as the
+charge wears on: `SpearAnimations.thirdPersonHandUse`) and a `STAB` swing (a thrust in place of the sword's swing:
+`thirdPersonAttackHand`). 1.12.2's `ModelBiped` picks its arm angles in `setRotationAngles` with nothing to hook
+between that and drawing, so the head call hides a spear's swing from 1.12.2's angles (`swingProgress` to 0) and the
+return call restores it and sets the spear's angles. Armor models pose from the same entity through the same method,
+and `ModelPlayer` copies the arms to its sleeves after `ModelBiped`'s method returns, so both follow. Zombie-like
+models (`ModelZombie`) set their own arms after `super` and keep them. Off (`spears.enabled`), both calls return at once.
+

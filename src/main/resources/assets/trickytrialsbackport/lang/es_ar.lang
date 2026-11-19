@@ -524,3 +524,25 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Ítems intercambiados
 subtitles.trickytrialsbackport.block.shelf.place_item=Ítem colocado
 subtitles.trickytrialsbackport.block.shelf.single_swap=Ítem intercambiado
 subtitles.trickytrialsbackport.block.shelf.take_item=Ítem recogido
+
+# --- spear ---
+advancements.adventure.spear_many_mobs.description=Golpea a cinco criaturas con el mismo ataque cargado usando la lanza
+advancements.adventure.spear_many_mobs.title=Brocheta criaturesca
+death.attack.spear.item=%1$s fue ensartado por %2$s con su %3$s
+death.attack.spear=%1$s fue ensartado por %2$s
+enchantment.trickytrialsbackport.lunge=Estocada
+entity.trickytrialsbackport.fireproof_item.name=Ítem
+item.trickytrialsbackport.copper_spear.name=Lanza de cobre
+item.trickytrialsbackport.diamond_spear.name=Lanza de diamante
+item.trickytrialsbackport.golden_spear.name=Lanza de oro
+item.trickytrialsbackport.iron_spear.name=Lanza de hierro
+item.trickytrialsbackport.netherite_spear.name=Lanza de netherita
+item.trickytrialsbackport.stone_spear.name=Lanza de piedra
+item.trickytrialsbackport.wooden_spear.name=Lanza de madera
+subtitles.trickytrialsbackport.item.spear.attack=Lanza pinchando
+subtitles.trickytrialsbackport.item.spear.hit=Impacto de lanza
+subtitles.trickytrialsbackport.item.spear.lunge=Estocada de lanza
+subtitles.trickytrialsbackport.item.spear.use=Carga de lanza
+subtitles.trickytrialsbackport.item.spear_wood.attack=Lanza pinchando
+subtitles.trickytrialsbackport.item.spear_wood.hit=Impacto de lanza
+subtitles.trickytrialsbackport.item.spear_wood.use=Carga de lanza

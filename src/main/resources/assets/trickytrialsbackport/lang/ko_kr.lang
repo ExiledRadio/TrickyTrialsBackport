@@ -524,3 +524,25 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=아이템들이 교체됨
 subtitles.trickytrialsbackport.block.shelf.place_item=아이템이 배치됨
 subtitles.trickytrialsbackport.block.shelf.single_swap=아이템이 교체됨
 subtitles.trickytrialsbackport.block.shelf.take_item=아이템을 빼냄
+
+# --- spear ---
+advancements.adventure.spear_many_mobs.description=창으로 한 번 돌격해 몹 다섯 마리를 맞히세요
+advancements.adventure.spear_many_mobs.title=몹 꼬치
+death.attack.spear.item=%1$s이(가) %3$s을(를) 사용한 %2$s에게 창으로 찔렸습니다
+death.attack.spear=%1$s이(가) %2$s에게 창으로 찔렸습니다
+enchantment.trickytrialsbackport.lunge=돌진
+entity.trickytrialsbackport.fireproof_item.name=아이템
+item.trickytrialsbackport.copper_spear.name=구리 창
+item.trickytrialsbackport.diamond_spear.name=다이아몬드 창
+item.trickytrialsbackport.golden_spear.name=금 창
+item.trickytrialsbackport.iron_spear.name=철 창
+item.trickytrialsbackport.netherite_spear.name=네더라이트 창
+item.trickytrialsbackport.stone_spear.name=돌 창
+item.trickytrialsbackport.wooden_spear.name=나무 창
+subtitles.trickytrialsbackport.item.spear.attack=창으로 찌름
+subtitles.trickytrialsbackport.item.spear.hit=창이 적중함
+subtitles.trickytrialsbackport.item.spear.lunge=창으로 돌진함
+subtitles.trickytrialsbackport.item.spear.use=창을 겨눔
+subtitles.trickytrialsbackport.item.spear_wood.attack=창으로 찌름
+subtitles.trickytrialsbackport.item.spear_wood.hit=창이 적중함
+subtitles.trickytrialsbackport.item.spear_wood.use=창을 겨눔

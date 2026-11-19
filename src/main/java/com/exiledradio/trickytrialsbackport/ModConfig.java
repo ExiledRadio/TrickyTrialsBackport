@@ -509,6 +509,14 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Spears fields ---
+        @Config.Comment({"Zombies, husks and zombie villagers that spawn with a weapon sometimes hold an iron spear, and zombie",
+                "pigmen a golden spear one time in 20, as in 1.21.11. Off, 1.12.2's weapons."})
+        @Config.LangKey("config.trickytrialsbackport.spears.mobSpears")
+        public boolean mobSpears = true;
+
+        @Config.Comment("Zombies and zombie pigmen holding a spear charge at their target with it, as in 1.21.11.")
+        @Config.LangKey("config.trickytrialsbackport.spears.mobCharges")
+        public boolean mobCharges = true;
         // --- end Spears ---
     }
 
