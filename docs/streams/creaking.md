@@ -73,7 +73,10 @@ Behavior is 1.21.11's (`Creaking`, `CreakingAi`, `CreakingHeartBlockEntity`, `Cr
     1-10 ticks, within 32 blocks).
 *   **Model and animations**: 1.21.11's model part for part (64x64) and its four keyframe animations converted
     keyframe for keyframe (`CreakingAnimations`), played through Wild Update's warden animation code (family
-    code, copied in), extended with 1.21's scale target. The walk plays only while it can move. The eyes are the
+    code, copied in), extended with 1.21's scale target. The pose is worked out in plain numbers by
+    `CreakingPoser` (1.21's `setupAnim`: reset, head, walk by `limbSwing`/`limbSwingAmount` at 50 ms a unit and
+    the speed capped at 1, then attack, invulnerable and death from their start ticks) and copied onto the boxes by
+    `ModelCreaking`, so the self-test can sample it on a server. The walk plays only while it can move. The eyes are the
     head alone in `creaking_eyes.png`, additive and full bright, while active, and flickering while it twitches;
     a twitching creaking has no death tilt or red tint.
 *   **Heart Transplanter** (`heart_transplanted`, an `ItemTrigger` fired from Forge's place event): 1.21.6's
@@ -86,7 +89,8 @@ Behavior is 1.21.11's (`Creaking`, `CreakingAi`, `CreakingHeartBlockEntity`, `Cr
 ## Tested headlessly
 
 `./gradlew runServer -Pselftest=all` (port 25915), then `python -I tools/check_assets.py`:
-**`SELFTEST DONE pass=2231 fail=0`** (creaking alone: 94), **130 blocks, 1872 states, 158 item models,
+**`SELFTEST DONE pass=2231 fail=0`** (creaking alone: 94; on 2026-11-19, on main a962cc2 with branch
+`tr-creaking-anim`, on E-cores: `pass=5200 fail=0`, creaking 136, check_assets 197 blocks 0 errors), **130 blocks, 1872 states, 158 item models,
 610 sound files, 0 errors**. Release jar built after the last test run with `--rerun-tasks`: reobfuscated
 (`func_` names), no test classes.
 
@@ -107,6 +111,16 @@ Behavior is 1.21.11's (`Creaking`, `CreakingAi`, `CreakingHeartBlockEntity`, `Cr
 *   Dawn: the heart goes dormant, the creaking crumbles and is unlinked, and no new one comes by day.
 *   Heart Transplanter's checks: uprooted heart no, dormant heart yes, completing log yes, a log across a
     heart of another axis no.
+*   Animation (2026-11-19, after a report of a stiff walk in a real client): the pose sampled against numbers typed
+    in from 1.21.11's `CreakingModel` and `CreakingAnimation`: every rest pivot; walk keyframes at 0, 0.125, 0.25 and
+    0.875 s (rotation and `posVec` position, y negated); linear interpolation between keyframes; the 1.125 s loop;
+    half speed halving every channel and speed over 1 capped; the head look plus the walk's head twitch; frozen means
+    no walk at all; death keyframes at 0.5 and 1.0 s and holding after 2.25 s; the attack's 1.3 head stretch; the
+    invulnerable twitch interpolated; nothing without a start tick. The walk feed, tick by tick while chasing: speed
+    and position follow 1.21's `updateWalkAnimation` (toward min(25 d, 3) by 0.4) exactly, reaching 3.0. Frozen:
+    head yaw and pitch, body yaw and position unchanged over 10 ticks while the watcher walks round it, walk speed
+    down to 0; unfrozen it eases back in. No difference from vanilla was found in the model, keyframes,
+    interpolation, part transform order (translate, rotate Z-Y-X, scale) or the walk feed.
 *   Pathing: lava costs 8, fire 0; a node over 32 blocks from home is blocked unless it brings a lost
     creaking nearer.
 *   The server booting at all proves no client type is reached from server code.

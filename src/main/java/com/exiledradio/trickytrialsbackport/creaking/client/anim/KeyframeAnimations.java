@@ -11,13 +11,13 @@ public final class KeyframeAnimations {
     private KeyframeAnimations() {
     }
 
-    public static void animate(Map<String, AnimatedPart> parts, AnimationDefinition def, long millis, float scale, Vec3f cache) {
+    public static void animate(Map<String, ? extends Posable> parts, AnimationDefinition def, long millis, float scale, Vec3f cache) {
         float seconds = millis / 1000.0F;
         if (def.looping) {
             seconds %= def.lengthInSeconds;
         }
         for (Map.Entry<String, List<AnimationChannel>> e : def.boneAnimations.entrySet()) {
-            AnimatedPart part = parts.get(e.getKey());
+            Posable part = parts.get(e.getKey());
             if (part == null) {
                 continue;
             }
