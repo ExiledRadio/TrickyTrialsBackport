@@ -1,7 +1,7 @@
 # Stream 21: shelves (1.21.9)
 
 Package `shelf`. Config `shelves` (`enabled`). No entities; packet ids 105-109 unused (the tile entity's own update
-packet carries everything). Branch `tr-shelves-6b2391`, dev-server port 25902. Reference: 1.21.11's decompiled
+packet carries everything). Branch `claude/tr-shelves-6b2391`, dev-server port 25902. Reference: 1.21.11's decompiled
 `ShelfBlock`, `ShelfBlockEntity`, `SideChainPartBlock`, `SideChainPart`, `SelectableSlotContainer`, `ShelfRenderer`,
 `Blocks`, `FireBlock`, `FuelValues`; blockstates, models, recipes, loot tables, tags and sounds from the 1.21.11 jar;
 minecraft.wiki's *Shelf*.
