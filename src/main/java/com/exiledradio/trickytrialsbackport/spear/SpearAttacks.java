@@ -55,6 +55,8 @@ public final class SpearAttacks {
     private static final Map<Entity, double[]> MOTION = new WeakHashMap<Entity, double[]>();
     /** wielder -> targets hit in the current charge, with the world time of their last hit */
     private static final Map<EntityLivingBase, Map<Entity, Long>> STABBED = new WeakHashMap<EntityLivingBase, Map<Entity, Long>>();
+    /** wielder -> world time of the last charge-hit feedback (1.21.11's {@code lastKineticHitFeedbackTime}) */
+    private static final Map<EntityLivingBase, Long> FEEDBACK = new WeakHashMap<EntityLivingBase, Long>();
     /** Vehicles whose charge is faster or slower (1.21.11's {@code Mob.chargeSpeedModifier}), by class. */
     private static final Map<Class<?>, Float> CHARGE_SPEED = new HashMap<Class<?>, Float>();
 
@@ -381,6 +383,40 @@ public final class SpearAttacks {
         }
     }
 
+    /**
+     * 1.21.11's {@code LivingEntity.onKineticHit}: the hit sound and the view's jolt come at most once every 11 ticks a
+     * wielder ({@code gameTime - last > 10}), however many targets or hits.
+     *
+     * @return true if this hit gets its feedback (and records it)
+     */
+    public static boolean feedback(EntityLivingBase user, long now) {
+        synchronized (FEEDBACK) {
+            Long last = FEEDBACK.get(user);
+            if (last != null && now - last <= 10L && now >= last) {
+                return false;
+            }
+            FEEDBACK.put(user, now);
+            return true;
+        }
+    }
+
+    /** @return the world time of the wielder's last charge-hit feedback, or -1 */
+    public static long lastFeedback(EntityLivingBase user) {
+        synchronized (FEEDBACK) {
+            Long last = FEEDBACK.get(user);
+            return last == null ? -1L : last;
+        }
+    }
+
+    /** @return the world time this charge last hit a target, or -1 */
+    public static long lastStab(EntityLivingBase user, Entity target) {
+        synchronized (STABBED) {
+            Map<Entity, Long> m = STABBED.get(user);
+            Long t = m == null ? null : m.get(target);
+            return t == null ? -1L : t;
+        }
+    }
+
     /** @return how many living things this charge has hit (for <i>Mob Kabob</i>) */
     public static int stabbedLiving(EntityLivingBase user) {
         synchronized (STABBED) {
@@ -451,8 +487,10 @@ public final class SpearAttacks {
             }
         }
         if (any) {
-            NetworkHandler.channel.sendToAllAround(new SpearHitMessage(user.getEntityId(), tier == SpearTier.WOOD),
-                    new NetworkRegistry.TargetPoint(user.dimension, user.posX, user.posY, user.posZ, 64.0));
+            if (feedback(user, now)) {
+                NetworkHandler.channel.sendToAllAround(new SpearHitMessage(user.getEntityId(), tier == SpearTier.WOOD),
+                        new NetworkRegistry.TargetPoint(user.dimension, user.posX, user.posY, user.posZ, 64.0));
+            }
             if (user instanceof EntityPlayerMP) {
                 SpearContent.MOB_KABOB.trigger((EntityPlayerMP) user, stabbedLiving(user));
             }

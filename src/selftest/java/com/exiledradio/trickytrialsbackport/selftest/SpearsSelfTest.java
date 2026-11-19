@@ -78,6 +78,7 @@ public final class SpearsSelfTest implements SelfTest {
         try {
             jab(c, player, area, made);
             charge(c, player, area, made);
+            hitRate(c, player, made);
             lungeEffect(c, player);
             kabob(c, player, area, made);
             mobCharge(c, area, made);
@@ -408,6 +409,77 @@ public final class SpearsSelfTest implements SelfTest {
         SpearAttacks.chargeTick(player, iron, remainingAfter(14));
         c.ok(!rider.isRiding(), "a charge at 9 b/s knocks it off");
         player.resetActiveHand();
+    }
+
+    /**
+     * A 40-tick sprinting charge into a standing zombie, a second zombie stepping into line 5 ticks later: each target
+     * is hit every 10 ticks on its own clock, the hit sound comes at most once every 11 ticks, and the charge survives
+     * the wear its hits put on the spear (the client gets a new stack object each time).
+     */
+    private void hitRate(Check c, EntityPlayerMP player, List<Entity> made) {
+        ItemStack iron = new ItemStack(spear(SpearTier.IRON));
+        ready(player, iron);
+        player.setActiveHand(EnumHand.MAIN_HAND);
+
+        ItemStack worn = iron.copy();
+        worn.setItemDamage(iron.getItemDamage() + 1);
+        player.setHeldItem(EnumHand.MAIN_HAND, worn);
+        try {
+            java.lang.reflect.Method update = ReflectionHelper.findMethod(EntityLivingBase.class, "updateActiveHand", "func_184608_ct");
+            update.invoke(player);
+        } catch (ReflectiveOperationException e) {
+            c.fail("updateActiveHand: " + e);
+        }
+        c.ok(player.isHandActive() && player.getActiveItemStack() == worn, "a worn copy of the spear keeps the charge going");
+        c.ok(!net.minecraftforge.common.ForgeHooks.canContinueUsing(worn, new ItemStack(spear(SpearTier.GOLD))), "another spear ends it");
+        player.resetActiveHand();
+
+        ready(player, iron);
+        player.setActiveHand(EnumHand.MAIN_HAND);
+        EntityZombie a = dummy(c, player, 3.0, made);
+        EntityZombie b = null;
+        net.minecraft.world.storage.WorldInfo info = c.world.getWorldInfo();
+        long base = info.getWorldTotalTime() + 20;
+        int hitsA = 0;
+        int hitsB = 0;
+        int sounds = 0;
+        long lastA = -1;
+        long lastB = -1;
+        long lastSound = SpearAttacks.lastFeedback(player);
+        StringBuilder log = new StringBuilder();
+        for (int t = 0; t < 40; t++) {
+            info.setWorldTotalTime(base + t);
+            if (t == 5) {
+                b = dummy(c, player, 3.6, made);
+            }
+            SpearAttacks.setMotion(player, 0, 0, 0.28);
+            SpearAttacks.chargeTick(player, player.getHeldItemMainhand(), remainingAfter(SpearTier.IRON.delayTicks + t));
+            if (SpearAttacks.lastStab(player, a) != lastA) {
+                lastA = SpearAttacks.lastStab(player, a);
+                hitsA++;
+                log.append(" a@").append(t);
+            }
+            if (b != null && SpearAttacks.lastStab(player, b) != lastB) {
+                lastB = SpearAttacks.lastStab(player, b);
+                hitsB++;
+                log.append(" b@").append(t);
+            }
+            if (SpearAttacks.lastFeedback(player) != lastSound) {
+                lastSound = SpearAttacks.lastFeedback(player);
+                sounds++;
+                log.append(" sound@").append(t);
+            }
+        }
+        info.setWorldTotalTime(base + 40);
+        c.eq(4, hitsA, "40 ticks at sprint speed hit the zombie 4 times (every 10 ticks):" + log);
+        c.eq(4, hitsB, "the second zombie keeps its own 10-tick clock (5, 15, 25, 35)");
+        c.eq(3, sounds, "the hit sound plays 3 times (0, 15, 30: once every 11 ticks at most)");
+        c.ok(player.isHandActive(), "the charge is still held after 40 ticks");
+        player.resetActiveHand();
+        a.setDead();
+        if (b != null) {
+            b.setDead();
+        }
     }
 
     private void lungeEffect(Check c, EntityPlayerMP player) {
