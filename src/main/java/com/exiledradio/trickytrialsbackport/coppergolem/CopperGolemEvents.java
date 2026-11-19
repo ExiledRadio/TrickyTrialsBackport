@@ -3,6 +3,7 @@ package com.exiledradio.trickytrialsbackport.coppergolem;
 import com.exiledradio.backportcore.copper.Oxidation;
 import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
+import com.exiledradio.trickytrialsbackport.common.Owners;
 
 import com.google.common.base.Predicate;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -41,6 +42,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ import java.util.List;
 public final class CopperGolemEvents {
 
     private static final Predicate<IBlockState> IS_PUMPKIN = state -> state != null
-            && (state.getBlock() == Blocks.PUMPKIN || state.getBlock() == Blocks.LIT_PUMPKIN);
+            && (state.getBlock() == carvedPumpkin() || state.getBlock() == Blocks.LIT_PUMPKIN);
     private static final Predicate<IBlockState> IS_COPPER = state -> state != null && CopperGolemContent.copperBlockStage(state.getBlock()) >= 0;
 
     private static BlockPattern copperGolemBase;
@@ -80,9 +82,25 @@ public final class CopperGolemEvents {
         if (!CopperGolemContent.enabled()) {
             return;
         }
-        Item pumpkin = Item.getItemFromBlock(Blocks.PUMPKIN);
+        Item pumpkin = Item.getItemFromBlock(carvedPumpkin());
         IBehaviorDispenseItem old = BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(pumpkin);
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(pumpkin, new PumpkinOntoCopper(old));
+    }
+
+    /**
+     * The carved pumpkin, which builds golems (1.21.9's {@code CarvedPumpkinBlock}). 1.12.2's pumpkin has a face and
+     * is the carved pumpkin; Update Aquatic Backport owns 1.13's split (Rule 1), where that block becomes the plain
+     * pumpkin and {@code updateaquaticbackport:carved_pumpkin} is the carved one, so with it installed only its carved
+     * pumpkin (and the jack o'lantern) builds a copper golem.
+     */
+    public static Block carvedPumpkin() {
+        if (Owners.present(Owners.UPDATE_AQUATIC)) {
+            Block carved = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(Owners.UPDATE_AQUATIC, "carved_pumpkin"));
+            if (carved != null && carved != Blocks.AIR) {
+                return carved;
+            }
+        }
+        return Blocks.PUMPKIN;
     }
 
     // ------------------------------------------------------------------------------------------
@@ -201,7 +219,7 @@ public final class CopperGolemEvents {
             if (!ModConfig.copperGolem.building || !world.isAirBlock(pos) || base().match(world, pos) == null) {
                 return this.old.dispense(source, stack);
             }
-            world.setBlockState(pos, Blocks.PUMPKIN.getDefaultState(), 3);
+            world.setBlockState(pos, carvedPumpkin().getDefaultState(), 3);
             stack.shrink(1);
             // BehaviorDefaultDispenseItem's click and smoke.
             world.playEvent(1000, source.getBlockPos(), 0);

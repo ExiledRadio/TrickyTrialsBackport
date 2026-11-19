@@ -66,7 +66,7 @@ Cliffs (4471/6, the known six), the asset check (0 errors) and the release build
     honeycomb (`copper.waxItems` or the `honeycomb` ore name) waxes, an axe takes wax off or scrapes; an axe on an
     unaffected unwaxed statue revives the golem (at the statue's bottom center, facing its way, with its name, the
     spawn sound) and wears once. Lightning cleans them through the copper stream's handler when that stream is on.
-*   **Building** (`CopperGolemEvents.trySpawnCopperGolem`): 1.21's pattern (a pumpkin or jack o'lantern, `#copper`
+*   **Building** (`CopperGolemEvents.trySpawnCopperGolem`): 1.21's pattern (a carved pumpkin or jack o'lantern, `#copper`
     below it in any of the pattern's orientations), checked on Forge's neighbor notification for a pumpkin's position,
     which 1.12.2 sends right after the pumpkin's own snow and iron golem check; so a pumpkin placed by anyone or
     anything counts, and snow and iron golems win as in 1.21. The pattern is cleared (with break particles), the golem
@@ -75,6 +75,11 @@ Cliffs (4471/6, the known six), the asset check (0 errors) and the release build
     the stage and plays its spawn sound. Copper blocks are Caves &amp; Cliffs' or the copper stream's copies by name
     (`Owners.block`). Dispensers place a pumpkin where it would build a copper golem (1.21's `canSpawnGolem`), else do
     what they did.
+*   **The carved pumpkin** (`CopperGolemEvents.carvedPumpkin`): 1.12.2's pumpkin has a face and is the carved pumpkin.
+    Update Aquatic Backport owns 1.13's split (Rule 1): with it installed that block is the plain pumpkin and
+    `updateaquaticbackport:carved_pumpkin` is the carved one, so only its carved pumpkin (or a jack o'lantern) builds a
+    copper golem, and dispensers put its carved pumpkin, not the plain one, onto copper (wrapping its own dispenser
+    behavior, which it registers with its items, before this mod's init).
 *   **The golem** (`EntityCopperGolem`, an `EntityGolem`): 0.49 x 0.98, eyes at 0.8125, 12 health, speed 0.2, follow
     range 48, step height 1, fire paths avoided as in 1.21, persistent, wooden doors opened and closed, no fall damage,
     breathes under water. Synced: weathering state, golem state (idle, getting item, getting no item, dropping item,

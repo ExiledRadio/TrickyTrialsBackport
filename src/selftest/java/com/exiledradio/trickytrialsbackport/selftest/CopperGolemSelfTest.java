@@ -419,10 +419,27 @@ public final class CopperGolemSelfTest implements SelfTest {
         if (!c.ok(exposed != null && waxedWeathered != null, "copper blocks to build with")) {
             return;
         }
+        // 1.12.2's pumpkin is the carved one; with Update Aquatic installed its carved_pumpkin is, and 1.12.2's is plain.
+        Block carved = CopperGolemEvents.carvedPumpkin();
+        c.ok(carved == (Owners.present(Owners.UPDATE_AQUATIC)
+                ? net.minecraftforge.fml.common.registry.ForgeRegistries.BLOCKS.getValue(new net.minecraft.util.ResourceLocation(Owners.UPDATE_AQUATIC, "carved_pumpkin"))
+                : Blocks.PUMPKIN), "the carved pumpkin is " + carved.getRegistryName());
+        if (carved != Blocks.PUMPKIN) {
+            BlockPos plain = a.add(28, 1, 10);
+            c.world.setBlockState(plain, exposed.getDefaultState(), 3);
+            c.world.setBlockState(plain.up(), Blocks.PUMPKIN.getDefaultState(), 3);
+            c.ok(golemNear(c, plain.up()) == null, "a plain pumpkin on copper builds nothing");
+            BlockPos plainDisp = a.add(28, 1, 20);
+            c.world.setBlockState(plainDisp, Blocks.DISPENSER.getDefaultState().withProperty(BlockDispenser.FACING, EnumFacing.UP), 3);
+            c.world.setBlockState(plainDisp.up(2), exposed.getDefaultState(), 3);
+            BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Item.getItemFromBlock(Blocks.PUMPKIN))
+                    .dispense(new net.minecraft.block.BlockSourceImpl(c.world, plainDisp), new ItemStack(Blocks.PUMPKIN));
+            c.ok(golemNear(c, plainDisp.up()) == null && c.world.isAirBlock(plainDisp.up()), "a dispenser does not put a plain pumpkin onto copper");
+        }
         // Upright: copper, then a pumpkin on it facing west.
         BlockPos base = a.add(3, 1, 3);
         c.world.setBlockState(base, exposed.getDefaultState(), 3);
-        c.world.setBlockState(base.up(), Blocks.PUMPKIN.getDefaultState().withProperty(BlockPumpkin.FACING, EnumFacing.WEST), 3);
+        c.world.setBlockState(base.up(), carved.getDefaultState().withProperty(BlockPumpkin.FACING, EnumFacing.WEST), 3);
         EntityCopperGolem g = golemNear(c, base.up());
         if (c.ok(g != null, "a pumpkin on a copper block builds a copper golem")) {
             c.eq(1, g.getWeatherState(), "at the copper's stage (exposed)");
@@ -454,7 +471,7 @@ public final class CopperGolemSelfTest implements SelfTest {
         BlockPos next = a.add(3, 1, 10);
         c.world.setBlockState(next.west(), chest(3, false).getDefaultState(), 3);
         c.world.setBlockState(next, Owners.block("copper_block").getDefaultState(), 3);
-        c.world.setBlockState(next.up(), Blocks.PUMPKIN.getDefaultState(), 3);
+        c.world.setBlockState(next.up(), carved.getDefaultState(), 3);
         c.eq(chest(0, false), c.world.getBlockState(next).getBlock(), "the new chest is unaffected");
         c.eq(chest(0, false), c.world.getBlockState(next.west()).getBlock(), "and the oxidized chest beside it joins as unaffected");
         EntityCopperGolem g3 = golemNear(c, next.up());
@@ -464,19 +481,19 @@ public final class CopperGolemSelfTest implements SelfTest {
         }
         // The pumpkin must be last.
         BlockPos order = a.add(16, 1, 3);
-        c.world.setBlockState(order.up(), Blocks.PUMPKIN.getDefaultState(), 3);
+        c.world.setBlockState(order.up(), carved.getDefaultState(), 3);
         c.world.setBlockState(order, exposed.getDefaultState(), 3);
         c.ok(golemNear(c, order.up()) == null, "a copper block put under a pumpkin builds nothing");
         // Iron blocks are not copper; the setting stops building.
         BlockPos iron = a.add(20, 1, 3);
         c.world.setBlockState(iron, Blocks.IRON_BLOCK.getDefaultState(), 3);
-        c.world.setBlockState(iron.up(), Blocks.PUMPKIN.getDefaultState(), 3);
+        c.world.setBlockState(iron.up(), carved.getDefaultState(), 3);
         c.ok(golemNear(c, iron.up()) == null, "a pumpkin on one iron block builds nothing");
         BlockPos off = a.add(24, 1, 3);
         ModConfig.copperGolem.building = false;
         try {
             c.world.setBlockState(off, exposed.getDefaultState(), 3);
-            c.world.setBlockState(off.up(), Blocks.PUMPKIN.getDefaultState(), 3);
+            c.world.setBlockState(off.up(), carved.getDefaultState(), 3);
             c.ok(golemNear(c, off.up()) == null, "copperGolem.building=false builds nothing");
         } finally {
             ModConfig.copperGolem.building = true;
@@ -485,8 +502,8 @@ public final class CopperGolemSelfTest implements SelfTest {
         BlockPos disp = a.add(3, 1, 20);
         c.world.setBlockState(disp, Blocks.DISPENSER.getDefaultState().withProperty(BlockDispenser.FACING, EnumFacing.UP), 3);
         c.world.setBlockState(disp.up(2), exposed.getDefaultState(), 3);
-        ItemStack pumpkins = new ItemStack(Blocks.PUMPKIN, 2);
-        ItemStack left = BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Item.getItemFromBlock(Blocks.PUMPKIN))
+        ItemStack pumpkins = new ItemStack(carved, 2);
+        ItemStack left = BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.getObject(Item.getItemFromBlock(carved))
                 .dispense(new net.minecraft.block.BlockSourceImpl(c.world, disp), pumpkins);
         c.eq(1, left.getCount(), "the dispenser used a pumpkin");
         c.ok(golemNear(c, disp.up()) != null, "and a golem was built under the copper block (upside down)");
