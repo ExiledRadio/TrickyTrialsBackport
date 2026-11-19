@@ -13,7 +13,6 @@ import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityLlama;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -91,7 +90,7 @@ public class EntityHappyGhast extends EntityAnimal {
     private int serverStillTimeout;
     /** The child state the controls were last set up for, so they change only when it does. */
     private Boolean setUpAsChild;
-    /** A passenger who just got off, to be put on top of the ghast as 1.21 does (1.12.2 looks for ground nearby). */
+    /** On a client, the local player who just got off, to be put on top until the server's teleport arrives. */
     private Entity dismounted;
 
     public EntityHappyGhast(World world) {
@@ -316,8 +315,17 @@ public class EntityHappyGhast extends EntityAnimal {
     @Override
     protected void removePassenger(Entity passenger) {
         super.removePassenger(passenger);
+        // 1.21's getDismountLocationForPassenger: the middle of the top. On the server 1.12.2's dismountEntity then
+        // teleports the rider there (getAdjustedHorizontalFacing is null, so it looks for no ground nearby).
         if (!this.world.isRemote) {
+            Vec3d top = this.dismountLocation();
+            passenger.setPosition(top.x, top.y, top.z);
+            passenger.motionX = passenger.motionY = passenger.motionZ = 0.0D;
+            passenger.fallDistance = 0.0F;
             this.setServerStillTimeout(MAX_STILL_TIMEOUT);
+        } else {
+            // A client gets off before or after the teleport, and its passenger list is also rebuilt (every rider
+            // removed and added again) when anyone gets on; a rider still off next tick is put on top again.
             this.dismounted = passenger;
         }
         if (!this.isBeingRidden()) {
@@ -331,6 +339,25 @@ public class EntityHappyGhast extends EntityAnimal {
     /** 1.21's dismount location: the middle of the ghast's top. */
     public Vec3d dismountLocation() {
         return new Vec3d(this.posX, this.getEntityBoundingBox().maxY, this.posZ);
+    }
+
+    /**
+     * 1.12.2's {@code EntityLivingBase.dismountEntity} looks for ground around the rider in this direction; with none it
+     * puts the rider at the vehicle's x and z on its top ({@code minY + height}), which is 1.21's dismount location.
+     */
+    @Nullable
+    @Override
+    public net.minecraft.util.EnumFacing getAdjustedHorizontalFacing() {
+        return null;
+    }
+
+    /**
+     * 1.12.2's {@code EntityLiving.canPassengerSteer} also asks this: with a controlling player (harness on, not on
+     * its still timeout) the rider's client flies it and the server follows its vehicle-move packets.
+     */
+    @Override
+    public boolean canBeSteered() {
+        return this.controllingPlayer() != null;
     }
 
     /** The first passenger steers when it is a player, the ghast wears a harness and is not on its still timeout. */
@@ -408,10 +435,17 @@ public class EntityHappyGhast extends EntityAnimal {
         return this.staysStill() || this.serverStillTimeout > 0;
     }
 
+    /**
+     * 1.21 reaches 1.0E-5 below the top: its server sends exact positions while the ghast is still. 1.12.2's player
+     * stands on the client's copy of the ghast, which trails the server's by the tracker's interpolation and rounding,
+     * so a rising ghast would never see the player on it; this reaches half a block below the top instead.
+     */
+    static final double STANDING_TOLERANCE = 0.5D;
+
     /** A player (not riding a happy ghast) standing on top or just above, within a block of its sides. */
     boolean scanPlayerAboveGhast() {
         AxisAlignedBB box = this.getEntityBoundingBox();
-        AxisAlignedBB above = new AxisAlignedBB(box.minX - 1.0D, box.maxY - 1.0E-5F, box.minZ - 1.0D, box.maxX + 1.0D,
+        AxisAlignedBB above = new AxisAlignedBB(box.minX - 1.0D, box.maxY - STANDING_TOLERANCE, box.minZ - 1.0D, box.maxX + 1.0D,
                 box.maxY + (box.maxY - box.minY) / 2.0D, box.maxZ + 1.0D);
         for (EntityPlayer player : this.world.playerEntities) {
             if (player.isSpectator()) {
@@ -419,6 +453,36 @@ public class EntityHappyGhast extends EntityAnimal {
             }
             Entity root = player.getLowestRidingEntity();
             if (!(root instanceof EntityHappyGhast) && above.contains(new Vec3d(root.posX, root.posY, root.posZ))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * A player whose feet are within {@link #STANDING_TOLERANCE} below the top of a stopped adult is put on the top. The
+     * player's own side runs this (the client for a real player): 1.12.2's copy of the ghast catches up with the
+     * server's stopping point over a few ticks and can rise into a player standing on it, and 1.12.2's collision ignores a
+     * box the player is already inside, so the player would sink through. 1.21's exact positions do not need this.
+     *
+     * @return whether the player was lifted
+     */
+    public static boolean liftOntoTop(EntityPlayer player) {
+        if (player.isRiding() || player.isSpectator() || player.capabilities.isFlying || player.motionY > 0.0D || player.noClip) {
+            return false;
+        }
+        AxisAlignedBB feet = player.getEntityBoundingBox();
+        for (EntityHappyGhast ghast : player.world.getEntitiesWithinAABB(EntityHappyGhast.class, feet.grow(0.0D, STANDING_TOLERANCE, 0.0D))) {
+            if (ghast.isChild() || !ghast.isEntityAlive() || !ghast.isOnStillTimeout()) {
+                continue;
+            }
+            AxisAlignedBB box = ghast.getEntityBoundingBox();
+            boolean over = feet.maxX > box.minX && feet.minX < box.maxX && feet.maxZ > box.minZ && feet.minZ < box.maxZ;
+            if (over && player.posY < box.maxY && player.posY >= box.maxY - STANDING_TOLERANCE) {
+                player.setPosition(player.posX, box.maxY, player.posZ);
+                player.motionY = 0.0D;
+                player.onGround = true;
+                player.fallDistance = 0.0F;
                 return true;
             }
         }
@@ -496,15 +560,13 @@ public class EntityHappyGhast extends EntityAnimal {
             if (this.scanPlayerAboveGhast()) {
                 this.setServerStillTimeout(MAX_STILL_TIMEOUT);
             }
+        } else {
             Entity off = this.dismounted;
             this.dismounted = null;
-            if (off != null && !off.isRiding() && off.isEntityAlive() && off.world == this.world) {
+            if (off instanceof EntityPlayer && ((EntityPlayer) off).isUser() && !off.isRiding() && off.world == this.world
+                    && off.posY < this.getEntityBoundingBox().maxY) {
                 Vec3d at = this.dismountLocation();
-                if (off instanceof EntityPlayerMP) {
-                    ((EntityPlayerMP) off).setPositionAndUpdate(at.x, at.y, at.z);
-                } else {
-                    off.setPosition(at.x, at.y, at.z);
-                }
+                off.setPosition(at.x, at.y, at.z);
             }
         }
     }
@@ -527,6 +589,14 @@ public class EntityHappyGhast extends EntityAnimal {
     protected void updateAITasks() {
         this.checkRestriction();
         super.updateAITasks();
+    }
+
+    /**
+     * 1.21's {@code Mob.updateControlFlags} switches off goals that move, look or jump while a player steers; every goal
+     * of the happy ghast is one, so its goals stand down (1.12.2's control flags only hold while another goal runs).
+     */
+    public boolean isPlayerControlled() {
+        return this.controllingPlayer() != null;
     }
 
     @Override

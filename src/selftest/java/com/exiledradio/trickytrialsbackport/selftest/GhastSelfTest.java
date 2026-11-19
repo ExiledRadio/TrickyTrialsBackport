@@ -65,6 +65,9 @@ public final class GhastSelfTest implements SelfTest {
             riding(c);
             flight(c);
             stillTimeout(c);
+            steering(c);
+            dismount(c);
+            standing(c);
             healing(c);
             floating(c);
             adultAi(c);
@@ -394,6 +397,8 @@ public final class GhastSelfTest implements SelfTest {
         // Getting off: put on top, the still timeout starts.
         ps[3].dismountRidingEntity();
         c.eq(10, g.serverStillTimeout(), "still timeout after a rider leaves");
+        c.ok(Math.abs(ps[3].posY - g.getEntityBoundingBox().maxY) < 1.0E-6 && Math.abs(ps[3].posX - g.posX) < 1.0E-6,
+                "dismounted on top at once: " + (ps[3].posY - g.posY));
         g.onUpdate();
         c.ok(Math.abs(ps[3].posY - g.getEntityBoundingBox().maxY) < 1.0E-6 && Math.abs(ps[3].posX - g.posX) < 1.0E-6,
                 "dismounted on top: " + (ps[3].posY - g.posY));
@@ -404,6 +409,186 @@ public final class GhastSelfTest implements SelfTest {
         c.ok(!g.hasHome() || true, "home cleared when empty");
         remove(c, ps);
         remove(c, g);
+    }
+
+    /** A player whose own side steers, as a client's player does ({@code isUser}); a dedicated server's never is. */
+    private static EntityPlayerMP steeringPlayer(Check c, String name, BlockPos at) {
+        net.minecraft.server.MinecraftServer server = c.world.getMinecraftServer();
+        EntityPlayerMP p = new EntityPlayerMP(server, c.world, new com.mojang.authlib.GameProfile(
+                java.util.UUID.nameUUIDFromBytes(("selftest:" + name).getBytes()), "Test" + name),
+                new net.minecraft.server.management.PlayerInteractionManager(c.world)) {
+            @Override
+            public boolean isUser() {
+                return true;
+            }
+        };
+        p.connection = new net.minecraft.network.NetHandlerPlayServer(server,
+                new net.minecraft.network.NetworkManager(net.minecraft.network.EnumPacketDirection.SERVERBOUND), p);
+        p.setGameType(GameType.SURVIVAL);
+        p.setLocationAndAngles(at.getX() + 0.5D, at.getY(), at.getZ() + 0.5D, 0.0F, 0.0F);
+        c.world.spawnEntity(p);
+        return p;
+    }
+
+    /**
+     * 1.12.2's {@code EntityLiving.canPassengerSteer} needs {@code canBeSteered}; with it, the rider's own side flies
+     * the ghast through its ordinary tick, along the rider's look, and the server's goals stand down.
+     */
+    private static void steering(Check c) {
+        BlockPos a = c.area();
+        EntityHappyGhast g = ghast(c, a.add(16, 20, 16), false);
+        EntityPlayerMP p = steeringPlayer(c, "ghaststeer", a.add(16, 0, 10));
+        EntityPlayerMP other = player(c, "ghaststeer2", a.add(18, 0, 10));
+        p.startRiding(g, true);
+        c.ok(!g.canBeSteered(), "no harness: not steerable");
+        c.ok(!g.canPassengerSteer(), "no harness: no one steers");
+        p.dismountRidingEntity();
+        g.setHarness(new ItemStack(GhastContent.HARNESSES.get("blue")));
+        p.startRiding(g, true);
+        GhastSelfTestAccess.setStill(g, 0);
+        c.ok(g.canBeSteered(), "harnessed with a player in front: steerable");
+        c.ok(g.canPassengerSteer(), "the rider's own side steers");
+        c.ok(!GhastSelfTestAccess.goalsWouldStart(g), "goals stand down while a player steers");
+        // Forward, looking 30 degrees up and 40 degrees to the side: once it faces that way, it flies along the look.
+        p.rotationYaw = 40.0F;
+        p.rotationPitch = -30.0F;
+        p.moveForward = 0.98F;
+        p.moveStrafing = 0.0F;
+        g.rotationYaw = 40.0F;
+        g.motionX = g.motionY = g.motionZ = 0.0D;
+        Vec3d start = new Vec3d(g.posX, g.posY, g.posZ);
+        for (int i = 0; i < 40; i++) {
+            g.onUpdate();
+        }
+        Vec3d moved = new Vec3d(g.posX, g.posY, g.posZ).subtract(start);
+        Vec3d look = p.getLookVec();
+        double cos = moved.normalize().dotProduct(look);
+        c.ok(moved.length() > 2.0D, "it flew under its ordinary tick: " + moved.length());
+        c.ok(cos > 0.999D, "along the rider's look: cos " + cos + " moved " + moved + " look " + look);
+        c.ok(Math.abs(g.rotationYaw - 40.0F) < 1.0E-3F, "facing the rider's way: " + g.rotationYaw);
+        // Turning toward a new look.
+        p.rotationYaw = 120.0F;
+        float before = g.rotationYaw;
+        g.onUpdate();
+        c.ok(Math.abs(g.rotationYaw - (before + 80.0F * 0.08F)) < 1.0E-3F, "turns 8% a tick toward the rider: " + g.rotationYaw);
+        // Jump alone climbs straight up.
+        p.moveForward = 0.0F;
+        g.motionX = g.motionY = g.motionZ = 0.0D;
+        p.setJumping(true);
+        double y0 = g.posY;
+        double x0 = g.posX;
+        for (int i = 0; i < 20; i++) {
+            g.onUpdate();
+        }
+        p.setJumping(false);
+        c.ok(g.posY - y0 > 0.5D && Math.abs(g.posX - x0) < 1.0E-6, "jump climbs: " + (g.posY - y0) + " dx " + (g.posX - x0));
+        // A dedicated server's own player is not the steering side: the server follows the rider's packets.
+        p.dismountRidingEntity();
+        other.startRiding(g, true);
+        GhastSelfTestAccess.setStill(g, 0);
+        c.ok(g.canBeSteered() && !g.canPassengerSteer(), "a server-side player steers from their client, not here");
+        other.moveForward = 1.0F;
+        double z0 = g.posZ;
+        g.onUpdate();
+        c.ok(g.posZ == z0, "the server does not move it for a remote rider");
+        other.dismountRidingEntity();
+        remove(c, p, other, g);
+    }
+
+    /** 1.21's dismount location, the middle of the top, straight from 1.12.2's own dismount, even near ground. */
+    private static void dismount(Check c) {
+        BlockPos a = c.area();
+        EntityHappyGhast g = ghast(c, a.add(16, 1, 16), false);
+        g.setHarness(new ItemStack(GhastContent.HARNESSES.get("brown")));
+        // Ground right beside the seats, where 1.12.2's dismount would look first.
+        BlockPos at = new BlockPos(g);
+        c.fill(at.add(-4, 2, -4), at.add(4, 2, 4), Blocks.STONE.getDefaultState());
+        c.fill(at.add(-2, 2, -2), at.add(2, 2, 2), Blocks.AIR.getDefaultState());
+        EntityPlayerMP[] ps = {player(c, "ghastoff0", a.add(14, 0, 10)), player(c, "ghastoff1", a.add(15, 0, 10))};
+        for (EntityPlayerMP p : ps) {
+            p.startRiding(g, true);
+        }
+        g.rotationYaw = g.renderYawOffset = 0.0F;
+        for (EntityPlayerMP p : ps) {
+            g.updatePassenger(p);
+        }
+        AxisAlignedBB box = g.getEntityBoundingBox();
+        for (int i = 0; i < ps.length; i++) {
+            ps[i].dismountRidingEntity();
+            c.ok(!ps[i].isRiding(), "rider " + i + " off");
+            c.ok(Math.abs(ps[i].posX - g.posX) < 1.0E-6 && Math.abs(ps[i].posZ - g.posZ) < 1.0E-6 && Math.abs(ps[i].posY - box.maxY) < 1.0E-6,
+                    "rider " + i + " on the middle of the top: " + (ps[i].posX - g.posX) + "," + (ps[i].posY - g.posY) + "," + (ps[i].posZ - g.posZ));
+            c.ok(ps[i].motionX == 0.0D && ps[i].motionY == 0.0D && ps[i].fallDistance == 0.0F, "rider " + i + " not thrown");
+        }
+        c.ok(g.isOnStillTimeout(), "and it holds still for them");
+        c.ok(g.getAdjustedHorizontalFacing() == null, "1.12.2's ground search is skipped");
+        remove(c, ps);
+        remove(c, g);
+    }
+
+    /** The top as a platform: players and mobs land and stay; it holds still under a player; a lagging player is lifted. */
+    private static void standing(Check c) {
+        BlockPos a = c.area();
+        EntityHappyGhast g = ghast(c, a.add(16, 20, 16), false);
+        for (int i = 0; i < 61; i++) {
+            g.ticksExisted++;
+        }
+        GhastSelfTestAccess.setStill(g, 0);
+        EntityPlayerMP p = player(c, "ghastplatform", a.add(16, 30, 16));
+        AxisAlignedBB box = g.getEntityBoundingBox();
+        // Within the tolerance below the top, as a client trailing a rising ghast reports, it still counts.
+        p.setPosition(g.posX + 1.0D, box.maxY - 0.3D, g.posZ);
+        c.ok(GhastSelfTestAccess.scanAbove(g), "a player 0.3 below the top counts as standing on it");
+        p.setPosition(g.posX + 1.0D, box.maxY - 0.8D, g.posZ);
+        c.ok(!GhastSelfTestAccess.scanAbove(g), "0.8 below does not");
+        // Dropping onto it: the server's collision stops the player on the top.
+        p.setPosition(g.posX + 1.0D, box.maxY + 1.5D, g.posZ);
+        g.onUpdate();
+        c.ok(g.isOnStillTimeout(), "a player just above stops it");
+        Vec3d ghastAt = new Vec3d(g.posX, g.posY, g.posZ);
+        for (int i = 0; i < 40; i++) {
+            p.move(net.minecraft.entity.MoverType.SELF, 0.0D, -0.3D, 0.0D);
+            g.onUpdate();
+        }
+        c.ok(Math.abs(p.posY - g.getEntityBoundingBox().maxY) < 1.0E-6, "the player lands on the top: " + (p.posY - g.getEntityBoundingBox().maxY));
+        c.ok(p.onGround, "standing (on ground)");
+        c.ok(new Vec3d(g.posX, g.posY, g.posZ).distanceTo(ghastAt) < 1.0E-6, "the ghast did not move under them in 40 ticks");
+        c.ok(g.isOnStillTimeout() && g.serverStillTimeout() == 10, "still the whole time");
+        // Walking across it stays on top.
+        for (int i = 0; i < 10; i++) {
+            p.move(net.minecraft.entity.MoverType.SELF, -0.2D, -0.1D, 0.0D);
+            g.onUpdate();
+        }
+        c.ok(Math.abs(p.posY - g.getEntityBoundingBox().maxY) < 1.0E-6, "walking across stays on top");
+        // A mob on a still ghast stands too (1.21: solid to any entity while still).
+        net.minecraft.entity.monster.EntityZombie z = new net.minecraft.entity.monster.EntityZombie(c.world);
+        z.setPosition(g.posX - 1.0D, g.getEntityBoundingBox().maxY + 1.0D, g.posZ + 1.0D);
+        c.world.spawnEntity(z);
+        for (int i = 0; i < 10; i++) {
+            z.move(net.minecraft.entity.MoverType.SELF, 0.0D, -0.3D, 0.0D);
+        }
+        c.ok(Math.abs(z.posY - g.getEntityBoundingBox().maxY) < 1.0E-6, "a zombie stands on the still top: " + (z.posY - g.getEntityBoundingBox().maxY));
+        z.setDead();
+        // The player's own side lifts a player whose feet sank just inside a still top.
+        p.setPosition(g.posX, g.getEntityBoundingBox().maxY - 0.3D, g.posZ);
+        p.motionY = -0.08D;
+        c.ok(EntityHappyGhast.liftOntoTop(p) && Math.abs(p.posY - g.getEntityBoundingBox().maxY) < 1.0E-6 && p.onGround, "lifted onto the top");
+        p.setPosition(g.posX, g.getEntityBoundingBox().maxY - 0.8D, g.posZ);
+        c.ok(!EntityHappyGhast.liftOntoTop(p), "not from deeper inside");
+        p.setPosition(g.posX, g.getEntityBoundingBox().maxY - 0.3D, g.posZ);
+        p.motionY = 0.3D;
+        c.ok(!EntityHappyGhast.liftOntoTop(p), "not while jumping up");
+        // Off it: free again after 10 ticks; a moving ghast lifts no one.
+        p.setPosition(g.posX + 20.0D, g.posY, g.posZ);
+        for (int i = 0; i < 10; i++) {
+            g.onUpdate();
+        }
+        c.ok(!g.isOnStillTimeout(), "free once they leave");
+        p.setPosition(g.posX, g.getEntityBoundingBox().maxY - 0.3D, g.posZ);
+        p.motionY = -0.08D;
+        GhastSelfTestAccess.setStill(g, 0);
+        c.ok(!EntityHappyGhast.liftOntoTop(p), "a moving ghast lifts no one");
+        remove(c, p, g);
     }
 
     /** The rider's input as 1.21 reads it, and the speeds it gives. */

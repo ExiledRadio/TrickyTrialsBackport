@@ -81,17 +81,29 @@ Behavior is 1.21.11's (`HappyGhast`, `HappyGhastAi`, `DriedGhastBlock`, `Ghast.G
     as pressed; forward or back (only the sign counts) along the look, back mirrored at half; jump +0.5 up; x 3.9 x
     flying speed, flown with the travel above: top speed about 3.6 blocks a second. Each tick it turns 8% of the way
     to the rider's yaw and takes half their pitch. Goggles down when the first rider gets on, up when the last
-    leaves; the rider dismounts under water. Getting off puts the rider on the middle of its top the next tick (1.21's
-    dismount location; 1.12.2 would look for ground nearby) and starts a 10-tick still timeout.
-*   **Still timeout**: a player within a block of its sides and up to half its height above its top (not riding a
-    happy ghast) holds it at 10 ticks; it counts down after its first 60 ticks. While on it the ghast stops and
-    squares up, no one steers, and it is solid (a boat-like collision box); on a client it is also solid to a player
-    at or above its top, and a ridden ghast bumps into other ridden ghasts. A rider getting on clears it unless
-    someone stands on top.
-*   **Client steering**: the rider's client moves the ghast and sends 1.12.2's vehicle-move packet, as for horses
-    and boats; the server zeroes its own motion under a player. 1.12.2 slows a client-moved entity by 0.98 before it
-    travels; that is undone, since 1.21 does not. The rider's jump key is read from 1.12.2's `isJumping` (synced to
-    the server by the input packet).
+    leaves; the rider dismounts under water. Getting off puts the rider on the middle of its top (1.21's
+    `getDismountLocationForPassenger`) and starts a 10-tick still timeout: the server sets it in `removePassenger`, and
+    1.12.2's own `dismountEntity` then teleports the rider there, since `getAdjustedHorizontalFacing` is null (with a
+    direction it would look for ground around the rider first). A client whose player is still off a tick later and
+    below the top puts it on the top too, in case its passenger list was rebuilt before the teleport arrived.
+*   **Still timeout**: a player within a block of its sides, from half a block below its top to half its height above
+    (not riding a happy ghast), holds it at 10 ticks; it counts down after its first 60 ticks. While on it the ghast
+    stops and squares up, no one steers, and it is solid to players and mobs (a boat-like collision box); on a client
+    it is also solid to a player at or above its top, and a ridden ghast bumps into other ridden ghasts. A rider
+    getting on clears it unless someone stands on top. 1.21 reaches only 1.0E-5 below the top, with exact positions
+    while still; 1.12.2's client copy of a moving ghast trails the server's (interpolation and rounding), so a player
+    standing on a rising ghast is reported a little below its server top, and with 1.21's margin it never stopped.
+*   **Standing on a stopped ghast** (`liftOntoTop`, from the client tick): when the client's copy catches up with the
+    stopping point it can rise into the player, and 1.12.2's collision ignores a box the player is already inside, so
+    a player whose feet are within half a block below the top of a still adult, not rising, is put on the top.
+*   **Client steering**: 1.12.2's `EntityLiving.canPassengerSteer` is `canBeSteered() && ...`, and `canBeSteered` is
+    true with a controlling player (harness on, not still). The rider's client then moves the ghast and sends 1.12.2's
+    vehicle-move packet, as for horses and boats; the server zeroes its own motion under a player and follows the
+    packets. 1.12.2 slows a client-moved entity by 0.98 before it travels; that is undone, since 1.21 does not. The
+    rider's jump key is read from 1.12.2's `isJumping` (synced to the server by the input packet). While a player
+    steers, the ghast's goals stand down (1.21's `updateControlFlags` switches off move, look and jump goals, which
+    are all of them; 1.12.2's control flags only hold while another goal runs, so each goal checks), and its look
+    control leaves the yaw alone, so the server keeps the rider's turn for everyone watching.
 *   **Floating kick** (`GhastContent.onPlayerTick`): 1.12.2 kicks a player whose vehicle floats 80 ticks with flight
     off; 1.21 exempts flying vehicles. For riders of an adult happy ghast the server player's `vehicleFloating` and
     its count are cleared each player tick (reflection on `NetHandlerPlayServer`, no patch).
@@ -117,6 +129,9 @@ Behavior is 1.21.11's (`HappyGhast`, `HappyGhastAi`, `DriedGhastBlock`, `Ghast.G
 files, 0 errors**. Release jar built after the last test run with `--rerun-tasks`: reobfuscated (`func_` names), no
 `/selftest/` entries and no test classes.
 
+Riding fix (branch `tr-ghast-fix`, from main at a962cc2): full `-Pselftest=all` from a fresh world pinned to the E-cores **`pass=5189 fail=0`**, `check_assets.py` **197 blocks, 3048 states, 283 item models, 1167 sound files, 0 errors**, release jar with 0 `/selftest/` entries. No patch was added or changed (all fixes are overrides and events), so the frame verifier had nothing new to scan. Ghast alone: 295 checks, 0 failures, in four
+runs in a row (the still-timeout section that other streams saw fail now and then passes every time).
+
 *   Registration: block, 16 harnesses with their colors, stack size and dispense behavior, entity id 45, egg, all 20
     sounds, the loot table, attributes, adult size and eyes, the block's metadata both ways, hardness 0.
 *   Crafting: the dried ghast, all 16 harnesses, all 16 dye recipes, and no recipe for dyeing a harness its own color.
@@ -132,8 +147,19 @@ files, 0 errors**. Release jar built after the last test run with `--rerun-tasks
     nothing while sneaking or ridden (using them on a ridden ghast mounts you, as in 1.21); off with shears, dropped
     at the seats' height, shears damaged 1; a dispenser puts one on.
 *   Riding: no harness, no ride; four players get on, a fifth does not fit; the first steers; seat positions front
-    and left, turning with the body; sneaking does not mount; a rider getting off starts the 10-tick still timeout,
-    is put on top the next tick, and no one steers meanwhile.
+    and left, turning with the body; sneaking does not mount; a rider getting off is on top at once, starts the
+    10-tick still timeout, and no one steers meanwhile.
+*   Steering (a player whose side steers, as a client's own player, `isUser`): no harness, not steerable; harnessed,
+    `canBeSteered` and `canPassengerSteer`; goals stand down; 40 ordinary ticks forward while looking 30 degrees up
+    and 40 to the side fly along the look vector (cos > 0.999) facing the rider's way; turning 8% a tick; jump alone
+    climbs straight up. A dedicated server's player steers from their client: steerable but not steered there, and
+    the server does not move it.
+*   Dismount: two riders getting off near ground (where 1.12.2's search would pick a spot beside) land on the middle
+    of the top at once, not moving, no fall distance; it holds still for them.
+*   Standing: 0.3 below the top counts, 0.8 does not; a player dropping on it stops it and lands on the top through
+    the server's collision, stays there 40 ticks while the ghast does not move, and walks across it on top; a zombie
+    stands on the still top; the lift puts a player 0.3 inside on top, not one 0.8 inside, not one jumping, not on a
+    moving ghast; free 10 ticks after they leave.
 *   Flight: the ridden input for forward, back (half), looking up, back while looking down, jump and strafe; one
     tick of ridden flight moves input x 0.0833 then keeps 0.91; the terminal speed; no gravity; 8% turning and half
     pitch with body and head following; the server does not steer for a real player and zeroes its motion.
@@ -151,8 +177,11 @@ files, 0 errors**. Release jar built after the last test run with `--rerun-tasks
 
 *   Anything drawn or heard (no client): the model, the harness and goggles, the scale and culling, the particles,
     the riding sound, the camera distance.
-*   A real client steering it: input, the vehicle-move packets and the server's "moved wrongly" checks. The
-    flight math is tested on the server through the same method the client calls.
+*   A real client steering it: the keys reaching `moveForward`/`isJumping`, the vehicle-move packets and the
+    server's "moved wrongly" checks. The steering side is tested on the server with a player that reports itself as
+    the user, through the same tick a client runs.
+*   The client's packet order on dismount (teleport and passenger list) and the client-side lift during a real
+    landing on a moving ghast.
 *   The ghastling's brain over time (following players and mobs, panicking, strolling): set up and run only as far
     as the selftest's single ticks go.
 *   The real 20-minute hatch through random ticks (each step is tested by calling the ticks).

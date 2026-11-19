@@ -69,6 +69,19 @@ public final class GhastSelfTestAccess {
         return GhastAi.temptingPlayer(g) != null;
     }
 
+    /** Whether the adult's float-around and float goals would start now. */
+    public static boolean goalsWouldStart(EntityHappyGhast g) {
+        return new GhastAi.RandomFloatAroundGoal(g, 16).shouldExecute() || new GhastAi.TemptGoal(g, 1.0D, 7.0D).shouldExecute();
+    }
+
+    public static boolean scanAbove(EntityHappyGhast g) {
+        return g.scanPlayerAboveGhast();
+    }
+
+    public static void setJumping(net.minecraft.entity.EntityLivingBase e, boolean jumping) {
+        e.setJumping(jumping);
+    }
+
     public static boolean canReach(EntityHappyGhast g, Vec3d d) {
         return ((GhastAi.MoveHelper) g.getMoveHelper()).canReach(d);
     }

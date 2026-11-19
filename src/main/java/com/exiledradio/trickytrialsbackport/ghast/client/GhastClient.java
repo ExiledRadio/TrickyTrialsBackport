@@ -43,10 +43,13 @@ public final class GhastClient {
     public static final class Events {
         @SubscribeEvent
         public void tick(TickEvent.ClientTickEvent event) {
-            if (event.phase != TickEvent.Phase.END) {
+            Minecraft mc = Minecraft.getMinecraft();
+            if (event.phase == TickEvent.Phase.START) {
+                if (mc.player != null && mc.world != null && !mc.isGamePaused()) {
+                    EntityHappyGhast.liftOntoTop(mc.player);
+                }
                 return;
             }
-            Minecraft mc = Minecraft.getMinecraft();
             EntityPlayerSP player = mc.player;
             Entity vehicle = player == null ? null : player.getRidingEntity();
             if (vehicle instanceof EntityHappyGhast && vehicle != soundVehicle) {
