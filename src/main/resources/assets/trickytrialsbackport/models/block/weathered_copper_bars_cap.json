@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_bars_cap",
+  "textures": {
+    "bars": "trickytrialsbackport:block/weathered_copper_bars",
+    "edge": "trickytrialsbackport:block/weathered_copper_bars"
+  }
+}

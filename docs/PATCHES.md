@@ -29,6 +29,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P17 | animals | `EntitySheep.onInitialSpawn` (`func_180482_a`) | before each return: `AnimalsHooks.sheepSpawn(this)` |
 | P18 | animals | `EntityAnimal.readEntityFromNBT` / `writeEntityToNBT` (`func_70037_a` / `func_70014_b`) | head: `AnimalsHooks.read(this, tag)` / `write(this, tag)` |
 | P19 | animals | `EntityWolf.getAmbientSound` / `getHurtSound` / `getDeathSound` (`func_184639_G` / `func_184601_bQ` / `func_184615_bR`) | each returned sound becomes `AnimalsHooks.wolfSound(sound, this)` |
+| P16 | copperGear | `EntityLiving.setEquipmentBasedOnDifficulty` (`func_180481_a`) | head: `if (CopperGearHooks.equipArmor(this, difficulty)) return;` |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -108,3 +109,16 @@ P19 an `ALOAD 0` and a call taking the returned sound and the wolf and returning
   `AnimalData` capability itself is not saved.
 - **P19**: 1.12.2's mob sounds reach no Forge event with the entity (`PlaySoundAtEntityEvent` gets a null entity
   from `Entity.playSound`), so the three getters are wrapped. Shaking and steps stay every wolf's, as in 1.21.5.
+## P16: mobs wear copper (1.21.9)
+
+1.21.9's `Mob.populateDefaultEquipmentSlots`: with chance `0.15 * clampedAdditionalDifficulty` a mob gets armor of one
+tier for every piece it wears: the first roll is `nextInt(3)` over leather, copper and gold (1.12.2: `nextInt(2)`,
+leather or gold), raised three times with chance 0.1087 each (1.12.2: 0.095), through chainmail, iron and diamond. The
+pieces go on helmet, chestplate, leggings, boots in that order (1.12.2 starts at the boots: MC-182478, fixed in 24w33a for 1.21.2); after the first, each
+further piece stops the roll with chance 0.1 on Hard, 0.25 otherwise, as before. The tiers come out leather 23.60%,
+copper 32.23%, gold 33.29%, chainmail 9.73%, iron 1.10%, diamond 0.04%, minecraft.wiki's figures.
+
+`EntityLiving.setEquipmentBasedOnDifficulty` is where 1.12.2's zombies, husks, zombie villagers, skeletons, strays and
+the bogged get their armor (each calls it before choosing its weapon), the same mobs 1.21.9 puts copper on. The hook
+returns false, and 1.12.2's roll runs, while `copperGear.enabled` or `copperGear.mobArmor` is off. Weapons and
+enchanting are unchanged.

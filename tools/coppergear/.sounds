@@ -1,0 +1,11 @@
+block.chain.break
+block.chain.fall
+block.chain.hit
+block.chain.place
+block.chain.step
+block.lantern.break
+block.lantern.fall
+block.lantern.hit
+block.lantern.place
+block.lantern.step
+item.armor.equip_copper

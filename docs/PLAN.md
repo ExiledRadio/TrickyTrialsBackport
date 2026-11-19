@@ -255,7 +255,7 @@ wrapping block, so it never meets a stream worktree's server.
 
 - Copper nugget, sword, axe, pickaxe, shovel, hoe (stone-tier mining), helmet, chestplate, leggings,
   boots, horse armor; copper torch and wall torch, copper lantern, copper bars, copper chain (four stages,
-  waxed); copper armor on mobs.
+  waxed); copper armor on mobs. Built: `docs/streams/coppergear.md`.
 
 ### 21. Shelves (1.21.9)
 

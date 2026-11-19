@@ -481,6 +481,14 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- CopperGear fields ---
+        @Config.Comment({"Zombies, skeletons and their kinds that spawn wearing armor pick it as 1.21.9 does: leather, copper",
+                "or gold first, then a better tier now and then. Off, 1.12.2's roll (no copper)."})
+        @Config.LangKey("config.trickytrialsbackport.copperGear.mobArmor")
+        public boolean mobArmor = true;
+
+        @Config.Comment("Copper horse armor in the chests that have iron horse armor (dungeons, temples, strongholds, ...).")
+        @Config.LangKey("config.trickytrialsbackport.copperGear.horseArmorLoot")
+        public boolean horseArmorLoot = true;
         // --- end CopperGear ---
     }
 

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "trickytrialsbackport:copper_torch"
+    },
+    "facing=east": {
+      "model": "trickytrialsbackport:copper_wall_torch"
+    },
+    "facing=north": {
+      "model": "trickytrialsbackport:copper_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "trickytrialsbackport:copper_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "trickytrialsbackport:copper_wall_torch",
+      "y": 180
+    }
+  }
+}
