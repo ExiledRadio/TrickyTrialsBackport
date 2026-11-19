@@ -145,6 +145,17 @@ public class ItemSpear extends Item {
         return false;
     }
 
+    /**
+     * 1.21.11 keeps a use going while the hand holds the same item ({@code ItemStack.isSameItem}), whatever happened to
+     * the stack. Forge's default asks for the very same stack object, so on a client the slot update that follows a
+     * charge's wear would end the charge, and the held button would start a new one four ticks later: the charge
+     * sound again, the delay again, and every target's cooldown forgotten.
+     */
+    @Override
+    public boolean canContinueUsing(ItemStack oldStack, ItemStack newStack) {
+        return oldStack.getItem() == newStack.getItem();
+    }
+
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return slotChanged || oldStack.getItem() != newStack.getItem();

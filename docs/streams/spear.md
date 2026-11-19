@@ -67,6 +67,13 @@ Reference: the 1.21.11 jar (`Items`, `Item.Properties.spear`, `ToolMaterial`, `K
     item use runs, so `SpearEvents` samples every living entity's position at the start of its update and keeps the
     difference (`SpearAttacks.movement`); anything else (a boat, a minecart) uses `pos - lastTickPos`. A mob riding
     something takes the root vehicle's move, a player their own (which moves with the vehicle).
+*   **The charge survives its own wear** (`ItemSpear.canContinueUsing`): 1.21.11 keeps a use going while the hand holds
+    the same item (`ItemStack.isSameItem`). Forge's default wants the very same stack object, so before this a real
+    client ended the charge at every hit (the server's slot update after the wear hands it a new stack) and the held
+    button restarted it four ticks later: the charge sound again, the delay again, every target's cooldown forgotten,
+    a hit or more a second with the sounds piling up. Fixed 2026-11-20 (branch `tr-spear-hitrate`).
+*   **Hit feedback** (`SpearAttacks.feedback`, 1.21.11's `onKineticHit`): the hit sound and the view's jolt (packet 111)
+    come at most once every 11 ticks a wielder, however many targets or hits.
 *   **A new charge** forgets the last one's targets (`LivingEntityUseItemEvent.Start`). A charge that hits sends packet
     111 to everyone near: the hit sound at the wielder, and the wielder's view jolts (1.21.11 uses entity event 2, which
     1.12.2 reads as "hurt"). *Mob Kabob*'s trigger `trickytrialsbackport:spear_mobs` gets the number of living things
@@ -145,6 +152,10 @@ What the spears test checks:
     after 11.5 s; a zombie riding a pig knocked off at 9 b/s.
 *   Lunge II pushing 0.916 along the look, level only, one more wear, 8 exhaustion; none at 6 food; half as far
     looking 60 degrees up; nothing without Lunge.
+*   Hit rate: a worn copy of the spear in hand keeps the charge going (the client's case), another spear ends it; a
+    40-tick sprinting charge into a standing zombie hits it 4 times (every 10 ticks), a second zombie stepping in 5 ticks
+    later keeps its own clock (4 hits), the hit sound plays 3 times (0, 15, 30), and the charge is still held. With the
+    fix: `-Pselftest=spears` 166/0 and `-Pselftest=all` 5490/0 from a fresh world, pinned to the E-cores.
 *   *Mob Kabob*: one netherite charge through four zombies, not yet; a fifth reached thanks to the move ahead, earned.
 *   Mobs: a zombie has the spear charge task; a zombie charging at 2 b/s hits a zombie 1.7 blocks ahead (not one at 3)
     for its base 3 + 1; P20 applied to both classes; half of 1.12.2's iron swords become spears (4000 rolls), shovels
