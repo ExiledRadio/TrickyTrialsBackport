@@ -148,11 +148,12 @@ not this stream's.
 
 *   **The camel husk** (32 health, light 0 in deserts, ridden by a husk with a spear in front and a parched behind,
     rabbit-foot food, the husk's rabbit-foot drop, the camel husk saddle). It is a `Camel`, and camels are Trails &
-    Tales' (PLAN.md's owner table: "the camel husk ... exist only when Trails & Tales provides the systems"). Nothing in
-    this repository compiles against Trails & Tales yet; subclassing its `EntityCamel` needs a compile-only dependency
-    on its dev jar in `build.gradle`, which is the integrator's call. Entity id 66 is kept for it, and the float list
-    already names it. Until then a desert husk never brings a camel husk or a parched with it (parched still spawn on
-    their own).
+    Tales' (PLAN.md's owner table: "the camel husk ... exist only when Trails & Tales provides the systems"), and no
+    family mod compiles against another (each builds with only Core's dev jar; the integrator, 2026-11-19), so it
+    cannot subclass Trails & Tales' `EntityCamel`. A camel of our own on `AbstractHorse` would re-port that whole
+    camel (about 3,300 lines: brain, keyframe animations, sitting, dash, two seats) as a copy of an owned mob, which is
+    not worth it for one variant. Entity id 66 stays reserved, and the float list already names it. A desert husk
+    never brings a camel husk or a parched with it (parched still spawn on their own).
 *   **The darker zombie horse texture**: 1.21.11's is the 64 x 64 layout of 1.14's horse model; 1.12.2's horse is
     128 x 128 (the same reason Backport Core's texture packs leave horses out).
 *   **Hostile mob cap**: 1.12.2 counts monsters by `IMob`, which the zombie horse is not, so it does not count towards
