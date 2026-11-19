@@ -58,5 +58,10 @@ public final class NetworkHandler {
         // 90-94 locatorBar
         channel.registerMessage(com.exiledradio.trickytrialsbackport.locator.WaypointMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.locator.WaypointMessage.class, 90, Side.CLIENT);
+        // 110-114 spears
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.spear.SpearJabMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.spear.SpearJabMessage.class, 110, Side.SERVER);
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.spear.SpearHitMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.spear.SpearHitMessage.class, 111, Side.CLIENT);
     }
 }

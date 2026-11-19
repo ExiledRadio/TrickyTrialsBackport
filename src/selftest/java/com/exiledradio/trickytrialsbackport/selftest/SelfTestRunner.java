@@ -70,6 +70,7 @@ public final class SelfTestRunner {
             new FlatSelfTest(),
             new CopperGearSelfTest(),
             new CopperGolemSelfTest(),
+            new SpearsSelfTest(),
     };
 
     private final List<String> wanted;

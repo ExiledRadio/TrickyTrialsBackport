@@ -266,6 +266,11 @@ wrapping block, so it never meets a stream worktree's server.
 
 - Wood, stone, copper, iron, gold, diamond and netherite spears: jab (quick, several targets) and charge
   (held, speed-based damage, dismounts riders); **Lunge** I-III. Mobs carrying spears. *Mob Kabob*.
+  Built: `docs/streams/spear.md` (patches P20, P21).
+  **Status (2026-11-20):** done on `claude/tr-spears-5744ff`, not merged. Spears test 160/0; `selftest=all` from fresh
+  worlds 4456/0 and 4450/0 (one earlier run had 7 flaky failures in the ghast still-timeout check); assets 0 errors;
+  release jar clean. Left: nothing drawn or client input tested in game; piglin spears (Nether Update's) and husks on
+  camel husks (stream 24) are other owners'.
 
 ### 23. Nautilus (1.21.11)
 

@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:item/spear_in_hand",
+  "textures": {
+    "layer0": "trickytrialsbackport:item/stone_spear_in_hand"
+  }
+}

@@ -3629,5 +3629,67 @@
       "trickytrialsbackport:block/copper_statue/hit4"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "item.spear.attack": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/attack1",
+      "trickytrialsbackport:item/spear/attack2",
+      "trickytrialsbackport:item/spear/attack3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear.attack"
+  },
+  "item.spear.hit": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/hit1",
+      "trickytrialsbackport:item/spear/hit2",
+      "trickytrialsbackport:item/spear/hit3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear.hit"
+  },
+  "item.spear.use": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/use"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear.use"
+  },
+  "item.spear.lunge_1": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/lunge1"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear.lunge"
+  },
+  "item.spear.lunge_2": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/lunge2"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear.lunge"
+  },
+  "item.spear.lunge_3": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/lunge3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear.lunge"
+  },
+  "item.spear_wood.attack": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/wood/attack1",
+      "trickytrialsbackport:item/spear/wood/attack2",
+      "trickytrialsbackport:item/spear/wood/attack3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear_wood.attack"
+  },
+  "item.spear_wood.hit": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/wood/hit1",
+      "trickytrialsbackport:item/spear/wood/hit2",
+      "trickytrialsbackport:item/spear/wood/hit3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear_wood.hit"
+  },
+  "item.spear_wood.use": {
+    "sounds": [
+      "trickytrialsbackport:item/spear/wood/use"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.spear_wood.use"
   }
 }
