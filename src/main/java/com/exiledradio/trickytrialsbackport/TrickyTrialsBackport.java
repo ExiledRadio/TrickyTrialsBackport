@@ -76,6 +76,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.ghast.client.GhastClient.init();
             com.exiledradio.trickytrialsbackport.lookfeel.client.LookAndFeelClient.init();
             com.exiledradio.trickytrialsbackport.tweaks.client.TweaksClient.init();
+            com.exiledradio.trickytrialsbackport.locator.client.LocatorClient.init();
         }
     }
 
@@ -89,6 +90,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.animals.AnimalsContent.init();
         com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.init();
         com.exiledradio.trickytrialsbackport.tweaks.EnderPearlChunks.init();
+        com.exiledradio.trickytrialsbackport.locator.LocatorBar.init();
     }
 
     @Mod.EventHandler

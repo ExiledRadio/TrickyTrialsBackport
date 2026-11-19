@@ -705,3 +705,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Happy Gha
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Happy Ghast stops
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Happy Ghast hurts
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Harness unequips
+# --- locator ---
+attribute.name.waypoint_transmit_range=Waypoint Transmit Range
+attribute.name.waypoint_receive_range=Waypoint Receive Range

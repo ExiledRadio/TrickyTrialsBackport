@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=ハッピ
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=ハッピーガストが止まる
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=ハッピーガストがダメージを受ける
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=ハーネスが取り外される
+# --- locator ---
+attribute.name.waypoint_transmit_range=ウェイポイント伝達距離
+attribute.name.waypoint_receive_range=ウェイポイント受信距離

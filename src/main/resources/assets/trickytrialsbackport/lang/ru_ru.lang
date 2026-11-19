@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Счас�
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Счастливый гаст останавливается
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Счастливый гаст ранен
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Упряжь снята
+# --- locator ---
+attribute.name.waypoint_transmit_range=Дальность передачи маркера
+attribute.name.waypoint_receive_range=Дальность обнаружения маркеров

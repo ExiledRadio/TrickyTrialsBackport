@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=快樂幽
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=快樂幽靈停下
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=快樂幽靈受傷
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=卸除帽鞍
+# --- locator ---
+attribute.name.waypoint_transmit_range=路徑點傳輸距離
+attribute.name.waypoint_receive_range=路徑點接收距離

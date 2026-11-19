@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Wesoły g
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Wesoły ghast zatrzymuje się
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Wesoły ghast cierpi
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Zdejmowanie uprzęży
+# --- locator ---
+attribute.name.waypoint_transmit_range=zasięgu nadawania punktu orientacyjnego
+attribute.name.waypoint_receive_range=zasięgu odbioru punktu orientacyjnego

@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Ghast joy
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Ghast joyeux qui s'arrête
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Ghast joyeux blessé
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Harnais retiré
+# --- locator ---
+attribute.name.waypoint_transmit_range=portée de transmission du point de repère
+attribute.name.waypoint_receive_range=portée de réception du point de repère

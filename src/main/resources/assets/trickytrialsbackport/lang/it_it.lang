@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Ghast all
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Ghast allegro si arresta
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Ghast allegro ferito
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Imbracatura slacciata
+# --- locator ---
+attribute.name.waypoint_transmit_range=Portata di trasmissione del punto di riferimento
+attribute.name.waypoint_receive_range=Portata di ricezione del punto di riferimento

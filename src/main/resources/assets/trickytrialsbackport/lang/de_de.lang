@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Glücklic
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Glücklicher Ghast hält an
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Glücklicher Ghast nimmt Schaden
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Geschirr wird abgenommen
+# --- locator ---
+attribute.name.waypoint_transmit_range=Wegpunkt‐Sendereichweite
+attribute.name.waypoint_receive_range=Wegpunkt‐Empfangsreichweite

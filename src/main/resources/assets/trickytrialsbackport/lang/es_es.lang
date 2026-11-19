@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Ghast fel
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Ghast feliz se detiene
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Ghast feliz herido
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Arnés desequipado
+# --- locator ---
+attribute.name.waypoint_transmit_range=Rango de transmisión del punto de referencia
+attribute.name.waypoint_receive_range=Rango de recepción del punto de referencia

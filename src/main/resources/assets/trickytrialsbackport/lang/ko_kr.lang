@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=행복한
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=행복한 가스트가 멈춤
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=행복한 가스트가 상처를 입음
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=하네스를 벗김
+# --- locator ---
+attribute.name.waypoint_transmit_range=경로점 발신 범위
+attribute.name.waypoint_receive_range=경로점 수신 범위

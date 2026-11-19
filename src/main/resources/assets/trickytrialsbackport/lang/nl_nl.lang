@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Vrolijke 
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Vrolijke Ghast stopt
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Vrolijke Ghast raakt gewond
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Tuig wordt uitgedaan
+# --- locator ---
+attribute.name.waypoint_transmit_range=wegwijzeruitzendbereik
+attribute.name.waypoint_receive_range=wegwijzerontvangstbereik

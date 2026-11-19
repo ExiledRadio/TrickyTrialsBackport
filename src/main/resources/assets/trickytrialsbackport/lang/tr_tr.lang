@@ -464,3 +464,6 @@ subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_down=Mutlu Gha
 subtitles.trickytrialsbackport.entity.happy_ghast.harness_goggles_up=Mutlu Ghast durdu
 subtitles.trickytrialsbackport.entity.happy_ghast.hurt=Mutlu Ghast hasar aldı
 subtitles.trickytrialsbackport.entity.happy_ghast.unequip=Dizgin çıkarıldı
+# --- locator ---
+attribute.name.waypoint_transmit_range=Yol Noktası İletme Mesafesi
+attribute.name.waypoint_receive_range=Yol Noktası Alma Mesafesi

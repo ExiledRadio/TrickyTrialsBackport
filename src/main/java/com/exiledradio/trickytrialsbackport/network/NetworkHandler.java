@@ -55,5 +55,8 @@ public final class NetworkHandler {
         // 80-84 animals
         channel.registerMessage(com.exiledradio.trickytrialsbackport.animals.AnimalVariantMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.animals.AnimalVariantMessage.class, 80, Side.CLIENT);
+        // 90-94 locatorBar
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.locator.WaypointMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.locator.WaypointMessage.class, 90, Side.CLIENT);
     }
 }
