@@ -200,6 +200,10 @@ public final class NautilusAi {
 
         @Override
         public void onUpdateMoveHelper() {
+            if (this.entity instanceof EntityAbstractNautilus && ((EntityAbstractNautilus) this.entity).isPlayerControlled()) {
+                // The rider swims it; nothing of the AI's speed, turning or lift.
+                return;
+            }
             if (this.applyGravity && this.entity.isInWater()) {
                 this.entity.motionY += 0.005D;
             }
@@ -288,6 +292,11 @@ public final class NautilusAi {
 
         @Override
         public void onUpdateLook() {
+            if (this.mob instanceof EntityAbstractNautilus && ((EntityAbstractNautilus) this.mob).isPlayerControlled()) {
+                // The rider's yaw is the nautilus's (tickRidden); the look control leaves it alone.
+                this.lookAtCooldown = 0;
+                return;
+            }
             if (this.lookAtCooldown > 0) {
                 this.lookAtCooldown--;
                 double dx = this.x - this.mob.posX;
@@ -338,13 +347,13 @@ public final class NautilusAi {
 
         @Override
         public boolean shouldExecute() {
-            return this.n.getAttackTarget() != null && this.n.chargeCooldown <= 0 && !this.n.isInLove() && !this.n.tempted();
+            return !this.n.isPlayerControlled() && this.n.getAttackTarget() != null && this.n.chargeCooldown <= 0 && !this.n.isInLove() && !this.n.tempted();
         }
 
         @Override
         public boolean shouldContinueExecuting() {
             EntityLivingBase target = this.n.getAttackTarget();
-            if (target == null || this.ticks >= CHARGE_DURATION || this.n.isTamed()) {
+            if (target == null || this.ticks >= CHARGE_DURATION || this.n.isTamed() || this.n.isPlayerControlled()) {
                 return false;
             }
             if (this.n.getPositionVector().squareDistanceTo(this.start) >= MAX_CHARGE_DISTANCE * MAX_CHARGE_DISTANCE) {
@@ -430,7 +439,7 @@ public final class NautilusAi {
 
         @Override
         public boolean shouldExecute() {
-            return this.n.panicking || this.n.isBurning();
+            return !this.n.isPlayerControlled() && (this.n.panicking || this.n.isBurning());
         }
 
         @Override
@@ -441,7 +450,7 @@ public final class NautilusAi {
 
         @Override
         public boolean shouldContinueExecuting() {
-            return this.n.panicTicks > 0;
+            return this.n.panicTicks > 0 && !this.n.isPlayerControlled();
         }
 
         @Override
@@ -482,13 +491,13 @@ public final class NautilusAi {
                 this.cooldown--;
                 return false;
             }
-            this.player = temptingPlayer(this.n);
+            this.player = this.n.isPlayerControlled() ? null : temptingPlayer(this.n);
             return this.player != null && !this.n.isInLove() && !this.n.panicking;
         }
 
         @Override
         public boolean shouldContinueExecuting() {
-            this.player = temptingPlayer(this.n);
+            this.player = this.n.isPlayerControlled() ? null : temptingPlayer(this.n);
             return this.player != null && !this.n.isInLove() && !this.n.panicking;
         }
 
@@ -543,7 +552,7 @@ public final class NautilusAi {
 
         @Override
         public boolean shouldExecute() {
-            return this.n.isInWater() && this.n.getNavigator().noPath() && !this.n.isBeingRidden() && this.n.getRNG().nextInt(5) < 2;
+            return !this.n.isPlayerControlled() && this.n.isInWater() && this.n.getNavigator().noPath() && !this.n.isBeingRidden() && this.n.getRNG().nextInt(5) < 2;
         }
 
         @Override

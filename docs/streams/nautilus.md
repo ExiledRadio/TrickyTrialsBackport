@@ -81,7 +81,10 @@ lists, loot tables and item tags from its data; textures, names and sounds from 
     player inventory and sends packet 115).
 *   **Riding**: one passenger, at 1.21.11's height (the seat 1.1375 up, a player's 0.6 attachment). The first passenger
     steers when it is a player and the nautilus is saddled; the rider's client moves it (1.12.2's vehicle packets, as
-    horses), with 1.12.2's client 0.98 slow-down undone. Input: strafe as pressed; forward along the look (down and up
+    horses), with 1.12.2's client 0.98 slow-down undone. `canBeSteered` is true then: 1.12.2's
+    `EntityLiving.canPassengerSteer` asks it too, and without it no side moved the nautilus (fixed 2026-11-20, the
+    ghast's same miss). While a player steers, its goals, its swim move control and its look control stand down (1.21's
+    `updateControlFlags`), so nothing of the AI turns or lifts it. Input: strafe as pressed; forward along the look (down and up
     included), back mirrored at half. Speed 0.0325 x speed in water (top about 0.29 a tick), 0.02 on land. Each tick
     it turns half way to the rider's yaw and takes half their pitch, body and head with it.
 *   **Dash** (1.12.2's `IJumpingMount`, the horse's jump bar): a saddled nautilus shows the bar; letting go at power p
@@ -172,13 +175,22 @@ touches ghasts); a fourth run started on a half-deleted world and is not counted
     nautilus's shell pool only with the shell, about 5% over 4000 player kills, none without a player; the armor pool in
     all six of Update Aquatic's chest names and not in a dungeon; 18,500 rolls of a shipwreck supply chest give
     copper, iron, gold and diamond at 20/10/5/2 of 185, never netherite.
+*   Steering (added with the 2026-11-20 fix): a player that reports itself as the local user (`isUser`, as a client's
+    own player does) riding a saddled nautilus: unsaddled no one steers; saddled it is steerable and the rider's side
+    steers, with its swim, tempt and panic goals standing down; 40 ordinary ticks of forward looking 30 degrees up and
+    40 to the side move it over 6 blocks along the rider's look (cosine above 0.999), under water all the way, facing
+    the rider's yaw with half their pitch; it then turns half way to a new yaw in one tick; a dash in the same tick
+    surges over a block along the look and starts the cooldown; on land the same rider crawls forward (0.3 to 3 blocks
+    in 40 ticks); a dedicated server's own (remote) rider does not move it on the server.
 *   The server booting at all proves no client type is reached from server code.
 
 ## Not tested
 
 *   Anything drawn or heard (no client): the models, layers, animation, inventory screen, the effect icon, the riding
     sound, the bubbles.
-*   A real client steering it: the input, the jump bar, the vehicle-move packets and the server's checks. The ridden
+*   A real client steering it: the input, the jump bar, the vehicle-move packets and the server's checks. The 2026-11-20
+    fix (`canBeSteered`) was found by a real client ("won't let me control it") and needs a look in game: swimming
+    along the look, the dash on the jump bar, the server not rubber-banding the rider, and getting off under water. The ridden
     swim and the dash are tested on the server through the methods the client calls; packet 115's work is tested by
     calling its handler's method.
 *   Update Aquatic itself: it is not in the test run. Its items are stood in by vanilla items through

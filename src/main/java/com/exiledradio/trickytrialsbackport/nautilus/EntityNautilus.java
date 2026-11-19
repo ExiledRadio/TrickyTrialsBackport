@@ -34,7 +34,17 @@ public class EntityNautilus extends EntityAbstractNautilus {
         this.tempt = new NautilusAi.Tempt(this, NautilusAi.SPEED_WHEN_TEMPTED);
         this.tasks.addTask(0, this.charge);
         this.tasks.addTask(1, new NautilusAi.Panic(this));
-        this.tasks.addTask(2, new EntityAIMate(this, NautilusAi.SPEED_WHEN_MAKING_LOVE));
+        this.tasks.addTask(2, new EntityAIMate(this, NautilusAi.SPEED_WHEN_MAKING_LOVE) {
+            @Override
+            public boolean shouldExecute() {
+                return !EntityNautilus.this.isPlayerControlled() && super.shouldExecute();
+            }
+
+            @Override
+            public boolean shouldContinueExecuting() {
+                return !EntityNautilus.this.isPlayerControlled() && super.shouldContinueExecuting();
+            }
+        });
         this.tasks.addTask(3, this.tempt);
         this.tasks.addTask(5, new NautilusAi.Swim(this));
     }
