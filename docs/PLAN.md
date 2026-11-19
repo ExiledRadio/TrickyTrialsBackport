@@ -229,7 +229,7 @@ wrapping block, so it never meets a stream worktree's server.
 
 - Warm and cold cows, pigs and chickens by biome (on vanilla's entities, a saved variant and our
   renderers), blue and brown eggs hatching the matching chicken, eggs and cakes taking them; wolf sound
-  variants; sheep colors by biome.
+  variants; sheep colors by biome. Built: `docs/streams/animals.md` (patches P16-P19).
 
 ### 17. Happy ghast (1.21.6)
 

@@ -25,6 +25,10 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P13 | tweaks | `MapData.updateVisiblePlayers` (`func_76191_a`) | before each return: `MechanicsHooks.hideMapMarkers(this, player)` |
 | P14 | tweaks | `Teleporter.placeInPortal` (`func_180266_a`) | its `world.setBlockState(pos, state)` become `MechanicsHooks.platformBlock(world, pos, state)` |
 | P15 | tweaks | `World.isSpawnChunk` (`func_72916_c`); `MinecraftServer.initialWorldChunkLoad` (`func_71222_d`) | the body becomes `return SpawnChunks.isSpawnChunk(this, x, z)`; the `192`, `-192` and `625` become `SpawnChunks.prepareBlocks()`, `prepareStart()`, `prepareCount()`. Not applied when Trails & Tales Backport is installed (its P10 patches the same sites) |
+| P16 | animals | `EntityLiving.onInitialSpawn` (`func_180482_a`) | before each return: `AnimalsHooks.initialSpawn(this)` |
+| P17 | animals | `EntitySheep.onInitialSpawn` (`func_180482_a`) | before each return: `AnimalsHooks.sheepSpawn(this)` |
+| P18 | animals | `EntityAnimal.readEntityFromNBT` / `writeEntityToNBT` (`func_70037_a` / `func_70014_b`) | head: `AnimalsHooks.read(this, tag)` / `write(this, tag)` |
+| P19 | animals | `EntityWolf.getAmbientSound` / `getHurtSound` / `getDeathSound` (`func_184639_G` / `func_184601_bQ` / `func_184615_bR`) | each returned sound becomes `AnimalsHooks.wolfSound(sound, this)` |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -87,3 +91,20 @@ All eleven live in `asm/MechanicsTransformer` (one method per patch, dispatched 
   path before any game class loads) and leaves both classes alone when it is there; `SpawnChunks.postInit` then sets
   that mod's `radius` to 0.
 
+## P16-P19: farm animal variants (1.21.5, stream 16)
+
+All four live in `asm/AnimalsTransformer` and call `animals/AnimalsHooks`; each hook does nothing while `animals.enabled`
+or its own setting is off. None adds a jump: P16, P17 and P18 insert void calls (before each `ARETURN`, or at the head),
+P19 an `ALOAD 0` and a call taking the returned sound and the wolf and returning a sound, before each `ARETURN`.
+
+- **P16** is 1.21.5's `finalizeSpawn` for cows, pigs and chickens (the variant of the biome at the animal's block) and
+  wolves (a random voice). 1.12.2 calls `onInitialSpawn` where 1.21.5 calls `finalizeSpawn`: natural and chunk
+  generation spawns, spawn eggs, `/summon` without NBT, spawners whose entry names only the mob, and a zombie's chicken
+  jockey. Forge's `LivingSpawnEvent.SpecialSpawn` reaches only the natural spawns, hence the patch.
+- **P17**: 1.12.2's sheep picks its color after `super.onInitialSpawn`, so the biome's color is set at its return.
+- **P18** writes and reads vanilla's own keys, `variant` (`minecraft:temperate`, `warm`, `cold`) and the wolf's
+  `sound_variant`, at the entity's root, so `/summon minecraft:cow ~ ~ ~ {variant:"minecraft:cold"}` and a spawn
+  egg's `EntityTag` work as in 1.21.5. Forge's capabilities save under `ForgeCaps` only, which is why the
+  `AnimalData` capability itself is not saved.
+- **P19**: 1.12.2's mob sounds reach no Forge event with the entity (`PlaySoundAtEntityEvent` gets a null entity
+  from `Entity.playSound`), so the three getters are wrapped. Shaking and steps stay every wolf's, as in 1.21.5.

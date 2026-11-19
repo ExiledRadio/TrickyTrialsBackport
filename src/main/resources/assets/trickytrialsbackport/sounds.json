@@ -2443,5 +2443,257 @@
       "trickytrialsbackport:mob/sheep/shear"
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.shears.snip"
+  },
+  "entity.wolf_puglin.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/puglin/bark1",
+      "trickytrialsbackport:mob/wolf/puglin/bark2",
+      "trickytrialsbackport:mob/wolf/puglin/bark3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.bark"
+  },
+  "entity.wolf_puglin.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/puglin/death"
+    ],
+    "subtitle": "subtitles.entity.wolf.death"
+  },
+  "entity.wolf_puglin.growl": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/puglin/growl1",
+      "trickytrialsbackport:mob/wolf/puglin/growl2",
+      "trickytrialsbackport:mob/wolf/puglin/growl3"
+    ],
+    "subtitle": "subtitles.entity.wolf.growl"
+  },
+  "entity.wolf_puglin.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/puglin/hurt1",
+      "trickytrialsbackport:mob/wolf/puglin/hurt2",
+      "trickytrialsbackport:mob/wolf/puglin/hurt3"
+    ],
+    "subtitle": "subtitles.entity.wolf.hurt"
+  },
+  "entity.wolf_puglin.pant": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/puglin/panting"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.pant"
+  },
+  "entity.wolf_puglin.whine": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/puglin/whine"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.whine"
+  },
+  "entity.wolf_sad.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/sad/bark1",
+      "trickytrialsbackport:mob/wolf/sad/bark2",
+      "trickytrialsbackport:mob/wolf/sad/bark3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.bark"
+  },
+  "entity.wolf_sad.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/sad/death"
+    ],
+    "subtitle": "subtitles.entity.wolf.death"
+  },
+  "entity.wolf_sad.growl": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/sad/growl1",
+      "trickytrialsbackport:mob/wolf/sad/growl2",
+      "trickytrialsbackport:mob/wolf/sad/growl3"
+    ],
+    "subtitle": "subtitles.entity.wolf.growl"
+  },
+  "entity.wolf_sad.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/sad/hurt1",
+      "trickytrialsbackport:mob/wolf/sad/hurt2",
+      "trickytrialsbackport:mob/wolf/sad/hurt3"
+    ],
+    "subtitle": "subtitles.entity.wolf.hurt"
+  },
+  "entity.wolf_sad.pant": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/sad/panting"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.pant"
+  },
+  "entity.wolf_sad.whine": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/sad/whine"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.whine"
+  },
+  "entity.wolf_angry.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/angry/bark1",
+      "trickytrialsbackport:mob/wolf/angry/bark2",
+      "trickytrialsbackport:mob/wolf/angry/bark3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.bark"
+  },
+  "entity.wolf_angry.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/angry/death"
+    ],
+    "subtitle": "subtitles.entity.wolf.death"
+  },
+  "entity.wolf_angry.growl": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/angry/growl1",
+      "trickytrialsbackport:mob/wolf/angry/growl2",
+      "trickytrialsbackport:mob/wolf/angry/growl3"
+    ],
+    "subtitle": "subtitles.entity.wolf.growl"
+  },
+  "entity.wolf_angry.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/angry/hurt1",
+      "trickytrialsbackport:mob/wolf/angry/hurt2",
+      "trickytrialsbackport:mob/wolf/angry/hurt3"
+    ],
+    "subtitle": "subtitles.entity.wolf.hurt"
+  },
+  "entity.wolf_angry.pant": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/angry/panting"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.pant"
+  },
+  "entity.wolf_angry.whine": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/angry/whine"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.whine"
+  },
+  "entity.wolf_grumpy.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/grumpy/bark1",
+      "trickytrialsbackport:mob/wolf/grumpy/bark2",
+      "trickytrialsbackport:mob/wolf/grumpy/bark3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.bark"
+  },
+  "entity.wolf_grumpy.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/grumpy/death"
+    ],
+    "subtitle": "subtitles.entity.wolf.death"
+  },
+  "entity.wolf_grumpy.growl": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/grumpy/growl1",
+      "trickytrialsbackport:mob/wolf/grumpy/growl2",
+      "trickytrialsbackport:mob/wolf/grumpy/growl3"
+    ],
+    "subtitle": "subtitles.entity.wolf.growl"
+  },
+  "entity.wolf_grumpy.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/grumpy/hurt1",
+      "trickytrialsbackport:mob/wolf/grumpy/hurt2",
+      "trickytrialsbackport:mob/wolf/grumpy/hurt3"
+    ],
+    "subtitle": "subtitles.entity.wolf.hurt"
+  },
+  "entity.wolf_grumpy.pant": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/grumpy/panting"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.pant"
+  },
+  "entity.wolf_grumpy.whine": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/grumpy/whine"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.whine"
+  },
+  "entity.wolf_big.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/big/bark1",
+      "trickytrialsbackport:mob/wolf/big/bark2",
+      "trickytrialsbackport:mob/wolf/big/bark3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.bark"
+  },
+  "entity.wolf_big.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/big/death"
+    ],
+    "subtitle": "subtitles.entity.wolf.death"
+  },
+  "entity.wolf_big.growl": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/big/growl1",
+      "trickytrialsbackport:mob/wolf/big/growl2",
+      "trickytrialsbackport:mob/wolf/big/growl3"
+    ],
+    "subtitle": "subtitles.entity.wolf.growl"
+  },
+  "entity.wolf_big.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/big/hurt1",
+      "trickytrialsbackport:mob/wolf/big/hurt2",
+      "trickytrialsbackport:mob/wolf/big/hurt3"
+    ],
+    "subtitle": "subtitles.entity.wolf.hurt"
+  },
+  "entity.wolf_big.pant": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/big/panting"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.pant"
+  },
+  "entity.wolf_big.whine": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/big/whine"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.whine"
+  },
+  "entity.wolf_cute.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/cute/bark1",
+      "trickytrialsbackport:mob/wolf/cute/bark2",
+      "trickytrialsbackport:mob/wolf/cute/bark3"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.bark"
+  },
+  "entity.wolf_cute.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/cute/death"
+    ],
+    "subtitle": "subtitles.entity.wolf.death"
+  },
+  "entity.wolf_cute.growl": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/cute/growl1",
+      "trickytrialsbackport:mob/wolf/cute/growl2",
+      "trickytrialsbackport:mob/wolf/cute/growl3"
+    ],
+    "subtitle": "subtitles.entity.wolf.growl"
+  },
+  "entity.wolf_cute.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/cute/hurt1",
+      "trickytrialsbackport:mob/wolf/cute/hurt2",
+      "trickytrialsbackport:mob/wolf/cute/hurt3"
+    ],
+    "subtitle": "subtitles.entity.wolf.hurt"
+  },
+  "entity.wolf_cute.pant": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/cute/panting"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.pant"
+  },
+  "entity.wolf_cute.whine": {
+    "sounds": [
+      "trickytrialsbackport:mob/wolf/cute/whine"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.wolf.whine"
   }
 }

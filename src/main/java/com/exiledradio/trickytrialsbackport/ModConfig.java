@@ -406,6 +406,39 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Animals fields ---
+        @Config.RequiresMcRestart
+        @Config.Comment({"Cows spawn warm or cold by biome, with 1.21.5's cow models and textures.",
+                "Off, every cow stays as 1.12.2 draws it."})
+        @Config.LangKey("config.trickytrialsbackport.animals.cowVariants")
+        public boolean cowVariants = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Pigs spawn warm or cold by biome, with 1.21.5's pig models and textures.",
+                "Off, every pig stays as 1.12.2 draws it."})
+        @Config.LangKey("config.trickytrialsbackport.animals.pigVariants")
+        public boolean pigVariants = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Chickens spawn warm or cold by biome, with 1.21.5's chicken models and textures.",
+                "Off, every chicken stays as 1.12.2 draws it."})
+        @Config.LangKey("config.trickytrialsbackport.animals.chickenVariants")
+        public boolean chickenVariants = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Blue and brown eggs: cold chickens lay blue eggs and warm chickens brown ones, which hatch",
+                "chicks of that kind and bake into cakes and pumpkin pies. Off, the eggs are not registered."})
+        @Config.LangKey("config.trickytrialsbackport.animals.coloredEggs")
+        public boolean coloredEggs = true;
+
+        @Config.Comment({"Sheep in warm biomes are mostly brown and in cold biomes mostly black, as in 1.21.5.",
+                "Off, sheep spawn mostly white everywhere."})
+        @Config.LangKey("config.trickytrialsbackport.animals.sheepColors")
+        public boolean sheepColors = true;
+
+        @Config.Comment({"Each wolf gets one of 1.21.5's seven voices (classic, puglin, sad, angry, grumpy, big, cute).",
+                "Off, every wolf sounds as in 1.12.2."})
+        @Config.LangKey("config.trickytrialsbackport.animals.wolfSoundVariants")
+        public boolean wolfSoundVariants = true;
         // --- end Animals ---
     }
 
