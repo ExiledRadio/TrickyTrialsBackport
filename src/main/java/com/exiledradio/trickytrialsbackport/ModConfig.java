@@ -416,6 +416,9 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- HappyGhast fields ---
+        @Config.Comment("While riding a happy ghast, the third-person camera stays 8 blocks back instead of 4.")
+        @Config.LangKey("config.trickytrialsbackport.happyGhast.riderCameraDistance")
+        public boolean riderCameraDistance = true;
         // --- end HappyGhast ---
     }
 

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_needed_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:dye",
+            "data": 11
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trickytrialsbackport:dye_yellow_harness"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_needed_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "trickytrialsbackport:dye_yellow_harness"
+    ]
+  }
+}

@@ -238,6 +238,7 @@ wrapping block, so it never meets a stream worktree's server.
   and harnesses, heals in rain), **harnesses** (16 colors plus white). Leads that join two mobs, the new
   saddle recipe, shears taking off saddles, horse armor and carpets, carrots for horses (these five built in stream 25,
   `docs/streams/tweaks.md`; harness shearing comes with the harness). Advancement *Stay Hydrated!*.
+  Built (vanilla's sixteen harnesses, white among them): `docs/streams/ghast.md`.
 
 ### 18. Locator bar (1.21.6)
 
