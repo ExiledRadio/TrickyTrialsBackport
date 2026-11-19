@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=交換物品
 subtitles.trickytrialsbackport.block.shelf.place_item=放置物品
 subtitles.trickytrialsbackport.block.shelf.single_swap=交換物品
 subtitles.trickytrialsbackport.block.shelf.take_item=取走物品
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=枯骸
+item.trickytrialsbackport.netherite_horse_armor.name=獄髓製馬鎧
+subtitles.trickytrialsbackport.entity.parched.ambient=枯骸喀啦聲
+subtitles.trickytrialsbackport.entity.parched.death=枯骸死亡
+subtitles.trickytrialsbackport.entity.parched.hurt=枯骸受傷

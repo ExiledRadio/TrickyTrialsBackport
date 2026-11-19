@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Oggetti scambiati
 subtitles.trickytrialsbackport.block.shelf.place_item=Oggetto posato
 subtitles.trickytrialsbackport.block.shelf.single_swap=Oggetto scambiato
 subtitles.trickytrialsbackport.block.shelf.take_item=Oggetto preso
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Ossecco
+item.trickytrialsbackport.netherite_horse_armor.name=Bardatura di netherite
+subtitles.trickytrialsbackport.entity.parched.ambient=Ossecco scricchiola
+subtitles.trickytrialsbackport.entity.parched.death=Ossecco muore
+subtitles.trickytrialsbackport.entity.parched.hurt=Ossecco ferito

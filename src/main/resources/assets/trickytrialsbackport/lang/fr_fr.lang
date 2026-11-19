@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Objets échangés
 subtitles.trickytrialsbackport.block.shelf.place_item=Objet placé
 subtitles.trickytrialsbackport.block.shelf.single_swap=Objet échangé
 subtitles.trickytrialsbackport.block.shelf.take_item=Objet retiré
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Desséché
+item.trickytrialsbackport.netherite_horse_armor.name=Armure en netherite pour cheval
+subtitles.trickytrialsbackport.entity.parched.ambient=Craquement de desséché
+subtitles.trickytrialsbackport.entity.parched.death=Desséché qui meurt
+subtitles.trickytrialsbackport.entity.parched.hurt=Desséché blessé

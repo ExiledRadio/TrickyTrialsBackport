@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Eşyalar değişti
 subtitles.trickytrialsbackport.block.shelf.place_item=Eşya yerleştirildi
 subtitles.trickytrialsbackport.block.shelf.single_swap=Eşya değiştirildi
 subtitles.trickytrialsbackport.block.shelf.take_item=Eşya alındı
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Kavruk
+item.trickytrialsbackport.netherite_horse_armor.name=Netherit At Zırhı
+subtitles.trickytrialsbackport.entity.parched.ambient=Kavruk çatırdıyor
+subtitles.trickytrialsbackport.entity.parched.death=Kavruk öldü
+subtitles.trickytrialsbackport.entity.parched.hurt=Kavruk hasar aldı

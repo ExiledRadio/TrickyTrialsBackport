@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Podmiana przedmiotów
 subtitles.trickytrialsbackport.block.shelf.place_item=Umieszczono przedmiot
 subtitles.trickytrialsbackport.block.shelf.single_swap=Podmiana przedmiotu
 subtitles.trickytrialsbackport.block.shelf.take_item=Wzięto przedmiot
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Oschlak
+item.trickytrialsbackport.netherite_horse_armor.name=Netherytowa zbroja końska
+subtitles.trickytrialsbackport.entity.parched.ambient=Oschlak klekocze
+subtitles.trickytrialsbackport.entity.parched.death=Oschlak ginie
+subtitles.trickytrialsbackport.entity.parched.hurt=Oschlak cierpi

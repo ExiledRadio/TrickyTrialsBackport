@@ -529,6 +529,34 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Mounts fields ---
+        @Config.Comment({"Zombie horses as in 1.21.11: 25 health, tamed by riding, red mushrooms tempt and heal them, they take a saddle and",
+                "horse armor, burn in daylight without armor, and despawn while untamed."})
+        @Config.LangKey("config.trickytrialsbackport.mounts.zombieHorses")
+        public boolean zombieHorses = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Zombie horses spawn in plains and savannas in the dark, each ridden by a zombie (with an iron spear when spears exist).")
+        @Config.LangKey("config.trickytrialsbackport.mounts.zombieHorseSpawn")
+        public boolean zombieHorseSpawn = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Parched spawn in deserts under the open sky, taking 50 of the 100 skeleton spawns there, as in 1.21.11.")
+        @Config.LangKey("config.trickytrialsbackport.mounts.parchedSpawn")
+        public boolean parchedSpawn = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Netherite horse armor: 19 armor, 3 toughness, knockback resistance; made from diamond horse armor at a",
+                "smithing table when a netherite mod is installed."})
+        @Config.LangKey("config.trickytrialsbackport.mounts.netheriteHorseArmor")
+        public boolean netheriteHorseArmor = true;
+
+        @Config.Comment("Horses, donkeys, mules and camels float up in deep water while ridden instead of sinking (1.21.11).")
+        @Config.LangKey("config.trickytrialsbackport.mounts.floatWhileRidden")
+        public boolean floatWhileRidden = true;
+
+        @Config.Comment("A zombie riding a mount reaches as far as its mount is wide, as in current versions.")
+        @Config.LangKey("config.trickytrialsbackport.mounts.mountedReach")
+        public boolean mountedReach = true;
         // --- end Mounts ---
     }
 

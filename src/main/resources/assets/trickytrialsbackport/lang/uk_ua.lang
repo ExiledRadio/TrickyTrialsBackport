@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Предмети пере�
 subtitles.trickytrialsbackport.block.shelf.place_item=Предмет розміщено
 subtitles.trickytrialsbackport.block.shelf.single_swap=Предмет переміщено
 subtitles.trickytrialsbackport.block.shelf.take_item=Предмет узято
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Засушень
+item.trickytrialsbackport.netherite_horse_armor.name=Незеритові кінські обладунки
+subtitles.trickytrialsbackport.entity.parched.ambient=Засушень брязкає кістками
+subtitles.trickytrialsbackport.entity.parched.death=Засушень гине
+subtitles.trickytrialsbackport.entity.parched.hurt=Засушня поранено

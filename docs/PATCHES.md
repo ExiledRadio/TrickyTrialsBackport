@@ -30,6 +30,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P18 | animals | `EntityAnimal.readEntityFromNBT` / `writeEntityToNBT` (`func_70037_a` / `func_70014_b`) | head: `AnimalsHooks.read(this, tag)` / `write(this, tag)` |
 | P19 | animals | `EntityWolf.getAmbientSound` / `getHurtSound` / `getDeathSound` (`func_184639_G` / `func_184601_bQ` / `func_184615_bR`) | each returned sound becomes `AnimalsHooks.wolfSound(sound, this)` |
 | P16 | copperGear | `EntityLiving.setEquipmentBasedOnDifficulty` (`func_180481_a`) | head: `if (CopperGearHooks.equipArmor(this, difficulty)) return;` |
+| P24a | mounts | `EntityZombieHorse`: `processInteract` (`func_184645_a`); new `wearsArmor` (`func_190677_dK`), `isArmor` (`func_190682_f`), `canDespawn` (`func_70692_ba`) | head of `processInteract`: `switch (MountsHooks.zombieHorseInteract(this, player, hand))` (1 returns true, 2 false, 0 runs 1.12.2's body); the three new overrides return `MountsHooks.zombieHorseWearsArmor()`, `zombieHorseIsArmor(stack)`, `zombieHorseCanDespawn(this)` |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -122,3 +123,17 @@ copper 32.23%, gold 33.29%, chainmail 9.73%, iron 1.10%, diamond 0.04%, minecraf
 the bogged get their armor (each calls it before choosing its weapon), the same mobs 1.21.9 puts copper on. The hook
 returns false, and 1.12.2's roll runs, while `copperGear.enabled` or `copperGear.mobArmor` is off. Weapons and
 enchanting are unchanged.
+
+## P24a: the 1.21.11 zombie horse (stream 24)
+
+1.12.2's zombie horse cannot be tamed (its `processInteract` returns false while it is untamed), has no armor slot
+(`AbstractHorse.wearsArmor` is false and only `EntityHorse` overrides it) and never despawns (`EntityAnimal.canDespawn`
+is false). 1.21.11's `ZombieHorse` is tamed by riding, eats red mushrooms, takes horse armor in its body slot, and
+despawns while untamed (`removeWhenFarAway` true; taming or a player's use makes it persistent). None of these has a
+Forge event: the GUI's armor slot asks `wearsArmor`, the slot itself and `replaceItemInInventory` ask `isArmor`, and
+`despawnEntity` asks `canDespawn`. So the class gets the three overrides it lacks, each a one-line call to
+`mounts/MountsHooks`, and its `processInteract` a head that runs 1.21.11's `mobInteract` (feeding, making it mad,
+equipping a saddle or armor directly as 1.21.11 does, opening the inventory when sneaking, mounting). The names are MCP
+or SRG to match the class being patched (`processInteract`'s own name says which). Not applied if another mod already
+overrides one of the three. With `mounts.zombieHorses` (or `mounts.enabled`) off the hooks answer 1.12.2's way: no
+armor, no despawning, and 0 (1.12.2's own body).

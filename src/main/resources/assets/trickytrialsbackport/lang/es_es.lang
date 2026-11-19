@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Objetos intercambiados
 subtitles.trickytrialsbackport.block.shelf.place_item=Objeto colocado
 subtitles.trickytrialsbackport.block.shelf.single_swap=Objeto intercambiado
 subtitles.trickytrialsbackport.block.shelf.take_item=Objeto recogido
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Momificado
+item.trickytrialsbackport.netherite_horse_armor.name=Armadura de netherita para caballo
+subtitles.trickytrialsbackport.entity.parched.ambient=Momificado traquetea
+subtitles.trickytrialsbackport.entity.parched.death=Momificado muere
+subtitles.trickytrialsbackport.entity.parched.hurt=Momificado herido

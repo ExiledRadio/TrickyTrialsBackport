@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Предметы заме�
 subtitles.trickytrialsbackport.block.shelf.place_item=Предмет поставлен
 subtitles.trickytrialsbackport.block.shelf.single_swap=Предмет заменён
 subtitles.trickytrialsbackport.block.shelf.take_item=Предмет взят
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Пустынник
+item.trickytrialsbackport.netherite_horse_armor.name=Незеритовая конская броня
+subtitles.trickytrialsbackport.entity.parched.ambient=Пустынник стучит костями
+subtitles.trickytrialsbackport.entity.parched.death=Пустынник погибает
+subtitles.trickytrialsbackport.entity.parched.hurt=Пустынник ранен

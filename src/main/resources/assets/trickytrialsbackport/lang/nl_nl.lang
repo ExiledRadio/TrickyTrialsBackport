@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Voorwerpen wisselen
 subtitles.trickytrialsbackport.block.shelf.place_item=Voorwerp wordt geplaatst
 subtitles.trickytrialsbackport.block.shelf.single_swap=Voorwerp wisselt
 subtitles.trickytrialsbackport.block.shelf.take_item=Voorwerp wordt gepakt
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Zoor
+item.trickytrialsbackport.netherite_horse_armor.name=Netherieten paardenharnas
+subtitles.trickytrialsbackport.entity.parched.ambient=Zoor knispert
+subtitles.trickytrialsbackport.entity.parched.death=Zoor sterft
+subtitles.trickytrialsbackport.entity.parched.hurt=Zoor raakt gewond

@@ -278,6 +278,7 @@ wrapping block, so it never meets a stream worktree's server.
 - **Camel husk** (32 HP, desert at light 0, husk and parched riders), **parched** (desert skeleton with
   Weakness arrows), zombie horses spawning in plains and savannas (sometimes ridden), netherite horse
   armor (via Core's smithing when netherite exists), horses not sinking while ridden.
+  Built (all but the camel husk, which waits on a Trails & Tales compile dependency): `docs/streams/mounts.md`.
 
 ### 25. Smaller changes (all drops)
 

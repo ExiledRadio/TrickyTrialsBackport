@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Gegenstände getauscht
 subtitles.trickytrialsbackport.block.shelf.place_item=Gegenstand wird abgelegt
 subtitles.trickytrialsbackport.block.shelf.single_swap=Gegenstand getauscht
 subtitles.trickytrialsbackport.block.shelf.take_item=Gegenstand wird entnommen
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Vertrockneter
+item.trickytrialsbackport.netherite_horse_armor.name=Netheritener Rossharnisch
+subtitles.trickytrialsbackport.entity.parched.ambient=Vertrockneter knistert
+subtitles.trickytrialsbackport.entity.parched.death=Vertrockneter stirbt
+subtitles.trickytrialsbackport.entity.parched.hurt=Vertrockneter nimmt Schaden

@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=物品：交换
 subtitles.trickytrialsbackport.block.shelf.place_item=物品：被放入
 subtitles.trickytrialsbackport.block.shelf.single_swap=物品：交换
 subtitles.trickytrialsbackport.block.shelf.take_item=物品：被取出
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=焦骸
+item.trickytrialsbackport.netherite_horse_armor.name=下界合金马铠
+subtitles.trickytrialsbackport.entity.parched.ambient=焦骸：咯咯声
+subtitles.trickytrialsbackport.entity.parched.death=焦骸：死亡
+subtitles.trickytrialsbackport.entity.parched.hurt=焦骸：受伤

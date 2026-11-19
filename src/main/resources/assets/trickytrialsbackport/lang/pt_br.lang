@@ -524,3 +524,10 @@ subtitles.trickytrialsbackport.block.shelf.multi_swap=Itens trocados
 subtitles.trickytrialsbackport.block.shelf.place_item=Item colocado
 subtitles.trickytrialsbackport.block.shelf.single_swap=Item trocado
 subtitles.trickytrialsbackport.block.shelf.take_item=Item retirado
+
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Ressecado
+item.trickytrialsbackport.netherite_horse_armor.name=Armadura de Netherita para Cavalo
+subtitles.trickytrialsbackport.entity.parched.ambient=Ressecado estala
+subtitles.trickytrialsbackport.entity.parched.death=Ressecado morre
+subtitles.trickytrialsbackport.entity.parched.hurt=Ressecado ferido
