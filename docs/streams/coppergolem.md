@@ -14,6 +14,12 @@ client jar (`G:\MCDownloads\tr-coppergolem-decomp`); assets, names and sounds fr
 (`#copper`, `#copper_chests`, `#shearable_from_copper_golem`, `#accepts_iron_golem_gift`, `#can_breathe_under_water`,
 `#fall_damage_immune`) and loot tables from it too.
 
+## Status (2026-11-19)
+
+Done and green: everything stream 19 lists, its selftest (331/0), the full suite alone (4625/0) and with Caves &
+Cliffs (4471/6, the known six), the asset check (0 errors) and the release build. Left: checking it in a client
+(models, animations, sounds), and merging (re-run `build_langs.py config` and `build` on the merged tree).
+
 ## Changelog section
 
 *   **Copper golem**: put a carved pumpkin or a jack o'lantern on a block of copper (any stage, waxed or not) to build
