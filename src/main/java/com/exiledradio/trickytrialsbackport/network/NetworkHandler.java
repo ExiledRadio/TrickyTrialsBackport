@@ -52,5 +52,8 @@ public final class NetworkHandler {
         // 65-69 creaking
         channel.registerMessage(com.exiledradio.trickytrialsbackport.creaking.CreakingFxMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.creaking.CreakingFxMessage.class, 65, Side.CLIENT);
+        // 80-84 animals
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.animals.AnimalVariantMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.animals.AnimalVariantMessage.class, 80, Side.CLIENT);
     }
 }

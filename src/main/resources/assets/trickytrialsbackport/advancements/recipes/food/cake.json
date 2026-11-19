@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blue_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trickytrialsbackport:blue_egg"
+          }
+        ]
+      }
+    },
+    "has_brown_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trickytrialsbackport:brown_egg"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trickytrialsbackport:cake"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blue_egg",
+      "has_brown_egg"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "trickytrialsbackport:cake"
+    ]
+  }
+}

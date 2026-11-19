@@ -59,6 +59,7 @@ public final class SelfTestRunner {
             new CreakingSelfTest(),
             new ResinSelfTest(),
             new FloraSelfTest(),
+            new AnimalsSelfTest(),
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
             new TweaksSelfTest(),
