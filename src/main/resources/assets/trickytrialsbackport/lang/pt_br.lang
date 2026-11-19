@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Investida com Lança
 subtitles.trickytrialsbackport.item.spear_wood.attack=Lança espeta
 subtitles.trickytrialsbackport.item.spear_wood.hit=Lança atinge
 subtitles.trickytrialsbackport.item.spear_wood.use=Investida com Lança
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Ressecado
+item.trickytrialsbackport.netherite_horse_armor.name=Armadura de Netherita para Cavalo
+subtitles.trickytrialsbackport.entity.parched.ambient=Ressecado estala
+subtitles.trickytrialsbackport.entity.parched.death=Ressecado morre
+subtitles.trickytrialsbackport.entity.parched.hurt=Ressecado ferido

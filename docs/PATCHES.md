@@ -32,6 +32,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P16 | copperGear | `EntityLiving.setEquipmentBasedOnDifficulty` (`func_180481_a`) | head: `if (CopperGearHooks.equipArmor(this, difficulty)) return;` |
 | P20 | spears | `EntityZombie.setEquipmentBasedOnDifficulty` / `EntityPigZombie.setEquipmentBasedOnDifficulty` (`func_180481_a`) | before each return: `SpearEvents.spawnWeapon(this, difficulty)` |
 | P21 | spears (client) | `ModelBiped.setRotationAngles` (`func_78087_a`) | head: `SpearModelHooks.pre(this, entity)`; before each return: `SpearModelHooks.post(this, entity)` |
+| P24a | mounts | `EntityZombieHorse`: `processInteract` (`func_184645_a`); new `wearsArmor` (`func_190677_dK`), `isArmor` (`func_190682_f`), `canDespawn` (`func_70692_ba`) | head of `processInteract`: `switch (MountsHooks.zombieHorseInteract(this, player, hand))` (1 returns true, 2 false, 0 runs 1.12.2's body); the three new overrides return `MountsHooks.zombieHorseWearsArmor()`, `zombieHorseIsArmor(stack)`, `zombieHorseCanDespawn(this)` |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -147,3 +148,16 @@ return call restores it and sets the spear's angles. Armor models pose from the 
 and `ModelPlayer` copies the arms to its sleeves after `ModelBiped`'s method returns, so both follow. Zombie-like
 models (`ModelZombie`) set their own arms after `super` and keep them. Off (`spears.enabled`), both calls return at once.
 
+## P24a: the 1.21.11 zombie horse (stream 24)
+
+1.12.2's zombie horse cannot be tamed (its `processInteract` returns false while it is untamed), has no armor slot
+(`AbstractHorse.wearsArmor` is false and only `EntityHorse` overrides it) and never despawns (`EntityAnimal.canDespawn`
+is false). 1.21.11's `ZombieHorse` is tamed by riding, eats red mushrooms, takes horse armor in its body slot, and
+despawns while untamed (`removeWhenFarAway` true; taming or a player's use makes it persistent). None of these has a
+Forge event: the GUI's armor slot asks `wearsArmor`, the slot itself and `replaceItemInInventory` ask `isArmor`, and
+`despawnEntity` asks `canDespawn`. So the class gets the three overrides it lacks, each a one-line call to
+`mounts/MountsHooks`, and its `processInteract` a head that runs 1.21.11's `mobInteract` (feeding, making it mad,
+equipping a saddle or armor directly as 1.21.11 does, opening the inventory when sneaking, mounting). The names are MCP
+or SRG to match the class being patched (`processInteract`'s own name says which). Not applied if another mod already
+overrides one of the three. With `mounts.zombieHorses` (or `mounts.enabled`) off the hooks answer 1.12.2's way: no
+armor, no despawning, and 0 (1.12.2's own body).

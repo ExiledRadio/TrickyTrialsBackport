@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=持矛冲锋
 subtitles.trickytrialsbackport.item.spear_wood.attack=矛：戳刺
 subtitles.trickytrialsbackport.item.spear_wood.hit=矛：击中
 subtitles.trickytrialsbackport.item.spear_wood.use=持矛冲锋
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=焦骸
+item.trickytrialsbackport.netherite_horse_armor.name=下界合金马铠
+subtitles.trickytrialsbackport.entity.parched.ambient=焦骸：咯咯声
+subtitles.trickytrialsbackport.entity.parched.death=焦骸：死亡
+subtitles.trickytrialsbackport.entity.parched.hurt=焦骸：受伤

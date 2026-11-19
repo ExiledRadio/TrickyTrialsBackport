@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Naciera z włócznią
 subtitles.trickytrialsbackport.item.spear_wood.attack=Włócznia dźga
 subtitles.trickytrialsbackport.item.spear_wood.hit=Włócznia uderza
 subtitles.trickytrialsbackport.item.spear_wood.use=Naciera z włócznią
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Oschlak
+item.trickytrialsbackport.netherite_horse_armor.name=Netherytowa zbroja końska
+subtitles.trickytrialsbackport.entity.parched.ambient=Oschlak klekocze
+subtitles.trickytrialsbackport.entity.parched.death=Oschlak ginie
+subtitles.trickytrialsbackport.entity.parched.hurt=Oschlak cierpi

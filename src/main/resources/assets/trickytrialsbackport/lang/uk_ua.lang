@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Таран списом
 subtitles.trickytrialsbackport.item.spear_wood.attack=Спис ударяє
 subtitles.trickytrialsbackport.item.spear_wood.hit=Спис влучає
 subtitles.trickytrialsbackport.item.spear_wood.use=Підготування списа
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Засушень
+item.trickytrialsbackport.netherite_horse_armor.name=Незеритові кінські обладунки
+subtitles.trickytrialsbackport.entity.parched.ambient=Засушень брязкає кістками
+subtitles.trickytrialsbackport.entity.parched.death=Засушень гине
+subtitles.trickytrialsbackport.entity.parched.hurt=Засушня поранено

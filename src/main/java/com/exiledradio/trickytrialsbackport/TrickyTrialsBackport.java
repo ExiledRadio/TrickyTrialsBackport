@@ -82,6 +82,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.coppergear.client.CopperGearClient.init();
             com.exiledradio.trickytrialsbackport.coppergolem.client.CopperGolemClient.init();
             com.exiledradio.trickytrialsbackport.spear.client.SpearClient.init();
+            com.exiledradio.trickytrialsbackport.mounts.client.MountsClient.init();
         }
     }
 
@@ -105,6 +106,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.decor.DecorContent.postInit();
         com.exiledradio.trickytrialsbackport.flora.FloraContent.postInit();
         com.exiledradio.trickytrialsbackport.tweaks.SpawnChunks.postInit();
+        com.exiledradio.trickytrialsbackport.mounts.MountsContent.postInit();
     }
 
     @Mod.EventHandler

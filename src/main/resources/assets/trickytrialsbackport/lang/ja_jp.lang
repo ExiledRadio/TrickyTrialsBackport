@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=槍を構える
 subtitles.trickytrialsbackport.item.spear_wood.attack=槍で突く
 subtitles.trickytrialsbackport.item.spear_wood.hit=槍が当たる
 subtitles.trickytrialsbackport.item.spear_wood.use=槍を構える
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=パーチド
+item.trickytrialsbackport.netherite_horse_armor.name=ネザライトの馬鎧
+subtitles.trickytrialsbackport.entity.parched.ambient=パーチドが骨を鳴らす
+subtitles.trickytrialsbackport.entity.parched.death=パーチドが死ぬ
+subtitles.trickytrialsbackport.entity.parched.hurt=パーチドがダメージを受ける

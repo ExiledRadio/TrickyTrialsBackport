@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Charge met speer
 subtitles.trickytrialsbackport.item.spear_wood.attack=Speer steekt
 subtitles.trickytrialsbackport.item.spear_wood.hit=Speer raakt
 subtitles.trickytrialsbackport.item.spear_wood.use=Charge met speer
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Zoor
+item.trickytrialsbackport.netherite_horse_armor.name=Netherieten paardenharnas
+subtitles.trickytrialsbackport.entity.parched.ambient=Zoor knispert
+subtitles.trickytrialsbackport.entity.parched.death=Zoor sterft
+subtitles.trickytrialsbackport.entity.parched.hurt=Zoor raakt gewond

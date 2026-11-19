@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Mızrak ile hücum ediyor
 subtitles.trickytrialsbackport.item.spear_wood.attack=Mızrak sapladı
 subtitles.trickytrialsbackport.item.spear_wood.hit=Mızrak isabet etti
 subtitles.trickytrialsbackport.item.spear_wood.use=Mızrak ile hücum ediyor
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Kavruk
+item.trickytrialsbackport.netherite_horse_armor.name=Netherit At Zırhı
+subtitles.trickytrialsbackport.entity.parched.ambient=Kavruk çatırdıyor
+subtitles.trickytrialsbackport.entity.parched.death=Kavruk öldü
+subtitles.trickytrialsbackport.entity.parched.hurt=Kavruk hasar aldı

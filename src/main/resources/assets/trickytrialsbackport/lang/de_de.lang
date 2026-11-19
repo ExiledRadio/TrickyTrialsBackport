@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Anlauf mit Speer
 subtitles.trickytrialsbackport.item.spear_wood.attack=Speer sticht
 subtitles.trickytrialsbackport.item.spear_wood.hit=Speer trifft
 subtitles.trickytrialsbackport.item.spear_wood.use=Anlauf mit Speer
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Vertrockneter
+item.trickytrialsbackport.netherite_horse_armor.name=Netheritener Rossharnisch
+subtitles.trickytrialsbackport.entity.parched.ambient=Vertrockneter knistert
+subtitles.trickytrialsbackport.entity.parched.death=Vertrockneter stirbt
+subtitles.trickytrialsbackport.entity.parched.hurt=Vertrockneter nimmt Schaden

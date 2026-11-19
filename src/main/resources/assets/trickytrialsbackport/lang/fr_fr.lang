@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Charge avec une lance
 subtitles.trickytrialsbackport.item.spear_wood.attack=Coup de lance
 subtitles.trickytrialsbackport.item.spear_wood.hit=Impact de lance
 subtitles.trickytrialsbackport.item.spear_wood.use=Charge avec une lance
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Desséché
+item.trickytrialsbackport.netherite_horse_armor.name=Armure en netherite pour cheval
+subtitles.trickytrialsbackport.entity.parched.ambient=Craquement de desséché
+subtitles.trickytrialsbackport.entity.parched.death=Desséché qui meurt
+subtitles.trickytrialsbackport.entity.parched.hurt=Desséché blessé

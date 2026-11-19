@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Lancia caricata
 subtitles.trickytrialsbackport.item.spear_wood.attack=Lancia infilza
 subtitles.trickytrialsbackport.item.spear_wood.hit=Lancia colpisce
 subtitles.trickytrialsbackport.item.spear_wood.use=Lancia caricata
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Ossecco
+item.trickytrialsbackport.netherite_horse_armor.name=Bardatura di netherite
+subtitles.trickytrialsbackport.entity.parched.ambient=Ossecco scricchiola
+subtitles.trickytrialsbackport.entity.parched.death=Ossecco muore
+subtitles.trickytrialsbackport.entity.parched.hurt=Ossecco ferito

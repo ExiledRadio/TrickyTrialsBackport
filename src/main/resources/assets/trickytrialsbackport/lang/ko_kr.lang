@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=창을 겨눔
 subtitles.trickytrialsbackport.item.spear_wood.attack=창으로 찌름
 subtitles.trickytrialsbackport.item.spear_wood.hit=창이 적중함
 subtitles.trickytrialsbackport.item.spear_wood.use=창을 겨눔
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=파치트
+item.trickytrialsbackport.netherite_horse_armor.name=네더라이트 말 갑옷
+subtitles.trickytrialsbackport.entity.parched.ambient=파치트가 달그락거림
+subtitles.trickytrialsbackport.entity.parched.death=파치트가 죽음
+subtitles.trickytrialsbackport.entity.parched.hurt=파치트가 상처를 입음

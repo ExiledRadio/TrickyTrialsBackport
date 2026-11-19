@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=架矛
 subtitles.trickytrialsbackport.item.spear_wood.attack=矛戳刺聲
 subtitles.trickytrialsbackport.item.spear_wood.hit=矛擊中聲
 subtitles.trickytrialsbackport.item.spear_wood.use=架矛
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=枯骸
+item.trickytrialsbackport.netherite_horse_armor.name=獄髓製馬鎧
+subtitles.trickytrialsbackport.entity.parched.ambient=枯骸喀啦聲
+subtitles.trickytrialsbackport.entity.parched.death=枯骸死亡
+subtitles.trickytrialsbackport.entity.parched.hurt=枯骸受傷

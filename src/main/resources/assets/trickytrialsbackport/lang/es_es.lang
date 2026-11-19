@@ -575,3 +575,9 @@ subtitles.trickytrialsbackport.item.spear.use=Carga con lanza
 subtitles.trickytrialsbackport.item.spear_wood.attack=Lanza ataca
 subtitles.trickytrialsbackport.item.spear_wood.hit=Lanza impacta
 subtitles.trickytrialsbackport.item.spear_wood.use=Carga con lanza
+# --- mounts ---
+entity.trickytrialsbackport.parched.name=Momificado
+item.trickytrialsbackport.netherite_horse_armor.name=Armadura de netherita para caballo
+subtitles.trickytrialsbackport.entity.parched.ambient=Momificado traquetea
+subtitles.trickytrialsbackport.entity.parched.death=Momificado muere
+subtitles.trickytrialsbackport.entity.parched.hurt=Momificado herido

@@ -3691,5 +3691,38 @@
       "trickytrialsbackport:item/spear/wood/use"
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.spear_wood.use"
+  },
+  "entity.parched.ambient": {
+    "sounds": [
+      "trickytrialsbackport:mob/parched/ambient1",
+      "trickytrialsbackport:mob/parched/ambient2",
+      "trickytrialsbackport:mob/parched/ambient3",
+      "trickytrialsbackport:mob/parched/ambient4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.parched.ambient"
+  },
+  "entity.parched.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/parched/death"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.parched.death"
+  },
+  "entity.parched.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/parched/hurt1",
+      "trickytrialsbackport:mob/parched/hurt2",
+      "trickytrialsbackport:mob/parched/hurt3",
+      "trickytrialsbackport:mob/parched/hurt4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.parched.hurt"
+  },
+  "entity.parched.step": {
+    "sounds": [
+      "trickytrialsbackport:mob/parched/step1",
+      "trickytrialsbackport:mob/parched/step2",
+      "trickytrialsbackport:mob/parched/step3",
+      "trickytrialsbackport:mob/parched/step4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }
