@@ -256,3 +256,14 @@ which every structure then uses.
 
 Also nice to have from that work: `ModernTemplate.Jigsaw` keeping the 1.20.3+ jigsaw priorities, and
 `EntityMoveHelper`'s blocked strafe (patch P4 here) is family-wide behavior that could move to Core.
+
+## 13. The nautilus shell in `ItemOwnership` (stream 23)
+
+**Want:** Update Aquatic's `nautilus_shell` (1.13) in `ItemOwnership`'s table, so a backport that needs it can register a
+copy without Update Aquatic and have it renamed when Update Aquatic is added (Rule 1). The fish buckets
+(`pufferfish_bucket`, `cod_bucket`, `salmon_bucket`, `tropical_fish_bucket`) only make sense with Update Aquatic's
+fish mobs, so they need no entry.
+
+**Meanwhile:** without Update Aquatic a nautilus drops no shell (1.21.11's 5% for a player kill); the shell pool is added
+in code only when Update Aquatic's shell exists, since a loot table naming a missing item fails to load in 1.12.2.
+Taming takes 1.12.2's own pufferfish either way.

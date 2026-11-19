@@ -83,6 +83,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.coppergolem.client.CopperGolemClient.init();
             com.exiledradio.trickytrialsbackport.spear.client.SpearClient.init();
             com.exiledradio.trickytrialsbackport.mounts.client.MountsClient.init();
+            com.exiledradio.trickytrialsbackport.nautilus.client.NautilusClient.init();
         }
     }
 
@@ -98,6 +99,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.tweaks.EnderPearlChunks.init();
         com.exiledradio.trickytrialsbackport.locator.LocatorBar.init();
         com.exiledradio.trickytrialsbackport.coppergolem.CopperGolemEvents.init();
+        com.exiledradio.trickytrialsbackport.nautilus.NautilusContent.init();
     }
 
     @Mod.EventHandler
@@ -107,6 +109,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.flora.FloraContent.postInit();
         com.exiledradio.trickytrialsbackport.tweaks.SpawnChunks.postInit();
         com.exiledradio.trickytrialsbackport.mounts.MountsContent.postInit();
+        com.exiledradio.trickytrialsbackport.nautilus.NautilusContent.postInit();
     }
 
     @Mod.EventHandler
