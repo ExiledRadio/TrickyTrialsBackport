@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_bars_post_ends",
+  "textures": {
+    "bars": "trickytrialsbackport:block/oxidized_copper_bars",
+    "edge": "trickytrialsbackport:block/oxidized_copper_bars"
+  }
+}

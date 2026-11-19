@@ -25,6 +25,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P13 | tweaks | `MapData.updateVisiblePlayers` (`func_76191_a`) | before each return: `MechanicsHooks.hideMapMarkers(this, player)` |
 | P14 | tweaks | `Teleporter.placeInPortal` (`func_180266_a`) | its `world.setBlockState(pos, state)` become `MechanicsHooks.platformBlock(world, pos, state)` |
 | P15 | tweaks | `World.isSpawnChunk` (`func_72916_c`); `MinecraftServer.initialWorldChunkLoad` (`func_71222_d`) | the body becomes `return SpawnChunks.isSpawnChunk(this, x, z)`; the `192`, `-192` and `625` become `SpawnChunks.prepareBlocks()`, `prepareStart()`, `prepareCount()`. Not applied when Trails & Tales Backport is installed (its P10 patches the same sites) |
+| P16 | copperGear | `EntityLiving.setEquipmentBasedOnDifficulty` (`func_180481_a`) | head: `if (CopperGearHooks.equipArmor(this, difficulty)) return;` |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -87,3 +88,16 @@ All eleven live in `asm/MechanicsTransformer` (one method per patch, dispatched 
   path before any game class loads) and leaves both classes alone when it is there; `SpawnChunks.postInit` then sets
   that mod's `radius` to 0.
 
+## P16: mobs wear copper (1.21.9)
+
+1.21.9's `Mob.populateDefaultEquipmentSlots`: with chance `0.15 * clampedAdditionalDifficulty` a mob gets armor of one
+tier for every piece it wears: the first roll is `nextInt(3)` over leather, copper and gold (1.12.2: `nextInt(2)`,
+leather or gold), raised three times with chance 0.1087 each (1.12.2: 0.095), through chainmail, iron and diamond. The
+pieces go on helmet, chestplate, leggings, boots in that order (1.12.2 starts at the boots: MC-182478, fixed in 24w33a for 1.21.2); after the first, each
+further piece stops the roll with chance 0.1 on Hard, 0.25 otherwise, as before. The tiers come out leather 23.60%,
+copper 32.23%, gold 33.29%, chainmail 9.73%, iron 1.10%, diamond 0.04%, minecraft.wiki's figures.
+
+`EntityLiving.setEquipmentBasedOnDifficulty` is where 1.12.2's zombies, husks, zombie villagers, skeletons, strays and
+the bogged get their armor (each calls it before choosing its weapon), the same mobs 1.21.9 puts copper on. The hook
+returns false, and 1.12.2's roll runs, while `copperGear.enabled` or `copperGear.mobArmor` is off. Weapons and
+enchanting are unchanged.

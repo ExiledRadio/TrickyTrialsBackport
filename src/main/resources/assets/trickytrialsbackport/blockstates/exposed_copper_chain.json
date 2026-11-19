@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "trickytrialsbackport:exposed_copper_chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "trickytrialsbackport:exposed_copper_chain"
+    },
+    "axis=z": {
+      "model": "trickytrialsbackport:exposed_copper_chain",
+      "x": 90
+    }
+  }
+}

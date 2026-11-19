@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_torch_wall",
+  "textures": {
+    "torch": "trickytrialsbackport:block/copper_torch"
+  }
+}

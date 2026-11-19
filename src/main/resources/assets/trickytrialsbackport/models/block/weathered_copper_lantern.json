@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_lantern",
+  "textures": {
+    "lantern": "trickytrialsbackport:block/weathered_copper_lantern"
+  }
+}

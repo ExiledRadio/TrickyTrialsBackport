@@ -2443,5 +2443,182 @@
       "trickytrialsbackport:mob/sheep/shear"
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.shears.snip"
+  },
+  "item.armor.equip_copper": {
+    "sounds": [
+      "trickytrialsbackport:item/armor/equip_copper1",
+      "trickytrialsbackport:item/armor/equip_copper2",
+      "trickytrialsbackport:item/armor/equip_copper3",
+      "trickytrialsbackport:item/armor/equip_copper4",
+      "trickytrialsbackport:item/armor/equip_copper5",
+      "trickytrialsbackport:item/armor/equip_copper6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.armor.equip_copper"
+  },
+  "block.chain.break": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/chain/break1",
+        "volume": 0.5
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/break2",
+        "volume": 0.5
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/break3",
+        "volume": 0.5
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/break4",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.lantern.break": {
+    "sounds": [
+      "trickytrialsbackport:block/lantern/break1",
+      "trickytrialsbackport:block/lantern/break2",
+      "trickytrialsbackport:block/lantern/break3",
+      "trickytrialsbackport:block/lantern/break4",
+      "trickytrialsbackport:block/lantern/break5",
+      "trickytrialsbackport:block/lantern/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.chain.step": {
+    "sounds": [
+      "trickytrialsbackport:block/chain/step1",
+      "trickytrialsbackport:block/chain/step2",
+      "trickytrialsbackport:block/chain/step3",
+      "trickytrialsbackport:block/chain/step4",
+      "trickytrialsbackport:block/chain/step5",
+      "trickytrialsbackport:block/chain/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.lantern.step": {
+    "sounds": [
+      "trickytrialsbackport:block/lantern/break1",
+      "trickytrialsbackport:block/lantern/break2",
+      "trickytrialsbackport:block/lantern/break3",
+      "trickytrialsbackport:block/lantern/break4",
+      "trickytrialsbackport:block/lantern/break5",
+      "trickytrialsbackport:block/lantern/break6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.chain.place": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/chain/break1",
+        "volume": 0.5
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/break2",
+        "volume": 0.5
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/break3",
+        "volume": 0.5
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/break4",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.lantern.place": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/lantern/place1",
+        "pitch": 1.1
+      },
+      {
+        "name": "trickytrialsbackport:block/lantern/place2",
+        "pitch": 1.1
+      },
+      {
+        "name": "trickytrialsbackport:block/lantern/place3",
+        "pitch": 1.1
+      },
+      {
+        "name": "trickytrialsbackport:block/lantern/place4",
+        "pitch": 1.1
+      },
+      {
+        "name": "trickytrialsbackport:block/lantern/place5",
+        "pitch": 1.1
+      },
+      {
+        "name": "trickytrialsbackport:block/lantern/place6",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.chain.hit": {
+    "sounds": [
+      {
+        "name": "trickytrialsbackport:block/chain/step1",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/step2",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/step3",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/step4",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/step5",
+        "volume": 0.8
+      },
+      {
+        "name": "trickytrialsbackport:block/chain/step6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.lantern.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/lantern/place1",
+      "trickytrialsbackport:block/lantern/place2",
+      "trickytrialsbackport:block/lantern/place3",
+      "trickytrialsbackport:block/lantern/place4",
+      "trickytrialsbackport:block/lantern/place5",
+      "trickytrialsbackport:block/lantern/place6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.chain.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/chain/step1",
+      "trickytrialsbackport:block/chain/step2",
+      "trickytrialsbackport:block/chain/step3",
+      "trickytrialsbackport:block/chain/step4",
+      "trickytrialsbackport:block/chain/step5",
+      "trickytrialsbackport:block/chain/step6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.lantern.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/lantern/break1",
+      "trickytrialsbackport:block/lantern/break2",
+      "trickytrialsbackport:block/lantern/break3",
+      "trickytrialsbackport:block/lantern/break4",
+      "trickytrialsbackport:block/lantern/break5",
+      "trickytrialsbackport:block/lantern/break6"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
   }
 }

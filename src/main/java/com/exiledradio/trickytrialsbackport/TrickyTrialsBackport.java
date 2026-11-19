@@ -72,6 +72,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.flora.client.FloraClient.init();
             com.exiledradio.trickytrialsbackport.lookfeel.client.LookAndFeelClient.init();
             com.exiledradio.trickytrialsbackport.tweaks.client.TweaksClient.init();
+            com.exiledradio.trickytrialsbackport.coppergear.client.CopperGearClient.init();
         }
     }
 

@@ -64,6 +64,7 @@ public final class SelfTestRunner {
             new TweaksSelfTest(),
             new MechanicsSelfTest(),
             new FlatSelfTest(),
+            new CopperGearSelfTest(),
     };
 
     private final List<String> wanted;

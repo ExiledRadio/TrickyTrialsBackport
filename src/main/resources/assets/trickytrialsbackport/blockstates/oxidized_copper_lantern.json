@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "trickytrialsbackport:oxidized_copper_lantern"
+    },
+    "hanging=true": {
+      "model": "trickytrialsbackport:oxidized_copper_lantern_hanging"
+    }
+  }
+}

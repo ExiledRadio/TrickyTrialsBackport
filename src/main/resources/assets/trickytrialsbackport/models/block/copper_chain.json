@@ -1,0 +1,6 @@
+{
+  "parent": "trickytrialsbackport:block/template_chain",
+  "textures": {
+    "texture": "trickytrialsbackport:block/copper_chain"
+  }
+}
