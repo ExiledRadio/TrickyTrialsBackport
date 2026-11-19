@@ -90,7 +90,7 @@ Behavior is 1.21.11's (`Creaking`, `CreakingAi`, `CreakingHeartBlockEntity`, `Cr
 
 `./gradlew runServer -Pselftest=all` (port 25915), then `python -I tools/check_assets.py`:
 **`SELFTEST DONE pass=2231 fail=0`** (creaking alone: 94; on 2026-11-19, on main a962cc2 with branch
-`tr-creaking-anim`, on E-cores: `pass=5200 fail=0`, creaking 136, check_assets 197 blocks 0 errors), **130 blocks, 1872 states, 158 item models,
+`tr-creaking-anim`, on E-cores: `pass=5202 fail=0`, creaking 146, check_assets 197 blocks 0 errors), **130 blocks, 1872 states, 158 item models,
 610 sound files, 0 errors**. Release jar built after the last test run with `--rerun-tasks`: reobfuscated
 (`func_` names), no test classes.
 
@@ -121,6 +121,14 @@ Behavior is 1.21.11's (`Creaking`, `CreakingAi`, `CreakingHeartBlockEntity`, `Cr
     head yaw and pitch, body yaw and position unchanged over 10 ticks while the watcher walks round it, walk speed
     down to 0; unfrozen it eases back in. No difference from vanilla was found in the model, keyframes,
     interpolation, part transform order (translate, rotate Z-Y-X, scale) or the walk feed.
+*   Client side (same day, for a "gliding" report): a client copy of a chasing creaking on a client world
+    (`isRemote`, the server's chunks), moved by 1.12.2's 3-step position interpolation and given the tracker's
+    entity data every 3 ticks. Its walk runs on the client from its own positions (1.21's formula every tick,
+    reaching 3.0); it never sets `CAN_MOVE` itself and matches the server's within a data update; fed to the model
+    as `RenderLivingBase` feeds it, the legs swing past 10 degrees in 37 of 60 ticks; watched, both copies freeze
+    and the client's legs stand at rest. The freeze test is 1.21.11's `isLookingAtMe(player, 0.5, false, true, ...)`:
+    with `false` the threshold is `1 - 0.5`, a fixed 60 degree cone (the distance-scaled form is the enderman's,
+    `true`), as ported.
 *   Pathing: lava costs 8, fire 0; a node over 32 blocks from home is blocked unless it brings a lost
     creaking nearer.
 *   The server booting at all proves no client type is reached from server code.

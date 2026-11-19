@@ -60,6 +60,7 @@ public final class CreakingSelfTest implements SelfTest {
             transplant(c);
             pathing(c);
             animation(c);
+            clientSide(c);
         } finally {
             c.world.getWorldInfo().setDifficulty(was);
             c.world.setWorldTime(time);
@@ -495,5 +496,143 @@ public final class CreakingSelfTest implements SelfTest {
         // Not started: nothing.
         p.pose(0.0F, 0.0F, 52.0F, 0.0F, 0.0F, false, OFF, OFF, OFF);
         angles(c, p, "upper_body", 0.0F, 0.0F, 0.0F, "no animation without a start");
+    }
+
+    /** A client world for one test: isRemote, reading the server's chunks (so blocks are there and nothing generates). */
+    private static final class ClientWorld extends net.minecraft.world.World {
+        private final net.minecraft.world.WorldServer real;
+
+        ClientWorld(net.minecraft.world.WorldServer real) {
+            super(real.getSaveHandler(), real.getWorldInfo(), real.provider, real.profiler, true);
+            this.real = real;
+            this.chunkProvider = real.getChunkProvider();
+        }
+
+        @Override
+        protected net.minecraft.world.chunk.IChunkProvider createChunkProvider() {
+            return this.real.getChunkProvider();
+        }
+
+        @Override
+        protected boolean isChunkLoaded(int x, int z, boolean allowEmpty) {
+            return this.real.getChunkProvider().chunkExists(x, z);
+        }
+    }
+
+    /** The client's copy of a creaking, moved as 1.12.2's client moves it (setPositionAndRotationDirect, 3 steps). */
+    private static final class ClientCreaking extends EntityCreaking {
+        ClientCreaking(net.minecraft.world.World world) {
+            super(world);
+        }
+
+        void interpolateTo(double x, double y, double z, float yaw, float pitch) {
+            this.interpTargetX = x;
+            this.interpTargetY = y;
+            this.interpTargetZ = z;
+            this.interpTargetYaw = yaw;
+            this.interpTargetPitch = pitch;
+            this.newPosRotationIncrements = 3;
+        }
+    }
+
+    /** The tracker's entity data packet: every entry of the server copy onto the client copy. */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static void sync(EntityCreaking from, EntityCreaking to) {
+        for (net.minecraft.network.datasync.EntityDataManager.DataEntry entry : from.getDataManager().getAll()) {
+            to.getDataManager().set(entry.getKey(), entry.getValue());
+        }
+    }
+
+    /**
+     * The client side of the walk and the freeze, on a client world (isRemote) beside the server's: the server copy
+     * chases a player; every 3 ticks the client copy gets its position (offset into a second test area) and its
+     * entity data, as the tracker sends them, and ticks as a client entity. The walk must run on the client from the
+     * client's own positions, the client must take "frozen" only from the synced data, and the model fed as
+     * RenderLivingBase feeds it must swing its legs while the server copy moves.
+     */
+    private void clientSide(Check c) {
+        BlockPos area = c.area();
+        BlockPos mirror = c.area();
+        double ox = mirror.getX() - area.getX();
+        double oz = mirror.getZ() - area.getZ();
+        EntityCreaking e = spawn(c, area.add(16, 0, 16));
+        EntityPlayerMP p = player(c, "clientwatch", area.add(16, 0, 26));
+        net.minecraftforge.fml.relauncher.ReflectionHelper.setPrivateValue(EntityPlayerMP.class, p, 0,
+                "respawnInvulnerabilityTicks", "field_147101_bU");
+        ClientWorld cw = new ClientWorld(c.world);
+        c.ok(cw.isRemote, "the client world is a client world");
+        ClientCreaking client = new ClientCreaking(cw);
+        client.setLocationAndAngles(e.posX + ox, e.posY, e.posZ + oz, e.rotationYaw, e.rotationPitch);
+        sync(e, client);
+
+        // Wake it with a look, then turn away: the server copy chases.
+        look(p, e.posX, e.posY + 1.5D, e.posZ);
+        tick(e, 25);
+        c.ok(e.isActive() && !e.canMove(), "server copy woken and frozen");
+        look(p, e.posX, e.posY + 1.5D, e.posZ + 40.0D);
+
+        CreakingPoser poser = new CreakingPoser();
+        int feedBad = 0;
+        int canMoveBad = 0;
+        int clientWrites = 0;
+        int swinging = 0;
+        float maxAmount = 0.0F;
+        for (int i = 0; i < 60; i++) {
+            e.onUpdate();
+            if (i % 3 == 0) {
+                client.interpolateTo(e.posX + ox, e.posY, e.posZ + oz, e.rotationYaw, e.rotationPitch);
+                sync(e, client);
+            }
+            boolean before = client.canMove();
+            float amount0 = client.limbSwingAmount;
+            float swing0 = client.limbSwing;
+            client.onUpdate();
+            if (client.canMove() != before) {
+                clientWrites++;
+            }
+            if (client.canMove() != e.canMove()) {
+                canMoveBad++;
+            }
+            double dx = client.posX - client.prevPosX;
+            double dz = client.posZ - client.prevPosZ;
+            float want = amount0 + (Math.min(MathHelper.sqrt(dx * dx + dz * dz) * 25.0F, 3.0F) - amount0) * 0.4F;
+            if (Math.abs(client.limbSwingAmount - want) > 1.0E-4F || Math.abs(client.limbSwing - (swing0 + want)) > 1.0E-3F) {
+                feedBad++;
+            }
+            maxAmount = Math.max(maxAmount, client.limbSwingAmount);
+            // RenderLivingBase at half a tick: amount lerped and capped at 1, swing behind by half the amount.
+            float f5 = Math.min(client.prevLimbSwingAmount + (client.limbSwingAmount - client.prevLimbSwingAmount) * 0.5F, 1.0F);
+            float f6 = client.limbSwing - client.limbSwingAmount * 0.5F;
+            poser.pose(f6, f5, client.ticksExisted + 0.5F, 0.0F, 0.0F, client.canMove(),
+                    client.attackAnimationStart, client.invulnerabilityAnimationStart, client.deathAnimationStart);
+            if (Math.abs(poser.part("left_leg").xRot) > 10.0F * DEG || Math.abs(poser.part("right_leg").xRot) > 10.0F * DEG) {
+                swinging++;
+            }
+        }
+        com.exiledradio.trickytrialsbackport.TrickyTrialsBackport.LOGGER.info("SELFTEST creaking client copy: top walk speed "
+                + maxAmount + ", legs swung past 10 degrees in " + swinging + " of 60 ticks");
+        c.ok(e.canMove(), "server copy moving while unwatched");
+        c.eq(0, feedBad, "the client copy's walk follows 1.21's formula from its own positions every tick");
+        c.ok(maxAmount > 1.0F, "the client copy walks at full strength (" + maxAmount + ")");
+        c.eq(0, clientWrites, "the client never decides the freeze itself");
+        c.ok(canMoveBad <= 3, "the client's can-move is the server's, within one data update (" + canMoveBad + " ticks behind)");
+        c.ok(swinging >= 20, "the model's legs swing while it moves (" + swinging + " of 60 ticks past 10 degrees)");
+
+        // Watched again: the server freezes it, the client copy follows and draws no walk.
+        look(p, e.posX, e.posY + 1.5D, e.posZ);
+        for (int i = 0; i < 12; i++) {
+            e.onUpdate();
+            if (i % 3 == 0) {
+                client.interpolateTo(e.posX + ox, e.posY, e.posZ + oz, e.rotationYaw, e.rotationPitch);
+                sync(e, client);
+            }
+            client.onUpdate();
+        }
+        c.ok(!e.canMove() && !client.canMove(), "frozen on both sides");
+        poser.pose(client.limbSwing, Math.min(client.limbSwingAmount, 1.0F), client.ticksExisted, 0.0F, 0.0F, client.canMove(),
+                OFF, OFF, OFF);
+        angles(c, poser, "left_leg", 0.0F, 0.0F, 0.0F, "a frozen client copy stands still");
+        c.world.removeEntityDangerously(p);
+        e.setDead();
     }
 }
