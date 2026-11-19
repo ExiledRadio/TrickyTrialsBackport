@@ -17,7 +17,8 @@ import org.objectweb.asm.tree.VarInsnNode;
  *       {@code EntityPigZombie.setEquipmentBasedOnDifficulty}: {@code SpearEvents.spawnWeapon(this, difficulty)},
  *       which turns some of the weapons just rolled into spears as 1.21.11 rolls them. Off, it changes nothing.</li>
  *   <li><b>P21</b> (client): at the head of {@code ModelBiped.setRotationAngles}
- *       {@code SpearModelHooks.pre(this, entity)}, and before every return {@code SpearModelHooks.post(this, entity)}:
+ *       {@code SpearModelHooks.pre(this, entity)}, and before every return {@code SpearModelHooks.post(this)} (the entity is
+ *       stashed by {@code pre}: Mojang's frames drop the parameter before the returns):
  *       the spear's third-person arm.</li>
  * </ul>
  */
@@ -78,7 +79,7 @@ public final class SpearTransformer implements IClassTransformer {
             Asm.LOG.warn("P21 spear pose: setRotationAngles not found in {}; patch skipped.", target);
             return bytes;
         }
-        int n = beforeReturns(m, () -> hook("post"));
+        int n = beforeReturns(m, SpearTransformer::post);
         m.instructions.insert(hook("pre"));
         Asm.LOG.info("P21 spear pose: patched {} ({} returns).", target, n);
         return Asm.write(node);
@@ -90,6 +91,14 @@ public final class SpearTransformer implements IClassTransformer {
         call.add(new VarInsnNode(Opcodes.ALOAD, 7));
         call.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MODEL_HOOKS, name,
                 "(Lnet/minecraft/client/model/ModelBiped;Lnet/minecraft/entity/Entity;)V", false));
+        return call;
+    }
+
+    private static InsnList post() {
+        InsnList call = new InsnList();
+        call.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        call.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MODEL_HOOKS, "post",
+                "(Lnet/minecraft/client/model/ModelBiped;)V", false));
         return call;
     }
 

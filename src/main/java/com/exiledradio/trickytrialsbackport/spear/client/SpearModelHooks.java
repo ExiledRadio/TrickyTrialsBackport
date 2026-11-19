@@ -27,6 +27,9 @@ public final class SpearModelHooks {
 
     private static ModelBiped stashedModel;
     private static float stashedSwing;
+    /** The entity {@link #pre} was handed, for {@link #post}; see that method. */
+    private static ModelBiped entityModel;
+    private static Entity entityStash;
 
     private SpearModelHooks() {
     }
@@ -36,6 +39,8 @@ public final class SpearModelHooks {
     }
 
     public static void pre(ModelBiped model, Entity entity) {
+        entityModel = model;
+        entityStash = entity;
         stashedModel = null;
         if (!active() || !(entity instanceof EntityLivingBase) || model.swingProgress <= 0.0F) {
             return;
@@ -49,7 +54,14 @@ public final class SpearModelHooks {
         }
     }
 
-    public static void post(ModelBiped model, Entity entity) {
+    /**
+     * Takes only the model: Mojang's stack-map frames mark the entity parameter unusable by the method's end, so
+     * reading it there is a VerifyError in a real client. The entity comes from {@link #pre}'s stash.
+     */
+    public static void post(ModelBiped model) {
+        Entity entity = entityModel == model ? entityStash : null;
+        entityModel = null;
+        entityStash = null;
         if (!active() || !(entity instanceof EntityLivingBase)) {
             return;
         }
