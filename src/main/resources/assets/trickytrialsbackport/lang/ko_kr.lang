@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=앞으로 걷기 키를 두 번 눌렀을 때 달�
 options.sprintWindow=달리기 시간 간격
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=호흡 수치가 떨어짐
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=경로점 발신 범위
+attribute.name.waypoint_receive_range=경로점 수신 범위

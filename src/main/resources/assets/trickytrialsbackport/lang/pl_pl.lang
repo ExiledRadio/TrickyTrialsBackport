@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Czas (w tikach), w którym dwukrotne naciśnięcie 
 options.sprintWindow=Interwał biegu
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Wskaźnik oddechu spada
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=zasięgu nadawania punktu orientacyjnego
+attribute.name.waypoint_receive_range=zasięgu odbioru punktu orientacyjnego

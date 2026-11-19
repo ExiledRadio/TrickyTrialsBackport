@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Birim zaman formatında ileri tuşuna çift-basman�
 options.sprintWindow=Koşma Zaman Aralığı
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Nefes çubuğu düştü
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Yol Noktası İletme Mesafesi
+attribute.name.waypoint_receive_range=Yol Noktası Alma Mesafesi

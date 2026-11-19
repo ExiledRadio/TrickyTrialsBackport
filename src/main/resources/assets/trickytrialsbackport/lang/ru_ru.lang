@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Временной промежуток в такт
 options.sprintWindow=Интервал разбега
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Запас воздуха убывает
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Дальность передачи маркера
+attribute.name.waypoint_receive_range=Дальность обнаружения маркеров

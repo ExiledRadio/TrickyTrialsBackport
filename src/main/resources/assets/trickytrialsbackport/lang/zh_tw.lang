@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=連按兩下前進鍵觸發跑步的最大間隔，
 options.sprintWindow=跑步觸發間隔
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=氧氣值消耗
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=路徑點傳輸距離
+attribute.name.waypoint_receive_range=路徑點接收距離

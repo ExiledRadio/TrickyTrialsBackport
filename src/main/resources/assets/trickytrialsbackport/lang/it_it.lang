@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Intervallo di tempo in tick entro cui il doppio toc
 options.sprintWindow=Intervallo di corsa
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Ossigeno in calo
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Portata di trasmissione del punto di riferimento
+attribute.name.waypoint_receive_range=Portata di ricezione del punto di riferimento

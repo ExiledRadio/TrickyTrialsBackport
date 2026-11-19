@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Tijdinterval in ticks waarin rennen wordt geactivee
 options.sprintWindow=Reninterval
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Zuurstofmeter daalt
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=wegwijzeruitzendbereik
+attribute.name.waypoint_receive_range=wegwijzerontvangstbereik

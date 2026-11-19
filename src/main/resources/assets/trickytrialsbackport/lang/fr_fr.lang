@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Intervalle de temps en ticks pendant lequel appuyer
 options.sprintWindow=Intervalle pour courir
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Oxygène qui baisse
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=portée de transmission du point de repère
+attribute.name.waypoint_receive_range=portée de réception du point de repère

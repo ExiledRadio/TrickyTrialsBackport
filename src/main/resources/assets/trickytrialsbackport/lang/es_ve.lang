@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Intervalo de tiempo en tics necesario para empezar 
 options.sprintWindow=Intervalo para correr
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Nivel de oxígeno agotándose
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Alcance de transmisión del waypoint
+attribute.name.waypoint_receive_range=Alcance de detección del waypoint

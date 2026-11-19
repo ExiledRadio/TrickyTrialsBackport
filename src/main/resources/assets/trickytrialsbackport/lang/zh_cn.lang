@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=双击前进键激活疾跑的最大时间间隔，
 options.sprintWindow=疾跑间隔
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=氧气值：减少
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=路径点传输距离
+attribute.name.waypoint_receive_range=路径点接收距离

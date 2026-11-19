@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=前進キーの2回入力でダッシュが発動�
 options.sprintWindow=ダッシュ操作の間隔
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=酸素ゲージが減る
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=ウェイポイント伝達距離
+attribute.name.waypoint_receive_range=ウェイポイント受信距離

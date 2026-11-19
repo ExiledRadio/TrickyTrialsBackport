@@ -62,6 +62,7 @@ public final class SelfTestRunner {
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
             new TweaksSelfTest(),
+            new LocatorSelfTest(),
             new MechanicsSelfTest(),
             new FlatSelfTest(),
     };

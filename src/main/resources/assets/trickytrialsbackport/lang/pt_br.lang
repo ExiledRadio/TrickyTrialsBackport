@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Intervalo de tempo (em tiques) no qual o toque dupl
 options.sprintWindow=Intervalo de corrida
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Oxigenação baixa
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Alcance de Transmissão do Ponto
+attribute.name.waypoint_receive_range=Alcance de Detecção do Ponto

@@ -647,3 +647,7 @@ subtitles.trickytrialsbackport.item.lead.tied=Lead tied
 subtitles.trickytrialsbackport.item.llama_carpet.unequip=Carpet snips away
 subtitles.trickytrialsbackport.item.saddle.unequip=Saddle snips away
 subtitles.trickytrialsbackport.item.shears.snip=Shears snip
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Waypoint Transmit Range
+attribute.name.waypoint_receive_range=Waypoint Receive Range

@@ -263,3 +263,7 @@ options.sprintWindow.tooltip=Zeitfenster in Ticks, innerhalb dessen ein doppelte
 options.sprintWindow=Sprint‐Zeitfenster
 options.value=%s
 subtitles.trickytrialsbackport.ui.hud.bubble_pop=Luftvorrat nimmt ab
+
+# --- locator ---
+attribute.name.waypoint_transmit_range=Wegpunkt‐Sendereichweite
+attribute.name.waypoint_receive_range=Wegpunkt‐Empfangsreichweite

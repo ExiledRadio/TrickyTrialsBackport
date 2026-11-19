@@ -52,5 +52,8 @@ public final class NetworkHandler {
         // 65-69 creaking
         channel.registerMessage(com.exiledradio.trickytrialsbackport.creaking.CreakingFxMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.creaking.CreakingFxMessage.class, 65, Side.CLIENT);
+        // 90-94 locatorBar
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.locator.WaypointMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.locator.WaypointMessage.class, 90, Side.CLIENT);
     }
 }
