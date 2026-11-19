@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_unpowered",
+  "textures": {
+    "all": "trickytrialsbackport:block/acacia_shelf",
+    "particle": "trickytrialsbackport:block/stripped_acacia_log"
+  }
+}

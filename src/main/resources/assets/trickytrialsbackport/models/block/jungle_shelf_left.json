@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_left",
+  "textures": {
+    "all": "trickytrialsbackport:block/jungle_shelf",
+    "particle": "trickytrialsbackport:block/stripped_jungle_log"
+  }
+}

@@ -1,0 +1,11 @@
+block.shelf.activate
+block.shelf.break
+block.shelf.deactivate
+block.shelf.fall
+block.shelf.hit
+block.shelf.multi_swap
+block.shelf.place
+block.shelf.place_item
+block.shelf.single_swap
+block.shelf.step
+block.shelf.take_item

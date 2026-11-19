@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_unpowered",
+  "textures": {
+    "all": "trickytrialsbackport:block/warped_shelf",
+    "particle": "trickytrialsbackport:block/stripped_warped_stem"
+  }
+}

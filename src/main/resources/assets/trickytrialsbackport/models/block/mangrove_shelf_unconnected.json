@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_unconnected",
+  "textures": {
+    "all": "trickytrialsbackport:block/mangrove_shelf",
+    "particle": "trickytrialsbackport:block/stripped_mangrove_log"
+  }
+}

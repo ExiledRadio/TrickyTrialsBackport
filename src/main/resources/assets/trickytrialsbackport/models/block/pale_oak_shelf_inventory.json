@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_inventory",
+  "textures": {
+    "all": "trickytrialsbackport:block/pale_oak_shelf",
+    "particle": "trickytrialsbackport:block/stripped_pale_oak_log"
+  }
+}
