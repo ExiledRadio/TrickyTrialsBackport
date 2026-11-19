@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "display": {
+    "icon": {
+      "item": "trickytrialsbackport:dried_ghast"
+    },
+    "title": {
+      "translate": "advancements.husbandry.place_dried_ghast_in_water.title"
+    },
+    "description": {
+      "translate": "advancements.husbandry.place_dried_ghast_in_water.description"
+    }
+  },
+  "criteria": {
+    "place_dried_ghast_in_water": {
+      "trigger": "trickytrialsbackport:dried_ghast_placed_in_water",
+      "conditions": {
+        "item": {
+          "item": "trickytrialsbackport:dried_ghast"
+        }
+      }
+    }
+  }
+}

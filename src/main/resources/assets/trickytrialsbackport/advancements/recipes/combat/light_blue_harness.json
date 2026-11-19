@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dried_ghast": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trickytrialsbackport:dried_ghast"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trickytrialsbackport:light_blue_harness"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dried_ghast"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "trickytrialsbackport:light_blue_harness"
+    ]
+  }
+}

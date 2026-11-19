@@ -60,6 +60,7 @@ public final class SelfTestRunner {
             new ResinSelfTest(),
             new FloraSelfTest(),
             new AnimalsSelfTest(),
+            new GhastSelfTest(),
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
             new TweaksSelfTest(),

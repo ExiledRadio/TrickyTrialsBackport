@@ -55,6 +55,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.resin.ResinContent.preInit();
         com.exiledradio.trickytrialsbackport.flora.FloraContent.preInit();
         com.exiledradio.trickytrialsbackport.animals.AnimalsContent.preInit();
+        com.exiledradio.trickytrialsbackport.ghast.GhastContent.preInit();
         com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.preInit();
 
         // Client-only setup lives in a class a dedicated server never loads. The call names no client
@@ -72,6 +73,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.creaking.client.CreakingClient.init();
             com.exiledradio.trickytrialsbackport.flora.client.FloraClient.init();
             com.exiledradio.trickytrialsbackport.animals.client.AnimalsClient.init();
+            com.exiledradio.trickytrialsbackport.ghast.client.GhastClient.init();
             com.exiledradio.trickytrialsbackport.lookfeel.client.LookAndFeelClient.init();
             com.exiledradio.trickytrialsbackport.tweaks.client.TweaksClient.init();
         }

@@ -1,0 +1,13 @@
+{
+  "parent": "trickytrialsbackport:block/dried_ghast",
+  "textures": {
+    "bottom": "trickytrialsbackport:block/dried_ghast_hydration_0_bottom",
+    "east": "trickytrialsbackport:block/dried_ghast_hydration_0_east",
+    "north": "trickytrialsbackport:block/dried_ghast_hydration_0_north",
+    "particle": "trickytrialsbackport:block/dried_ghast_hydration_0_north",
+    "south": "trickytrialsbackport:block/dried_ghast_hydration_0_south",
+    "tentacles": "trickytrialsbackport:block/dried_ghast_hydration_0_tentacles",
+    "top": "trickytrialsbackport:block/dried_ghast_hydration_0_top",
+    "west": "trickytrialsbackport:block/dried_ghast_hydration_0_west"
+  }
+}
