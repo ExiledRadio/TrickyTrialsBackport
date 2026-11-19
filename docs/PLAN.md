@@ -279,6 +279,10 @@ wrapping block, so it never meets a stream worktree's server.
   Weakness arrows), zombie horses spawning in plains and savannas (sometimes ridden), netherite horse
   armor (via Core's smithing when netherite exists), horses not sinking while ridden.
   Built (all but the camel husk: no family mod compiles against Trails & Tales' camel, 2026-11-19): `docs/streams/mounts.md`.
+  Status (2026-11-19): done and green on `claude/tr-mounts-e9c6eb`: `-Pselftest=all` 4662/0 from a fresh world,
+  `check_assets` 0 errors, release jar without `/selftest/`. Left: the camel husk (and the husk and parched riding it),
+  out by decision since it needs Trails & Tales' camel at compile time; entity id 66 reserved. Not failing, but flaky on
+  `main`: the ghast test's still timeout (7 checks, about 1 run in 3).
 
 ### 25. Smaller changes (all drops)
 
