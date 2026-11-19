@@ -93,6 +93,7 @@ public final class NautilusSelfTest implements SelfTest {
             taming(c);
             equipment(c);
             riding(c);
+            steering(c, area);
             breath(c);
             breeding(c);
             behavior(c);
@@ -603,6 +604,114 @@ public final class NautilusSelfTest implements SelfTest {
         c.ok(p.openContainer instanceof ContainerNautilus, "the inventory key opens the ridden nautilus's inventory");
         p.closeScreen();
         remove(c, n, server, dry, second, p);
+    }
+
+    // ------------------------------------------------------------------ steering
+
+    /** A player whose own side steers, as a client's player does ({@code isUser}); a dedicated server's never is. */
+    private EntityPlayerMP steeringPlayer(Check c, String name) {
+        net.minecraft.server.MinecraftServer server = c.world.getMinecraftServer();
+        EntityPlayerMP p = new EntityPlayerMP(server, c.world, new com.mojang.authlib.GameProfile(
+                java.util.UUID.nameUUIDFromBytes(("selftest:" + name).getBytes()), "Test" + name),
+                new net.minecraft.server.management.PlayerInteractionManager(c.world)) {
+            @Override
+            public boolean isUser() {
+                return true;
+            }
+        };
+        p.connection = new net.minecraft.network.NetHandlerPlayServer(server,
+                new net.minecraft.network.NetworkManager(net.minecraft.network.EnumPacketDirection.SERVERBOUND), p);
+        new io.netty.channel.embedded.EmbeddedChannel(p.connection.getNetworkManager());
+        p.setGameType(GameType.SURVIVAL);
+        p.setLocationAndAngles(this.water.getX() + 0.5D, this.water.getY() + 2, this.water.getZ() + 0.5D, 0.0F, 0.0F);
+        c.world.spawnEntity(p);
+        return p;
+    }
+
+    /**
+     * 1.12.2's {@code EntityLiving.canPassengerSteer} needs {@code canBeSteered}; with it the rider's own side swims the
+     * nautilus through its ordinary tick, along the rider's look, while its goals stand down.
+     */
+    private void steering(Check c, BlockPos area) {
+        EntityPlayerMP p = steeringPlayer(c, "naut_steer");
+        EntityNautilus n = nautilus(c, area.add(16, 1, 16));
+        tame(n, p);
+        p.startRiding(n, true);
+        c.ok(!n.canBeSteered() && !n.canPassengerSteer(), "no saddle: no one steers");
+        p.dismountRidingEntity();
+        n.setSaddle(new ItemStack(Items.SADDLE));
+        p.startRiding(n, true);
+        c.ok(n.canBeSteered(), "saddled with a player on: steerable");
+        c.ok(n.canPassengerSteer(), "the rider's own side steers");
+        c.ok(n.isPlayerControlled(), "player controlled");
+        c.ok(!new NautilusAi.Swim(n).shouldExecute() && !NautilusTestAccess.temptWouldStart(n) && !new NautilusAi.Panic(n).shouldExecute(),
+                "its goals stand down");
+        // Forward, looking 30 degrees up and 40 to the side: once it faces that way it swims along the look.
+        p.rotationYaw = 40.0F;
+        p.rotationPitch = -30.0F;
+        p.moveForward = 0.98F;
+        p.moveStrafing = 0.0F;
+        n.rotationYaw = 40.0F;
+        n.motionX = n.motionY = n.motionZ = 0.0D;
+        Vec3d start = new Vec3d(n.posX, n.posY, n.posZ);
+        boolean wet = true;
+        for (int i = 0; i < 40; i++) {
+            n.onUpdate();
+            wet &= n.isInWater();
+        }
+        Vec3d moved = new Vec3d(n.posX, n.posY, n.posZ).subtract(start);
+        Vec3d look = p.getLookVec();
+        double cos = moved.normalize().dotProduct(look);
+        c.ok(wet, "under water the whole way");
+        c.ok(moved.length() > 6.0D, "it swam under its ordinary tick: " + moved.length());
+        c.ok(cos > 0.999D, "along the rider's look: cos " + cos + " moved " + moved + " look " + look);
+        c.ok(Math.abs(n.rotationYaw - 40.0F) < 1.0E-3F, "facing the rider's way: " + n.rotationYaw);
+        c.ok(Math.abs(n.rotationPitch + 15.0F) < 1.0E-3F, "half the rider's pitch: " + n.rotationPitch);
+        // Turning: half way each tick.
+        p.rotationYaw = 100.0F;
+        n.onUpdate();
+        c.ok(Math.abs(n.rotationYaw - 70.0F) < 1.0E-3F, "turns half way toward the rider: " + n.rotationYaw);
+        // The dash, through the same tick.
+        p.rotationYaw = 0.0F;
+        p.rotationPitch = 0.0F;
+        n.rotationYaw = 0.0F;
+        n.setPosition(area.getX() + 16.5D, area.getY() + 3, area.getZ() + 6.5D);
+        n.motionX = n.motionY = n.motionZ = 0.0D;
+        p.moveForward = 0.0F;
+        n.setJumpPower(100);
+        double z0 = n.posZ;
+        n.onUpdate();
+        c.ok(n.motionZ > 1.0D && n.posZ - z0 > 1.0D, "a dash surges along the look: " + (n.posZ - z0));
+        c.eq(40, n.getDashCooldown() + 1, "the dash cooldown runs");
+        // Out of water: slow, on the ground.
+        EntityNautilus dry = nautilus(c, area.add(4, 13, 30));
+        dry.setLocationAndAngles(area.getX() + 30.5D, area.getY(), area.getZ() + 4.5D, 0.0F, 0.0F);
+        tame(dry, p);
+        dry.setSaddle(new ItemStack(Items.SADDLE));
+        p.dismountRidingEntity();
+        p.startRiding(dry, true);
+        p.rotationYaw = 0.0F;
+        p.rotationPitch = 0.0F;
+        p.moveForward = 0.98F;
+        double dz = dry.posZ;
+        for (int i = 0; i < 40; i++) {
+            dry.onUpdate();
+        }
+        c.ok(!dry.isInWater() && dry.posZ - dz > 0.3D && dry.posZ - dz < 3.0D, "on land it crawls forward: " + (dry.posZ - dz));
+        // A dedicated server's own player steers from their client: the server leaves it alone.
+        p.dismountRidingEntity();
+        EntityPlayerMP remote = player(c, "naut_steer2");
+        remote.startRiding(n, true);
+        c.ok(n.canBeSteered() && !n.canPassengerSteer(), "a remote rider steers from their client, not here");
+        remote.moveForward = 1.0F;
+        double x0 = n.posX;
+        double zz = n.posZ;
+        double y0 = n.posY;
+        n.onUpdate();
+        c.ok(n.posX == x0 && n.posZ == zz && n.posY == y0, "the server does not move it for a remote rider");
+        remote.dismountRidingEntity();
+        c.ok(!n.isPlayerControlled() && !n.canBeSteered(), "no longer steered once the rider is off");
+        remove(c, n, dry, remote, p);
     }
 
     // ------------------------------------------------------------------ Breath of the Nautilus

@@ -282,6 +282,9 @@ wrapping block, so it never meets a stream worktree's server.
   still-timeout checks, as on `main`); assets 0 errors; release jar without `/selftest/`. Left: nothing drawn or client
   input tested in game; Update Aquatic's items tested through stand-ins; drowned from ocean ruins get no mount; no shell
   without Update Aquatic (`CORE_REQUESTS.md` #13).
+  **Fix (2026-11-20, `tr-nautilus-ride`):** a real client could not steer it: `canBeSteered` was false, so 1.12.2's
+  `canPassengerSteer` let no side move it. Now steerable when saddled with a player on, goals and swim controls stand
+  down while ridden. Nautilus test 269/0, `selftest=all` 5502/0 on E-cores from a fresh world.
 
 ### 24. Mounts (1.21.11)
 

@@ -76,6 +76,10 @@ public final class NautilusTestAccess {
         n.checkRestriction();
     }
 
+    public static boolean temptWouldStart(EntityAbstractNautilus n) {
+        return n.tempt.shouldExecute();
+    }
+
     public static void burnUndead(EntityZombieNautilus z) {
         z.burnUndead();
     }

@@ -521,6 +521,21 @@ public abstract class EntityAbstractNautilus extends EntityTameable implements I
         return this.isSaddled() && first instanceof EntityPlayer ? first : null;
     }
 
+    /**
+     * 1.12.2's {@code EntityLiving.canPassengerSteer} also asks this. With a controlling player (saddled, a player in
+     * front) the rider's client swims it and the server follows its vehicle-move packets; without the override neither
+     * side moved it.
+     */
+    @Override
+    public boolean canBeSteered() {
+        return this.controllingPlayer() != null;
+    }
+
+    /** 1.21's {@code Mob.updateControlFlags}: while a player steers, goals that move or look stand down. */
+    public boolean isPlayerControlled() {
+        return this.controllingPlayer() != null;
+    }
+
     @Nullable
     EntityPlayer controllingPlayer() {
         Entity e = this.getControllingPassenger();
@@ -756,6 +771,9 @@ public abstract class EntityAbstractNautilus extends EntityTameable implements I
 
     @Override
     protected void updateAITasks() {
+        if (this.isPlayerControlled()) {
+            this.navigator.clearPath();
+        }
         this.checkRestriction();
         NautilusAi.updateMemories(this);
         super.updateAITasks();
