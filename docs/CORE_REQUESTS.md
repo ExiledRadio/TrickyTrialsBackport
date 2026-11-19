@@ -100,7 +100,8 @@ the ones to add (`manual_map.py`), and 1.21.5's iron-block and iron-door sounds 
 ## 7. Waterloggable blocks (for the adapter, later)
 
 **Done here:** Core's adapter exists; stairs, slabs (not double slabs), copper grates and trapdoors, the heavy core
-and the walls (Core's `ModernWall`) implement `Waterloggable`. Later streams' blocks do the same as they come.
+and the walls (Core's `ModernWall`) implement `Waterloggable`; so do copper chests and copper golem statues (stream 19).
+Later streams' blocks do the same as they come.
 
 1.21-1.21.11 blocks that vanilla makes waterloggable, to move onto Core's `Waterloggable` adapter when it
 exists (until then they are not waterloggable): copper grates and copper trapdoors; every stairs, slab

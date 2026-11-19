@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "copper_golem_pose=standing,facing=south": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=standing,facing=west": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=standing,facing=north": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=standing,facing=east": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=sitting,facing=south": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=sitting,facing=west": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=sitting,facing=north": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=sitting,facing=east": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=running,facing=south": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=running,facing=west": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=running,facing=north": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=running,facing=east": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=star,facing=south": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=star,facing=west": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=star,facing=north": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    },
+    "copper_golem_pose=star,facing=east": {
+      "model": "trickytrialsbackport:oxidized_copper_golem_statue"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "trickytrialsbackport:copper_chest"
+    },
+    "facing=west": {
+      "model": "trickytrialsbackport:copper_chest"
+    },
+    "facing=north": {
+      "model": "trickytrialsbackport:copper_chest"
+    },
+    "facing=east": {
+      "model": "trickytrialsbackport:copper_chest"
+    }
+  }
+}

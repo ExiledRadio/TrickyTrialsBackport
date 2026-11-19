@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_exposed_copper_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trickytrialsbackport:exposed_copper_chest"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trickytrialsbackport:waxed_exposed_copper_chest_from_honeycomb"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_exposed_copper_chest"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "trickytrialsbackport:waxed_exposed_copper_chest_from_honeycomb"
+    ]
+  }
+}

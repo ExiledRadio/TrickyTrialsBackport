@@ -3159,5 +3159,475 @@
       "trickytrialsbackport:block/chiseled_bookshelf/step5"
     ],
     "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "entity.copper_golem.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/regular/death"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.death"
+  },
+  "entity.copper_golem.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/regular/hurt1",
+      "trickytrialsbackport:mob/coppergolem/regular/hurt2",
+      "trickytrialsbackport:mob/coppergolem/regular/hurt3",
+      "trickytrialsbackport:mob/coppergolem/regular/hurt4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.hurt"
+  },
+  "entity.copper_golem.item_drop": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/item_drop"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.item_drop"
+  },
+  "entity.copper_golem.item_no_drop": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/item_no_drop"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.item_no_drop"
+  },
+  "entity.copper_golem.no_item_get": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/no_item_get"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.no_item_get"
+  },
+  "entity.copper_golem.no_item_no_get": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/no_item_no_get"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.no_item_no_get"
+  },
+  "entity.copper_golem.shear": {
+    "sounds": [
+      "trickytrialsbackport:mob/sheep/shear"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.item.shears.shear"
+  },
+  "entity.copper_golem.spawn": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/spawn"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.spawn"
+  },
+  "entity.copper_golem.spin": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin3"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin4"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin5"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin6"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/spin7"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.spin"
+  },
+  "entity.copper_golem.step": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step3"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step4"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step5"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step6"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step7"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step8"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/regular/step9"
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.copper_golem_become_statue": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_statue/become_statue1",
+      "trickytrialsbackport:block/copper_statue/become_statue2",
+      "trickytrialsbackport:block/copper_statue/become_statue3",
+      "trickytrialsbackport:block/copper_statue/become_statue4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem_become_statue"
+  },
+  "entity.copper_golem_weathered.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/weathered/death"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.death"
+  },
+  "entity.copper_golem_weathered.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/weathered/hurt1",
+      "trickytrialsbackport:mob/coppergolem/weathered/hurt2",
+      "trickytrialsbackport:mob/coppergolem/weathered/hurt3",
+      "trickytrialsbackport:mob/coppergolem/weathered/hurt4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.hurt"
+  },
+  "entity.copper_golem_weathered.spin": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin3"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin4"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin5"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin6"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/spin7"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.spin"
+  },
+  "entity.copper_golem_weathered.step": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step3"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step4"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step5"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step6"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step7"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step8"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/weathered/step9"
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.copper_golem_oxidized.death": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/oxidized/death"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.death"
+  },
+  "entity.copper_golem_oxidized.hurt": {
+    "sounds": [
+      "trickytrialsbackport:mob/coppergolem/oxidized/hurt1",
+      "trickytrialsbackport:mob/coppergolem/oxidized/hurt2",
+      "trickytrialsbackport:mob/coppergolem/oxidized/hurt3",
+      "trickytrialsbackport:mob/coppergolem/oxidized/hurt4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.hurt"
+  },
+  "entity.copper_golem_oxidized.spin": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin3"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin4"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin5"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin6"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/spin7"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.entity.copper_golem.spin"
+  },
+  "entity.copper_golem_oxidized.step": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step3"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step4"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step5"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step6"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step7"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step8"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:mob/coppergolem/oxidized/step9"
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.copper_chest.open": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_open1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_open2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_open3"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_chest.open"
+  },
+  "block.copper_chest.close": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_close1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_close2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_close3"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_chest.close"
+  },
+  "block.copper_chest_weathered.open": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_weathered_open1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_weathered_open2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_weathered_open3"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_chest.open"
+  },
+  "block.copper_chest_weathered.close": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_weathered_close1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_weathered_close2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_weathered_close3"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_chest.close"
+  },
+  "block.copper_chest_oxidized.open": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_oxidized_open1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_oxidized_open2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_oxidized_open3"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_chest.open"
+  },
+  "block.copper_chest_oxidized.close": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_oxidized_close1"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_oxidized_close2"
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "trickytrialsbackport:block/copper_chest/copper_chest_oxidized_close3"
+      }
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.copper_chest.close"
+  },
+  "block.copper_golem_statue.break": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_statue/break1",
+      "trickytrialsbackport:block/copper_statue/break2",
+      "trickytrialsbackport:block/copper_statue/break3"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.copper_golem_statue.fall": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_statue/hit1",
+      "trickytrialsbackport:block/copper_statue/hit2",
+      "trickytrialsbackport:block/copper_statue/hit3",
+      "trickytrialsbackport:block/copper_statue/hit4"
+    ],
+    "subtitle": "subtitles.trickytrialsbackport.block.generic.fall"
+  },
+  "block.copper_golem_statue.hit": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_statue/hit1",
+      "trickytrialsbackport:block/copper_statue/hit2",
+      "trickytrialsbackport:block/copper_statue/hit3",
+      "trickytrialsbackport:block/copper_statue/hit4"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.copper_golem_statue.place": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_statue/place1",
+      "trickytrialsbackport:block/copper_statue/place2",
+      "trickytrialsbackport:block/copper_statue/place3",
+      "trickytrialsbackport:block/copper_statue/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.copper_golem_statue.step": {
+    "sounds": [
+      "trickytrialsbackport:block/copper_statue/hit1",
+      "trickytrialsbackport:block/copper_statue/hit2",
+      "trickytrialsbackport:block/copper_statue/hit3",
+      "trickytrialsbackport:block/copper_statue/hit4"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }
