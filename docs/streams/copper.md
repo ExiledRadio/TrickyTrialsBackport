@@ -45,6 +45,9 @@ Package `copper`. Config `copper` (`enabled`, `oxidation`, `waxItems`, `generate
     copper, or on any `lightning_rod` standing on it, cleans that block and walks 3-5 random paths
     scraping our copper. Wax is any item in `copper.waxItems` (Buzzy Bees' honeycomb by default) or with
     the ore name `honeycomb`, as Caves & Cliffs decided.
+*   **Doors and water** (patch P25, `asm/DoorWaterTransformer`, docs/PATCHES.md): as in vanilla, a door placed in
+    water pushes the water out, holds none, and water never flows into it. Under Fluidlogged API's flow our doors
+    (and the pale oak door) were washed away instead.
 *   **Shared fix**: `common/WindBurst`'s rays now pass through every block but barrier and bedrock, as 1.21's
     wind charge calculator gives other blocks no resistance (copper's 6 had stopped them).
 
@@ -64,6 +67,9 @@ What the copper test checks:
     no item.
 *   Every block: metal, hardness 3, resistance 6, aging only if unwaxed and not oxidized; bulb and grate
     sounds; grates see-through; doors drop without a tool; a stone pickaxe for the rest.
+*   Doors and water: P25 applied; oak, iron, pale oak and three copper doors placed with the item into a 2-deep
+    still pool, into flowing water beside a source, and beside a new source keep both halves after 40 rounds of
+    block ticks; ours hold no water (Fluidlogged API waterlogs vanilla's doors itself).
 *   Recipes: exposed bulbs from exposed copper, waxed bulbs from waxed copper, grates, chiseled from slabs,
     doors 6 to 3, trapdoors 4 to 1, waxing in the grid; alone also the copies' block, stairs and smelting.
 *   Aging over 3000 random ticks: a lone lit bulb ends oxidized, still lit, light 4; waxed copper never
