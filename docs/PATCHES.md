@@ -33,6 +33,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P20 | spears | `EntityZombie.setEquipmentBasedOnDifficulty` / `EntityPigZombie.setEquipmentBasedOnDifficulty` (`func_180481_a`) | before each return: `SpearEvents.spawnWeapon(this, difficulty)` |
 | P21 | spears (client) | `ModelBiped.setRotationAngles` (`func_78087_a`) | head: `SpearModelHooks.pre(this, entity)`; before each return: `SpearModelHooks.post(this)` (entity stashed by `pre`; Mojang frames drop the parameter by the returns) |
 | P24a | mounts | `EntityZombieHorse`: `processInteract` (`func_184645_a`); new `wearsArmor` (`func_190677_dK`), `isArmor` (`func_190682_f`), `canDespawn` (`func_70692_ba`) | head of `processInteract`: `switch (MountsHooks.zombieHorseInteract(this, player, hand))` (1 returns true, 2 false, 0 runs 1.12.2's body); the three new overrides return `MountsHooks.zombieHorseWearsArmor()`, `zombieHorseIsArmor(stack)`, `zombieHorseCanDespawn(this)` |
+| P25 | copper | Fluidlogged API's `ISpecializedFluidNeighborInfo$Vanilla.canDisplaceI` (not a vanilla class) | the door/sign/ladder/sugar cane branch's `return true` becomes `return DoorWater.displaced(state)` (false for our doors) |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -161,3 +162,27 @@ equipping a saddle or armor directly as 1.21.11 does, opening the inventory when
 or SRG to match the class being patched (`processInteract`'s own name says which). Not applied if another mod already
 overrides one of the three. With `mounts.zombieHorses` (or `mounts.enabled`) off the hooks answer 1.12.2's way: no
 armor, no despawning, and 0 (1.12.2's own body).
+
+## P25: water stops at our doors (1.13 and later, through 1.21.11)
+
+Reported on a real client: a copper door placed in water vanished at once. Every door of ours did it (copper doors at
+every stage, waxed or not, and the pale oak door); vanilla's did not. In vanilla a door is never waterlogged and water
+never flows into it (1.12.2's `BlockDynamicLiquid.isBlocked`, 1.21.11's `FlowingFluid.canHoldFluid`, both refusing any
+door).
+
+Fluidlogged API 3.3.3 (which Backport Core requires) replaces vanilla's flow. Its `canDisplaceI` is `isBlocked` turned
+around, except the door/sign/ladder/sugar cane branch, which still says `true`: water may replace the block. A block is
+replaced when it is displaceable and cannot hold the water. Fluidlogged API's own list makes every door waterloggable,
+so vanilla's doors take the water instead (that is its choice for vanilla blocks, left alone). Backport Core's
+`WaterRules` keeps the family's doors dry, as 1.13 and later do, so ours were displaceable and unable to hold water: the
+water next to a door placed in water flowed into it and replaced both halves, and water spreading beside a door did the
+same. Flow overrides (`canFluidFlow`) are not asked on that path, so no event or setting reaches it.
+
+The patch puts `DoorWater.displaced(state)` in place of that branch's `return true`. It answers `false` for our doors
+(`CopperBlocks.Door`, `WoodBlocks.Door`) and `true` for everything else, so nothing but our doors changes. The state's
+local is live at the branch (javac's own frame keeps it), so no frame is added. Skipped, and logged, if the branch is not
+found. Without Fluidlogged API the class does not exist and nothing is patched; vanilla's `isBlocked` already stops
+water at a door.
+
+Every family door Backport Core keeps dry has the same problem; the place for a fix covering all of them is Core.
+

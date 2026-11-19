@@ -65,6 +65,7 @@ public final class CopperSelfTest implements SelfTest {
         interactions(c, area);
         bulbs(c, area);
         doors(c, area);
+        doorsInWater(c);
         lightning(c, area);
         if (!owner) {
             ore(c);
@@ -275,6 +276,75 @@ public final class CopperSelfTest implements SelfTest {
         ours("copper_trapdoor").onBlockActivated(c.world, trap, c.world.getBlockState(trap), player, EnumHand.MAIN_HAND, EnumFacing.UP,
                 0.5F, 0.5F, 0.5F);
         c.ok(!c.world.getBlockState(trap).getValue(BlockTrapDoor.OPEN), "and a hand closes it");
+    }
+
+    /**
+     * 1.21.11: a door placed into water (still or flowing) displaces it, holds none, and water never flows into
+     * or breaks it. Vanilla's oak and iron doors and the pale oak door are checked alongside ours.
+     */
+    private void doorsInWater(Check c) {
+        Item[] doors = {Items.OAK_DOOR, Items.IRON_DOOR, ForgeRegistries.ITEMS.getValue(Content.id("pale_oak_door")),
+                ForgeRegistries.ITEMS.getValue(Content.id("copper_door")), ForgeRegistries.ITEMS.getValue(Content.id("oxidized_copper_door")),
+                ForgeRegistries.ITEMS.getValue(Content.id("waxed_copper_door"))};
+        c.ok(com.exiledradio.trickytrialsbackport.asm.DoorWaterTransformer.applied, "P25 applied (Fluidlogged API's flow)");
+        BlockPos floor = Pools.pool(c, 2);
+        FakePlayer player = c.player("water doors", floor.up());
+        for (int i = 0; i < doors.length; i++) {
+            if (doors[i] == null) {
+                continue;
+            }
+            // Still water, two deep: both halves go into water.
+            BlockPos at = floor.add(1 + 2 * i, 0, 2);
+            place(c, player, doors[i], at);
+            Pools.settle(c.world);
+            dryDoor(c, at.up(), doors[i] + " in still water");
+        }
+        // Flowing water: a door placed into a flowing block beside a source.
+        BlockPos area = c.area();
+        for (int i = 0; i < doors.length; i++) {
+            if (doors[i] == null) {
+                continue;
+            }
+            BlockPos source = area.add(2 + 5 * i, 0, 4);
+            BlockPos at = source.add(0, -1, 1);
+            c.world.setBlockState(source, Blocks.WATER.getDefaultState(), 2);
+            c.world.setBlockState(at.up(), Blocks.FLOWING_WATER.getDefaultState().withProperty(net.minecraft.block.BlockLiquid.LEVEL, 1), 2);
+            c.world.scheduleUpdate(at.up(), Blocks.FLOWING_WATER, 1);
+            c.world.scheduleUpdate(source, Blocks.WATER, 1);
+            IBlockState flowing = c.world.getBlockState(at.up());
+            c.ok(flowing.getMaterial() == Material.WATER && flowing.getValue(net.minecraft.block.BlockLiquid.LEVEL) > 0,
+                    doors[i] + ": flowing water at the spot (got " + flowing + ")");
+            place(c, player, doors[i], at);
+            Pools.settle(c.world);
+            dryDoor(c, at.up(), doors[i] + " in flowing water");
+            // And a door on a dry floor next to a new source: the water flows around it, not into it.
+            BlockPos dry = area.add(2 + 5 * i, -1, 14);
+            place(c, player, doors[i], dry);
+            c.world.setBlockState(dry.up().west(), Blocks.FLOWING_WATER.getDefaultState());
+            Pools.settle(c.world);
+            dryDoor(c, dry.up(), doors[i] + " beside a source");
+        }
+    }
+
+    private static void place(Check c, FakePlayer player, Item door, BlockPos floor) {
+        player.rotationYaw = 0;
+        player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(door));
+        door.onItemUse(player, c.world, floor, EnumHand.MAIN_HAND, EnumFacing.UP, 0.5F, 1.0F, 0.5F);
+    }
+
+    private static void dryDoor(Check c, BlockPos lower, String what) {
+        IBlockState low = c.world.getBlockState(lower);
+        IBlockState up = c.world.getBlockState(lower.up());
+        boolean both = low.getBlock() instanceof BlockDoor && up.getBlock() == low.getBlock()
+                && low.getValue(BlockDoor.HALF) == BlockDoor.EnumDoorHalf.LOWER && up.getValue(BlockDoor.HALF) == BlockDoor.EnumDoorHalf.UPPER;
+        c.ok(both, what + ": both halves stay (got " + low + " / " + up + ")");
+        // Fluidlogged API waterlogs vanilla's doors on purpose (its built-in list); ours stay dry, as in 1.21.
+        if (!low.getBlock().getClass().getName().startsWith("com.exiledradio.")) {
+            return;
+        }
+        c.ok(git.jbredwards.fluidlogged_api.api.util.FluidloggedUtils.getFluidState(c.world, lower).isEmpty()
+                && git.jbredwards.fluidlogged_api.api.util.FluidloggedUtils.getFluidState(c.world, lower.up()).isEmpty(),
+                what + ": holds no water");
     }
 
     private void lightning(Check c, BlockPos area) {

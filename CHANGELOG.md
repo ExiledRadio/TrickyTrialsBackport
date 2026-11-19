@@ -1,5 +1,8 @@
 # 0.1.0 (unreleased)
 
+*   **Fixed: copper doors and the pale oak door vanished in water.** Placed in water, or with water spreading next to
+    them, Fluidlogged API's flow replaced them. Now, as in vanilla, a door pushes the water out and water stops at it
+    (patch P25).
 *   **1.21's changes to existing things** (stream 25, each with its own setting under Smaller Changes): mounts and
     vehicles go through nether and end portals with their riders; ender pearls teleport across dimensions, load the
     chunks around them and leave with their thrower; primed TNT uses nether portals; 1.21.2's portal cooldowns; the
