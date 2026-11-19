@@ -235,7 +235,7 @@ public final class SpearClient {
                 TrickyTrialsBackport.LOGGER.warn("Spear model {} is incomplete; it is held as its icon.", name);
                 continue;
             }
-            registry.putObject(inventory(name), new ByPerspective(icon, held));
+            registry.putObject(inventory(name), new ByPerspective(icon, new SeamlessHeldModel(held)));
         }
     }
 
