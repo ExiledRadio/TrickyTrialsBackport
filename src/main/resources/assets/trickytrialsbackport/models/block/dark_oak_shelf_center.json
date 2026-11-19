@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_center",
+  "textures": {
+    "all": "trickytrialsbackport:block/dark_oak_shelf",
+    "particle": "trickytrialsbackport:block/stripped_dark_oak_log"
+  }
+}

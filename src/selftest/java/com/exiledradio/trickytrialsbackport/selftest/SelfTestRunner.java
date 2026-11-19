@@ -61,6 +61,7 @@ public final class SelfTestRunner {
             new FloraSelfTest(),
             new AnimalsSelfTest(),
             new GhastSelfTest(),
+            new ShelvesSelfTest(),
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
             new TweaksSelfTest(),

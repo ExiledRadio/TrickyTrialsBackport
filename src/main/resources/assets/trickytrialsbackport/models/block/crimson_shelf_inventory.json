@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_inventory",
+  "textures": {
+    "all": "trickytrialsbackport:block/crimson_shelf",
+    "particle": "trickytrialsbackport:block/stripped_crimson_stem"
+  }
+}
