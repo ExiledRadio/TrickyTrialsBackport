@@ -546,6 +546,18 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Nautilus fields ---
+        @Config.RequiresMcRestart
+        @Config.Comment("Nautiluses spawn in oceans, 5 to 25 blocks below sea level, as in 1.21.11.")
+        @Config.LangKey("config.trickytrialsbackport.nautilus.naturalSpawn")
+        public boolean naturalSpawn = true;
+
+        @Config.Comment("With Update Aquatic, half of the drowned that spawn with a trident outside rivers ride a zombie nautilus.")
+        @Config.LangKey("config.trickytrialsbackport.nautilus.drownedRiders")
+        public boolean drownedRiders = true;
+
+        @Config.Comment("With Update Aquatic, shipwreck, buried treasure and ocean ruin chests can hold nautilus armor.")
+        @Config.LangKey("config.trickytrialsbackport.nautilus.chestLoot")
+        public boolean chestLoot = true;
         // --- end Nautilus ---
     }
 

@@ -72,6 +72,7 @@ public final class SelfTestRunner {
             new CopperGolemSelfTest(),
             new SpearsSelfTest(),
             new MountsSelfTest(),
+            new NautilusSelfTest(),
     };
 
     private final List<String> wanted;

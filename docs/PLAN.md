@@ -276,7 +276,12 @@ wrapping block, so it never meets a stream worktree's server.
 
 - **Nautilus** (neutral, tamed with pufferfish, rideable underwater, Breath of the Nautilus for its rider),
   **zombie nautilus** (with a drowned rider when Update Aquatic provides one), nautilus armor in five
-  tiers, chest loot.
+  tiers, chest loot. Built: `docs/streams/nautilus.md`.
+  **Status (2026-11-20):** done on `claude/tr-nautilus-dfdefe`, not merged. Entity ids 60 and 61, packet 115, no patches.
+  Nautilus test 252/0; `selftest=all` from a fresh world 5405/0 (two other runs failed only the ghast test's flaky
+  still-timeout checks, as on `main`); assets 0 errors; release jar without `/selftest/`. Left: nothing drawn or client
+  input tested in game; Update Aquatic's items tested through stand-ins; drowned from ocean ruins get no mount; no shell
+  without Update Aquatic (`CORE_REQUESTS.md` #13).
 
 ### 24. Mounts (1.21.11)
 

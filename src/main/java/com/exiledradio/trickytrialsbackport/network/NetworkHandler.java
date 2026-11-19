@@ -63,5 +63,8 @@ public final class NetworkHandler {
                 com.exiledradio.trickytrialsbackport.spear.SpearJabMessage.class, 110, Side.SERVER);
         channel.registerMessage(com.exiledradio.trickytrialsbackport.spear.SpearHitMessage.Handler.class,
                 com.exiledradio.trickytrialsbackport.spear.SpearHitMessage.class, 111, Side.CLIENT);
+        // 115-119 nautilus
+        channel.registerMessage(com.exiledradio.trickytrialsbackport.nautilus.NautilusOpenMessage.Handler.class,
+                com.exiledradio.trickytrialsbackport.nautilus.NautilusOpenMessage.class, 115, Side.SERVER);
     }
 }
