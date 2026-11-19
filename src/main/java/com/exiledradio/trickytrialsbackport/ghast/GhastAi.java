@@ -107,7 +107,7 @@ final class GhastAi {
 
         @Override
         public boolean shouldExecute() {
-            return !this.ghast.isOnStillTimeout() && (this.ghast.isInWater() || this.ghast.isInLava());
+            return !this.ghast.isOnStillTimeout() && !this.ghast.isPlayerControlled() && (this.ghast.isInWater() || this.ghast.isInLava());
         }
 
         @Override
@@ -135,7 +135,7 @@ final class GhastAi {
 
         @Override
         public boolean shouldExecute() {
-            if (this.ghast.ticksExisted < this.calmUntil) {
+            if (this.ghast.ticksExisted < this.calmUntil || this.ghast.isPlayerControlled()) {
                 return false;
             }
             this.player = temptingPlayer(this.ghast);
@@ -182,6 +182,9 @@ final class GhastAi {
 
         @Override
         public boolean shouldExecute() {
+            if (this.ghast.isPlayerControlled()) {
+                return false;
+            }
             EntityMoveHelper move = this.ghast.getMoveHelper();
             if (!move.isUpdating()) {
                 return true;
@@ -412,6 +415,11 @@ final class GhastAi {
 
         @Override
         public void onUpdateLook() {
+            if (this.ghast.isPlayerControlled()) {
+                // The rider's side turns it (tickRidden) and the server takes that turn from the vehicle-move packets;
+                // facing its server-side motion (zero under a rider) would turn it away for everyone watching.
+                return;
+            }
             if (this.ghast.isOnStillTimeout()) {
                 float off = wrapDegrees90(this.ghast.rotationYaw);
                 this.ghast.rotationYaw -= off;
