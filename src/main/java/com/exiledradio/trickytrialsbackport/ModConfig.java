@@ -471,6 +471,25 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- CopperGolem fields ---
+        @Config.Comment("A carved pumpkin or jack o'lantern placed on a copper block builds a copper golem, and the copper block turns into a copper chest.")
+        @Config.LangKey("config.trickytrialsbackport.copperGolem.building")
+        public boolean building = true;
+
+        @Config.Comment("Copper golems carry items from copper chests to chests and trapped chests nearby.")
+        @Config.LangKey("config.trickytrialsbackport.copperGolem.sorting")
+        public boolean sorting = true;
+
+        @Config.Comment("Copper golems, copper chests and copper golem statues oxidize over time.")
+        @Config.LangKey("config.trickytrialsbackport.copperGolem.oxidation")
+        public boolean oxidation = true;
+
+        @Config.Comment("A fully oxidized copper golem sometimes turns into a copper golem statue.")
+        @Config.LangKey("config.trickytrialsbackport.copperGolem.statues")
+        public boolean statues = true;
+
+        @Config.Comment("Iron golems sometimes put a poppy on a copper golem's head.")
+        @Config.LangKey("config.trickytrialsbackport.copperGolem.ironGolemFlowers")
+        public boolean ironGolemFlowers = true;
         // --- end CopperGolem ---
     }
 

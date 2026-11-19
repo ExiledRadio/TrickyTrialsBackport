@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_oxidized_copper_golem_statue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "trickytrialsbackport:oxidized_copper_golem_statue"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "trickytrialsbackport:waxed_oxidized_copper_golem_statue_from_honeycomb"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_oxidized_copper_golem_statue"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "trickytrialsbackport:waxed_oxidized_copper_golem_statue_from_honeycomb"
+    ]
+  }
+}

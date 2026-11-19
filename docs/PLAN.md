@@ -249,7 +249,7 @@ wrapping block, so it never meets a stream worktree's server.
 
 - **Copper golem** (carved pumpkin on a copper block; 12 HP; oxidizes; sorts items from copper chests into
   wooden chests within 32 x 8 blocks; turns into a statue when fully oxidized), **copper golem statue**
-  (poses, comparator), **copper chest** (four stages, waxed).
+  (poses, comparator), **copper chest** (four stages, waxed). Built: `docs/streams/coppergolem.md`.
 
 ### 20. Copper tools and items (1.21.9)
 

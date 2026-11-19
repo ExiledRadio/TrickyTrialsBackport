@@ -80,6 +80,7 @@ public final class TrickyTrialsBackport {
             com.exiledradio.trickytrialsbackport.tweaks.client.TweaksClient.init();
             com.exiledradio.trickytrialsbackport.locator.client.LocatorClient.init();
             com.exiledradio.trickytrialsbackport.coppergear.client.CopperGearClient.init();
+            com.exiledradio.trickytrialsbackport.coppergolem.client.CopperGolemClient.init();
         }
     }
 
@@ -94,6 +95,7 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.lookfeel.LookAndFeel.init();
         com.exiledradio.trickytrialsbackport.tweaks.EnderPearlChunks.init();
         com.exiledradio.trickytrialsbackport.locator.LocatorBar.init();
+        com.exiledradio.trickytrialsbackport.coppergolem.CopperGolemEvents.init();
     }
 
     @Mod.EventHandler
