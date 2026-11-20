@@ -181,8 +181,11 @@ What the spears test checks:
 
 *   **The third-person jab** runs on 1.12.2's swing length (6 ticks) rather than the tier's 13-23; first person uses the
     tier's own swing time. The third-person charge pose has no in-hand item motion (`thirdPersonUseItem`), only the arm.
-*   **Zombie-shaped models** (zombies, husks, zombie villagers, zombie pigmen) keep their arms-forward pose when charging,
-    since `ModelZombie` sets its arms after `ModelBiped`'s method.
+*   **Mob poses** (fixed 2026-11-20, branch `tr-spear-mobpose`): a mob holding a spear now takes 1.21.11's spear arm
+    pose idle too (spear upright at its side), raised further while charging; zombie-kind models (zombies, husks, zombie
+    villagers, zombie pigmen, Update Aquatic's drowned) drop their arms-out pose while holding one, both arms in the
+    spear pose, as `AbstractZombieRenderer` does. Before, mobs pointed the spear when idle and held it upright when
+    charging. Players are unchanged (plain item pose idle, spear pose charging).
 *   **Mobs' plain melee with a spear** uses 1.12.2's mob attack (damage type `mob`, no Lunge). It rarely happens: the
     spear charge task outranks melee whenever a zombie has a target.
 *   **Piglins** carry golden spears in 1.21.11 (1 crossbow-less piglin in 10); piglins are Nether Update Backport's, so

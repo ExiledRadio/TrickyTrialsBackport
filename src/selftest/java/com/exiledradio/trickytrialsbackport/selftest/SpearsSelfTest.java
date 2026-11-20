@@ -66,6 +66,7 @@ public final class SpearsSelfTest implements SelfTest {
         }
         items(c);
         tiers(c);
+        poses(c);
         recipes(c);
         lunge(c);
         anvil(c);
@@ -167,6 +168,47 @@ public final class SpearsSelfTest implements SelfTest {
         c.ok(d.test(0, 1.61, 0.0, SpearTier.MOB_SPEED_FACTOR) && !d.test(0, 1.59, 0.0, SpearTier.MOB_SPEED_FACTOR), "a mob needs a fifth of that");
         SpearTier.Condition h = SpearTier.IRON.damage;
         c.ok(h.test(225, 0.0, 4.6, 1.0) && !h.test(225, 9.0, 4.5, 1.0), "damage needs 4.6 b/s faster than the target");
+    }
+
+    /** 1.21.11's third-person spear arm ({@code ArmPose.SPEAR}): which arms take it, and its angles. */
+    private void poses(Check c) {
+        final float d = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.DEG;
+        // Which arms: a mob always on the spear arm; a zombie also on the other; a player only while charging.
+        c.ok(com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.spearArm(false, true, false, false, false),
+                "a mob just holding a spear takes the spear pose (idle too)");
+        c.ok(!com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.spearArm(false, false, false, false, true),
+                "a mob's other arm does not");
+        c.ok(com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.spearArm(false, false, false, true, true),
+                "a zombie's other arm does (its arms-out pose is skipped)");
+        c.ok(!com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.spearArm(true, true, false, false, false),
+                "a player just holding a spear keeps the plain item pose");
+        c.ok(com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.spearArm(true, true, true, false, false),
+                "a charging player takes the spear pose");
+        // Angles, level head, not charging: the arm 44 degrees down from level (spear upright with the in-hand tilt),
+        // not straight out (the old zombie look, spear pointing).
+        float[] idle = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(0.0F, 0.0F, 0.0F, true, SpearTier.IRON, 0.0F, false);
+        c.ok(Math.abs(idle[0] - (float) (-Math.PI / 2 + 0.8)) < 1e-5F && Math.abs(idle[0] / d + 44.16F) < 0.05F,
+                "idle arm: -pi/2 + 0.8 (-44.2 degrees), got " + idle[0] / d);
+        c.ok(Math.abs(idle[1] + 0.1F) < 1e-6F && idle[2] == 0.0F, "turned in 0.1 (right arm), no roll");
+        float[] left = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(0.0F, 0.0F, 0.0F, false, SpearTier.IRON, 0.0F, false);
+        c.ok(Math.abs(left[1] - 0.1F) < 1e-6F && left[0] == idle[0], "the left arm mirrors it");
+        float[] down = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(30.0F * d, 0.0F, 0.0F, true, SpearTier.IRON, 0.0F, false);
+        c.ok(Math.abs(down[0] - idle[0] - 30.0F * d) < 1e-5F, "it follows the head's pitch");
+        float[] up = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(-90.0F * d, 0.0F, 0.0F, true, SpearTier.IRON, 0.0F, false);
+        c.ok(Math.abs(up[0] / d + 120.0F) < 0.01F, "clamped at -120 degrees looking straight up: " + up[0] / d);
+        float[] side = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(0.0F, 80.0F * d, 0.0F, true, SpearTier.IRON, 0.0F, false);
+        c.ok(Math.abs(side[1] / d - 60.0F) < 0.01F, "turn clamped at 60 degrees: " + side[1] / d);
+        float[] glide = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(0.0F, 0.0F, 0.0F, true, SpearTier.IRON, 0.0F, true);
+        c.ok(Math.abs(glide[0] - (idle[0] - 0.9599311F)) < 1e-5F, "55 degrees higher gliding");
+        // Charging: raised 40 degrees by the middle of the delay's first half, back to 20 by the end of the delay.
+        float[] raised = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(0.0F, 0.0F, 0.0F, true, SpearTier.IRON,
+                SpearTier.IRON.delayTicks * 0.5F, false);
+        c.ok(Math.abs(raised[0] - (idle[0] - 40.0F * d)) < 1e-4F, "half the delay into a charge: 40 degrees higher, got "
+                + (raised[0] - idle[0]) / d);
+        float[] ready = com.exiledradio.trickytrialsbackport.spear.SpearPoseMath.handUse(0.0F, 0.0F, 0.0F, true, SpearTier.IRON,
+                SpearTier.IRON.delayTicks, false);
+        c.ok(Math.abs(ready[0] - (idle[0] - 30.0F * d)) < 1e-4F, "at the end of the delay: -40 + 30 - 20 = 30 higher, got "
+                + (ready[0] - idle[0]) / d);
     }
 
     private void recipes(Check c) {

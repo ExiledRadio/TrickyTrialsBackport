@@ -31,7 +31,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P19 | animals | `EntityWolf.getAmbientSound` / `getHurtSound` / `getDeathSound` (`func_184639_G` / `func_184601_bQ` / `func_184615_bR`) | each returned sound becomes `AnimalsHooks.wolfSound(sound, this)` |
 | P16 | copperGear | `EntityLiving.setEquipmentBasedOnDifficulty` (`func_180481_a`) | head: `if (CopperGearHooks.equipArmor(this, difficulty)) return;` |
 | P20 | spears | `EntityZombie.setEquipmentBasedOnDifficulty` / `EntityPigZombie.setEquipmentBasedOnDifficulty` (`func_180481_a`) | before each return: `SpearEvents.spawnWeapon(this, difficulty)` |
-| P21 | spears (client) | `ModelBiped.setRotationAngles` (`func_78087_a`) | head: `SpearModelHooks.pre(this, entity)`; before each return: `SpearModelHooks.post(this)` (entity stashed by `pre`; Mojang frames drop the parameter by the returns) |
+| P21 | spears (client) | `ModelBiped.setRotationAngles` (`func_78087_a`) | head: `SpearModelHooks.pre(this, entity)`; before each return: `SpearModelHooks.post(this)` (entity stashed by `pre`; Mojang frames drop the parameter by the returns); `ModelZombie` / `ModelZombieVillager.setRotationAngles`, before each return: `SpearModelHooks.zombieArms(this)` |
 | P24a | mounts | `EntityZombieHorse`: `processInteract` (`func_184645_a`); new `wearsArmor` (`func_190677_dK`), `isArmor` (`func_190682_f`), `canDespawn` (`func_70692_ba`) | head of `processInteract`: `switch (MountsHooks.zombieHorseInteract(this, player, hand))` (1 returns true, 2 false, 0 runs 1.12.2's body); the three new overrides return `MountsHooks.zombieHorseWearsArmor()`, `zombieHorseIsArmor(stack)`, `zombieHorseCanDespawn(this)` |
 | P25 | copper | Fluidlogged API's `ISpecializedFluidNeighborInfo$Vanilla.canDisplaceI` (not a vanilla class) | the door/sign/ladder/sugar cane branch's `return true` becomes `return DoorWater.displaced(state)` (false for our doors) |
 
@@ -146,8 +146,17 @@ charge wears on: `SpearAnimations.thirdPersonHandUse`) and a `STAB` swing (a thr
 `thirdPersonAttackHand`). 1.12.2's `ModelBiped` picks its arm angles in `setRotationAngles` with nothing to hook
 between that and drawing, so the head call hides a spear's swing from 1.12.2's angles (`swingProgress` to 0) and the
 return call restores it and sets the spear's angles. Armor models pose from the same entity through the same method,
-and `ModelPlayer` copies the arms to its sleeves after `ModelBiped`'s method returns, so both follow. Zombie-like
-models (`ModelZombie`) set their own arms after `super` and keep them. Off (`spears.enabled`), both calls return at once.
+and `ModelPlayer` copies the arms to its sleeves after `ModelBiped`'s method returns, so both follow.
+
+A mob (1.21.11's `HumanoidMobRenderer`) takes `ArmPose.SPEAR` on any arm holding a spear, idle too: the arm about 44
+degrees down from level along the look (`-pi/2 + head pitch + 0.8`), which with `spear_in_hand`'s tilt holds the spear
+upright; a charge raises it from there. A player (`AvatarRenderer`) takes it only while charging, keeping the plain
+item pose otherwise. Zombie-kind renderers (`AbstractZombieRenderer`) give the other arm the spear pose too, and
+`AnimationUtils.animateZombieArms` skips the arms-out pose while the held item jabs. 1.12.2's `ModelZombie` and
+`ModelZombieVillager` set their arms out after `ModelBiped`'s method, so a third hook before their returns puts back the
+arms `post` set (Update Aquatic's drowned model extends `ModelZombie`; its swimming still applies after). It takes only
+`this`, so no frame changes; family-notes' `ScanAll` verifies `ModelBiped`, `ModelZombie` and `ModelZombieVillager`
+patched against the real client bytes. Off (`spears.enabled`), every call returns at once.
 
 ## P24a: the 1.21.11 zombie horse (stream 24)
 
