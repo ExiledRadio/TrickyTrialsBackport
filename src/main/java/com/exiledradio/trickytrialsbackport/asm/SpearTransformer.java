@@ -18,7 +18,9 @@ import org.objectweb.asm.tree.VarInsnNode;
  *       which turns some of the weapons just rolled into spears as 1.21.11 rolls them. Off, it changes nothing.</li>
  *   <li><b>P21</b> (client): at the head of {@code ModelBiped.setRotationAngles}
  *       {@code SpearModelHooks.pre(this, entity)}, and before every return {@code SpearModelHooks.post(this)} (the entity is
- *       stashed by {@code pre}: Mojang's frames drop the parameter before the returns):
+ *       stashed by {@code pre}: Mojang's frames drop the parameter before the returns), and before every return of
+ *       {@code ModelZombie.setRotationAngles} and {@code ModelZombieVillager.setRotationAngles}
+ *       {@code SpearModelHooks.zombieArms(this)}:
  *       the spear's third-person arm.</li>
  * </ul>
  */
@@ -44,6 +46,10 @@ public final class SpearTransformer implements IClassTransformer {
         }
         if ("net.minecraft.client.model.ModelBiped".equals(transformedName)) {
             return model(transformedName, basicClass);
+        }
+        if ("net.minecraft.client.model.ModelZombie".equals(transformedName)
+                || "net.minecraft.client.model.ModelZombieVillager".equals(transformedName)) {
+            return zombieModel(transformedName, basicClass);
         }
         return basicClass;
     }
@@ -81,6 +87,24 @@ public final class SpearTransformer implements IClassTransformer {
         }
         int n = beforeReturns(m, SpearTransformer::post);
         m.instructions.insert(hook("pre"));
+        Asm.LOG.info("P21 spear pose: patched {} ({} returns).", target, n);
+        return Asm.write(node);
+    }
+
+    /** P21's zombie part: {@code SpearModelHooks.zombieArms(this)} before every return (only {@code this}, no frames). */
+    private static byte[] zombieModel(String target, byte[] bytes) {
+        ClassNode node = Asm.read(bytes);
+        MethodNode m = Asm.method(node, "setRotationAngles", "func_78087_a", MODEL_DESC);
+        if (m == null) {
+            Asm.LOG.warn("P21 spear pose: setRotationAngles not found in {}; zombie arms left as they are.", target);
+            return bytes;
+        }
+        int n = beforeReturns(m, () -> {
+            InsnList call = new InsnList();
+            call.add(new VarInsnNode(Opcodes.ALOAD, 0));
+            call.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MODEL_HOOKS, "zombieArms", "(Lnet/minecraft/client/model/ModelBiped;)V", false));
+            return call;
+        });
         Asm.LOG.info("P21 spear pose: patched {} ({} returns).", target, n);
         return Asm.write(node);
     }
