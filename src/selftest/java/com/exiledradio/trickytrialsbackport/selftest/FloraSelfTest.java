@@ -486,6 +486,7 @@ public final class FloraSelfTest implements SelfTest {
         int fireflies = 0;
         boolean fireflyByWater = true;
         boolean bushOnGrass = true;
+        String fireflyOn = null;
         for (int seed = 0; seed < 16; seed++) {
             BlockPos corner = c.area();
             c.fill(corner.add(0, -1, 0), corner.add(31, -1, 31), Blocks.GRASS.getDefaultState());
@@ -498,17 +499,25 @@ public final class FloraSelfTest implements SelfTest {
                 Block b = c.world.getBlockState(p).getBlock();
                 if (b == block("bush")) {
                     bushes++;
-                    bushOnGrass &= c.world.getBlockState(p.down()).getBlock() == Blocks.GRASS;
+                    bushOnGrass &= c.world.getBlockState(p.down()).getBlock() != Blocks.WATER
+                            && FloraContent.bush.canBlockStay(c.world, p, c.world.getBlockState(p));
                 } else if (b == block("firefly_bush")) {
                     fireflies++;
-                    fireflyByWater &= c.world.getBlockState(p.down()).getBlock() == Blocks.GRASS;
+                    // On soil it grows on: the laid grass, or a neighbor chunk's own soil decorated into the area
+                    // later (Caves & Cliffs' moss, a 1.21 #dirt block), never on the water channels.
+                    Block under = c.world.getBlockState(p.down()).getBlock();
+                    boolean soil = under != Blocks.WATER && FloraContent.fireflyBush.canBlockStay(c.world, p, c.world.getBlockState(p));
+                    if (!soil && fireflyOn == null) {
+                        fireflyOn = c.world.getBlockState(p.down()) + " at " + p.subtract(corner);
+                    }
+                    fireflyByWater &= soil;
                 }
             }
         }
         c.ok(bushes > 10, "plains grow bushes (" + bushes + " in 16 chunks)");
-        c.ok(bushOnGrass, "every bush stands on grass");
+        c.ok(bushOnGrass, "every bush stands on soil it grows on");
         c.ok(fireflies > 10, "firefly bushes grow near water (" + fireflies + ")");
-        c.ok(fireflyByWater, "every firefly bush stands on grass");
+        c.ok(fireflyByWater, "every firefly bush stands on soil it grows on" + (fireflyOn == null ? "" : ": one on " + fireflyOn));
 
         // Desert: dry grass, and flowers on 1.12.2's cacti.
         int dry = 0;

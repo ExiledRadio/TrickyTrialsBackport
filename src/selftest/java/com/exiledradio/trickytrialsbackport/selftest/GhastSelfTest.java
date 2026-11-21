@@ -656,6 +656,10 @@ public final class GhastSelfTest implements SelfTest {
     private static void stillTimeout(Check c) {
         BlockPos a = c.area();
         EntityHappyGhast g = ghast(c, a.add(16, 10, 16), false);
+        // Its goals pick at random and may nudge it in the tick below (at most flying speed x 5/3 = 0.083 a tick,
+        // well inside the 0.5 standing tolerance); a fixed seed makes that tick the same every run. Before 0.5 the
+        // tolerance was 1.0E-5, and a nudge upward left the player below the scan: the old 1-in-3 failure.
+        g.getRNG().setSeed(1L);
         for (int i = 0; i < 61; i++) {
             g.ticksExisted++;
         }
@@ -665,8 +669,11 @@ public final class GhastSelfTest implements SelfTest {
         p.setPosition(g.posX + 1.0D, g.getEntityBoundingBox().maxY, g.posZ);
         g.rotationYaw = 30.0F;
         g.motionX = 0.2D;
+        double top = g.getEntityBoundingBox().maxY;
         g.onUpdate();
-        c.ok(g.isOnStillTimeout() && g.serverStillTimeout() == 10, "player on top: still timeout " + g.serverStillTimeout());
+        boolean still = g.isOnStillTimeout() && g.serverStillTimeout() == 10;
+        c.ok(still, "player on top: still timeout " + g.serverStillTimeout() + (still ? "" : " (the top moved "
+                + (g.getEntityBoundingBox().maxY - top) + "; player listed " + c.world.playerEntities.contains(p) + ")"));
         c.ok(g.getCollisionBoundingBox() != null, "solid while still");
         g.getMoveHelper().onUpdateMoveHelper();
         c.ok(g.motionX == 0.0D, "stopped in place");

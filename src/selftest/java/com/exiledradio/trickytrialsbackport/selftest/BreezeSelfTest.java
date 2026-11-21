@@ -377,6 +377,9 @@ public final class BreezeSelfTest implements SelfTest {
 
         BlockPos area = c.area();
         EntityBreeze breeze = spawnBreeze(c, area.add(6, 0, 16));
+        // Each jump's landing spot is drawn from the breeze's own random (behind the target or in the middle circle);
+        // a run of unreachable draws halves the count about one run in twenty. A fixed seed makes it the same every run.
+        breeze.getRNG().setSeed(11L);
         EntityPig target = pig(c, area.getX() + 16.5, area.getY(), area.getZ() + 16.5);
         target.setNoAI(true);
         int charges = 0;

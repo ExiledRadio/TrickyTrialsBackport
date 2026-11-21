@@ -261,6 +261,10 @@ public final class EffectsSelfTest implements SelfTest {
             c.world.getGameRules().setOrCreateGameRule("mobGriefing", "true");
             EntityZombie weaver = zombie(c, at.getX() + 0.5, at.getY(), at.getZ() + 0.5);
             weaver.addPotionEffect(new PotionEffect(EffectsContent.weaving, 3600));
+            // 15 random spots of the 3x3x3 cube, of which only the 9 over the floor take a cobweb: about 1 death in 50
+            // finds fewer than 2 (1.21.11 too). The weave draws from the zombie's own random, so a fixed seed makes
+            // this the same every run.
+            weaver.getRNG().setSeed(7L);
             weaver.setHealth(0.0F);
             weaver.deathTime = 18;
             weaver.onUpdate();

@@ -1,5 +1,8 @@
 # 0.1.0 (unreleased)
 
+*   **Fixed: waxing or scraping a copper door broke it with Caves & Cliffs installed.** Backport Core's copper table is
+    shared, so Caves & Cliffs' own right-click also took this mod's copper and changed only the clicked half; the other
+    half then broke. This mod now handles its own copper first, both halves together.
 *   **Fixed: copper doors and the pale oak door vanished in water.** Placed in water, or with water spreading next to
     them, Fluidlogged API's flow replaced them. Now, as in vanilla, a door pushes the water out and water stops at it
     (patch P25).

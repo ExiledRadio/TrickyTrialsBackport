@@ -53,7 +53,12 @@ public final class CopperEvents {
         return !stack.isEmpty() && (stack.getItem() instanceof ItemAxe || stack.getItem().getToolClasses(stack).contains("axe"));
     }
 
-    @SubscribeEvent
+    /**
+     * Before the default priority, and it cancels: Backport Core's oxidation table is shared, so Caves &amp; Cliffs'
+     * own handler (default priority, not receiving canceled events) also knows our blocks, and it changes only the
+     * clicked block, which leaves a door's other half mismatched and broken.
+     */
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void rightClick(PlayerInteractEvent.RightClickBlock event) {
         if (!CopperContent.enabled()) {
             return;

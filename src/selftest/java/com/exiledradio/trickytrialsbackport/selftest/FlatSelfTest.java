@@ -10,6 +10,7 @@ import com.exiledradio.trickytrialsbackport.chambers.ChamberLayout;
 import com.exiledradio.trickytrialsbackport.chambers.ChamberSettings;
 import com.exiledradio.trickytrialsbackport.chambers.ChambersContent;
 import com.exiledradio.trickytrialsbackport.chambers.TrialChambersStructure;
+import com.exiledradio.trickytrialsbackport.common.Owners;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -78,8 +79,15 @@ public final class FlatSelfTest implements SelfTest {
         }
         Function<World, ? extends ScatteredStructure> factory = chamberFactory();
         List<IWorldGenerator> ours = ourGenerators();
-        c.ok(!ours.isEmpty(), "this mod registers world generators (copper, tuff): " + ours.size());
-        c.eq(-1, draws(world, ours), "outside superflat the generators run (draws, or -1 for some)");
+        // The generators are the copies' (copper ore, tuff): with Caves & Cliffs installed it owns both, generates
+        // them itself, and this mod registers none.
+        boolean copies = Owners.copy("copper_ore") || Owners.copy("tuff");
+        if (copies) {
+            c.ok(!ours.isEmpty(), "this mod registers world generators (copper, tuff): " + ours.size());
+            c.eq(-1, draws(world, ours), "outside superflat the generators run (draws, or -1 for some)");
+        } else {
+            c.eq(0, ours.size(), "copper and tuff are the owner's, so this mod registers no world generators");
+        }
 
         WorldInfo info = world.getWorldInfo();
         Field type = ReflectionHelper.findField(WorldInfo.class, "terrainType", "field_76098_b");
@@ -101,6 +109,9 @@ public final class FlatSelfTest implements SelfTest {
                 c.ok(StructureLocate.nearest(world, BlockPos.ORIGIN, "minecraft:trial_chambers") == null,
                         "/locate finds no trial chambers in superflat " + preset);
                 int drew = draws(world, ours);
+                if (!copies) {
+                    continue;
+                }
                 if (decorated) {
                     c.eq(-1, drew, "with decoration the generators run in superflat");
                 } else {

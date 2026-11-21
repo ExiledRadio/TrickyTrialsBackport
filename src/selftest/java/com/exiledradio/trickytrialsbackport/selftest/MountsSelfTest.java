@@ -470,15 +470,16 @@ public final class MountsSelfTest implements SelfTest {
         MinecraftForge.EVENT_BUS.post(check);
         c.eq(Event.Result.DEFAULT, check.getResult(), "spawners are left to 1.12.2");
 
-        // Parched need the sky: inside the box no, in the open yes (the event's say; light is 1.12.2's).
+        // Parched need the sky: inside the box no, in the open yes (this mod's say; light is 1.12.2's). Asked of this
+        // mod's handler alone: under the sky another mod may still answer (Caves & Cliffs' 1.18 light rule does).
         EntityParched p = new EntityParched(c.world);
         p.setPosition(dark.getX() + 0.5, dark.getY(), dark.getZ() + 0.5);
         check = new LivingSpawnEvent.CheckSpawn(p, c.world, (float) p.posX, (float) p.posY, (float) p.posZ, false);
-        MinecraftForge.EVENT_BUS.post(check);
+        MountsContent.onCheckSpawn(check);
         c.eq(Event.Result.DENY, check.getResult(), "no parched without sky");
         p.setPosition(area.getX() + 20.5, area.getY(), area.getZ() + 20.5);
         check = new LivingSpawnEvent.CheckSpawn(p, c.world, (float) p.posX, (float) p.posY, (float) p.posZ, false);
-        MinecraftForge.EVENT_BUS.post(check);
+        MountsContent.onCheckSpawn(check);
         c.eq(Event.Result.DEFAULT, check.getResult(), "under the sky the usual rules decide");
     }
 
