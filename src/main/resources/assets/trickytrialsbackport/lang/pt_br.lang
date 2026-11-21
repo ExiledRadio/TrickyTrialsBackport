@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Prateleira da Selva
 tile.trickytrialsbackport.mangrove_shelf.name=Prateleira de Mangue
 tile.trickytrialsbackport.oak_shelf.name=Prateleira de Carvalho
 tile.trickytrialsbackport.pale_oak_shelf.name=Prateleira de Carvalho Pálido
+tile.trickytrialsbackport.poplar_shelf.name=Prateleira de Álamo
 tile.trickytrialsbackport.spruce_shelf.name=Prateleira de Abeto
 tile.trickytrialsbackport.warped_shelf.name=Prateleira Distorcida
 subtitles.trickytrialsbackport.block.shelf.activate=Estante ativa-se

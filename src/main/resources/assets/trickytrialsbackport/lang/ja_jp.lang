@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=ジャングルの棚
 tile.trickytrialsbackport.mangrove_shelf.name=マングローブの棚
 tile.trickytrialsbackport.oak_shelf.name=オークの棚
 tile.trickytrialsbackport.pale_oak_shelf.name=ペールオークの棚
+tile.trickytrialsbackport.poplar_shelf.name=ポプラの棚
 tile.trickytrialsbackport.spruce_shelf.name=トウヒの棚
 tile.trickytrialsbackport.warped_shelf.name=歪んだ棚
 subtitles.trickytrialsbackport.block.shelf.activate=棚に動力が加わる

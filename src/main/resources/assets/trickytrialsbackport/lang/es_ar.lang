@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Repisa de jungla
 tile.trickytrialsbackport.mangrove_shelf.name=Repisa de mangle
 tile.trickytrialsbackport.oak_shelf.name=Repisa de roble
 tile.trickytrialsbackport.pale_oak_shelf.name=Repisa de roble pálido
+tile.trickytrialsbackport.poplar_shelf.name=Repisa de álamo
 tile.trickytrialsbackport.spruce_shelf.name=Repisa de abeto
 tile.trickytrialsbackport.warped_shelf.name=Repisa distorsionada
 subtitles.trickytrialsbackport.block.shelf.activate=Repisa activada

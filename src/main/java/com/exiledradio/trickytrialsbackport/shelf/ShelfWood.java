@@ -32,6 +32,8 @@ public enum ShelfWood {
     MANGROVE("mangrove", Owners.WILD_UPDATE, "mangrove_planks", "stripped_mangrove_log", MapColor.RED, true),
     OAK("oak", null, "oak_planks", "stripped_oak_log", MapColor.WOOD, true),
     PALE_OAK("pale_oak", TrickyTrialsBackport.MOD_ID, "pale_oak_planks", "stripped_pale_oak_log", MapColor.QUARTZ, true),
+    /** 26.3's poplar, Game Drops Backport's wood (its request 2): light gray, flammable. */
+    POPLAR("poplar", Owners.GAME_DROPS, "poplar_planks", "stripped_poplar_log", MapColor.SILVER, true),
     SPRUCE("spruce", null, "spruce_planks", "stripped_spruce_log", MapColor.OBSIDIAN, true),
     WARPED("warped", Owners.NETHER_UPDATE, "warped_planks", "stripped_warped_stem", MapColor.CYAN, false);
 

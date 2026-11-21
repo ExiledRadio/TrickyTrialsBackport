@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=叢林木展示架
 tile.trickytrialsbackport.mangrove_shelf.name=紅樹林木展示架
 tile.trickytrialsbackport.oak_shelf.name=橡木展示架
 tile.trickytrialsbackport.pale_oak_shelf.name=蒼白橡木展示架
+tile.trickytrialsbackport.poplar_shelf.name=楊木展示架
 tile.trickytrialsbackport.spruce_shelf.name=杉木展示架
 tile.trickytrialsbackport.warped_shelf.name=扭曲蕈木展示架
 subtitles.trickytrialsbackport.block.shelf.activate=展示架啟動

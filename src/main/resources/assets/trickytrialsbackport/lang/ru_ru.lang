@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Полка из джунглевог
 tile.trickytrialsbackport.mangrove_shelf.name=Мангровая полка
 tile.trickytrialsbackport.oak_shelf.name=Дубовая полка
 tile.trickytrialsbackport.pale_oak_shelf.name=Полка из бледного дуба
+tile.trickytrialsbackport.poplar_shelf.name=Тополевая полка
 tile.trickytrialsbackport.spruce_shelf.name=Еловая полка
 tile.trickytrialsbackport.warped_shelf.name=Искажённая полка
 subtitles.trickytrialsbackport.block.shelf.activate=Полка включается

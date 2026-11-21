@@ -877,6 +877,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Jungle Shelf
 tile.trickytrialsbackport.mangrove_shelf.name=Mangrove Shelf
 tile.trickytrialsbackport.oak_shelf.name=Oak Shelf
 tile.trickytrialsbackport.pale_oak_shelf.name=Pale Oak Shelf
+tile.trickytrialsbackport.poplar_shelf.name=Poplar Shelf
 tile.trickytrialsbackport.spruce_shelf.name=Spruce Shelf
 tile.trickytrialsbackport.warped_shelf.name=Warped Shelf
 subtitles.trickytrialsbackport.block.shelf.activate=Shelf activates

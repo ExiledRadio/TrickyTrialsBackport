@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Oerwoudhouten schap
 tile.trickytrialsbackport.mangrove_shelf.name=Mangrovehouten schap
 tile.trickytrialsbackport.oak_shelf.name=Eikenhouten schap
 tile.trickytrialsbackport.pale_oak_shelf.name=Bleek eikenhouten schap
+tile.trickytrialsbackport.poplar_shelf.name=Populierenhouten schap
 tile.trickytrialsbackport.spruce_shelf.name=Sparrenhouten schap
 tile.trickytrialsbackport.warped_shelf.name=Spookachtig houten schap
 subtitles.trickytrialsbackport.block.shelf.activate=Schap activeert

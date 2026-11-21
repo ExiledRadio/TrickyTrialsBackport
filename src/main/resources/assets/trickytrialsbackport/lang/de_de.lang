@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Tropenholzregal
 tile.trickytrialsbackport.mangrove_shelf.name=Mangrovenholzregal
 tile.trickytrialsbackport.oak_shelf.name=Eichenholzregal
 tile.trickytrialsbackport.pale_oak_shelf.name=Blasseichenholzregal
+tile.trickytrialsbackport.poplar_shelf.name=Pappelholzregal
 tile.trickytrialsbackport.spruce_shelf.name=Fichtenholzregal
 tile.trickytrialsbackport.warped_shelf.name=Wirrregal
 subtitles.trickytrialsbackport.block.shelf.activate=Regal aktiviert

@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Tropikalna półka
 tile.trickytrialsbackport.mangrove_shelf.name=Namorzynowa półka
 tile.trickytrialsbackport.oak_shelf.name=Dębowa półka
 tile.trickytrialsbackport.pale_oak_shelf.name=Bladodębowa półka
+tile.trickytrialsbackport.poplar_shelf.name=Topolowa półka
 tile.trickytrialsbackport.spruce_shelf.name=Świerkowa półka
 tile.trickytrialsbackport.warped_shelf.name=Spaczona półka
 subtitles.trickytrialsbackport.block.shelf.activate=Aktywacja półki

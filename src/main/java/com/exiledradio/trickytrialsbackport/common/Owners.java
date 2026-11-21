@@ -43,6 +43,8 @@ public final class Owners {
     public static final String WILD_UPDATE = "wildupdatebackport";
     /** Decorated pots and sherds, armor trims, hanging signs, cherry and bamboo wood, camels. */
     public static final String TRAILS_AND_TALES = "trailsandtalesbackport";
+    /** Game Drops Backport (26.x): poplar, the dappled forest. */
+    public static final String GAME_DROPS = "gamedropsbackport";
 
     /** The four oxidation stages, in order, as vanilla names their blocks' prefixes. */
     public static final String[] OXIDATION = {"", "exposed_", "weathered_", "oxidized_"};

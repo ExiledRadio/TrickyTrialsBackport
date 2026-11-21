@@ -1,6 +1,7 @@
 package com.exiledradio.trickytrialsbackport.palegarden;
 
 import com.exiledradio.backportcore.ownership.BlockOwnership;
+import com.exiledradio.backportcore.structure.JigsawPools;
 import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.common.Content;
@@ -93,6 +94,14 @@ public final class PaleGardenContent {
     public static void init() {
         if (enabled()) {
             Compost.init();
+            // 26.3's pale_oak_checked, which Game Drops Backport's camps grow in their jigsaw pools: the worldgen pale oak
+            // (with pale moss), where a pale oak sapling would survive. Registered at init, after the camps' preInit
+            // fallback (which grows a sapling), so this one is used.
+            JigsawPools.feature("minecraft:pale_oak_checked", (world, pos, random, feature) -> {
+                if (sapling != null && sapling.canPlaceBlockAt(world, pos)) {
+                    PaleGardenFeatures.tree(world, random, pos, PaleGardenFeatures.TreeKind.PALE_OAK);
+                }
+            });
         }
     }
 

@@ -1,0 +1,7 @@
+{
+  "parent": "trickytrialsbackport:block/template_shelf_body",
+  "textures": {
+    "all": "trickytrialsbackport:block/poplar_shelf",
+    "particle": "trickytrialsbackport:block/stripped_poplar_log"
+  }
+}

@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Orman Ağacı Raf
 tile.trickytrialsbackport.mangrove_shelf.name=Mangrov Raf
 tile.trickytrialsbackport.oak_shelf.name=Meşe Raf
 tile.trickytrialsbackport.pale_oak_shelf.name=Soluk Meşe Raf
+tile.trickytrialsbackport.poplar_shelf.name=Kavak Ağacı Raf
 tile.trickytrialsbackport.spruce_shelf.name=Ladin Raf
 tile.trickytrialsbackport.warped_shelf.name=Çarpık Raf
 subtitles.trickytrialsbackport.block.shelf.activate=Raf etkinleşti

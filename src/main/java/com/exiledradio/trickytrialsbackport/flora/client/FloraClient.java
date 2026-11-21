@@ -133,6 +133,10 @@ public final class FloraClient {
         if (named(biome, "pale_garden")) {
             return 0xA0A69C;
         }
+        if (named(biome, "dappled_forest")) {
+            // 26.3's dry_foliage_color for Game Drops Backport's dappled forest.
+            return 0x8C3A04;
+        }
         double t = MathHelper.clamp(biome.getDefaultTemperature(), 0.0F, 1.0F);
         double d = MathHelper.clamp(biome.getRainfall(), 0.0F, 1.0F);
         d *= t;

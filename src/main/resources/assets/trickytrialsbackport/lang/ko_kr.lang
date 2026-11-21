@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=정글나무 선반
 tile.trickytrialsbackport.mangrove_shelf.name=맹그로브나무 선반
 tile.trickytrialsbackport.oak_shelf.name=참나무 선반
 tile.trickytrialsbackport.pale_oak_shelf.name=창백한 참나무 선반
+tile.trickytrialsbackport.poplar_shelf.name=포플러나무 선반
 tile.trickytrialsbackport.spruce_shelf.name=가문비나무 선반
 tile.trickytrialsbackport.warped_shelf.name=뒤틀린 선반
 subtitles.trickytrialsbackport.block.shelf.activate=선반이 활성화됨

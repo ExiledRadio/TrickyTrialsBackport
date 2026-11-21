@@ -65,6 +65,7 @@ public final class PaleGardenSelfTest implements SelfTest {
     @Override
     public void run(Check c) {
         registration(c);
+        jigsawFeature(c);
         numbers(c);
         recipes(c);
         tree(c);
@@ -621,5 +622,36 @@ public final class PaleGardenSelfTest implements SelfTest {
         c.ok(hearts >= 0, "creaking hearts: " + hearts + " in 6 chunks");
         TrickyTrialsBackport.LOGGER.info("SELFTEST palegarden decoration: {} logs, {} hearts, {} moss, {} eyeblossoms in 6 chunks",
                 logs, hearts, mossGround, blossoms);
+    }
+
+    /** Game Drops Backport's camps: pale_oak_checked grows this mod's worldgen pale oak through Core's JigsawPools. */
+    private static void jigsawFeature(Check c) {
+        String id = "minecraft:pale_oak_checked";
+        Object placer;
+        try {
+            java.lang.reflect.Method m = com.exiledradio.backportcore.structure.JigsawPools.class.getDeclaredMethod("featurePlacer",
+                    com.google.gson.JsonElement.class);
+            m.setAccessible(true);
+            placer = m.invoke(null, new com.google.gson.JsonPrimitive(id));
+        } catch (ReflectiveOperationException e) {
+            c.ok(false, id + ": JigsawPools.featurePlacer reachable: " + e);
+            return;
+        }
+        if (!c.ok(placer != null, id + " has a placer") || PaleGardenContent.set == null) {
+            return;
+        }
+        BlockPos ground = new BlockPos(2300, 80, 2300);
+        for (BlockPos p : BlockPos.getAllInBox(ground.add(-8, 0, -8), ground.add(8, 24, 8))) {
+            c.world.setBlockState(p, p.getY() == 80 ? Blocks.GRASS.getDefaultState() : Blocks.AIR.getDefaultState(), 2);
+        }
+        com.exiledradio.backportcore.structure.JigsawPools.FeaturePlacer f = (com.exiledradio.backportcore.structure.JigsawPools.FeaturePlacer) placer;
+        f.place(c.world, ground.up(), new java.util.Random(3L), new com.google.gson.JsonPrimitive(id));
+        c.eq(PaleGardenContent.set.log, c.world.getBlockState(ground.up()).getBlock(), id + " grows a pale oak log on grass");
+        for (BlockPos p : BlockPos.getAllInBox(ground.add(-8, 1, -8), ground.add(8, 24, 8))) {
+            c.world.setBlockState(p, Blocks.AIR.getDefaultState(), 2);
+        }
+        c.world.setBlockState(ground, Blocks.STONE.getDefaultState(), 2);
+        f.place(c.world, ground.up(), new java.util.Random(3L), new com.google.gson.JsonPrimitive(id));
+        c.ok(c.world.isAirBlock(ground.up()), id + " places nothing where a sapling could not stand (stone)");
     }
 }

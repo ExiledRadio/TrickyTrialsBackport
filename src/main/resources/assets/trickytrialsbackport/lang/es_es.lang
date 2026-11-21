@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Estante de jungla
 tile.trickytrialsbackport.mangrove_shelf.name=Estante de mangle
 tile.trickytrialsbackport.oak_shelf.name=Estante de roble
 tile.trickytrialsbackport.pale_oak_shelf.name=Estante de roble pálido
+tile.trickytrialsbackport.poplar_shelf.name=Estante de álamo
 tile.trickytrialsbackport.spruce_shelf.name=Estante de abeto
 tile.trickytrialsbackport.warped_shelf.name=Estante distorsionado
 subtitles.trickytrialsbackport.block.shelf.activate=Estante activado

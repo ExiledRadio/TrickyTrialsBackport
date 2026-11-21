@@ -878,6 +878,7 @@ tile.trickytrialsbackport.jungle_shelf.name=Scaffale di mogano
 tile.trickytrialsbackport.mangrove_shelf.name=Scaffale di mangrovia
 tile.trickytrialsbackport.oak_shelf.name=Scaffale di quercia
 tile.trickytrialsbackport.pale_oak_shelf.name=Scaffale di quercia pallida
+tile.trickytrialsbackport.poplar_shelf.name=Scaffale di pioppo
 tile.trickytrialsbackport.spruce_shelf.name=Scaffale di abete
 tile.trickytrialsbackport.warped_shelf.name=Scaffale distorto
 subtitles.trickytrialsbackport.block.shelf.activate=Scaffale attivato
