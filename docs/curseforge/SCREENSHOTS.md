@@ -69,3 +69,17 @@ When a picture is uploaded, add its line to `DESCRIPTION.md` at the slot above, 
 - **Copper torches crash TR 0.1.0's client** (`Invalid call to Particle.setMiscTex` from `CopperGearClient$CopperFlame`:
   it overrides `getFXLayer()` to 1, and `ParticleFlame`'s constructor then calls `setParticleTextureIndex`, which throws
   on any layer but 0). The showcase world has none; the barn uses copper lanterns instead.
+
+## Upload folder
+
+`E:\MinecraftInstances\BackportShowcase\minecraft\screenshots\curseforge\tricky-trials\`: 24 JPEGs at 1920 x 1080,
+numbered in page order. The tester's ten keepers (`PHOTOS.md`) are cropped to 16:9 past the launcher's "..." button
+and scaled down; the rest are the showcase screenshots of 2026-11-21. Featured image: `02-tr-trial-spawner.jpg`.
+
+01 chamber hall (Banner 19), 02 trial spawner (Banner 15), 03 chamber beds (Banner 18), 04 vault, keys and mace,
+05 breeze, 06 bogged, 07 crafter (Banner 14), 08 copper interior (Banner 12), 09 copper pavilion (Banner 11),
+10 copper golem, 11 copper golem statue (Banner 10), 12 pale garden and creaking, 13 resin, 14 leaf litter (Banner 4),
+15 warm animals (Banner 2), 16 cold animals (Banner 9), 17 happy ghast, 18 nautilus, 19 parched,
+20 zombie horses and spears, 21 bundles, 22 effects, 23 paintings, 24 settings.
+
+Not shot yet: the spear close-up (`tr10_spears`) and the locator bar.
