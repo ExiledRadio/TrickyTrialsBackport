@@ -18,7 +18,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
+import java.util.WeakHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,15 +27,15 @@ import java.util.Map;
  * shelf's center (its back board), centered on the shelf's middle height or standing on the bottom board when the
  * shelf aligns its items to the bottom.
  *
- * <p>1.12.2 has no {@code on_shelf} display transform; vanilla's default is no transform for flat items and a half
- * turn for block models ({@code block/block.json}'s {@code on_shelf}), which is what is drawn here.
+ * <p>1.12.2 has no {@code on_shelf} display transform: {@link OnShelfTransform} carries 1.21.11's, and the item is
+ * lifted by its transformed extents as vanilla's {@code getModelBoundingBox} does.
  */
 public class RenderShelf extends TileEntitySpecialRenderer<TileEntityShelf> {
 
     private static final float ITEM_SIZE = 0.25F;
 
-    /** model -> {minY, maxY} of its quads, in model space (0 to 1) */
-    private final Map<IBakedModel, float[]> heights = new IdentityHashMap<IBakedModel, float[]>();
+    /** model -> {minY, maxY} of its quads after its on_shelf transform; weak, so reloaded models go */
+    private final Map<IBakedModel, float[]> heights = new WeakHashMap<IBakedModel, float[]>();
 
     @Override
     public void render(TileEntityShelf shelf, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -61,19 +61,17 @@ public class RenderShelf extends TileEntitySpecialRenderer<TileEntityShelf> {
                 continue;
             }
             IBakedModel model = renderItem.getItemModelWithOverrides(stack, shelf.getWorld(), null);
+            OnShelfTransform transform = OnShelfTransform.of(stack, model);
             GlStateManager.pushMatrix();
             GlStateManager.translate((i - 1) * 0.3125F, shelf.alignItemsToBottom() ? -0.25F : 0.0F, -0.25F);
             GlStateManager.scale(ITEM_SIZE, ITEM_SIZE, ITEM_SIZE);
-            float[] height = height(model);
-            // Model space is drawn from -0.5 to 0.5 here.
-            double lift = -(height[0] - 0.5D);
+            float[] height = height(stack, model, transform);
+            double lift = -height[0];
             if (!shelf.alignItemsToBottom()) {
                 lift -= (height[1] - height[0]) / 2.0D;
             }
             GlStateManager.translate(0.0D, lift, 0.0D);
-            if (model.isGui3d()) {
-                GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-            }
+            transform.apply();
             renderItem.renderItem(stack, ItemCameraTransforms.TransformType.NONE);
             GlStateManager.popMatrix();
         }
@@ -82,7 +80,15 @@ public class RenderShelf extends TileEntitySpecialRenderer<TileEntityShelf> {
         GlStateManager.popMatrix();
     }
 
-    private float[] height(IBakedModel model) {
+    /**
+     * Vanilla's {@code getModelBoundingBox}: the lowest and highest point of the item's extents after its
+     * {@code on_shelf} transform (quads for a baked model, the drawn shape for a special-rendered one).
+     */
+    private float[] height(ItemStack stack, IBakedModel model, OnShelfTransform transform) {
+        float[] special = OnShelfTransform.specialExtents(stack);
+        if (special != null || model.isBuiltInRenderer()) {
+            return boxHeight(special != null ? special : OnShelfTransform.UNIT, transform);
+        }
         float[] cached = this.heights.get(model);
         if (cached != null) {
             return cached;
@@ -101,14 +107,26 @@ public class RenderShelf extends TileEntitySpecialRenderer<TileEntityShelf> {
             if (format.getElementCount() == 0 || !format.getElement(0).isPositionElement()) {
                 continue;
             }
-            for (int v = 0; v < 4 && v * stride + 1 < data.length; v++) {
-                float vy = Float.intBitsToFloat(data[v * stride + 1]);
-                min = Math.min(min, vy);
-                max = Math.max(max, vy);
+            for (int v = 0; v < 4 && v * stride + 2 < data.length; v++) {
+                float y = transform.transformedY(Float.intBitsToFloat(data[v * stride]), Float.intBitsToFloat(data[v * stride + 1]),
+                        Float.intBitsToFloat(data[v * stride + 2]));
+                min = Math.min(min, y);
+                max = Math.max(max, y);
             }
         }
-        float[] out = min <= max ? new float[] {min, max} : new float[] {0.0F, 1.0F};
+        float[] out = min <= max ? new float[] {min, max} : boxHeight(OnShelfTransform.UNIT, transform);
         this.heights.put(model, out);
         return out;
+    }
+
+    private static float[] boxHeight(float[] box, OnShelfTransform transform) {
+        float min = Float.MAX_VALUE;
+        float max = -Float.MAX_VALUE;
+        for (int corner = 0; corner < 8; corner++) {
+            float y = transform.transformedY(box[(corner & 1) == 0 ? 0 : 3], box[(corner & 2) == 0 ? 1 : 4], box[(corner & 4) == 0 ? 2 : 5]);
+            min = Math.min(min, y);
+            max = Math.max(max, y);
+        }
+        return new float[] {min, max};
     }
 }

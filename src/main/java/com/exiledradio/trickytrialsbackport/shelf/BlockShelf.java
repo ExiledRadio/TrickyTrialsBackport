@@ -239,6 +239,7 @@ public class BlockShelf extends Block implements Waterloggable {
             }
             world.setBlockState(pos, now, 3);
             playSound(world, pos, powered ? ShelfContent.activate : ShelfContent.deactivate);
+            ShelfGameEvents.post(world, pos, powered ? ShelfGameEvents.BLOCK_ACTIVATE : ShelfGameEvents.BLOCK_DEACTIVATE, now);
             afterPowerChange(world, pos, now);
         }
     }
@@ -365,7 +366,8 @@ public class BlockShelf extends Block implements Waterloggable {
         ItemStack inHand = player.capabilities.isCreativeMode && old.isEmpty() ? held.copy() : old;
         player.inventory.setInventorySlotContents(player.inventory.currentItem, inHand);
         player.inventory.markDirty();
-        shelf.markDirty();
+        // Vanilla skips the event for an item whose use_effects say no interact vibrations; no 1.12.2 item has those.
+        shelf.setChanged(ShelfGameEvents.ITEM_INTERACT_FINISH);
         return !old.isEmpty();
     }
 
@@ -391,7 +393,7 @@ public class BlockShelf extends Block implements Waterloggable {
                 }
             }
             inventory.markDirty();
-            shelf.markDirty();
+            shelf.setChanged(ShelfGameEvents.ENTITY_INTERACT);
         }
         return changed;
     }

@@ -62,18 +62,32 @@ minecraft.wiki's *Shelf*.
     shelves can be made in a game with no stripped logs at all.
 *   **Renderer** (`client.RenderShelf`, `ShelfRenderer`'s numbers): items at a quarter size, 5/16 apart, a quarter block
     toward the back, centered on the middle (or on the bottom board with `align_items_to_bottom`), turned with the
-    shelf; the height comes from the item model's quads, as vanilla's model bounding box. 1.12.2 has no `on_shelf`
-    display transform: vanilla's default is none for flat items and a half turn for block models, which is what is
-    drawn.
+    shelf. 1.12.2 has no `on_shelf` display transform, so `client.OnShelfTransform` carries 1.21.11's: none for
+    flat items and for special-rendered ones without one (chests, banners, shulker boxes); a half turn for block
+    models (`block/block.json`); a quarter turn for fences, walls (Core's `ModernWall` too) and anvils; a half turn and
+    4 pixels back for shelves; heads, the dragon head, the shield and beds with their own. It is applied as
+    `ItemTransform.apply` does (translate, rotate X Y Z, scale). The item is lifted by its extents *after* that
+    transform, as `ItemStackRenderState.getModelBoundingBox` does: the quads of a baked model, or the shape 1.12.2's
+    special renderer draws (heads, shield, bed).
+*   **Game events** (`ShelfGameEvents`), where 1.21.9 posts them, with the shelf's state as context and no source
+    entity: `block_activate` for any change of the contents (`setChanged()`: hoppers, commands) and on being powered,
+    `block_deactivate` on losing power, `item_interact_finish` for a single swap, `entity_interact` for each shelf of
+    a row swap. A row part changing posts nothing, as vanilla's `setBlock`. They go through Backport Core's game event
+    module (`GameEvents.emit`), which Wild Update's sculk sensors listen to. The module is Core's from 1.4.0 and this
+    mod builds against 1.3.0, so it is reached by name; every listener's mod (Wild Update) needs 1.4.0, so the module
+    is there whenever something can hear.
 *   **Assets**: `python -I tools/shelf/generate.py` (12 multipart blockstates, 84 block models and the 7 templates,
     12 shelf and 12 stripped log textures, item models, 11 sound events, names and 6 subtitles).
 
 ## Not done
 
-*   **Game events** (`block_activate` on every change, `block_deactivate`, `item_interact_finish`,
-    `entity_interact` for sculk sensors): Core's game event module is in 1.4.0, and this mod builds against 1.3.0
-    (`core_version`). With 1.4.0 they are one `GameEvents.emit` each, in `TileEntityShelf.markDirty`, the swaps and
-    `neighborChanged`.
+*   **Compasses and clocks on a shelf** point as in a hand without an entity. Vanilla's shelf is an `ItemOwner`
+    (its position and facing). 1.12.2's compass and clock properties read an entity or an item frame only.
+*   **Special-rendered extents** (heads, the dragon head, the shield, beds) are taken from what 1.12.2's renderers
+    draw, measured from their models, not from vanilla's special-model extents. Small differences in height are
+    possible there.
+*   Vanilla skips `item_interact_finish` for an item whose `use_effects` say no interact vibrations; 1.12.2 items
+    have no such component, so it is always posted.
 *   **Ctrl + pick block** with contents (vanilla's `container` component on the item): 1.12.2's pick block copies no
     tile data; a placed shelf item that carries `BlockEntityTag` does keep its items.
 *   **Pathfinding** (`isPathfindable` only through water): 1.12.2's walk node processor already treats the shelf as a
@@ -85,16 +99,17 @@ minecraft.wiki's *Shelf*.
 
 ## Tested headlessly
 
-`./gradlew runServer -Pselftest=shelves` and `-Pselftest=all` (port 25902, fresh world), then
-`python -I tools/check_assets.py`: **`SELFTEST DONE pass=3472 fail=0`** (all, fresh world, clean compile; shelves alone
-324, with the family mods 443, without Village & Pillage 437), **155 blocks, 2699 states, 180 item models, 826 sound
-files, 0 errors**. Release jar built last with `--rerun-tasks --offline -PdeployDir= -PcoreDeployDir=`: 0
-`/selftest/` entries, reobfuscated (`func_` names). One earlier `all` run had a breeze jump-count failure (random,
-stream 3's test) and passed on the next run.
+`./gradlew runServer -Pselftest=shelves` and `-Pselftest=all` (port 25902, fresh world, pinned to the E-cores with
+`start /affinity FFFF0000`), then `python -I tools/check_assets.py`. **2026-11-20** (branch `tr-shelves-finish`, on main
+b53e3f2): **`SELFTEST DONE pass=5532 fail=0`** (all); shelves alone **338/0**; with the family mods **460/0**;
+**197 blocks, 3048 states, 288 item models, 1299 sound files, 0 errors**. Release jar built last with
+`--rerun-tasks --offline -PdeployDir= -PcoreDeployDir=`: 0 `/selftest/` entries, reobfuscated (`func_` names).
+First build (2026-11-18): all 3472/0, alone 324, family 443, without Village & Pillage 437.
 
 *   Which woods exist: alone (Core 1.3.0, no family mod): oak, spruce, birch, jungle, acacia, dark oak, pale oak, with
     the plain logs in the six vanilla recipes. With Trails & Tales 1.0.0, Wild Update 1.1.0, Nether Update 1.1.0 and
-    Village & Pillage 2.7.0 (Core 1.4.0, `-Pcore_version=1.4.0`): all twelve, Village & Pillage's stripped logs for
+    Village & Pillage 2.7.0 (Core 1.4.0, `-Pcore_version=1.4.0`; on 2026-11-20 Wild Update 1.1.1, Village & Pillage
+    2.7.1, Core 1.4.2): all twelve, Village & Pillage's stripped logs for
     the vanilla six, each owner's for its own. Without Village & Pillage: all twelve, Trails & Tales' stripped log
     copies for the vanilla six.
 *   Registration exactly when the wood exists, ownership, the item, metadata round trips, 32 states.
@@ -114,8 +129,14 @@ stream 3's test) and passed on the next run.
 *   NBT: vanilla's `Items`, `align_items_to_bottom` and the row part read back; clients get the items; powering keeps
     the tile; breaking drops the contents and the shelf.
 *   Hoppers: one item at a time into the first slot that takes it, merging; taking from it; signal 7.
+*   Game events: placing and taking (`item_interact_finish`), a contents change (`block_activate`), power on and off
+    (`block_activate`, `block_deactivate`), a row swap (`entity_interact`, by the row's last shelf), nothing for a row
+    part changing. With the family mods (Core 1.4.2's module switched on by Wild Update), an immediate Core listener
+    beside the shelf hears all four. Without Core's module (Core 1.3.0) nothing is sent and nothing fails.
 
 ## Not tested
 
-*   The client: the models, the powered and joined fronts, the items drawn on the shelf, the sounds as heard.
+*   The client: the models, the powered and joined fronts, the items drawn on the shelf (`OnShelfTransform`, the
+    lift), the sounds as heard. The release checks' client test covers the shelf display.
+*   A real Wild Update sculk sensor reacting (it listens through the same Core module the test listener uses).
 *   A real hopper block ticking (its insert and extract calls are tested).

@@ -6,6 +6,7 @@ import com.exiledradio.trickytrialsbackport.common.Content;
 import com.exiledradio.trickytrialsbackport.common.Owners;
 import com.exiledradio.trickytrialsbackport.shelf.BlockShelf;
 import com.exiledradio.trickytrialsbackport.shelf.ShelfContent;
+import com.exiledradio.trickytrialsbackport.shelf.ShelfGameEvents;
 import com.exiledradio.trickytrialsbackport.shelf.ShelfWood;
 import com.exiledradio.trickytrialsbackport.shelf.SideChainPart;
 import com.exiledradio.trickytrialsbackport.shelf.TileEntityShelf;
@@ -58,6 +59,7 @@ public final class ShelvesSelfTest implements SelfTest {
         rows(c, oak);
         nbtAndDrops(c, oak);
         hopper(c, oak);
+        gameEvents(c, oak);
     }
 
     private static TileEntityShelf tile(Check c, BlockPos p) {
@@ -493,5 +495,108 @@ public final class ShelvesSelfTest implements SelfTest {
         c.ok(paper.isEmpty() && shelf.getStackInSlot(2).getItem() == Items.PAPER, "another item takes slot 2");
         c.ok(shelf.decrStackSize(0, 1).getCount() == 1 && shelf.getStackInSlot(0).getCount() == 63, "a hopper below takes from it");
         c.eq(7, BlockShelf.signal(shelf), "three filled slots read 7");
+    }
+
+    // --- game events -----------------------------------------------------------------------------------------------
+
+    private void gameEvents(Check c, BlockShelf oak) {
+        BlockPos at = c.area().add(8, 0, 8);
+        c.world.setBlockState(at, shelfState(oak, EnumFacing.NORTH), 3);
+        TileEntityShelf shelf = tile(c, at);
+        FakePlayer p = c.player("shelfevents", at.north(2));
+        List<String> heard = new ArrayList<String>();
+        Object listener = coreListener(c, at, heard);
+
+        ShelfGameEvents.clearLast();
+        p.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.DIAMOND));
+        activate(c, at, p, EnumFacing.NORTH, 0.5F, 0.5F, 0.0F);
+        c.eq(ShelfGameEvents.ITEM_INTERACT_FINISH, ShelfGameEvents.last(), "placing an item: item_interact_finish");
+        c.eq(at, ShelfGameEvents.lastPos(), "at the shelf");
+        ShelfGameEvents.clearLast();
+        activate(c, at, p, EnumFacing.NORTH, 0.5F, 0.5F, 0.0F);
+        c.eq(ShelfGameEvents.ITEM_INTERACT_FINISH, ShelfGameEvents.last(), "taking an item: item_interact_finish");
+        ShelfGameEvents.clearLast();
+        shelf.setInventorySlotContents(0, new ItemStack(Items.PAPER));
+        c.eq(ShelfGameEvents.BLOCK_ACTIVATE, ShelfGameEvents.last(), "contents changed (hopper, command): block_activate");
+        ShelfGameEvents.clearLast();
+        c.world.setBlockState(at.down(), Blocks.REDSTONE_BLOCK.getDefaultState(), 3);
+        c.eq(ShelfGameEvents.BLOCK_ACTIVATE, ShelfGameEvents.last(), "powered: block_activate");
+        ShelfGameEvents.clearLast();
+        c.world.setBlockState(at.down(), Blocks.STONE.getDefaultState(), 3);
+        c.eq(ShelfGameEvents.BLOCK_DEACTIVATE, ShelfGameEvents.last(), "unpowered: block_deactivate");
+        // A powered row swap: entity_interact, per shelf.
+        BlockPos second = at.east();
+        c.world.setBlockState(at.down(), Blocks.REDSTONE_BLOCK.getDefaultState(), 3);
+        c.world.setBlockState(second.down(), Blocks.REDSTONE_BLOCK.getDefaultState(), 3);
+        ShelfGameEvents.clearLast();
+        c.world.setBlockState(second, shelfState(oak, EnumFacing.NORTH).withProperty(BlockShelf.POWERED, true), 3);
+        c.eq(SideChainPart.RIGHT, part(c, at), "row formed");
+        c.eq(null, ShelfGameEvents.last(), "a row part changing posts nothing");
+        p.inventory.setInventorySlotContents(8, new ItemStack(Items.STICK));
+        activate(c, at, p, EnumFacing.NORTH, 0.5F, 0.5F, 0.0F);
+        c.eq(ShelfGameEvents.ENTITY_INTERACT, ShelfGameEvents.last(), "row swap: entity_interact");
+        c.eq(at, ShelfGameEvents.lastPos(), "posted by the row's last shelf");
+
+        if (listener != null) {
+            c.ok(heard.contains("minecraft:item_interact_finish"), "a Core listener heard item_interact_finish: " + heard);
+            c.ok(heard.contains("minecraft:block_activate") && heard.contains("minecraft:block_deactivate"),
+                    "a Core listener heard block_activate and block_deactivate");
+            c.ok(heard.contains("minecraft:entity_interact"), "a Core listener heard entity_interact");
+            removeCoreListener(c, listener);
+        }
+        TrickyTrialsBackport.LOGGER.info("SELFTEST shelves game events: Core module {}, heard {}",
+                ShelfGameEvents.available() ? "present" : "absent (Core before 1.4.0)", heard);
+    }
+
+    /**
+     * With Core's game event module active (Wild Update turns it on), an immediate listener beside the shelf, made by
+     * name so this test also builds against Core 1.3.0. @return it, or null when the module is absent or off
+     */
+    private static Object coreListener(Check c, BlockPos at, final List<String> heard) {
+        if (!ShelfGameEvents.available()) {
+            return null;
+        }
+        try {
+            Class<?> events = Class.forName("com.exiledradio.backportcore.gameevent.GameEvents");
+            if (!(Boolean) events.getMethod("active").invoke(null)) {
+                return null;
+            }
+            Class<?> listenerType = Class.forName("com.exiledradio.backportcore.gameevent.GameEventListener");
+            final Object position = Class.forName("com.exiledradio.backportcore.gameevent.PositionSource$Block")
+                    .getConstructor(BlockPos.class).newInstance(at.up(2));
+            @SuppressWarnings({"unchecked", "rawtypes"})
+            final Object rules = Enum.valueOf((Class) Class.forName("com.exiledradio.backportcore.gameevent.GameEventListener$Rules"), "V1_20");
+            Object listener = java.lang.reflect.Proxy.newProxyInstance(listenerType.getClassLoader(), new Class<?>[] {listenerType},
+                    (proxy, method, args) -> {
+                        switch (method.getName()) {
+                            case "position": return position;
+                            case "radius": return 16;
+                            case "rules": return rules;
+                            case "immediate": return true;
+                            case "active": return true;
+                            case "handle":
+                                heard.add(String.valueOf(args[1].getClass().getMethod("name").invoke(args[1])));
+                                return true;
+                            case "hashCode": return System.identityHashCode(proxy);
+                            case "equals": return proxy == args[0];
+                            default: return null;
+                        }
+                    });
+            events.getMethod("add", net.minecraft.world.World.class, listenerType).invoke(null, c.world, listener);
+            return listener;
+        } catch (ReflectiveOperationException e) {
+            c.fail("Core listener: " + e);
+            return null;
+        }
+    }
+
+    private static void removeCoreListener(Check c, Object listener) {
+        try {
+            Class<?> events = Class.forName("com.exiledradio.backportcore.gameevent.GameEvents");
+            Class<?> listenerType = Class.forName("com.exiledradio.backportcore.gameevent.GameEventListener");
+            events.getMethod("remove", net.minecraft.world.World.class, listenerType).invoke(null, c.world, listener);
+        } catch (ReflectiveOperationException e) {
+            c.fail("Core listener removal: " + e);
+        }
     }
 }

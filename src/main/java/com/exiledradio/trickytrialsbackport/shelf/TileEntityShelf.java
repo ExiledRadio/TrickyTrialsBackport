@@ -15,6 +15,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 /**
  * 1.21.9's {@code ShelfBlockEntity}: three items, saved as vanilla saves them ({@code Items} with {@code Slot}, and
  * {@code align_items_to_bottom}), and an inventory for hoppers. Every change is sent to the clients, which draw the
@@ -47,7 +49,8 @@ public class TileEntityShelf extends TileEntity implements IInventory {
 
     void setChain(SideChainPart part) {
         this.chain = part;
-        markDirty();
+        // Vanilla's setBlock of the new part posts no game event.
+        setChanged(null);
     }
 
     /** {@code swapItemNoUpdate}: puts a stack in a slot and returns what was there, without telling anyone. */
@@ -105,12 +108,23 @@ public class TileEntityShelf extends TileEntity implements IInventory {
         return oldState.getBlock() != newState.getBlock();
     }
 
-    /** {@code setChanged}: saved, comparators told, and the clients sent the new contents. */
+    /** {@code setChanged()}: a change of the contents, posting {@code block_activate}. */
     @Override
     public void markDirty() {
+        setChanged(ShelfGameEvents.BLOCK_ACTIVATE);
+    }
+
+    /**
+     * {@code setChanged(event)}: saved, comparators told, the game event posted (none for null), and the clients sent
+     * the new contents.
+     */
+    void setChanged(@Nullable String gameEvent) {
         super.markDirty();
         if (this.world != null && !this.world.isRemote) {
             IBlockState state = this.world.getBlockState(this.pos);
+            if (gameEvent != null) {
+                ShelfGameEvents.post(this.world, this.pos, gameEvent, state);
+            }
             this.world.notifyBlockUpdate(this.pos, state, state, 3);
         }
     }
