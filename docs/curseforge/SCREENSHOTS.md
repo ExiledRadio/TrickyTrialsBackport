@@ -72,7 +72,7 @@ When a picture is uploaded, add its line to `DESCRIPTION.md` at the slot above, 
 
 ## Upload folder
 
-`E:\MinecraftInstances\BackportShowcase\minecraft\screenshots\curseforge\tricky-trials\`: 24 JPEGs at 1920 x 1080,
+`E:\MinecraftInstances\BackportShowcase\minecraft\screenshots\curseforge\tricky-trials\`: 25 JPEGs (1920 x 1080, except the 1410 x 563 item overview),
 numbered in page order. The tester's ten keepers (`PHOTOS.md`) are cropped to 16:9 past the launcher's "..." button
 and scaled down; the rest are the showcase screenshots of 2026-11-21. Featured image: `02-tr-trial-spawner.jpg`.
 
@@ -80,6 +80,7 @@ and scaled down; the rest are the showcase screenshots of 2026-11-21. Featured i
 05 breeze, 06 bogged, 07 crafter (Banner 14), 08 copper interior (Banner 12), 09 copper pavilion (Banner 11),
 10 copper golem, 11 copper golem statue (Banner 10), 12 pale garden and creaking, 13 resin, 14 leaf litter (Banner 4),
 15 warm animals (Banner 2), 16 cold animals (Banner 9), 17 happy ghast, 18 nautilus, 19 parched,
-20 zombie horses and spears, 21 bundles, 22 effects, 23 paintings, 24 settings.
+20 zombie horses and spears, 21 every new item and block (an inventory overview), 22 bundles, 23 effects,
+24 paintings, 25 settings. 12 is a later close-up of the creaking at its heart tree.
 
 Not shot yet: the spear close-up (`tr10_spears`) and the locator bar.
