@@ -1,13 +1,21 @@
 # 1.0.0
 
-First full release: all of 1.21 Tricky Trials and the drops after it, through 1.21.11, on Minecraft 1.12.2. Since the beta:
+First release: all of 1.21 Tricky Trials and the drops after it, through 1.21.11, on Minecraft 1.12.2.
 
-*   **All 18 languages complete**: the settings screen's options and tooltips, the armor trim names and the new potions are translated too.
-*   **The trial explorer map**: journeyman cartographers sell it for 12 emeralds and a compass, and it points at the nearest trial chambers.
-*   **Shelves finished**: they send game events, and items on them use 1.21.11's shelf display.
-*   **Open eyeblossoms glow**: at night an open eyeblossom, planted or potted, gives off a dim light level 5. Not in Minecraft; turn off **Glowing Eyeblossoms** on the Pale Garden settings page for vanilla's unlit flowers.
-*   **Fixed: the copper torch flame crashed the game.**
-*   **Fixed: a nautilus couldn't be steered.**
-*   **Mobs hold spears as in 1.21.11**: upright while idle, pointed only to charge.
-*   **Fixed: with Update Aquatic Backport, a plain pumpkin built a copper golem.** Only a carved pumpkin or a jack o'lantern does now.
-*   **Backport Core 1.4.2 or newer is required.**
+*   **Trial chambers**, with trial spawners, vaults, trial keys, Trial Omen and ominous trials.
+*   **The breeze and wind charges**, and **the bogged**.
+*   **The mace**, with Density, Breach and Wind Burst.
+*   **The crafter**.
+*   **Copper and tuff**: copper bulbs, doors, trapdoors, grates and chiseled copper; tuff stairs, slabs, walls, polished tuff and tuff bricks; copper tools, armor, torches, lanterns, bars and chains.
+*   **The copper golem**, copper chests and copper statues.
+*   **The pale garden**: pale oak, pale moss, eyeblossoms, the creaking and its heart, and resin.
+*   **Spring**: leaf litter, wildflowers, firefly bushes, fallen trees, bushes, dry grass, cactus flowers, and warm and cold cows, pigs and chickens.
+*   **The happy ghast**, the ghastling and the dried ghast.
+*   **Spears and the nautilus**, zombie nautiluses and nautilus armor.
+*   **The parched and zombie horses.**
+*   **Bundles, shelves, the trial explorer map**, the new effects, potions, paintings, banner patterns, music discs, pottery sherds and trim templates.
+*   **The locator bar**, 1.21's smaller changes to things 1.12.2 already has, and 1.21.11's title screen, menu music and splashes.
+*   **Not in Minecraft**: open eyeblossoms give off a dim light at night. Turn off **Glowing Eyeblossoms** on the Pale Garden settings page for vanilla's unlit flowers.
+*   Every feature has its own setting in Backport Core's settings screen.
+*   Translated into 18 languages.
+*   Requires Backport Core 1.4.2 or newer.
