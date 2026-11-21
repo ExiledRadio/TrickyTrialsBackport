@@ -5,6 +5,7 @@ import com.exiledradio.trickytrialsbackport.bundle.BundleContent;
 import com.exiledradio.trickytrialsbackport.bundle.BundleContents;
 import com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines;
 import com.exiledradio.trickytrialsbackport.common.Guis;
+import com.exiledradio.trickytrialsbackport.coppergear.CopperGearContent;
 import com.exiledradio.trickytrialsbackport.crafter.CrafterContent;
 import com.exiledradio.trickytrialsbackport.crafter.client.GuiCrafter;
 import com.exiledradio.trickytrialsbackport.creaking.EntityCreaking;
@@ -22,6 +23,8 @@ import com.exiledradio.trickytrialsbackport.spear.ItemSpear;
 import com.exiledradio.trickytrialsbackport.spear.SpearContent;
 import com.exiledradio.trickytrialsbackport.spear.SpearPoseMath;
 import com.exiledradio.trickytrialsbackport.spear.SpearTier;
+import net.minecraft.block.BlockTorch;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -109,6 +112,7 @@ final class ClientScenes {
         this.shots = shots;
         this.ok = ok;
         this.steps.add(this::platform);
+        copperTorch();
         spear();
         ghast();
         nautilus();
@@ -598,6 +602,61 @@ final class ClientScenes {
             look(this.base, 0.0F, 10.0F);
             return 10;
         });
+    }
+
+    // ---- copper torch ------------------------------------------------------------------------------------------
+
+    private BlockPos torchPillar;
+    private int torchParticles;
+
+    /** Every facing of the copper torch spawns its green flame (2026-11-21: the flame's layer override crashed). */
+    private void copperTorch() {
+        EnumFacing[] facings = {EnumFacing.UP, EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.WEST, EnumFacing.SOUTH};
+        this.steps.add(() -> {
+            BlockPos feet = this.base.add(-15, 0, 0);
+            this.torchPillar = feet.add(0, 1, 2);
+            onServer(() -> {
+                WorldServer w = serverWorld();
+                w.setBlockState(this.torchPillar.down(), Blocks.STONE.getDefaultState(), 2);
+                w.setBlockState(this.torchPillar, Blocks.STONE.getDefaultState(), 2);
+                for (EnumFacing f : facings) {
+                    w.setBlockState(this.torchPillar.offset(f), CopperGearContent.torch.getDefaultState().withProperty(BlockTorch.FACING, f), 3);
+                }
+                return null;
+            });
+            look(feet, 0.0F, 10.0F);
+            return 30;
+        });
+        this.steps.add(() -> {
+            int before = particles();
+            for (EnumFacing f : facings) {
+                BlockPos at = this.torchPillar.offset(f);
+                IBlockState state = this.mc.world.getBlockState(at);
+                ok(state.getBlock() == CopperGearContent.torch && state.getValue(BlockTorch.FACING) == f,
+                        "copper torch: the client has the " + f + " torch: " + state);
+                for (int i = 0; i < 4; i++) {
+                    state.getBlock().randomDisplayTick(state, this.mc.world, at, this.mc.world.rand);
+                }
+            }
+            this.torchParticles = before;
+            return 2;
+        });
+        this.steps.add(() -> {
+            // A smoke and a flame per call, for every facing: the flame is built (no setMiscTex throw) and added. The
+            // particle manager takes new particles in on its next tick, so they are counted now.
+            int after = particles();
+            ok(after - this.torchParticles >= facings.length * 4 * 2,
+                    "copper torch: flames and smoke spawned: " + this.torchParticles + " -> " + after);
+            return 40;
+        });
+        this.steps.add(() -> {
+            shot("copper_torch.png");
+            return 1;
+        });
+    }
+
+    private int particles() {
+        return Integer.parseInt(this.mc.effectRenderer.getStatistics().trim());
     }
 
     // ---- shelves -----------------------------------------------------------------------------------------------
