@@ -31,11 +31,13 @@ config.trickytrialsbackport.decor.tooltip=새로운 그림, 현수막 무늬, �
 config.trickytrialsbackport.decor.enabled.tooltip=그림, 현수막 무늬, 음반, 도자기 조각, 장식 형판. 끄면 아무것도 등록되지 않습니다.
 config.trickytrialsbackport.chambers.tooltip=시련의 회당.
 config.trickytrialsbackport.chambers.enabled.tooltip=시련의 회당이 새로 생성되는 청크의 지하에 생성됩니다.
+config.trickytrialsbackport.chambers.explorerMap.tooltip=1.21처럼 지도 제작자가 숙련자 단계에서 시련 탐험가 지도를 에메랄드 12개와 나침반 하나에 팝니다. Village & Pillage Backport의 현재 지도 제작자 거래표가 있으면 그 거래표가 팝니다. 끄면 이 모드는 지도 제작자의 거래에 시련 탐험가 지도를 추가하지 않습니다.
 config.trickytrialsbackport.bundles.tooltip=꾸러미와 염색된 꾸러미 16종.
 config.trickytrialsbackport.bundles.enabled.tooltip=꾸러미. 끄면 아무것도 등록되지 않습니다.
 config.trickytrialsbackport.paleGarden.tooltip=창백한 정원: 창백한 참나무, 창백한 이끼, 창백한 매달린 이끼, 눈망울꽃, 크리킹 심장, 그리고 생물 군계.
 config.trickytrialsbackport.paleGarden.enabled.tooltip=창백한 정원의 블록과 아이템. 끄면 아무것도 등록되지 않습니다.
 config.trickytrialsbackport.paleGarden.generateBiome.tooltip=1.21.4에서 창백한 정원이 어두운 숲의 기후에 배치된 것처럼, 새로 생성되는 청크에서는 모든 어두운 숲의 일부가 창백한 정원이 됩니다.
+config.trickytrialsbackport.paleGarden.eyeblossomLight.tooltip=Minecraft에는 없는 기능: 심거나 화분에 담은 뜬 눈망울꽃이 밝기 5의 희미한 빛을 내어 밤에 빛납니다. 감은 눈망울꽃은 빛을 내지 않습니다. 끄면 Minecraft처럼 모두 빛을 내지 않습니다. 이미 놓인 꽃은 피거나 감기거나 옆 블록이 바뀔 때 갱신됩니다.
 config.trickytrialsbackport.creaking.tooltip=크리킹.
 config.trickytrialsbackport.creaking.enabled.tooltip=크리킹. 끄면 아무것도 등록되지 않습니다.
 config.trickytrialsbackport.resin.tooltip=수지 덩어리, 수지 블록, 수지 벽돌.
@@ -531,6 +533,7 @@ trim_pattern.trickytrialsbackport.flow=흐름 갑옷 장식
 
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=창백한 정원 생성
+config.trickytrialsbackport.paleGarden.eyeblossomLight=빛나는 눈망울꽃
 entity.trickytrialsbackport.boat.name=보트
 item.trickytrialsbackport.pale_oak_boat.name=창백한 참나무 보트
 item.trickytrialsbackport.pale_oak_door.name=창백한 참나무 문

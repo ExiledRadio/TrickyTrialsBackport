@@ -371,6 +371,12 @@ public final class ModConfig {
         @Setting.NewChunks
         @Config.LangKey("config.trickytrialsbackport.paleGarden.generateBiome")
         public boolean generateBiome = true;
+
+        @Config.Comment({"Not in Minecraft: open eyeblossoms, planted or potted, give off a dim light level 5, so they",
+                "glow at night. Closed ones give none. Off, as in Minecraft, none do. A flower already placed updates",
+                "when it opens, closes, or a block next to it changes."})
+        @Config.LangKey("config.trickytrialsbackport.paleGarden.eyeblossomLight")
+        public boolean eyeblossomLight = true;
         // --- end PaleGarden ---
     }
 

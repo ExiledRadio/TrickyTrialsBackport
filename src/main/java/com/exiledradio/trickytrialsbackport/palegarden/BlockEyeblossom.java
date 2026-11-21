@@ -1,5 +1,6 @@
 package com.exiledradio.trickytrialsbackport.palegarden;
 
+import com.exiledradio.trickytrialsbackport.ModConfig;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -37,11 +38,20 @@ import java.util.Random;
  *       Peaceful.</li>
  * </ul>
  * Map colors: open {@code COLOR_ORANGE} (1.12.2's adobe), closed the pale oak leaves' {@code METAL} (iron).
+ *
+ * <p>Not vanilla, on request: with {@code paleGarden.eyeblossomLight} on (the default) an open eyeblossom and its pot
+ * give off a dim block light, {@link #LIGHT}; closed ones give none. Open and closed are separate blocks, so the
+ * switch at dusk and dawn is a block change and {@code World.setBlockState} rechecks the light. The level comes from
+ * the block state ({@code getLightValue(IBlockState)}), so the lighting engine, Phosphor, OptiFine and Celeritas
+ * all see it.
  */
 public class BlockEyeblossom extends BlockBush {
 
     /** {@code Block.column(6, 0, 11)}: a flower's shape. */
     private static final AxisAlignedBB SHAPE = new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 0.6875D, 0.6875D);
+
+    /** The light an open eyeblossom gives off with {@code paleGarden.eyeblossomLight} on: fairly dim. */
+    public static final int LIGHT = 5;
 
     public final boolean open;
 
@@ -63,6 +73,17 @@ public class BlockEyeblossom extends BlockBush {
             time += 24000L;
         }
         return time >= 12600L && time < 23401L;
+    }
+
+    /** @return {@link #LIGHT} for an open eyeblossom with {@code paleGarden.eyeblossomLight} on, else 0 */
+    public static int light(boolean open) {
+        return open && ModConfig.paleGarden.eyeblossomLight ? LIGHT : 0;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public int getLightValue(IBlockState state) {
+        return light(this.open);
     }
 
     /** @return the eyeblossom of the other kind */
@@ -145,6 +166,12 @@ public class BlockEyeblossom extends BlockBush {
         public Potted(boolean open) {
             this.open = open;
             setTickRandomly(true);
+        }
+
+        @Override
+        @SuppressWarnings("deprecation")
+        public int getLightValue(IBlockState state) {
+            return light(this.open);
         }
 
         @Override

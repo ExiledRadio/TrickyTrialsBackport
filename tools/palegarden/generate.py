@@ -220,5 +220,6 @@ for e in ("block.creaking_heart.idle", "block.pale_hanging_moss.idle", "block.ey
 assets.merge_sounds("palegarden", events)
 
 lang.append("config.%s.paleGarden.generateBiome=Generate Pale Gardens" % M)
+lang.append("config.%s.paleGarden.eyeblossomLight=Glowing Eyeblossoms" % M)
 assets.merge_lang("palegarden", sorted(set(lang)) + assets.subtitle_lines(events))
 print("palegarden: %d lang lines, %d sound events" % (len(set(lang)), len(events)))

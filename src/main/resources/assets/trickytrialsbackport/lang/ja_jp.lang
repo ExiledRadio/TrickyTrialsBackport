@@ -31,11 +31,13 @@ config.trickytrialsbackport.decor.tooltip=新しい絵画、旗の模様、レ�
 config.trickytrialsbackport.decor.enabled.tooltip=絵画、旗の模様、レコード、壺の欠片、装飾の鍛冶型。オフにすると何も登録されません。
 config.trickytrialsbackport.chambers.tooltip=試練の間。
 config.trickytrialsbackport.chambers.enabled.tooltip=試練の間は新しく生成されたチャンクの地下に生成されます。
+config.trickytrialsbackport.chambers.explorerMap.tooltip=1.21 と同じく、製図家が熟練者レベルで試練の間の地図をエメラルド 12 個とコンパスで売ります。Village & Pillage Backport の現在の製図家の取引表がある場合は、その取引表が売ります。オフにすると、この Mod は製図家の取引に試練の間の地図を追加しません。
 config.trickytrialsbackport.bundles.tooltip=バンドルと 16 色の染めたバンドル。
 config.trickytrialsbackport.bundles.enabled.tooltip=バンドル。オフにすると何も登録されません。
 config.trickytrialsbackport.paleGarden.tooltip=ペールガーデン：ペールオーク、色あせた苔、色あせた垂れ苔、ヒトミソウ、クリーキングの心臓、そしてバイオーム。
 config.trickytrialsbackport.paleGarden.enabled.tooltip=ペールガーデンのブロックとアイテム。オフにすると何も登録されません。
 config.trickytrialsbackport.paleGarden.generateBiome.tooltip=1.21.4 でペールガーデンが暗い森の気候に置かれたのと同じく、新しく生成されたチャンクでは、すべての暗い森の一部がペールガーデンになります。
+config.trickytrialsbackport.paleGarden.eyeblossomLight.tooltip=Minecraft にはない仕様：開いたヒトミソウは、植えても鉢植えでも明るさ 5 の弱い光を放ち、夜に光ります。閉じたヒトミソウは光りません。オフにすると Minecraft と同じくどれも光りません。設置済みの花は、開いたり閉じたり、隣のブロックが変化したりしたときに更新されます。
 config.trickytrialsbackport.creaking.tooltip=クリーキング。
 config.trickytrialsbackport.creaking.enabled.tooltip=クリーキング。オフにすると何も登録されません。
 config.trickytrialsbackport.resin.tooltip=樹脂の塊、樹脂ブロック、樹脂レンガ。
@@ -531,6 +533,7 @@ trim_pattern.trickytrialsbackport.flow=旋風の装飾
 
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=ペールガーデンを生成
+config.trickytrialsbackport.paleGarden.eyeblossomLight=光るヒトミソウ
 entity.trickytrialsbackport.boat.name=ボート
 item.trickytrialsbackport.pale_oak_boat.name=ペールオークのボート
 item.trickytrialsbackport.pale_oak_door.name=ペールオークのドア

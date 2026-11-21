@@ -1,5 +1,8 @@
 # 0.1.0 (unreleased)
 
+*   **Open eyeblossoms glow**: at night an open eyeblossom, planted or potted, gives off a dim light level 5, and the
+    light goes out when it closes at dawn. Not in Minecraft; turn off **Glowing Eyeblossoms** on the Pale Garden
+    settings page for vanilla's unlit flowers.
 *   **Fixed: waxing or scraping a copper door broke it with Caves & Cliffs installed.** Backport Core's copper table is
     shared, so Caves & Cliffs' own right-click also took this mod's copper and changed only the clicked half; the other
     half then broke. This mod now handles its own copper first, both halves together.

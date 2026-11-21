@@ -31,11 +31,13 @@ config.trickytrialsbackport.decor.tooltip=Нові картини, візеру�
 config.trickytrialsbackport.decor.enabled.tooltip=Картини, візерунки стягів, платівки, черепки та шаблони орнаментів. Якщо вимкнено, нічого не реєструється.
 config.trickytrialsbackport.chambers.tooltip=Палаци випробувань.
 config.trickytrialsbackport.chambers.enabled.tooltip=Палаци випробувань з'являються під землею в нових чанках.
+config.trickytrialsbackport.chambers.explorerMap.tooltip=Картографи продають мапу дослідника випробувань на рівні підмайстра за 12 смарагдів і компас, як у 1.21. З поточною таблицею картографа з Village & Pillage Backport її продає ця таблиця. Якщо вимкнено, мод не додає мапу дослідника випробувань до угод картографа.
 config.trickytrialsbackport.bundles.tooltip=Мішечки та шістнадцять фарбованих мішечків.
 config.trickytrialsbackport.bundles.enabled.tooltip=Мішечки. Якщо вимкнено, нічого не реєструється.
 config.trickytrialsbackport.paleGarden.tooltip=Блідий сад: блідий дуб, блідий мох, блідий висячий мох, окоцвіти, серце скрипня та сам біом.
 config.trickytrialsbackport.paleGarden.enabled.tooltip=Блоки та предмети блідого саду. Якщо вимкнено, нічого не реєструється.
 config.trickytrialsbackport.paleGarden.generateBiome.tooltip=Частина кожного темного лісу стає блідим садом у нових чанках, адже в 1.21.4 блідий сад розміщено в кліматі темного лісу.
+config.trickytrialsbackport.paleGarden.eyeblossomLight.tooltip=Немає в Minecraft: розкриті окоцвіти, посаджені або в горщику, випромінюють тьмяне світло рівня 5 і світяться вночі. Закриті не світяться. Якщо вимкнено, як у Minecraft, не світиться жоден. Уже поставлена квітка оновлюється, коли розкривається, закривається або змінюється сусідній блок.
 config.trickytrialsbackport.creaking.tooltip=Скрипень.
 config.trickytrialsbackport.creaking.enabled.tooltip=Скрипень. Якщо вимкнено, нічого не реєструється.
 config.trickytrialsbackport.resin.tooltip=Згустки смоли, блоки смоли та смоляна цегла.
@@ -531,6 +533,7 @@ trim_pattern.trickytrialsbackport.flow=Орнамент обладунків «�
 
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Генерація блідих садів
+config.trickytrialsbackport.paleGarden.eyeblossomLight=Сяйливі окоцвіти
 entity.trickytrialsbackport.boat.name=Човен
 item.trickytrialsbackport.pale_oak_boat.name=Блідо-дубовий човен
 item.trickytrialsbackport.pale_oak_door.name=Блідо-дубові двері

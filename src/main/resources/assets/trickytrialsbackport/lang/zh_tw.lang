@@ -31,11 +31,13 @@ config.trickytrialsbackport.decor.tooltip=新的繪畫、旗幟圖案、唱片�
 config.trickytrialsbackport.decor.enabled.tooltip=繪畫、旗幟圖案、唱片、陶器碎片與紋樣模板。關閉時不會註冊任何內容。
 config.trickytrialsbackport.chambers.tooltip=試煉密室。
 config.trickytrialsbackport.chambers.enabled.tooltip=試煉密室會在新生成區塊的地底生成。
+config.trickytrialsbackport.chambers.explorerMap.tooltip=與 1.21 相同，製圖師在老手等級以 12 個綠寶石和一個羅盤出售試煉探險家地圖。使用 Village & Pillage Backport 目前的製圖師交易表時，由該交易表出售。關閉後，本模組不會在製圖師的交易中加入試煉探險家地圖。
 config.trickytrialsbackport.bundles.tooltip=束口袋與十六種染色束口袋。
 config.trickytrialsbackport.bundles.enabled.tooltip=束口袋。關閉時不會註冊任何內容。
 config.trickytrialsbackport.paleGarden.tooltip=蒼白之園：蒼白橡木、蒼白苔蘚、蒼白垂絲、擬目花、嘎枝之心與該生態域。
 config.trickytrialsbackport.paleGarden.enabled.tooltip=蒼白之園的方塊與物品。關閉時不會註冊任何內容。
 config.trickytrialsbackport.paleGarden.generateBiome.tooltip=在新生成的區塊中，每片黑森林都有一部分會變為蒼白之園，因為 1.21.4 將蒼白之園置於黑森林的氣候中。
+config.trickytrialsbackport.paleGarden.eyeblossomLight.tooltip=Minecraft 中沒有此特性：張開的擬目花（種下或盆栽）發出 5 級微光，因此夜間會發光。閉合的擬目花不發光。關閉後，與 Minecraft 相同，皆不發光。已放置的花在張開、閉合或相鄰方塊變化時更新。
 config.trickytrialsbackport.creaking.tooltip=嘎枝。
 config.trickytrialsbackport.creaking.enabled.tooltip=嘎枝。關閉時不會註冊任何內容。
 config.trickytrialsbackport.resin.tooltip=樹脂團、樹脂方塊與樹脂磚。
@@ -531,6 +533,7 @@ trim_pattern.trickytrialsbackport.flow=渦流盔甲紋樣
 
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=生成蒼白之園
+config.trickytrialsbackport.paleGarden.eyeblossomLight=發光的擬目花
 entity.trickytrialsbackport.boat.name=船
 item.trickytrialsbackport.pale_oak_boat.name=蒼白橡木船
 item.trickytrialsbackport.pale_oak_door.name=蒼白橡木門

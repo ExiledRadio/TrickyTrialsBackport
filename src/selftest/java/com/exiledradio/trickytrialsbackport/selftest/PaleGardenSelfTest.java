@@ -4,6 +4,7 @@ import com.exiledradio.backportcore.ownership.BlockOwnership;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.common.Content;
 import com.exiledradio.trickytrialsbackport.palegarden.BlockCreakingHeart;
+import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.palegarden.BlockEyeblossom;
 import com.exiledradio.trickytrialsbackport.palegarden.BlockPaleMossCarpet;
 import com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent;
@@ -32,6 +33,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -392,9 +394,36 @@ public final class PaleGardenSelfTest implements SelfTest {
         c.ok(BlockEyeblossom.openNow(c.world, false), "open from 12600");
         // Potted.
         BlockPos pot = corner.add(20, 0, 20);
+        // World.checkLight works only with every chunk 17 blocks round loaded.
+        for (int dx = -2; dx <= 2; dx++) {
+            for (int dz = -2; dz <= 2; dz++) {
+                c.world.getChunkProvider().provideChunk((pot.getX() >> 4) + dx, (pot.getZ() >> 4) + dz);
+            }
+        }
         c.world.setBlockState(pot, PaleGardenContent.pottedClosedEyeblossom.getDefaultState());
         PaleGardenContent.pottedClosedEyeblossom.randomTick(c.world, pot, c.world.getBlockState(pot), c.world.rand);
         c.eq(PaleGardenContent.pottedOpenEyeblossom, c.world.getBlockState(pot).getBlock(), "a potted eyeblossom opens at night");
+        c.eq(BlockEyeblossom.LIGHT, c.world.getLightFor(EnumSkyBlock.BLOCK, pot), "light: a potted open eyeblossom glows");
+        // Light (not vanilla, paleGarden.eyeblossomLight): open ones glow, closed ones not, rechecked on the switch.
+        BlockPos lone = corner.add(30, 0, 30);
+        c.world.setBlockState(lone, closed.getDefaultState());
+        c.eq(0, c.world.getLightFor(EnumSkyBlock.BLOCK, lone), "light: a closed eyeblossom gives none");
+        closed.randomTick(c.world, lone, c.world.getBlockState(lone), c.world.rand);
+        c.eq(open, c.world.getBlockState(lone).getBlock(), "light: the lone eyeblossom opened");
+        c.eq(BlockEyeblossom.LIGHT, c.world.getLightFor(EnumSkyBlock.BLOCK, lone), "light: it glows once open");
+        c.eq(BlockEyeblossom.LIGHT - 1, c.world.getLightFor(EnumSkyBlock.BLOCK, lone.north()), "light: it spreads to the next block");
+        c.world.setWorldTime(1000L);
+        open.randomTick(c.world, lone, c.world.getBlockState(lone), c.world.rand);
+        c.eq(closed, c.world.getBlockState(lone).getBlock(), "light: the lone eyeblossom closed");
+        c.eq(0, c.world.getLightFor(EnumSkyBlock.BLOCK, lone), "light: none once closed again");
+        ModConfig.paleGarden.eyeblossomLight = false;
+        try {
+            c.world.setBlockState(lone, open.getDefaultState());
+            c.eq(0, c.world.getLightFor(EnumSkyBlock.BLOCK, lone), "light: setting off, an open eyeblossom gives none");
+        } finally {
+            ModConfig.paleGarden.eyeblossomLight = true;
+        }
+        c.world.setBlockToAir(lone);
         c.world.setWorldTime(1000L);
     }
 

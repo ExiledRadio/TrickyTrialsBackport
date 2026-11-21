@@ -36,6 +36,7 @@ config.trickytrialsbackport.bundles.enabled.tooltip=Bundles. Off, nothing is reg
 config.trickytrialsbackport.paleGarden.tooltip=The pale garden: pale oak, pale moss, hanging moss, eyeblossoms, the creaking heart and the biome.
 config.trickytrialsbackport.paleGarden.enabled.tooltip=The pale garden's blocks and items. Off, nothing is registered.
 config.trickytrialsbackport.paleGarden.generateBiome.tooltip=Part of every roofed forest becomes a pale garden, in newly generated chunks, as 1.21.4 put the pale garden in the dark forest's climate.
+config.trickytrialsbackport.paleGarden.eyeblossomLight.tooltip=Not in Minecraft: open eyeblossoms, planted or potted, give off a dim light level 5, so they glow at night. Closed ones give none. Off, as in Minecraft, none do. A flower already placed updates when it opens, closes, or a block next to it changes.
 config.trickytrialsbackport.creaking.tooltip=The creaking.
 config.trickytrialsbackport.creaking.enabled.tooltip=The creaking. Off, nothing is registered.
 config.trickytrialsbackport.resin.tooltip=Resin clumps, resin blocks and resin bricks.
@@ -531,6 +532,7 @@ trim_pattern.trickytrialsbackport.flow=Flow Armor Trim
 
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Generate Pale Gardens
+config.trickytrialsbackport.paleGarden.eyeblossomLight=Glowing Eyeblossoms
 entity.trickytrialsbackport.boat.name=Boat
 item.trickytrialsbackport.pale_oak_boat.name=Pale Oak Boat
 item.trickytrialsbackport.pale_oak_door.name=Pale Oak Door
