@@ -35,7 +35,8 @@ import java.util.Map;
  *
  * <ul>
  *   <li>21 paintings ({@link Paintings}) on our own painting entity ({@link EntityModernPainting}, id 25), placed
- *       by vanilla's painting item as 1.21 places them ({@link DecorEvents#placePainting}).</li>
+ *       by vanilla's painting item as 1.21 places them ({@link DecorEvents#placePainting}). The creative inventory and JEI list each painting with its
+ *       variant, as 1.19.4 does ({@link PaintingItems}).</li>
  *   <li>Banner patterns Flow and Guster (1.21) added to 1.12.2's pattern enum; Field Masoned and Bordure Indented
  *       (1.21.2) are the items 1.21.2 now needs for the bricks and curly border patterns. With Village &amp;
  *       Pillage the four are its loom's pattern items ({@link LoomPatterns}); without it they apply in the

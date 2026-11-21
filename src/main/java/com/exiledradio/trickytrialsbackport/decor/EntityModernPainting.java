@@ -49,7 +49,7 @@ public class EntityModernPainting extends EntityHanging implements IEntityAdditi
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
-        Paintings.Variant read = Paintings.byName(compound.getString("variant"));
+        Paintings.Variant read = Paintings.byName(PaintingItems.bare(compound.getString("variant")));
         this.variant = read != null ? read : Paintings.byIndex(0);
         super.readEntityFromNBT(compound);
     }
@@ -82,7 +82,8 @@ public class EntityModernPainting extends EntityHanging implements IEntityAdditi
 
     @Override
     public ItemStack getPickedResult(RayTraceResult target) {
-        return new ItemStack(Items.PAINTING);
+        PaintingItems.Entry entry = PaintingItems.byName(this.variant.name);
+        return entry != null ? entry.stack() : new ItemStack(Items.PAINTING);
     }
 
     @Override

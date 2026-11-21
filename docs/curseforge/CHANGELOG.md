@@ -1,3 +1,8 @@
+# 1.0.1
+
+*   **Every painting in the creative inventory**: the Decoration Blocks tab and JEI list the random painting, then each painting on its own, 1.12.2's 26 and the 21 new ones, with title, artist and size in the tooltip. Such a painting hangs exactly that picture where it fits, and middle-clicking a hung painting picks that one. Paintings in survival stay random.
+*   **Fixed: a painting saved with a `minecraft:` variant id came back as Baroque.**
+
 # 1.0.0
 
 First release: all of 1.21 Tricky Trials and the drops after it, through 1.21.11, on Minecraft 1.12.2.

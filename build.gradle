@@ -27,6 +27,8 @@ repositories {
     }
     // CurseMaven serves CurseForge files by project and file id, so the version is pinned exactly.
     maven { url 'https://cursemaven.com' }
+    // JEI's API, for the plugin that lists each painting variant (decor/PaintingsJei).
+    maven { url 'https://maven.blamejared.com' }
 }
 
 dependencies {
@@ -37,6 +39,8 @@ dependencies {
     // Fluidlogged API 3.3.3 (CurseForge 485654, file 8445863), which Backport Core 1.1.0 and later require. Core's
     // dev jar does not carry it, so the run tasks need it here too. Never bundled.
     deobfCompile 'curse.maven:fluidlogged-api-485654:8445863'
+    // Compile only: JEI is never required, and only JEI loads the class that uses it.
+    deobfProvided 'mezz.jei:jei_1.12.2:4.16.1.302:api'
 }
 
 version = mod_version

@@ -8,6 +8,11 @@ import com.exiledradio.trickytrialsbackport.decor.EntityModernPainting;
 import com.exiledradio.trickytrialsbackport.decor.ItemDecorDisc;
 import com.exiledradio.trickytrialsbackport.decor.ItemTrimTemplate;
 import com.exiledradio.trickytrialsbackport.decor.Paintings;
+import com.exiledradio.trickytrialsbackport.decor.PaintingItems;
+import com.exiledradio.trickytrialsbackport.asm.PaintingItemTransformer;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -77,6 +82,7 @@ public final class DecorSelfTest implements SelfTest {
         c.world.spawnEntity(player);
         try {
             paintings(c, player, area);
+            variantItems(c, player, area);
             tears(c, player, area);
             lavaChicken(c, player, area);
         } finally {
@@ -300,6 +306,107 @@ public final class DecorSelfTest implements SelfTest {
         summoned.setDead();
     }
 
+    /** 1.19.4's painting items with a variant: the creative list, exact placement, pick-block. */
+    private void variantItems(Check c, EntityPlayerMP player, BlockPos area) {
+        c.ok(PaintingItemTransformer.appliedSubItems && PaintingItemTransformer.appliedPick, "P26 and P27 applied");
+        NonNullList<ItemStack> list = NonNullList.create();
+        Items.PAINTING.getSubItems(CreativeTabs.DECORATIONS, list);
+        c.eq(48, list.size(), "creative: the random painting and 47 variants");
+        c.ok(!list.isEmpty() && PaintingItems.of(list.get(0)) == null && !list.get(0).hasTagCompound(), "the random painting first");
+        Set<String> names = new HashSet<String>();
+        int lastH = 0;
+        int lastW = 0;
+        boolean ordered = true;
+        for (int i = 1; i < list.size(); i++) {
+            PaintingItems.Entry e = PaintingItems.of(list.get(i));
+            if (!c.ok(e != null, "entry " + i + " carries a variant")) {
+                return;
+            }
+            names.add(e.name);
+            ordered &= e.height > lastH || (e.height == lastH && e.width >= lastW);
+            lastH = e.height;
+            lastW = e.width;
+        }
+        c.eq(47, names.size(), "47 different variants");
+        c.ok(ordered, "ordered by height, then width");
+        c.ok(names.contains("kebab") && names.contains("skull_and_roses") && names.contains("donkey_kong")
+                && names.contains("baroque") && names.contains("dennis"), "1.12.2's and ours, modern ids");
+        c.eq("minecraft:kebab", list.get(1).getSubCompound("EntityTag").getString("variant"), "kept as EntityTag variant, namespaced");
+        NonNullList<ItemStack> search = NonNullList.create();
+        Items.PAINTING.getSubItems(CreativeTabs.SEARCH, search);
+        c.eq(48, search.size(), "the search tab lists them too");
+        NonNullList<ItemStack> other = NonNullList.create();
+        Items.PAINTING.getSubItems(CreativeTabs.COMBAT, other);
+        c.eq(0, other.size(), "not in other tabs");
+        NonNullList<ItemStack> frames = NonNullList.create();
+        Items.ITEM_FRAME.getSubItems(CreativeTabs.DECORATIONS, frames);
+        c.eq(1, frames.size(), "the item frame keeps one entry");
+
+        // A 2x2 wall: Skull and Roses (vanilla) and Baroque (ours) hang exactly; a 4x4 painting does not fit.
+        BlockPos wall = area.add(24, 1, 10);
+        c.fill(wall, wall.add(1, 1, 0), Blocks.STONE.getDefaultState());
+        Entity skull = placeVariant(c, player, PaintingItems.byName("skull_and_roses").stack(), wall);
+        c.ok(skull instanceof EntityPainting && ((EntityPainting) skull).art == EntityPainting.EnumArt.SKULL_AND_ROSES,
+                "Skull and Roses hangs as itself: " + skull);
+        Entity baroque = placeVariant(c, player, PaintingItems.byName("minecraft:baroque").stack(), wall);
+        c.ok(baroque instanceof EntityModernPainting && "baroque".equals(((EntityModernPainting) baroque).getVariant().name),
+                "Baroque hangs as itself: " + baroque);
+        ItemStack big = PaintingItems.byName("pointer").stack();
+        c.ok(placeVariant(c, player, big, wall) == null, "a 4x4 painting does not fit a 2x2 wall");
+        c.eq(1, player.getHeldItemMainhand().getCount(), "and stays in hand");
+        ItemStack held = PaintingItems.byName("kebab").stack();
+        held.setCount(2);
+        c.ok(placeVariant(c, player, held, wall) != null, "a 1x1 fits");
+        c.eq(1, held.getCount(), "placing uses one");
+
+        // Pick-block gives the variant, for vanilla's paintings and ours.
+        if (skull != null) {
+            ItemStack pick = skull.getPickedResult(null);
+            c.ok(ItemStack.areItemStacksEqual(pick, PaintingItems.byName("skull_and_roses").stack()), "pick on Skull and Roses gives it");
+        }
+        if (baroque != null) {
+            ItemStack pick = baroque.getPickedResult(null);
+            c.ok(ItemStack.areItemStacksEqual(pick, PaintingItems.byName("baroque").stack()), "pick on Baroque gives it");
+        }
+
+        // A namespaced or unknown variant read from a save.
+        NBTTagCompound tag = new NBTTagCompound();
+        new EntityModernPainting(c.world, wall.north(), EnumFacing.NORTH, Paintings.byName("dennis")).writeToNBT(tag);
+        tag.setString("variant", "minecraft:dennis");
+        EntityModernPainting read = new EntityModernPainting(c.world);
+        read.readFromNBT(tag);
+        c.eq("dennis", read.getVariant().name, "minecraft:dennis reads as Dennis");
+        tag.setString("variant", "minecraft:no_such");
+        read.readFromNBT(tag);
+        c.eq("baroque", read.getVariant().name, "an unknown variant still falls back to Baroque");
+    }
+
+    /** Uses the stack on each block of the wall until a painting hangs; returns it (removed again) or null. */
+    private Entity placeVariant(Check c, EntityPlayerMP player, ItemStack stack, BlockPos wall) {
+        player.setHeldItem(EnumHand.MAIN_HAND, stack);
+        for (int dx = 0; dx < 2; dx++) {
+            for (int dy = 0; dy < 2; dy++) {
+                BlockPos clicked = wall.add(dx, dy, 0);
+                AxisAlignedBB box = new AxisAlignedBB(clicked.north()).grow(4);
+                for (EntityHanging old : c.world.getEntitiesWithinAABB(EntityHanging.class, box)) {
+                    c.world.removeEntityDangerously(old);
+                }
+                PlayerInteractEvent.RightClickBlock event = ForgeHooks.onRightClickBlock(player, EnumHand.MAIN_HAND, clicked,
+                        EnumFacing.NORTH, new Vec3d(0.5, 0.5, 0.0));
+                if (!event.isCanceled()) {
+                    Items.PAINTING.onItemUse(player, c.world, clicked, EnumHand.MAIN_HAND, EnumFacing.NORTH, 0.5F, 0.5F, 0.0F);
+                }
+                for (EntityHanging h : c.world.getEntitiesWithinAABB(EntityHanging.class, box)) {
+                    if (!h.isDead) {
+                        c.world.removeEntityDangerously(h);
+                        return h;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     private Entity place(Check c, EntityPlayerMP player, BlockPos clicked, EnumFacing face) {
         player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.PAINTING));
         AxisAlignedBB box = new AxisAlignedBB(clicked.offset(face)).grow(3);
@@ -338,7 +445,7 @@ public final class DecorSelfTest implements SelfTest {
         Drops.count(c.world, where, Items.PAINTING);
         p.onBroken(null);
         c.eq(1, Drops.count(c.world, where, Items.PAINTING), "breaks into a painting");
-        c.eq(new ItemStack(Items.PAINTING).getItem(), p.getPickedResult(null).getItem(), "picked as a painting");
+        c.ok(ItemStack.areItemStacksEqual(PaintingItems.byName(p.getVariant().name).stack(), p.getPickedResult(null)), "picked as its variant");
     }
 
     private void tears(Check c, EntityPlayerMP player, BlockPos area) {

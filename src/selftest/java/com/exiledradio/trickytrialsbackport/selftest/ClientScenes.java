@@ -38,6 +38,9 @@ import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.ITooltipFlag;
+import com.exiledradio.trickytrialsbackport.decor.PaintingItems;
+import net.minecraft.entity.item.EntityPainting;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityZombie;
@@ -118,6 +121,7 @@ final class ClientScenes {
         nautilus();
         creaking();
         shelf();
+        paintings();
         screens();
     }
 
@@ -729,6 +733,50 @@ final class ClientScenes {
                 this.drawn = true;
             }
         }
+    }
+
+    /** Painting items with their variant: the tooltip, two hung paintings, and pick-block on one. */
+    private void paintings() {
+        this.steps.add(() -> {
+            List<String> kebab = PaintingItems.byName("kebab").stack().getTooltip(this.mc.player, ITooltipFlag.TooltipFlags.NORMAL);
+            ok(kebab.size() >= 4 && (TextFormatting.YELLOW + "Kebab med tre pepperoni").equals(kebab.get(1))
+                    && (TextFormatting.GRAY + "Kristoffer Zetterstrand").equals(kebab.get(2)) && "1x1".equals(kebab.get(3)),
+                    "painting: Kebab's tooltip gives title, author and size: " + kebab);
+            List<String> random = new ItemStack(Items.PAINTING).getTooltip(this.mc.player, ITooltipFlag.TooltipFlags.NORMAL);
+            ok(random.size() >= 2 && (TextFormatting.GRAY + "Random variant").equals(random.get(1)),
+                    "painting: the random one says so in creative: " + random);
+            BlockPos feet = this.base.add(40, 0, 0);
+            BlockPos wall = feet.add(-5, 0, 3);
+            onServer(() -> {
+                WorldServer w = serverWorld();
+                for (int dx = 0; dx < 10; dx++) {
+                    for (int dy = 0; dy < 4; dy++) {
+                        w.setBlockState(wall.add(dx, dy, 0), Blocks.STONE.getDefaultState(), 2);
+                    }
+                }
+                // Facing north, toward the player: Skull and Roses straight ahead, Baroque to its side.
+                w.spawnEntity(PaintingItems.byName("skull_and_roses").create(w, feet.add(0, 1, 2), EnumFacing.NORTH));
+                w.spawnEntity(PaintingItems.byName("baroque").create(w, feet.add(-3, 1, 2), EnumFacing.NORTH));
+                w.spawnEntity(PaintingItems.byName("kebab").create(w, feet.add(3, 1, 2), EnumFacing.NORTH));
+                return null;
+            });
+            look(feet, 0.0F, 0.0F);
+            return 40;
+        });
+        this.steps.add(() -> {
+            shot("paintings.png");
+            RayTraceResult hit = this.mc.objectMouseOver;
+            ok(hit != null && hit.entityHit instanceof EntityPainting, "painting: the crosshair is on Skull and Roses: " + hit);
+            if (hit != null && hit.entityHit != null) {
+                this.mc.player.inventory.currentItem = 0;
+                this.mc.player.inventory.setInventorySlotContents(0, ItemStack.EMPTY);
+                net.minecraftforge.common.ForgeHooks.onPickBlock(hit, this.mc.player, this.mc.world);
+                PaintingItems.Entry picked = PaintingItems.of(this.mc.player.getHeldItemMainhand());
+                ok(picked != null && "skull_and_roses".equals(picked.name), "painting: pick-block gives Skull and Roses: "
+                        + this.mc.player.getHeldItemMainhand() + " " + this.mc.player.getHeldItemMainhand().getTagCompound());
+            }
+            return 1;
+        });
     }
 
     private void screens() {

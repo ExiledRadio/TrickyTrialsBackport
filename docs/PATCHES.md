@@ -34,6 +34,8 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | P21 | spears (client) | `ModelBiped.setRotationAngles` (`func_78087_a`) | head: `SpearModelHooks.pre(this, entity)`; before each return: `SpearModelHooks.post(this)` (entity stashed by `pre`; Mojang frames drop the parameter by the returns); `ModelZombie` / `ModelZombieVillager.setRotationAngles`, before each return: `SpearModelHooks.zombieArms(this)` |
 | P24a | mounts | `EntityZombieHorse`: `processInteract` (`func_184645_a`); new `wearsArmor` (`func_190677_dK`), `isArmor` (`func_190682_f`), `canDespawn` (`func_70692_ba`) | head of `processInteract`: `switch (MountsHooks.zombieHorseInteract(this, player, hand))` (1 returns true, 2 false, 0 runs 1.12.2's body); the three new overrides return `MountsHooks.zombieHorseWearsArmor()`, `zombieHorseIsArmor(stack)`, `zombieHorseCanDespawn(this)` |
 | P25 | copper | Fluidlogged API's `ISpecializedFluidNeighborInfo$Vanilla.canDisplaceI` (not a vanilla class) | the door/sign/ladder/sugar cane branch's `return true` becomes `return DoorWater.displaced(state)` (false for our doors) |
+| P26 | decor | `ItemHangingEntity`: new `getSubItems` (`func_150895_a`) | `super.getSubItems(tab, items); PaintingItems.subItems(this, tab, items);` (the variant paintings after the random one) |
+| P27 | decor | `Entity.getPickedResult` (Forge's, same name in SRG) | head: `ItemStack s = PaintingItems.pickedResult(this); if (s != null) return s;` (a vanilla painting gives its variant) |
 
 ## P1: cacti grow flowers (1.21.5)
 
@@ -194,4 +196,15 @@ found. Without Fluidlogged API the class does not exist and nothing is patched; 
 water at a door.
 
 Every family door Backport Core keeps dry has the same problem; the place for a fix covering all of them is Core.
+
+## P26, P27: painting items with their variant (1.19.4)
+
+1.19.4 (23w06a) lists every placeable painting in the creative inventory as a painting item that carries its variant,
+`EntityTag:{variant:"minecraft:<name>"}` (1.21.5 keeps the id in its `painting/variant` component), after the random
+painting, ordered by height then width. `ItemHangingEntity` (the painting's and the item frame's class) never overrode
+`getSubItems`, so P26 adds it; the hook adds nothing for the item frame, or while `decor` is off. Placing such a painting
+is an event (`DecorEvents.placeVariant`), not a patch.
+
+Forge's `Entity.getPickedResult` answers a plain painting for any `EntityPainting`. P27's hook gives the painting's
+variant instead, as pick-block does in 1.21.11; our own painting entity overrides the method itself.
 

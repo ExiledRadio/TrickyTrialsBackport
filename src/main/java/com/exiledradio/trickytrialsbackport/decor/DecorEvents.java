@@ -61,6 +61,44 @@ public final class DecorEvents {
     private DecorEvents() {
     }
 
+    /**
+     * A painting that carries its variant ({@link PaintingItems}) hangs that picture, as 1.19.4's
+     * {@code HangingEntityItem.useOn} does: on a side face the player may edit, and only where it fits (otherwise the
+     * item stays in hand). Runs on both sides, like the item's own use, which it replaces.
+     */
+    @SubscribeEvent
+    public static void placeVariant(PlayerInteractEvent.RightClickBlock event) {
+        if (!DecorContent.enabled() || event.isCanceled()) {
+            return;
+        }
+        ItemStack stack = event.getItemStack();
+        PaintingItems.Entry entry = PaintingItems.of(stack);
+        if (entry == null) {
+            return;
+        }
+        event.setCanceled(true);
+        EnumFacing face = event.getFace();
+        EntityPlayer player = event.getEntityPlayer();
+        BlockPos at = face == null ? null : event.getPos().offset(face);
+        if (at == null || !face.getAxis().isHorizontal() || !player.canPlayerEdit(at, face, stack)) {
+            event.setCancellationResult(net.minecraft.util.EnumActionResult.FAIL);
+            return;
+        }
+        event.setCancellationResult(net.minecraft.util.EnumActionResult.SUCCESS);
+        World world = event.getWorld();
+        net.minecraft.entity.EntityHanging painting = entry.create(world, at, face);
+        if (painting.onValidSurface()) {
+            if (!world.isRemote) {
+                painting.playPlaceSound();
+                world.spawnEntity(painting);
+            }
+            // The item's own use is skipped, and with it the creative count restore around it.
+            if (!player.capabilities.isCreativeMode) {
+                stack.shrink(1);
+            }
+        }
+    }
+
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (!DecorContent.enabled() || event.getWorld().isRemote || event.isCanceled()
@@ -158,7 +196,7 @@ public final class DecorEvents {
     private static java.lang.reflect.Method updateFacing;
 
     /** {@code updateFacingWithBoundingBox} is protected; it sizes the box from the current art. */
-    private static void setFacing(EntityPainting painting, EnumFacing facing) {
+    static void setFacing(EntityPainting painting, EnumFacing facing) {
         try {
             if (updateFacing == null) {
                 updateFacing = ObfuscationReflectionHelper.findMethod(net.minecraft.entity.EntityHanging.class, "func_174859_a",

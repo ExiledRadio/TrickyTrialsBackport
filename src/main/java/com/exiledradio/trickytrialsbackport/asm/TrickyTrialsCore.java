@@ -32,6 +32,7 @@ public final class TrickyTrialsCore implements IFMLLoadingPlugin {
                 SpearTransformer.class.getName(),
                 ZombieHorseTransformer.class.getName(),
                 DoorWaterTransformer.class.getName(),
+                PaintingItemTransformer.class.getName(),
         };
     }
 
