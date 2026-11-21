@@ -28,7 +28,7 @@ import org.apache.logging.log4j.Logger;
         name = TrickyTrialsBackport.MOD_NAME,
         version = TrickyTrialsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.4.0,);before:quark"
+        dependencies = "required-after:backportcore@[1.4.2,);before:quark"
 )
 public final class TrickyTrialsBackport {
 
