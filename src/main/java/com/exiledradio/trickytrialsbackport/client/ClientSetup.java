@@ -35,6 +35,15 @@ public final class ClientSetup {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new ClientSetup());
         com.exiledradio.trickytrialsbackport.common.client.ClientGust.init();
+        // `runClient -Pselftest=client`: the client self-test, reached by name (a release jar has no test classes).
+        String selftest = System.getProperty(TrickyTrialsBackport.MOD_ID + ".selftest");
+        if ("client".equals(selftest)) {
+            try {
+                Class.forName("com.exiledradio.trickytrialsbackport.selftest.ClientSelfTest").getMethod("register").invoke(null);
+            } catch (ReflectiveOperationException e) {
+                TrickyTrialsBackport.LOGGER.error("CLIENT SELFTEST DONE pass=0 fail=1: the test classes are not in this build.", e);
+            }
+        }
     }
 
     @SubscribeEvent

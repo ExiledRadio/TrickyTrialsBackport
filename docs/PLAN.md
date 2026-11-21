@@ -435,6 +435,15 @@ vanilla's behavior needs them. Design questions vanilla already answers are not 
 - Test: `./gradlew runServer -Pselftest=<stream>` (port in `eclipse/server.properties`), then
   `python -I tools/check_assets.py` with 0 errors, then `./gradlew build` last. Check free RAM first
   (8 GB or wait). Never `cleanRunServer`. Kill only our own server, by PID.
+- Client: `./gradlew runClient -Pselftest=client` (`selftest/ClientSelfTest`, `ClientScenes`) opens a real client,
+  creates a superflat world and checks what a dedicated server cannot show: the spear's held model and poses (P21 on
+  the real client model), steering a happy ghast and a nautilus from the rider's client, the creaking's walk and
+  freeze, shelves, and the crafter, nautilus, bundle, Lunge book and settings screens. It runs unattended
+  (`fml.noGrab`, no focus kept, no input sent); photos in `eclipse/trclient/screenshots`, result `CLIENT SELFTEST DONE`.
+- Release: `./gradlew build`, then `tools/release/boot-server.sh <server dir> <log> build/libs/<jar> <Core jar>
+  <Fluidlogged API jar>` boots a plain Forge server with `-Dtrickytrialsbackport.loadPatched=true`; `PatchCheck` loads
+  and verifies every patched class and logs `PATCHCHECK ok N`. A transformer's new target goes into `PatchCheck`.
+  The release jar must have no `/selftest/` entries: any run task rewrites `build/libs`, so build last.
 
 ## Order
 

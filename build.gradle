@@ -96,6 +96,11 @@ jar {
         task.systemProperty 'trickytrialsbackport.selftest', selftest
     }
 }
+// The client self-test (-Pselftest=client) runs unattended: the window never grabs the mouse (Forge's MouseHelper reads
+// fml.noGrab), so the user's cursor stays theirs.
+if (selftest) {
+    runClient.systemProperty 'fml.noGrab', 'true'
+}
 
 processResources {
     // Gradle does not treat `expand` values as task inputs, so without declaring them here the task
