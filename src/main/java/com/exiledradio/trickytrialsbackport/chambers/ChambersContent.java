@@ -36,6 +36,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
  *   <li>{@code /locate structure minecraft:trial_chambers} (Backport Core), and the terrain adapts where a world's
  *       generator can ({@code terrain_adaptation: encapsulate}).</li>
  *   <li>The advancement <i>Minecraft: Trial(s) Edition</i>, parent of the trials stream's <i>Under Lock and Key</i>.</li>
+ *   <li>The trial explorer map, sold by cartographers at journeyman ({@link ExplorerMap}).</li>
  * </ul>
  */
 public final class ChambersContent {
@@ -80,6 +81,7 @@ public final class ChambersContent {
 
     /** Pre-init: this jar holds vanilla's files under their minecraft: names; the loot tables' renames. */
     public static void preInit() {
+        ExplorerMap.preInit();
         if (!enabled()) {
             return;
         }
@@ -108,6 +110,7 @@ public final class ChambersContent {
                 world -> generates() && world.provider.getDimension() == 0 && FlatWorlds.structure(world, Structures.TRIAL_CHAMBERS)
                         ? new TrialChambersStructure() : null);
         StructureLocate.scattered("minecraft:trial_chambers", Structures.TRIAL_CHAMBERS, null, "minecraft:trial_chambers");
+        ExplorerMap.init();
         // 1.21's terrain_adaptation: encapsulate. A terrain that adapts to structures does it in its own noise.
         TerrainAdaptation.register(Structures.TRIAL_CHAMBERS, TerrainAdaptation.Kind.ENCAPSULATE, (world, cx, cz, out) -> {
             ScatteredStructure s = ScatteredStructure.of(world, Structures.TRIAL_CHAMBERS);

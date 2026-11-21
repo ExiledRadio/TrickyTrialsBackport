@@ -17,5 +17,9 @@
     potion distance; pumpkins hiding map markers; tool-free drops; saddle Thorns; the End platform dropping what it
     replaces; fire only near players; head names; and the 1.21.5 and 1.21.9 game rules. `docs/streams/tweaks.md`,
     patches P5-P15.
+*   **The trial explorer map** (1.21): journeyman cartographers sell it for 12 emeralds and a compass. It points at
+    the nearest trial chambers, with 1.21's trial chambers marker and map color. With Village & Pillage Backport, its
+    current cartographer table already sells the map; with its 1.14 table, this mod adds it there. Setting
+    `chambers.explorerMap` (on). Backport Core 1.4.0 is now required.
 *   **Superflat worlds** generate only what 1.12 does for their preset: never trial chambers, and copper ore and tuff
     only with `decoration` (Backport Core 1.3.0's `FlatWorlds`; Core 1.3.0 is now required).

@@ -635,6 +635,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Sons arenosos
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Entre numa Câmara do Desafio
 advancements.adventure.minecraft_trials_edition.title=Minecraft: Jogos Vorazes
+config.trickytrialsbackport.chambers.explorerMap=Mapa de Exploração do Desafio
+filled_map.trial_chambers=Mapa de Exploração do Desafio
 
 # --- tweaks ---
 config.trickytrialsbackport.tweaks.axeShield=Escudo antes do machado

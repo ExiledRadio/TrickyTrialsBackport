@@ -635,6 +635,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Піщані звуки
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Переступіть поріг палацу випробувань
 advancements.adventure.minecraft_trials_edition.title=Minecraft: Випробне видання
+config.trickytrialsbackport.chambers.explorerMap=Мапа дослідника випробувань
+filled_map.trial_chambers=Мапа дослідника випробувань
 
 # --- tweaks ---
 config.trickytrialsbackport.tweaks.axeShield=Щит перед сокирою

@@ -635,6 +635,8 @@ subtitles.trickytrialsbackport.block.sand.idle=砂の音が鳴る
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=試練の間に足を踏み入れる
 advancements.adventure.minecraft_trials_edition.title=Minecraft: トライアル版
+config.trickytrialsbackport.chambers.explorerMap=試練の間の地図
+filled_map.trial_chambers=試練の間の地図
 
 # --- tweaks ---
 config.trickytrialsbackport.tweaks.axeShield=斧より盾を優先

@@ -30,6 +30,7 @@ config.trickytrialsbackport.decor.tooltip=New paintings, banner patterns, music 
 config.trickytrialsbackport.decor.enabled.tooltip=Paintings, banner patterns, music discs, sherds and trim templates. Off, nothing is registered.
 config.trickytrialsbackport.chambers.tooltip=Trial chambers.
 config.trickytrialsbackport.chambers.enabled.tooltip=Trial chambers generate underground in newly generated chunks.
+config.trickytrialsbackport.chambers.explorerMap.tooltip=Cartographers sell the trial explorer map at journeyman level for 12 emeralds and a compass, as in 1.21. With Village & Pillage Backport's current cartographer table, that table sells it. Off, this mod adds no trial explorer map to the cartographer's trades.
 config.trickytrialsbackport.bundles.tooltip=Bundles and the sixteen dyed bundles.
 config.trickytrialsbackport.bundles.enabled.tooltip=Bundles. Off, nothing is registered.
 config.trickytrialsbackport.paleGarden.tooltip=The pale garden: pale oak, pale moss, hanging moss, eyeblossoms, the creaking heart and the biome.
@@ -634,6 +635,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Sandy sounds
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Step foot in a Trial Chamber
 advancements.adventure.minecraft_trials_edition.title=Minecraft: Trial(s) Edition
+config.trickytrialsbackport.chambers.explorerMap=Trial Explorer Map
+filled_map.trial_chambers=Trial Explorer Map
 
 # --- tweaks ---
 config.trickytrialsbackport.tweaks.axeShield=Shield Before Axe

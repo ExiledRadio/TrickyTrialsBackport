@@ -75,6 +75,9 @@ names = {}
 for part in ("title", "description"):
     key = "advancements.adventure.minecraft_trials_edition.%s" % part
     names[key] = assets.name(key)
+# The trial explorer map's name (chambers/ExplorerMap: the cartographer's journeyman trade).
+names["filled_map.trial_chambers"] = assets.name("filled_map.trial_chambers")
+names["config.%s.chambers.explorerMap" % M] = "Trial Explorer Map"
 assets.merge_lang("chambers", ["%s=%s" % (k, v) for k, v in sorted(names.items())])
 print("chambers: %(structure)d structure files, %(pool)d pool and worldgen files, %(loot)d loot tables" % counts)
 print("vanilla icon: %s" % display["icon"])

@@ -635,6 +635,8 @@ subtitles.trickytrialsbackport.block.sand.idle=沙沙声
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=踏入试炼密室
 advancements.adventure.minecraft_trials_edition.title=Minecraft：试炼版
+config.trickytrialsbackport.chambers.explorerMap=试炼探险家地图
+filled_map.trial_chambers=试炼探险家地图
 
 # --- tweaks ---
 config.trickytrialsbackport.tweaks.axeShield=盾牌优先于斧
