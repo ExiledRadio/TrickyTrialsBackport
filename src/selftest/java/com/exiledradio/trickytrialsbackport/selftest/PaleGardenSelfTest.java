@@ -424,6 +424,25 @@ public final class PaleGardenSelfTest implements SelfTest {
             ModConfig.paleGarden.eyeblossomLight = true;
         }
         c.world.setBlockToAir(lone);
+        // Day and night with the daylight cycle off (a showcase world): /time set alone flips them on random ticks.
+        c.ok(open.getTickRandomly() && closed.getTickRandomly(), "both eyeblossoms tick randomly");
+        c.ok(PaleGardenContent.pottedOpenEyeblossom.getTickRandomly() && PaleGardenContent.pottedClosedEyeblossom.getTickRandomly(),
+                "both potted eyeblossoms tick randomly");
+        String cycle = c.world.getGameRules().getString("doDaylightCycle");
+        c.world.getGameRules().setOrCreateGameRule("doDaylightCycle", "false");
+        try {
+            BlockPos frozen = corner.add(30, 0, 25);
+            c.world.setBlockState(frozen, closed.getDefaultState());
+            c.world.setWorldTime(18000L);
+            closed.randomTick(c.world, frozen, c.world.getBlockState(frozen), c.world.rand);
+            c.eq(open, c.world.getBlockState(frozen).getBlock(), "daylight cycle off: opens at night on a random tick");
+            c.world.setWorldTime(1000L);
+            open.randomTick(c.world, frozen, c.world.getBlockState(frozen), c.world.rand);
+            c.eq(closed, c.world.getBlockState(frozen).getBlock(), "daylight cycle off: closes by day on a random tick");
+            c.world.setBlockToAir(frozen);
+        } finally {
+            c.world.getGameRules().setOrCreateGameRule("doDaylightCycle", cycle);
+        }
         c.world.setWorldTime(1000L);
     }
 
