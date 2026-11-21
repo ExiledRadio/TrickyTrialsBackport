@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Kumul sesler
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Bir sınama zindanına ayak basın
 advancements.adventure.minecraft_trials_edition.title=Sınama Başlasın!
+config.trickytrialsbackport.chambers.explorerMap=Sınama Kâşif Haritası
+filled_map.trial_chambers=Sınama Kâşif Haritası
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=At Zırhı çıkarıldı

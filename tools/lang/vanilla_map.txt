@@ -1,4 +1,6 @@
 # our.key = mojang.key: forced matches (see build_langs.py).
+# Stream 10: the explorer map setting is named as the map itself.
+config.trickytrialsbackport.chambers.explorerMap = filled_map.trial_chambers
 # Stream Lf: vanilla's option tooltips, which build_langs.py would otherwise take for our own text.
 options.accessibility.high_contrast_block_outline.tooltip = options.accessibility.high_contrast_block_outline.tooltip
 options.chat.drafts.tooltip = options.chat.drafts.tooltip

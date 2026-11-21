@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=沙聲
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=踏入試煉密室
 advancements.adventure.minecraft_trials_edition.title=Minecraft: 試煉版
+config.trickytrialsbackport.chambers.explorerMap=試煉探險家地圖
+filled_map.trial_chambers=試煉探險家地圖
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=馬鎧滑落

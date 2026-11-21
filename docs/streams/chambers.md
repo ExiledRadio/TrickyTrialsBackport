@@ -74,8 +74,6 @@ port 25910. Reference: 1.21.11's decompiled `JigsawPlacement`, `JigsawStructure`
 
 ## Not done
 
-*   **Trial explorer map** (PLAN row 10). 1.12's `MapDecoration.Type` has no trial chambers icon, and the cartographer
-    trade is Village & Pillage's. Needs a map decoration hook and a trade.
 *   **Encapsulate** in Caves & Cliffs' 1.18 terrain: its `StructureBeards` maps `BEARD_THIN`, `BURY`, `BEARD_BOX`
     only and logs that `ENCAPSULATE` is unsupported. Caves pass right by the chambers' walls. A C&C request.
 *   In 1.12 terrain the stub's biome is the column's. Vanilla's deep dark exclusion applies there only with Wild
@@ -140,3 +138,56 @@ the spawner's key table opens a normal vault; an ominous vault refuses it and ta
 
 Results (`tr-chambers-fixes`): `-Pselftest=all` **3011 pass, 0 fail** (Default world, rerun on the same world);
 `check_assets` 0 errors; P4 verified on Mojang's SRG `EntityMoveHelper`; release jar built last with `--rerun-tasks`.
+
+## Trial explorer map (`tr-explorer-map`)
+
+Reference: 1.21.11's `VillagerTrades` (cartographer, level 3, checked in the 1.21.11 jar: the same table as 1.21.5's),
+`TreasureMapForEmeralds`, `MapDecorationTypes.TRIAL_CHAMBERS`, the tag `on_trial_chambers_maps`
+(`minecraft:trial_chambers` alone). Code: `chambers/ExplorerMap`.
+
+*   **The trade**: 12 emeralds and a compass for the map, 12 uses (1.21.11's villager xp has no 1.12 counterpart
+    without Village & Pillage, which keeps its own).
+    *   **With Village & Pillage Backport** (`villagerbackport`): its current cartographer table
+        (`trades.modernCartographer`, on by default) is 1.21.11's and already has this trade at journeyman. With its
+        1.14 table, this mod adds it to that table's journeyman pool through Backport Core's `TradeRegistry`
+        (`minecraft:librarian/cartographer`, level 3), offered only while `modernCartographer` is off (read by name,
+        guarded), so a pool never holds it twice. 1.14 picks two of glass panes, monument map and trial map, as
+        1.21.11 does.
+    *   **Without it**: 1.12.2's cartographer career (`minecraft:librarian`, career 1) gets the trade at its level 4,
+        beside the monument and mansion maps (1.12.2 has no journeyman; its explorer maps are at level 4), through
+        Forge's `VillagerCareer.addTrade`.
+    *   The setting `chambers.explorerMap` (on; no restart) is asked each time an offer is made. It governs the trade
+        this mod adds; Village & Pillage's current table sells its own.
+*   **The search**: Backport Core's `/locate` (`StructureLocate.nearest`, today's 100 regions from the villager), the
+    same one `/locate structure minecraft:trial_chambers` and Village & Pillage's map use. No chambers within reach,
+    no offer (1.21.11 returns null and the draw moves on).
+*   **The map**: `ItemMap.setupNewMap` at the chambers, zoom 2, tracking, unlimited; the biome preview; a `"+"`
+    target decoration of Backport Core 1.4.0's `MapIcons` type `trial_chambers` (its sprite, color 12741452, shown in
+    item frames); the name `filled_map.trial_chambers` ("Trial Explorer Map", vanilla's key in all 18 languages). The
+    type is asked for in pre-init whatever the settings, so servers and clients number it the same.
+*   **Chest loot**: none. 1.21.11's only `exploration_map` loot is the buried treasure map (shipwreck map and the
+    two underwater ruin tables).
+*   **Shared files**: `gradle.properties` (`core_version=1.4.2`) and the `@Mod` dependency (`backportcore@[1.4.0,)`),
+    `ModConfig` (one field between the Chambers markers), `SelfTestRunner` (one line), `tools/lang/vanilla_map.txt`
+    (the setting's name is the map's), `en_us.lang`'s `chambers` block (from `tools/chambers/generate.py`).
+
+Differences from 1.21.11:
+
+*   1.21.11 searches with `skipKnownStructures`: chambers already marked by a map are skipped, so the next map leads
+    to another. Core's `/locate` does not track that, so every map from one spot leads to the same nearest chambers
+    (as Village & Pillage's maps do). A Core request if wanted.
+
+Tested (`-Pselftest=explorermap`, port 25910, E-cores): **43/0** alone; **47/0** with Village & Pillage 2.7.1's
+release jar in `eclipse/mods`, both with `modernCartographer` on (its table sells the map) and off (only ours can put
+it in the 1.14 pool). The test checks the type (Core's shared one, sprite, color, item frames, ordinal), the name,
+the trade (where it is registered on each path, 12 emeralds and a compass, 12 uses, none in Core's registry without
+Village & Pillage and none in the career with it), Village & Pillage's own journeyman draw over 40 seeds (the map
+turns up, never twice, with our type), the map (filled map, name, color, decoration `+` at the chambers that
+`/locate` finds from the villager, zoom 2, tracking, a drawn biome preview), that the marked chunk starts trial
+chambers that lay out, and the setting turning the trade off.
+
+`-Pselftest=all` from a fresh world, E-cores: **5562 pass, 0 fail** (a first fresh world had one `effects` miss, a
+dying player's cobweb count of 1; `effects` alone then 196/0 and the second full run clean). `check_assets` 0 errors;
+release jar built last with `--rerun-tasks`, no `/selftest/` entries. No patch added.
+
+Not tested: the client (the icon on the map and in an item frame; Core's P34 draws it), a real villager levelling up.

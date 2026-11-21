@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Piaszczyste dźwięki
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Wejdź do komnaty prób
 advancements.adventure.minecraft_trials_edition.title=Minecraft: Edycja Próbna
+config.trickytrialsbackport.chambers.explorerMap=Mapa do komnat prób
+filled_map.trial_chambers=Mapa do komnat prób
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=Zbroja końska ześlizguje się

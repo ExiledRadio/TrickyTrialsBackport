@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Звуки песка
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Войдите в дворец испытаний
 advancements.adventure.minecraft_trials_edition.title=Minecraft: пробное издание
+config.trickytrialsbackport.chambers.explorerMap=Карта искателя испытаний
+filled_map.trial_chambers=Карта искателя испытаний
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=Конская броня снята

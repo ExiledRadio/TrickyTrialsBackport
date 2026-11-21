@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Suoni sabbiosi
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Metti piede in una camera della sfida.
 advancements.adventure.minecraft_trials_edition.title=Sfida accettata!
+config.trickytrialsbackport.chambers.explorerMap=Mappa per camera della sfida
+filled_map.trial_chambers=Mappa per camera della sfida
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=Bardatura slacciata

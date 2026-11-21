@@ -340,6 +340,11 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Chambers fields ---
+        @Config.Comment({"Cartographers sell the trial explorer map at journeyman level for 12 emeralds and a compass,",
+                "as in 1.21. With Village & Pillage Backport's current cartographer table, that table sells it.",
+                "Off, this mod adds no trial explorer map to the cartographer's trades."})
+        @Config.LangKey("config.trickytrialsbackport.chambers.explorerMap")
+        public boolean explorerMap = true;
         // --- end Chambers ---
     }
 

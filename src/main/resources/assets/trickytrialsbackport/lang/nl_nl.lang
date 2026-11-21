@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Zandgeluiden
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Betreed een beproevingskamer
 advancements.adventure.minecraft_trials_edition.title=Minecraft: Beproevingseditie
+config.trickytrialsbackport.chambers.explorerMap=Beproevingskamerkaart
+filled_map.trial_chambers=Beproevingskamerkaart
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=Paardenharnas wordt uitgetrokken

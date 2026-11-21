@@ -186,7 +186,8 @@ wrapping block, so it never meets a stream worktree's server.
 
 - The structure, its pieces and loot, trial spawners for each mob pool, vaults, the trial explorer map.
   See *Still open* #1 and `CORE_REQUESTS.md` #3.
-  Built (all but the explorer map): `docs/streams/chambers.md`.
+  Built: `docs/streams/chambers.md`. The trial explorer map (2026-11-20, `claude/tr-explorer-map-d0c7ee`): the
+  cartographer's journeyman trade, setting `chambers.explorerMap`; needs Backport Core 1.4.0 (`MapIcons`).
 
 ### 11. Bundles (1.21.2)
 

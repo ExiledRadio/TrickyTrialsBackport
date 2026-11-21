@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=모래 소리
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=시련의 회당에 발을 들여놓으세요
 advancements.adventure.minecraft_trials_edition.title=인생은 시련의 연속
+config.trickytrialsbackport.chambers.explorerMap=시련 탐험가 지도
+filled_map.trial_chambers=시련 탐험가 지도
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=말 갑옷을 벗김

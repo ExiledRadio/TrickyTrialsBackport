@@ -413,6 +413,8 @@ subtitles.trickytrialsbackport.block.sand.idle=Sonidos arenosos
 # --- chambers ---
 advancements.adventure.minecraft_trials_edition.description=Entra en una cámara de desafío.
 advancements.adventure.minecraft_trials_edition.title=¿Desafío? ¡Aceptado!
+config.trickytrialsbackport.chambers.explorerMap=Mapa de cámara de desafío
+filled_map.trial_chambers=Mapa de cámara de desafío
 
 # --- tweaks ---
 subtitles.trickytrialsbackport.item.horse_armor.unequip=Armadura para caballo se suelta

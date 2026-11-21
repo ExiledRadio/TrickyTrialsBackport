@@ -64,6 +64,7 @@ public final class SelfTestRunner {
             new ShelvesSelfTest(),
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
+            new ExplorerMapSelfTest(),
             new TweaksSelfTest(),
             new LocatorSelfTest(),
             new MechanicsSelfTest(),
