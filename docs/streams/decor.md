@@ -31,6 +31,19 @@ Branch `tr-decor`, dev-server port 25913.
     and, if ours wins, the vanilla join is cancelled and ours spawned. Summoned or loaded paintings are untouched.
     The renderer is 1.12.2's per-block painting draw with 1.21's textures (`painting/<name>.png` front,
     `painting/back.png` back and edges).
+*   **Named paintings** (`PaintingNames`, `client/PaintingNameplate`; 26.3 read from the 26.3 jar, which is not
+    obfuscated): a renamed painting item hangs a painting with that custom name, vanilla's or ours, random or with a
+    variant (1.20.5's `HangingEntityItem.useOn` copies `custom_name` through `createDefaultStackConfig`; always on).
+    With Game Drops Backport installed (26.3) two more things: `Painting.dropItem` puts the painting's custom name
+    on the painting item it drops, and the painting under the crosshair shows its name. 26.3's `PaintingRenderer.submit`
+    now ends in `EntityRenderer.submit`, whose `shouldShowName` for an entity that is not a mob is "custom name and
+    the crosshair's entity" (or a name always shown), within 64 blocks; the nameplate is the generic one at the
+    entity's height (0.5) plus half a block above its center, lit by the entity's light. Here it is 1.12.2's
+    `EntityRenderer.drawNameplate` with the same numbers, drawn in `RenderWorldLastEvent` for vanilla's paintings and
+    ours (1.12.2's `RenderPainting` is left alone; a painting with `CustomNameVisible` already gets 1.12.2's
+    nameplate and is skipped). Vanilla's painting drops its item through `EntityHanging.entityDropItem` right after
+    `setDead`, 0.15 blocks out from the wall; the item joining the world exactly there gets the dead painting's name
+    (no patch). Ours drops through `PaintingNames.drop`.
 *   **Banner patterns** (`Patterns`, `LoomPatterns`, `ItemPattern`): Flow (`flw`) and Guster (`gus`) join 1.12.2's
     `BannerPattern` enum in the block registry event (nothing switches on that enum); textures under
     `minecraft:textures/entity/banner|shield/` where 1.12.2 draws every pattern; color names `item.banner.<p>.<color>`.
@@ -72,6 +85,13 @@ Branch `tr-decor`, dev-server port 25913.
     always gets one of ours, all nine 3x3 paintings appear in 40 tries; NBT and spawn-data round trips; breaking
     drops a painting. `choose` on a 4x4 wall gives ours about 2 in 5 (two of five 4x4 paintings), a 1x1 spot
     Meditative about 1 in 8; a summoned vanilla painting stays vanilla.
+*   Named paintings (`namedPaintings`): a named Kebab (vanilla), Baroque (ours) and random painting (whichever
+    wins, ours included) hang with the name, an unnamed one with none; breaking a named vanilla painting and one of
+    ours drops a plain painting without 26.3 and a named one with it (`PaintingNames.forceSince263`); an unnamed one
+    stays plain; an item dropped beside a named painting still hanging stays plain; a creative player gets nothing.
+    Client (`-Pselftest=client`, `ClientScenes.paintings`): the name reaches the client, nothing is shown without
+    26.3, with it the painting under the crosshair is the one shown and the nameplate is drawn
+    (`paintings_named.png`), looking away shows none.
 *   Tears: dropped for a fireball a player sent back; not for a fireball no player touched, nor an arrow.
     Lava Chicken: baby zombie on a chicken killed by a player only; not adult, on foot, without a player, or a husk.
 *   Full suite `-Pselftest=all`: 1299 passed, 0 failed. `python -I tools/check_assets.py`: 0 errors.
