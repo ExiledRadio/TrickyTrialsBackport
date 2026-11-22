@@ -149,6 +149,44 @@ public final class AnimalsContent {
         }
     }
 
+    /**
+     * A spawn egg used on an animal of its own kind: 1.21.5's {@code AgeableMob.mobInteract} breeds it with itself
+     * ({@code getBreedOffspring(level, this)}), so the baby has the animal's variant. 1.12.2 makes that baby with
+     * {@code createChild} and fires no {@link BabyEntitySpawnEvent}, so the animal is remembered here, before it
+     * handles the click, and the baby that joins the world in that click takes its variant.
+     */
+    @Nullable
+    private static Entity eggParent;
+
+    @SubscribeEvent
+    public static void eggOnAnimal(net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract event) {
+        eggParent = null;
+        Entity target = event.getTarget();
+        if (enabled() && !target.world.isRemote && event.getItemStack().getItem() instanceof net.minecraft.item.ItemMonsterPlacer
+                && target instanceof net.minecraft.entity.EntityAgeable && FarmAnimals.kindOf(target) != null) {
+            eggParent = target;
+        }
+    }
+
+    @SubscribeEvent(priority = net.minecraftforge.fml.common.eventhandler.EventPriority.LOW)
+    public static void eggBaby(net.minecraftforge.event.entity.EntityJoinWorldEvent event) {
+        Entity parent = eggParent;
+        Entity child = event.getEntity();
+        if (parent == null || child.world.isRemote || child.getClass() != parent.getClass()
+                || !(child instanceof net.minecraft.entity.EntityAgeable) || !((net.minecraft.entity.EntityAgeable) child).isChild()) {
+            return;
+        }
+        eggParent = null;
+        FarmAnimals.bred(parent, parent, child, parent.world.rand);
+    }
+
+    @SubscribeEvent
+    public static void eggClickDone(net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent event) {
+        if (event.phase == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END) {
+            eggParent = null;
+        }
+    }
+
     @SubscribeEvent
     public static void bred(BabyEntitySpawnEvent event) {
         if (enabled() && event.getChild() != null && !event.getParentA().world.isRemote) {

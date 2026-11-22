@@ -250,7 +250,34 @@ public final class AnimalsSelfTest implements SelfTest {
         c.ok(!sheep.hasKey("variant"), "a sheep saves no variant");
     }
 
+    /** 1.21.5: a spawn egg used on an animal of its kind makes a baby with the animal's variant. */
+    private void eggBaby(Check c, net.minecraft.entity.EntityAgeable parent, FarmVariant v, String what) {
+        net.minecraft.util.math.BlockPos at = c.world.getSpawnPoint().add(40, 0, 40);
+        at = c.world.getTopSolidOrLiquidBlock(at);
+        FarmAnimals.setVariant(parent, v);
+        parent.setLocationAndAngles(at.getX() + 0.5, at.getY(), at.getZ() + 0.5, 0, 0);
+        c.world.spawnEntity(parent);
+        net.minecraftforge.common.util.FakePlayer player = net.minecraftforge.common.util.FakePlayerFactory.getMinecraft(
+                (net.minecraft.world.WorldServer) c.world);
+        player.capabilities.isCreativeMode = true;
+        net.minecraft.item.ItemStack egg = new net.minecraft.item.ItemStack(net.minecraft.init.Items.SPAWN_EGG);
+        net.minecraft.item.ItemMonsterPlacer.applyEntityIdToItemStack(egg, net.minecraft.entity.EntityList.getKey(parent));
+        player.setHeldItem(net.minecraft.util.EnumHand.MAIN_HAND, egg);
+        player.interactOn(parent, net.minecraft.util.EnumHand.MAIN_HAND);
+        java.util.List<net.minecraft.entity.EntityAgeable> babies = c.world.getEntitiesWithinAABB(parent.getClass(),
+                parent.getEntityBoundingBox().grow(2), e -> e != parent && e.isChild());
+        c.ok(babies.size() == 1, what + ": the egg made one baby (" + babies.size() + ")");
+        if (babies.size() == 1) {
+            c.eq(v, FarmAnimals.variant(babies.get(0)), what + ": the egg's baby has its parent's variant");
+            babies.get(0).setDead();
+        }
+        parent.setDead();
+    }
+
     private void breeding(Check c) {
+        eggBaby(c, new EntityCow(c.world), FarmVariant.WARM, "warm cow");
+        eggBaby(c, new EntityPig(c.world), FarmVariant.COLD, "cold pig");
+        eggBaby(c, new EntityChicken(c.world), FarmVariant.WARM, "warm chicken");
         Random rand = new Random(16);
         EntityCow a = new EntityCow(c.world);
         EntityCow b = new EntityCow(c.world);
