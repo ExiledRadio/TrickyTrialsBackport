@@ -3,6 +3,7 @@ package com.exiledradio.trickytrialsbackport.chambers;
 import com.exiledradio.backportcore.structure.JigsawElement;
 import com.exiledradio.backportcore.structure.JigsawPiece;
 import com.exiledradio.backportcore.structure.JigsawPools;
+import com.exiledradio.backportcore.structure.ModernJigsaw;
 import com.exiledradio.backportcore.structure.ModernTemplate;
 import com.exiledradio.backportcore.structure.TemplatePlacement;
 import com.exiledradio.backportcore.structure.TemplateBlock;
@@ -32,7 +33,7 @@ import java.util.Set;
  * aquifer stays dry; no air skipped. As 1.21's {@code PoolElementStructurePiece} it tells the terrain how it meets
  * the ground ({@link TerrainAdaptation.AdaptingPiece}).
  */
-public class ChamberPiece extends JigsawPiece implements TerrainAdaptation.AdaptingPiece {
+public class ChamberPiece extends JigsawPiece implements TerrainAdaptation.AdaptingPiece, ModernJigsaw.Joined {
 
     /** 1.21's {@code #minecraft:features_cannot_replace}, by today's name; looked up as blocks when first needed. */
     static final String[] CANNOT_REPLACE = {"minecraft:bedrock", "minecraft:mob_spawner", "minecraft:chest", "minecraft:end_portal_frame",
@@ -52,12 +53,9 @@ public class ChamberPiece extends JigsawPiece implements TerrainAdaptation.Adapt
         super(element, position, groundLevelDelta, rotation, box);
     }
 
-    void setPivot(BlockPos pivot) {
-        this.pivot = pivot;
-    }
-
     /** {@code PoolElementStructurePiece.addJunction}. */
-    void addJunction(int x, int groundY, int z) {
+    @Override
+    public void addJunction(int x, int groundY, int z) {
         int n = this.junctions.length;
         this.junctions = Arrays.copyOf(this.junctions, n + 3);
         this.junctions[n] = x;

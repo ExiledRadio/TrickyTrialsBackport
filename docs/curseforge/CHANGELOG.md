@@ -5,6 +5,9 @@
 *   **Pale oaks at Game Drops Backport's abandoned camps** are full worldgen pale oaks, with their pale moss.
 *   **Leaf litter in Game Drops Backport's dappled forest** takes 26.3's orange-brown dry foliage color.
 *   **Fixed: a painting saved with a `minecraft:` variant id came back as Baroque.**
+*   Trial chambers are laid out by Backport Core's shared modern jigsaw placer, block for block as before.
+
+Needs Backport Core 1.4.4 or newer.
 
 # 1.0.0
 

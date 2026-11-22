@@ -54,10 +54,10 @@ Terrain adapters are only needed to keep the entrance corridors from breaking in
 loader, on the surface.
 
 **Built (stream 10, `docs/streams/chambers.md`):** on Core's templates, pools, palette, `ScatteredStructure`,
-`StructureLocate` and `TerrainAdaptation`. Core's `Jigsaw` is 1.16.5's, so the 1.21 assembly (selection and
-placement priorities, pool aliases, dimension padding) is the stream's own `ChamberLayout`. **Open, nice to have:**
-`ModernTemplate.Jigsaw` keeping `placement_priority` and `selection_priority` (the stream reads the NBT itself);
-`ModernProcessors` reading `protected_blocks`; a public 3D noise biome query (the stream reaches C&C's by
+`StructureLocate` and `TerrainAdaptation`. Core's `Jigsaw` is 1.16.5's; since Core 1.4.4 the 1.21 assembly
+(selection and placement priorities, pool aliases) is Core's `ModernJigsaw`, `ChamberLayout` keeping only the stub
+(start height, dimension padding) (**Done** in branch `core-jigsaw-26x`, with `ModernTemplate.Jigsaw` keeping
+`placement_priority` and `selection_priority`). **Open, nice to have:** `ModernProcessors` reading `protected_blocks`; a public 3D noise biome query (the stream reaches C&C's by
 reflection, as Wild Update's DD-1).
 
 ## 4. Lightning rods oxidize (1.21.9) - a change to Caves & Cliffs' block (Rule 2)
@@ -254,8 +254,7 @@ ties a floor button facing east with the wall button facing east, picking the wa
 **Meanwhile:** `chambers.FaceAttached` registers `ModernPalette.map` for `oak_button`, `stone_button` and `lever`,
 which every structure then uses.
 
-Also nice to have from that work: `ModernTemplate.Jigsaw` keeping the 1.20.3+ jigsaw priorities, and
-`EntityMoveHelper`'s blocked strafe (patch P4 here) is family-wide behavior that could move to Core.
+Also nice to have from that work: `EntityMoveHelper`'s blocked strafe (patch P4 here) is family-wide behavior that could move to Core.
 
 ## 13. The nautilus shell in `ItemOwnership` (stream 23)
 

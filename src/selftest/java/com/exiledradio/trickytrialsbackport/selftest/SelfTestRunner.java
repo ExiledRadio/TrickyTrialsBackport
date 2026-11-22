@@ -64,6 +64,7 @@ public final class SelfTestRunner {
             new ShelvesSelfTest(),
             new LookfeelSelfTest(),
             new ChambersSelfTest(),
+            new JigsawDumpSelfTest(),
             new ExplorerMapSelfTest(),
             new TweaksSelfTest(),
             new LocatorSelfTest(),
@@ -104,7 +105,9 @@ public final class SelfTestRunner {
             check.fail("dump: " + e);
         }
         for (SelfTest test : TESTS) {
-            if (this.wanted.contains("all") || this.wanted.contains(test.name())) {
+            // The jigsaw dump builds structures far out and writes large files: only when asked for by name.
+            boolean inAll = !(test instanceof JigsawDumpSelfTest);
+            if ((inAll && this.wanted.contains("all")) || this.wanted.contains(test.name())) {
                 check.section(test.name());
                 try {
                     test.run(check);
