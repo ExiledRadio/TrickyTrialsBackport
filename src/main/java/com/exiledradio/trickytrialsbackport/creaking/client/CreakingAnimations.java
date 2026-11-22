@@ -9,12 +9,12 @@ import com.exiledradio.trickytrialsbackport.creaking.client.anim.KeyframeAnimati
  * 1.21.11's {@code CreakingAnimation}, keyframe for keyframe: walk (1.125 s) and attack (0.7083 s), both looping,
  * invulnerable (0.2917 s) and death (2.25 s).
  */
-final class CreakingAnimations {
+public final class CreakingAnimations {
 
     private CreakingAnimations() {
     }
 
-    static final AnimationDefinition CREAKING_WALK = AnimationDefinition.withLength(1.125F)
+    public static final AnimationDefinition CREAKING_WALK = AnimationDefinition.withLength(1.125F)
         .looping()
         .addAnimation(
             "upper_body",
@@ -134,7 +134,7 @@ final class CreakingAnimations {
             )
         )
         .build();
-    static final AnimationDefinition CREAKING_ATTACK = AnimationDefinition.withLength(0.7083F)
+    public static final AnimationDefinition CREAKING_ATTACK = AnimationDefinition.withLength(0.7083F)
         .looping()
         .addAnimation(
             "upper_body",
@@ -317,7 +317,7 @@ final class CreakingAnimations {
             )
         )
         .build();
-    static final AnimationDefinition CREAKING_INVULNERABLE = AnimationDefinition.withLength(0.2917F)
+    public static final AnimationDefinition CREAKING_INVULNERABLE = AnimationDefinition.withLength(0.2917F)
         .addAnimation(
             "upper_body",
             new AnimationChannel(
@@ -386,7 +386,7 @@ final class CreakingAnimations {
             )
         )
         .build();
-    static final AnimationDefinition CREAKING_DEATH = AnimationDefinition.withLength(2.25F)
+    public static final AnimationDefinition CREAKING_DEATH = AnimationDefinition.withLength(2.25F)
         .addAnimation(
             "upper_body",
             new AnimationChannel(

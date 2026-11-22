@@ -4,6 +4,8 @@ import com.exiledradio.trickytrialsbackport.common.Content;
 import com.exiledradio.trickytrialsbackport.creaking.CreakingContent;
 import com.exiledradio.trickytrialsbackport.creaking.CreakingHeartHook;
 import com.exiledradio.trickytrialsbackport.creaking.EntityCreaking;
+import com.exiledradio.trickytrialsbackport.creaking.client.CreakingPoser;
+import com.exiledradio.trickytrialsbackport.creaking.client.anim.PartPose;
 import com.exiledradio.trickytrialsbackport.palegarden.BlockCreakingHeart;
 import com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent;
 import com.exiledradio.trickytrialsbackport.palegarden.TileCreakingHeart;
@@ -57,6 +59,8 @@ public final class CreakingSelfTest implements SelfTest {
             daybreak(c);
             transplant(c);
             pathing(c);
+            animation(c);
+            clientSide(c);
         } finally {
             c.world.getWorldInfo().setDifficulty(was);
             c.world.setWorldTime(time);
@@ -147,11 +151,32 @@ public final class CreakingSelfTest implements SelfTest {
         c.ok(!e.canMove(), "frozen while looked at");
         c.ok(e.isActive(), "woken by a look within 12 blocks");
         c.eq(p, e.getAttackTarget(), "targets the player who woke it");
+        // Frozen completely: the head, body and walk stay put while the player moves around it, still watching.
+        float headYaw = e.rotationYawHead;
+        float headPitch = e.rotationPitch;
+        float bodyYaw = e.renderYawOffset;
+        double fx = e.posX;
+        double fz = e.posZ;
+        for (int i = 0; i < 10; i++) {
+            p.setPosition(p.posX + 0.3D, p.posY, p.posZ);
+            look(p, e.posX, e.posY + 1.5D, e.posZ);
+            e.onUpdate();
+        }
+        c.ok(!e.canMove(), "still frozen while watched");
+        c.eq(headYaw, e.rotationYawHead, "frozen: the head does not turn");
+        c.eq(headPitch, e.rotationPitch, "frozen: the head does not tilt");
+        c.eq(bodyYaw, e.renderYawOffset, "frozen: the body does not turn");
+        c.ok(Math.abs(e.posX - fx) < 1.0E-6D && Math.abs(e.posZ - fz) < 1.0E-6D, "frozen: it does not move");
+        c.ok(e.limbSwingAmount < 0.01F, "frozen: the walk has stopped (" + e.limbSwingAmount + ")");
+        p.setPosition(area.getX() + 16.5D, area.getY(), area.getZ() + 22.5D);
         // Turned away: it moves again and stays active.
         look(p, e.posX, e.posY + 1.5D, e.posZ + 40.0D);
         c.ok(!e.isLookingAtMe(p), "turned away");
         tick(e, 2);
         c.ok(e.canMove(), "moves when no one looks");
+        // It resumes smoothly: the walk speed eases up by 1.21's 0.4 lerp, never jumping to full.
+        float eased = e.limbSwingAmount;
+        c.ok(eased < 1.5F, "the walk eases back in (" + eased + " after 2 ticks)");
         c.ok(e.isActive(), "still active");
         // Unwatched, it walks to the player and hits for 3 every 40 ticks.
         double before = e.getDistance(p);
@@ -159,7 +184,26 @@ public final class CreakingSelfTest implements SelfTest {
         net.minecraftforge.fml.relauncher.ReflectionHelper.setPrivateValue(EntityPlayerMP.class, p, 0,
                 "respawnInvulnerabilityTicks", "field_147101_bU");
         float hp = p.getHealth();
-        tick(e, 100);
+        // The walk feed, tick by tick: 1.21's updateWalkAnimation (speed toward min(25 d, 3) by 0.4, position += speed).
+        int feedBad = 0;
+        float maxAmount = 0.0F;
+        double maxStep = 0.0D;
+        for (int i = 0; i < 100 && !e.isDead; i++) {
+            float amount0 = e.limbSwingAmount;
+            float swing0 = e.limbSwing;
+            e.onUpdate();
+            double dx = e.posX - e.prevPosX;
+            double dz = e.posZ - e.prevPosZ;
+            float want = amount0 + (Math.min(MathHelper.sqrt(dx * dx + dz * dz) * 25.0F, 3.0F) - amount0) * 0.4F;
+            if (Math.abs(e.limbSwingAmount - want) > 1.0E-4F || Math.abs(e.limbSwing - (swing0 + want)) > 1.0E-3F) {
+                feedBad++;
+            }
+            maxAmount = Math.max(maxAmount, e.limbSwingAmount);
+            maxStep = Math.max(maxStep, Math.sqrt(dx * dx + dz * dz));
+        }
+        com.exiledradio.trickytrialsbackport.TrickyTrialsBackport.LOGGER.info("SELFTEST creaking walk feed: top speed " + maxAmount + ", top step " + maxStep);
+        c.eq(0, feedBad, "the walk speed and position follow 1.21's creaking formula every tick");
+        c.ok(maxAmount > 1.0F, "a chasing creaking's walk runs at full strength (" + maxAmount + ")");
         c.ok(e.getDistance(p) < before - 2.0D, "it closes in while unwatched (" + before + " -> " + e.getDistance(p) + ")");
         c.ok(hp - p.getHealth() >= 3.0F - 0.001F, "and hits for 3 (" + (hp - p.getHealth()) + ")");
         p.setHealth(p.getMaxHealth());
@@ -350,6 +394,245 @@ public final class CreakingSelfTest implements SelfTest {
         e.setPosition(far.getX() + 2.5D, far.getY(), far.getZ() + 0.5D);
         c.ok(nodes.getPathNodeType(c.world, far.getX(), far.getY(), far.getZ(), e, 1, 3, 1, false, true) != PathNodeType.BLOCKED,
                 "but not when it brings a lost creaking nearer home");
+        e.setDead();
+    }
+
+    private static final float DEG = (float) (Math.PI / 180.0D);
+    private static final int OFF = Integer.MIN_VALUE;
+
+    /** One part's angles (degrees) against vanilla's, within 0.01 degree. */
+    private static void angles(Check c, CreakingPoser p, String part, float x, float y, float z, String what) {
+        PartPose q = p.part(part);
+        boolean ok = Math.abs(q.xRot - x * DEG) < 2.0E-4F && Math.abs(q.yRot - y * DEG) < 2.0E-4F && Math.abs(q.zRot - z * DEG) < 2.0E-4F;
+        c.ok(ok, what + " (" + part + " " + q.xRot / DEG + ", " + q.yRot / DEG + ", " + q.zRot / DEG + " against " + x + ", " + y + ", " + z + ")");
+    }
+
+    private static void pivot(Check c, CreakingPoser p, String part, float x, float y, float z, String what) {
+        PartPose q = p.part(part);
+        boolean ok = Math.abs(q.x - x) < 1.0E-3F && Math.abs(q.y - y) < 1.0E-3F && Math.abs(q.z - z) < 1.0E-3F;
+        c.ok(ok, what + " (" + part + " at " + q.x + ", " + q.y + ", " + q.z + " against " + x + ", " + y + ", " + z + ")");
+    }
+
+    /** The walk position that is this many seconds into the cycle (applyWalk: 50 ms per unit). */
+    private static float at(float seconds) {
+        return seconds * 1000.0F / 50.0F;
+    }
+
+    /**
+     * The model's pose math against 1.21.11's {@code CreakingModel} and {@code CreakingAnimation}, with the expected
+     * numbers typed in from the decompiled source (not from our converted copy): pivots, keyframes at their
+     * timestamps, linear interpolation between them, the walk's speed scaling and looping, the head, freezing, and
+     * the attack, invulnerable and death animations from their start ticks.
+     */
+    private void animation(Check c) {
+        CreakingPoser p = new CreakingPoser();
+        // Rest pose: createMesh's pivots.
+        p.pose(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        pivot(c, p, "root", 0.0F, 24.0F, 0.0F, "rest pivot");
+        pivot(c, p, "upper_body", -1.0F, -19.0F, 0.0F, "rest pivot");
+        pivot(c, p, "head", -3.0F, -11.0F, 0.0F, "rest pivot");
+        pivot(c, p, "body", 0.0F, -7.0F, 1.0F, "rest pivot");
+        pivot(c, p, "right_arm", -7.0F, -9.5F, 1.5F, "rest pivot");
+        pivot(c, p, "left_arm", 6.0F, -9.0F, 0.5F, "rest pivot");
+        pivot(c, p, "left_leg", 1.5F, -16.0F, 0.5F, "rest pivot");
+        pivot(c, p, "right_leg", -1.0F, -17.5F, 0.5F, "rest pivot");
+        angles(c, p, "upper_body", 0.0F, 0.0F, 0.0F, "no walk at speed 0");
+
+        // Walk at full speed, on keyframes.
+        p.pose(at(0.0F), 1.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "upper_body", 26.8802F, -23.399F, -9.0616F, "walk 0 s");
+        angles(c, p, "right_arm", 12.5F, 0.0F, 0.0F, "walk 0 s");
+        pivot(c, p, "left_leg", 1.5F, -16.0F, 0.5F + 2.0F, "walk 0 s: posVec(0, 0, 2)");
+        p.pose(at(0.125F), 1.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "upper_body", -2.2093F, 5.9119F, 0.0675F, "walk 0.125 s");
+        p.pose(at(0.25F), 1.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "right_arm", -32.0F, 0.0F, 0.0F, "walk 0.25 s");
+        // posVec negates y: posVec(0, 0.1846, 0.5979) moves the pivot up.
+        pivot(c, p, "left_leg", 1.5F, -16.0F - 0.1846F, 0.5F + 0.5979F, "walk 0.25 s: posVec(0, 0.1846, 0.5979)");
+        p.pose(at(0.875F), 1.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "upper_body", 7.5F, 0.0F, 0.0F, "walk 0.875 s");
+        angles(c, p, "right_arm", 12.0F, 0.0F, 0.0F, "walk 0.875 s");
+        // Linear between keyframes: right arm 0.25 s (-32) to 0.875 s (12), at 0.5 s 40% of the way.
+        p.pose(at(0.5F), 1.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "right_arm", -32.0F + 0.4F * (12.0F + 32.0F), 0.0F, 0.0F, "walk 0.5 s, linear");
+        // Looping: 1.125 s further on is the same pose.
+        p.pose(at(0.5F + 1.125F), 1.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "right_arm", -32.0F + 0.4F * (12.0F + 32.0F), 0.0F, 0.0F, "walk loops every 1.125 s");
+        // Speed scales every channel; above 1 it is capped.
+        p.pose(at(0.0F), 0.5F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "upper_body", 26.8802F * 0.5F, -23.399F * 0.5F, -9.0616F * 0.5F, "walk at half speed");
+        pivot(c, p, "left_leg", 1.5F, -16.0F, 0.5F + 1.0F, "walk at half speed, position too");
+        p.pose(at(0.0F), 3.0F, 0.0F, 0.0F, 0.0F, true, OFF, OFF, OFF);
+        angles(c, p, "upper_body", 26.8802F, -23.399F, -9.0616F, "walk speed capped at 1");
+
+        // The head follows the look, and the walk adds to it.
+        p.pose(at(0.0F), 0.0F, 0.0F, 30.0F, -20.0F, true, OFF, OFF, OFF);
+        angles(c, p, "head", -20.0F, 30.0F, 0.0F, "head pitch and yaw");
+        // Walk positions become whole milliseconds (applyWalk's long), so 0.0417 s is 41 ms: 41/41.7 of the twitch.
+        p.pose(at(0.0417F), 1.0F, 0.0F, 30.0F, -20.0F, true, OFF, OFF, OFF);
+        float f = 0.041F / 0.0417F;
+        angles(c, p, "head", -20.0F - 17.5F * f, 30.0F - 62.5F * f, 0.0F, "head twitch at 41 ms on top of the look");
+
+        // Frozen: no walk at all, whatever the walk position and speed.
+        p.pose(at(0.25F), 1.0F, 0.0F, 0.0F, 0.0F, false, OFF, OFF, OFF);
+        angles(c, p, "right_arm", 0.0F, 0.0F, 0.0F, "frozen: no walk");
+        pivot(c, p, "left_leg", 1.5F, -16.0F, 0.5F, "frozen: legs at rest");
+
+        // Death, from its start tick (whole ticks, 50 ms each): head keyframes at 0.5 s and 1.0 s.
+        p.pose(0.0F, 0.0F, 110.0F, 0.0F, 0.0F, false, OFF, OFF, 100);
+        angles(c, p, "head", 2.5F, 0.0F, 0.0F, "death 0.5 s");
+        p.pose(0.0F, 0.0F, 120.0F, 0.0F, 0.0F, false, OFF, OFF, 100);
+        angles(c, p, "head", 10.773F, -29.5608F, -5.3627F, "death 1.0 s");
+        // Death does not loop: past 2.25 s it holds its last keyframe.
+        p.pose(0.0F, 0.0F, 160.0F, 0.0F, 0.0F, false, OFF, OFF, 100);
+        angles(c, p, "head", 10.0F, 0.0F, 0.0F, "death holds after 2.25 s");
+        // Attack: the head stretches to 1.3 high at 0.5 s.
+        p.pose(0.0F, 0.0F, 60.0F, 0.0F, 0.0F, true, 50, OFF, OFF);
+        c.ok(Math.abs(p.part("head").yScale - 1.3F) < 1.0E-4F, "attack 0.5 s: head 1.3 high (" + p.part("head").yScale + ")");
+        c.ok(Math.abs(p.part("head").xScale - 1.0F) < 1.0E-4F, "attack 0.5 s: head as wide");
+        // Invulnerable: upper body -5 at 0.0833 s to 5 at 0.1667 s; at 0.1 s (2 ticks) 20% of the way.
+        p.pose(0.0F, 0.0F, 52.0F, 0.0F, 0.0F, true, OFF, 50, OFF);
+        angles(c, p, "upper_body", -5.0F + 10.0F * (0.1F - 0.0833F) / (0.1667F - 0.0833F), 0.0F, 0.0F, "invulnerable 0.1 s, linear");
+        // Not started: nothing.
+        p.pose(0.0F, 0.0F, 52.0F, 0.0F, 0.0F, false, OFF, OFF, OFF);
+        angles(c, p, "upper_body", 0.0F, 0.0F, 0.0F, "no animation without a start");
+    }
+
+    /** A client world for one test: isRemote, reading the server's chunks (so blocks are there and nothing generates). */
+    private static final class ClientWorld extends net.minecraft.world.World {
+        private final net.minecraft.world.WorldServer real;
+
+        ClientWorld(net.minecraft.world.WorldServer real) {
+            super(real.getSaveHandler(), real.getWorldInfo(), real.provider, real.profiler, true);
+            this.real = real;
+            this.chunkProvider = real.getChunkProvider();
+        }
+
+        @Override
+        protected net.minecraft.world.chunk.IChunkProvider createChunkProvider() {
+            return this.real.getChunkProvider();
+        }
+
+        @Override
+        protected boolean isChunkLoaded(int x, int z, boolean allowEmpty) {
+            return this.real.getChunkProvider().chunkExists(x, z);
+        }
+    }
+
+    /** The client's copy of a creaking, moved as 1.12.2's client moves it (setPositionAndRotationDirect, 3 steps). */
+    private static final class ClientCreaking extends EntityCreaking {
+        ClientCreaking(net.minecraft.world.World world) {
+            super(world);
+        }
+
+        void interpolateTo(double x, double y, double z, float yaw, float pitch) {
+            this.interpTargetX = x;
+            this.interpTargetY = y;
+            this.interpTargetZ = z;
+            this.interpTargetYaw = yaw;
+            this.interpTargetPitch = pitch;
+            this.newPosRotationIncrements = 3;
+        }
+    }
+
+    /** The tracker's entity data packet: every entry of the server copy onto the client copy. */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static void sync(EntityCreaking from, EntityCreaking to) {
+        for (net.minecraft.network.datasync.EntityDataManager.DataEntry entry : from.getDataManager().getAll()) {
+            to.getDataManager().set(entry.getKey(), entry.getValue());
+        }
+    }
+
+    /**
+     * The client side of the walk and the freeze, on a client world (isRemote) beside the server's: the server copy
+     * chases a player; every 3 ticks the client copy gets its position (offset into a second test area) and its
+     * entity data, as the tracker sends them, and ticks as a client entity. The walk must run on the client from the
+     * client's own positions, the client must take "frozen" only from the synced data, and the model fed as
+     * RenderLivingBase feeds it must swing its legs while the server copy moves.
+     */
+    private void clientSide(Check c) {
+        BlockPos area = c.area();
+        BlockPos mirror = c.area();
+        double ox = mirror.getX() - area.getX();
+        double oz = mirror.getZ() - area.getZ();
+        EntityCreaking e = spawn(c, area.add(16, 0, 16));
+        EntityPlayerMP p = player(c, "clientwatch", area.add(16, 0, 26));
+        net.minecraftforge.fml.relauncher.ReflectionHelper.setPrivateValue(EntityPlayerMP.class, p, 0,
+                "respawnInvulnerabilityTicks", "field_147101_bU");
+        ClientWorld cw = new ClientWorld(c.world);
+        c.ok(cw.isRemote, "the client world is a client world");
+        ClientCreaking client = new ClientCreaking(cw);
+        client.setLocationAndAngles(e.posX + ox, e.posY, e.posZ + oz, e.rotationYaw, e.rotationPitch);
+        sync(e, client);
+
+        // Wake it with a look, then turn away: the server copy chases.
+        look(p, e.posX, e.posY + 1.5D, e.posZ);
+        tick(e, 25);
+        c.ok(e.isActive() && !e.canMove(), "server copy woken and frozen");
+        look(p, e.posX, e.posY + 1.5D, e.posZ + 40.0D);
+
+        CreakingPoser poser = new CreakingPoser();
+        int feedBad = 0;
+        int canMoveBad = 0;
+        int clientWrites = 0;
+        int swinging = 0;
+        float maxAmount = 0.0F;
+        for (int i = 0; i < 60; i++) {
+            e.onUpdate();
+            if (i % 3 == 0) {
+                client.interpolateTo(e.posX + ox, e.posY, e.posZ + oz, e.rotationYaw, e.rotationPitch);
+                sync(e, client);
+            }
+            boolean before = client.canMove();
+            float amount0 = client.limbSwingAmount;
+            float swing0 = client.limbSwing;
+            client.onUpdate();
+            if (client.canMove() != before) {
+                clientWrites++;
+            }
+            if (client.canMove() != e.canMove()) {
+                canMoveBad++;
+            }
+            double dx = client.posX - client.prevPosX;
+            double dz = client.posZ - client.prevPosZ;
+            float want = amount0 + (Math.min(MathHelper.sqrt(dx * dx + dz * dz) * 25.0F, 3.0F) - amount0) * 0.4F;
+            if (Math.abs(client.limbSwingAmount - want) > 1.0E-4F || Math.abs(client.limbSwing - (swing0 + want)) > 1.0E-3F) {
+                feedBad++;
+            }
+            maxAmount = Math.max(maxAmount, client.limbSwingAmount);
+            // RenderLivingBase at half a tick: amount lerped and capped at 1, swing behind by half the amount.
+            float f5 = Math.min(client.prevLimbSwingAmount + (client.limbSwingAmount - client.prevLimbSwingAmount) * 0.5F, 1.0F);
+            float f6 = client.limbSwing - client.limbSwingAmount * 0.5F;
+            poser.pose(f6, f5, client.ticksExisted + 0.5F, 0.0F, 0.0F, client.canMove(),
+                    client.attackAnimationStart, client.invulnerabilityAnimationStart, client.deathAnimationStart);
+            if (Math.abs(poser.part("left_leg").xRot) > 10.0F * DEG || Math.abs(poser.part("right_leg").xRot) > 10.0F * DEG) {
+                swinging++;
+            }
+        }
+        com.exiledradio.trickytrialsbackport.TrickyTrialsBackport.LOGGER.info("SELFTEST creaking client copy: top walk speed "
+                + maxAmount + ", legs swung past 10 degrees in " + swinging + " of 60 ticks");
+        c.ok(e.canMove(), "server copy moving while unwatched");
+        c.eq(0, feedBad, "the client copy's walk follows 1.21's formula from its own positions every tick");
+        c.ok(maxAmount > 1.0F, "the client copy walks at full strength (" + maxAmount + ")");
+        c.eq(0, clientWrites, "the client never decides the freeze itself");
+        c.ok(canMoveBad <= 3, "the client's can-move is the server's, within one data update (" + canMoveBad + " ticks behind)");
+        c.ok(swinging >= 20, "the model's legs swing while it moves (" + swinging + " of 60 ticks past 10 degrees)");
+
+        // Watched again: the server freezes it, the client copy follows and draws no walk.
+        look(p, e.posX, e.posY + 1.5D, e.posZ);
+        for (int i = 0; i < 12; i++) {
+            e.onUpdate();
+            if (i % 3 == 0) {
+                client.interpolateTo(e.posX + ox, e.posY, e.posZ + oz, e.rotationYaw, e.rotationPitch);
+                sync(e, client);
+            }
+            client.onUpdate();
+        }
+        c.ok(!e.canMove() && !client.canMove(), "frozen on both sides");
+        poser.pose(client.limbSwing, Math.min(client.limbSwingAmount, 1.0F), client.ticksExisted, 0.0F, 0.0F, client.canMove(),
+                OFF, OFF, OFF);
+        angles(c, poser, "left_leg", 0.0F, 0.0F, 0.0F, "a frozen client copy stands still");
+        c.world.removeEntityDangerously(p);
         e.setDead();
     }
 }

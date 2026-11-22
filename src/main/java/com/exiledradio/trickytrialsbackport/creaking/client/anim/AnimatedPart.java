@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.Tessellator;
  * A model part as 1.19's {@code ModelPart}: a resettable pose that animations add to, and {@link #skipDraw}, which
  * hides this part's own boxes but still draws its children (the warden's glowing layers draw only some parts).
  */
-public class AnimatedPart extends ModelRenderer {
+public class AnimatedPart extends ModelRenderer implements Posable {
 
     public boolean skipDraw;
     public float xScale = 1.0F;

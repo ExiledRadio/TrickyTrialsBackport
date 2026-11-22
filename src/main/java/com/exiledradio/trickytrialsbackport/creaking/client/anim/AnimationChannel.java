@@ -8,7 +8,7 @@ public final class AnimationChannel {
     }
 
     public interface Target {
-        void apply(AnimatedPart part, Vec3f value);
+        void apply(Posable part, Vec3f value);
     }
 
     public static final class Interpolations {
@@ -33,9 +33,9 @@ public final class AnimationChannel {
     }
 
     public static final class Targets {
-        public static final Target POSITION = AnimatedPart::offsetPos;
-        public static final Target ROTATION = AnimatedPart::offsetRotation;
-        public static final Target SCALE = AnimatedPart::offsetScale;
+        public static final Target POSITION = Posable::offsetPos;
+        public static final Target ROTATION = Posable::offsetRotation;
+        public static final Target SCALE = Posable::offsetScale;
 
         private Targets() {
         }
