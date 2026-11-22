@@ -53,6 +53,8 @@ public final class SelfTestRunner {
             new TuffSelfTest(),
             new TrialSelfTest(),
             new OminousBottleSelfTest(),
+            new OminousMigrationSelfTest(true),
+            new OminousMigrationSelfTest(false),
             new BundleSelfTest(),
             new EffectsSelfTest(),
             new DecorSelfTest(),
@@ -106,8 +108,9 @@ public final class SelfTestRunner {
             check.fail("dump: " + e);
         }
         for (SelfTest test : TESTS) {
-            // The jigsaw dump builds structures far out and writes large files: only when asked for by name.
-            boolean inAll = !(test instanceof JigsawDumpSelfTest);
+            // The jigsaw dump builds structures far out and writes large files, and the bottle migration needs two
+            // runs over one world with different Village & Pillage jars: only when asked for by name.
+            boolean inAll = !(test instanceof JigsawDumpSelfTest) && !(test instanceof OminousMigrationSelfTest);
             if ((inAll && this.wanted.contains("all")) || this.wanted.contains(test.name())) {
                 check.section(test.name());
                 try {
