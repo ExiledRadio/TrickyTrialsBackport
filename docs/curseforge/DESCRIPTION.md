@@ -16,7 +16,7 @@ Drink an ominous bottle near a trial spawner and Bad Omen turns into Trial Omen.
 
 ![Beds in a chamber's sleeping room](https://media.forgecdn.net/attachments/2250/452/03-tr-chamber-beds-jpg.jpg)
 
-![A crafter in a trial chamber, between candles on copper grates](https://media.forgecdn.net/attachments/2250/456/07-tr-crafter-jpg.jpg)
+![A vault and an ominous vault, trial keys, the heavy core and the mace](https://media.forgecdn.net/attachments/2250/453/04-tr-vault-keys-mace-jpg.jpg)
 
 ## The breeze and the bogged
 
@@ -36,7 +36,7 @@ A heavy core and a breeze rod make the mace. Hit something after a fall and the 
 
 The crafter crafts one item per redstone pulse and spits it out the front. Click a slot to lock it.
 
-
+![A crafter in a trial chamber, between candles on copper grates](https://media.forgecdn.net/attachments/2250/456/07-tr-crafter-jpg.jpg)
 
 ## Copper and tuff
 
@@ -47,11 +47,17 @@ The crafter crafts one item per redstone pulse and spits it out the front. Click
 
 ![Copper bulbs, a copper door and trapdoor, grates and a copper chest](https://media.forgecdn.net/attachments/2250/457/08-tr-copper-interior-jpg.jpg)
 
+![A copper pavilion lit by copper bulbs](https://media.forgecdn.net/attachments/2250/458/09-tr-copper-pavilion-jpg.jpg)
+
 ## The copper golem
 
 Put a carved pumpkin on a block of copper to build one. It carries items from copper chests to the chests around it. Left to oxidize all the way, it freezes into a statue.
 
 ![A copper golem carrying wheat between copper chests and barrels](https://media.forgecdn.net/attachments/2250/459/10-tr-copper-golem-jpg.jpg)
+
+Copper also makes tools, armor, horse armor, torches, lanterns, bars and chains.
+
+![Copper armor, a copper golem statue, shelves and a copper chest](https://media.forgecdn.net/attachments/2250/460/11-tr-copper-golem-statue-jpg.jpg)
 
 ## The pale garden
 
