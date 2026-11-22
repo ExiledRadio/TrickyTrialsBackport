@@ -39,6 +39,9 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.ITooltipFlag;
 import com.exiledradio.trickytrialsbackport.decor.PaintingItems;
+import com.exiledradio.trickytrialsbackport.decor.PaintingNames;
+import com.exiledradio.trickytrialsbackport.common.Owners;
+import com.exiledradio.trickytrialsbackport.decor.client.PaintingNameplate;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.enchantment.EnchantmentData;
@@ -735,7 +738,10 @@ final class ClientScenes {
         }
     }
 
-    /** Painting items with their variant: the tooltip, two hung paintings, and pick-block on one. */
+    private int namedPaintingDrawn;
+    private boolean namedPaintingWas;
+
+    /** Painting items with their variant: the tooltip, two hung paintings, pick-block on one, and its name (26.3). */
     private void paintings() {
         this.steps.add(() -> {
             List<String> kebab = PaintingItems.byName("kebab").stack().getTooltip(this.mc.player, ITooltipFlag.TooltipFlags.NORMAL);
@@ -775,6 +781,43 @@ final class ClientScenes {
                 ok(picked != null && "skull_and_roses".equals(picked.name), "painting: pick-block gives Skull and Roses: "
                         + this.mc.player.getHeldItemMainhand() + " " + this.mc.player.getHeldItemMainhand().getTagCompound());
             }
+            // 26.3's named paintings: name the painting under the crosshair on the server.
+            this.namedPaintingDrawn = PaintingNameplate.drawnCount;
+            onServer(() -> {
+                for (EntityPainting p : serverWorld().getEntities(EntityPainting.class, e -> e != null && !e.isDead)) {
+                    p.setCustomNameTag("Skull Sam");
+                }
+                return null;
+            });
+            return 10;
+        });
+        this.steps.add(() -> {
+            RayTraceResult hit = this.mc.objectMouseOver;
+            Entity under = hit == null ? null : hit.entityHit;
+            ok(under instanceof EntityPainting && "Skull Sam".equals(under.getCustomNameTag()),
+                    "painting: the name reached the client: " + under);
+            boolean was = PaintingNames.forceSince263;
+            PaintingNames.forceSince263 = false;
+            ok(PaintingNames.since263() == Owners.present(Owners.GAME_DROPS) && (PaintingNames.since263() || PaintingNameplate.shown(this.mc) == null),
+                    "painting: without 26.3 the name is not shown");
+            PaintingNames.forceSince263 = true;
+            ok(under != null && PaintingNameplate.shown(this.mc) == under, "painting: 26.3 shows the name of the painting under the crosshair");
+            this.namedPaintingWas = was;
+            this.namedPaintingDrawn = PaintingNameplate.drawnCount;
+            return 5;
+        });
+        this.steps.add(() -> {
+            shot("paintings_named.png");
+            ok(PaintingNameplate.drawnCount > this.namedPaintingDrawn && "Skull Sam".equals(TextFormatting.getTextWithoutFormattingCodes(PaintingNameplate.lastDrawn)),
+                    "painting: the nameplate was drawn (" + (PaintingNameplate.drawnCount - this.namedPaintingDrawn) + " frames): "
+                            + PaintingNameplate.lastDrawn);
+            // Looking away: no nameplate.
+            look(this.base.add(40, 0, 0), 180.0F, 0.0F);
+            return 5;
+        });
+        this.steps.add(() -> {
+            ok(PaintingNameplate.shown(this.mc) == null, "painting: looking away, no name: " + this.mc.objectMouseOver);
+            PaintingNames.forceSince263 = this.namedPaintingWas;
             return 1;
         });
     }

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
 /**
  * A painting of 1.21's ({@link Paintings}): vanilla's painting in every respect but its picture, which 1.12.2's fixed
  * painting atlas cannot hold. It hangs, breaks, drops a painting and sounds as 1.12.2's does; the variant is saved
- * as {@code variant} (its name) and sent with the spawn packet.
+ * as {@code variant} (its name) and sent with the spawn packet. A custom name is kept as 1.21's and 26.3's are
+ * ({@link PaintingNames}).
  */
 public class EntityModernPainting extends EntityHanging implements IEntityAdditionalSpawnData {
 
@@ -71,7 +72,7 @@ public class EntityModernPainting extends EntityHanging implements IEntityAdditi
             if (brokenEntity instanceof EntityPlayer && ((EntityPlayer) brokenEntity).capabilities.isCreativeMode) {
                 return;
             }
-            this.entityDropItem(new ItemStack(Items.PAINTING), 0.0F);
+            this.entityDropItem(PaintingNames.drop(this), 0.0F);
         }
     }
 

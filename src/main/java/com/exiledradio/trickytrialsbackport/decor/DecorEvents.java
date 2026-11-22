@@ -57,6 +57,9 @@ public final class DecorEvents {
     private static BlockPos placing;
     @Nullable
     private static World placingWorld;
+    /** The custom name of the painting item being used there, or null. */
+    @Nullable
+    private static String placingName;
 
     private DecorEvents() {
     }
@@ -87,6 +90,7 @@ public final class DecorEvents {
         event.setCancellationResult(net.minecraft.util.EnumActionResult.SUCCESS);
         World world = event.getWorld();
         net.minecraft.entity.EntityHanging painting = entry.create(world, at, face);
+        PaintingNames.name(painting, stack);
         if (painting.onValidSurface()) {
             if (!world.isRemote) {
                 painting.playPlaceSound();
@@ -108,6 +112,7 @@ public final class DecorEvents {
         }
         placing = event.getPos().offset(event.getFace());
         placingWorld = event.getWorld();
+        placingName = event.getItemStack().hasDisplayName() ? event.getItemStack().getDisplayName() : null;
     }
 
     @SubscribeEvent
@@ -115,6 +120,7 @@ public final class DecorEvents {
         if (event.phase == TickEvent.Phase.END) {
             placing = null;
             placingWorld = null;
+            placingName = null;
         }
     }
 
@@ -127,12 +133,20 @@ public final class DecorEvents {
         }
         placing = null;
         placingWorld = null;
+        String name = placingName;
+        placingName = null;
         EntityPainting painting = (EntityPainting) entity;
+        if (name != null) {
+            painting.setCustomNameTag(name); // 1.20.5: the item's name goes on the painting (PaintingNames)
+        }
         if (painting.facingDirection == null) {
             return;
         }
         Entity chosen = choose(event.getWorld(), painting.getHangingPosition(), painting.facingDirection, painting, event.getWorld().rand);
         if (chosen instanceof EntityModernPainting) {
+            if (name != null) {
+                chosen.setCustomNameTag(name);
+            }
             event.setCanceled(true);
             event.getWorld().spawnEntity(chosen);
         }

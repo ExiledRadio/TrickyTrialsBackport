@@ -9,6 +9,7 @@ import com.exiledradio.trickytrialsbackport.decor.ItemDecorDisc;
 import com.exiledradio.trickytrialsbackport.decor.ItemTrimTemplate;
 import com.exiledradio.trickytrialsbackport.decor.Paintings;
 import com.exiledradio.trickytrialsbackport.decor.PaintingItems;
+import com.exiledradio.trickytrialsbackport.decor.PaintingNames;
 import com.exiledradio.trickytrialsbackport.asm.PaintingItemTransformer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.NonNullList;
@@ -17,6 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityHusk;
@@ -83,6 +85,7 @@ public final class DecorSelfTest implements SelfTest {
         try {
             paintings(c, player, area);
             variantItems(c, player, area);
+            namedPaintings(c, player, area);
             tears(c, player, area);
             lavaChicken(c, player, area);
         } finally {
@@ -381,6 +384,107 @@ public final class DecorSelfTest implements SelfTest {
         c.eq("baroque", read.getVariant().name, "an unknown variant still falls back to Baroque");
     }
 
+    /**
+     * Named paintings: the item's name goes on the painting it hangs (1.20.5, always), and from 26.3 (Game Drops
+     * Backport) the painting breaks into a painting with its name; the nameplate is the client test's.
+     */
+    private void namedPaintings(Check c, EntityPlayerMP player, BlockPos area) {
+        c.eq(Owners.present(Owners.GAME_DROPS), PaintingNames.since263(), "26.3's named paintings come with Game Drops Backport");
+        BlockPos wall = area.add(30, 1, 10);
+        c.fill(wall, wall.add(1, 1, 0), Blocks.STONE.getDefaultState());
+        Entity kebab = placeVariant(c, player, named(PaintingItems.byName("kebab").stack(), "Kebab Ann"), wall);
+        c.ok(kebab instanceof EntityPainting && "Kebab Ann".equals(kebab.getCustomNameTag()), "a named Kebab hangs with its name: " + kebab);
+        Entity baroque = placeVariant(c, player, named(PaintingItems.byName("baroque").stack(), "Baroque Bob"), wall);
+        c.ok(baroque instanceof EntityModernPainting && "Baroque Bob".equals(baroque.getCustomNameTag()),
+                "a named Baroque (ours) hangs with its name: " + baroque);
+        Entity plain = placeVariant(c, player, PaintingItems.byName("kebab").stack(), wall);
+        c.ok(plain != null && !plain.hasCustomName(), "an unnamed one has no name");
+        // The random painting: whichever painting wins the 2x2 wall, vanilla's or ours, carries the name.
+        Entity random = place(c, player, wall, EnumFacing.NORTH, named(new ItemStack(Items.PAINTING), "Random Cy"));
+        c.ok(random != null && "Random Cy".equals(random.getCustomNameTag()), "a named random painting hangs with its name: " + random);
+        int ours = 0;
+        for (int i = 0; i < 60 && ours == 0; i++) {
+            Entity r = place(c, player, wall, EnumFacing.NORTH, named(new ItemStack(Items.PAINTING), "Random Cy"));
+            if (r instanceof EntityModernPainting) {
+                ours++;
+                c.eq("Random Cy", r.getCustomNameTag(), "...also when one of ours wins the choice");
+            }
+        }
+        c.ok(ours > 0, "one of ours won the choice in 60 tries");
+
+        // Breaking: 1.21 drops a plain painting; 26.3 one with the name.
+        boolean was = PaintingNames.forceSince263;
+        try {
+            for (boolean since263 : new boolean[]{false, true}) {
+                PaintingNames.forceSince263 = since263;
+                boolean on = PaintingNames.since263();
+                c.ok(!since263 || on, "forced on: 26.3's rules");
+                c.eq(on ? "Kebab Ann" : null, breakName(c, new EntityPainting(c.world, wall.north(), EnumFacing.NORTH), "Kebab Ann"),
+                        "a vanilla painting breaks into " + (on ? "a named" : "a plain") + " painting");
+                c.eq(on ? "Baroque Bob" : null, breakName(c, new EntityModernPainting(c.world, wall.north(), EnumFacing.NORTH,
+                        Paintings.byName("baroque")), "Baroque Bob"), "ours breaks into " + (on ? "a named" : "a plain") + " painting");
+                c.eq(null, breakName(c, new EntityPainting(c.world, wall.north(), EnumFacing.NORTH), null), "an unnamed one: a plain painting");
+            }
+            // A plain painting item dropped beside a named painting that still hangs stays plain.
+            PaintingNames.forceSince263 = true;
+            EntityPainting standing = new EntityPainting(c.world, wall.north(), EnumFacing.NORTH);
+            standing.setCustomNameTag("Standing");
+            c.world.spawnEntity(standing);
+            Drops.count(c.world, wall.north(), Items.PAINTING);
+            standing.entityDropItem(new ItemStack(Items.PAINTING), 0.0F);
+            List<EntityItem> items = new java.util.ArrayList<EntityItem>();
+            for (EntityItem e : c.world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(wall.north()).grow(2))) {
+                if (!e.isDead) {
+                    items.add(e);
+                }
+            }
+            c.ok(items.size() == 1 && !items.get(0).getItem().hasDisplayName(), "an item beside a painting still hanging stays plain: " + items);
+            for (EntityItem e : items) {
+                e.setDead();
+            }
+            c.world.removeEntityDangerously(standing);
+            // A creative player still gets nothing.
+            boolean creative = player.capabilities.isCreativeMode;
+            player.capabilities.isCreativeMode = true;
+            EntityPainting p = new EntityPainting(c.world, wall.north(), EnumFacing.NORTH);
+            p.setCustomNameTag("Kebab Ann");
+            c.world.spawnEntity(p);
+            p.attackEntityFrom(DamageSource.causePlayerDamage(player), 1.0F);
+            c.eq(0, Drops.count(c.world, wall.north(), Items.PAINTING), "broken by a creative player: no drop");
+            player.capabilities.isCreativeMode = creative;
+            c.world.removeEntityDangerously(p);
+        } finally {
+            PaintingNames.forceSince263 = was;
+        }
+    }
+
+    private static ItemStack named(ItemStack stack, String name) {
+        return stack.setStackDisplayName(name);
+    }
+
+    /** Hangs the painting with that name (or none), breaks it as an attack does, returns the drop's name or null. */
+    private String breakName(Check c, EntityHanging painting, String name) {
+        BlockPos at = painting.getHangingPosition();
+        Drops.count(c.world, at, Items.PAINTING);
+        if (name != null) {
+            painting.setCustomNameTag(name);
+        }
+        c.world.spawnEntity(painting);
+        painting.attackEntityFrom(DamageSource.GENERIC, 1.0F);
+        String got = null;
+        int n = 0;
+        for (EntityItem e : c.world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(at).grow(2))) {
+            if (!e.isDead && e.getItem().getItem() == Items.PAINTING) {
+                n += e.getItem().getCount();
+                got = e.getItem().hasDisplayName() ? e.getItem().getDisplayName() : null;
+            }
+            e.setDead();
+        }
+        c.eq(1, n, "breaks into one painting");
+        c.world.removeEntityDangerously(painting);
+        return got;
+    }
+
     /** Uses the stack on each block of the wall until a painting hangs; returns it (removed again) or null. */
     private Entity placeVariant(Check c, EntityPlayerMP player, ItemStack stack, BlockPos wall) {
         player.setHeldItem(EnumHand.MAIN_HAND, stack);
@@ -408,7 +512,11 @@ public final class DecorSelfTest implements SelfTest {
     }
 
     private Entity place(Check c, EntityPlayerMP player, BlockPos clicked, EnumFacing face) {
-        player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.PAINTING));
+        return place(c, player, clicked, face, new ItemStack(Items.PAINTING));
+    }
+
+    private Entity place(Check c, EntityPlayerMP player, BlockPos clicked, EnumFacing face, ItemStack stack) {
+        player.setHeldItem(EnumHand.MAIN_HAND, stack);
         AxisAlignedBB box = new AxisAlignedBB(clicked.offset(face)).grow(3);
         // Nothing left from the last try for onValidSurface's overlap check.
         for (EntityHanging old : c.world.getEntitiesWithinAABB(EntityHanging.class, box)) {
