@@ -3,7 +3,6 @@ package com.exiledradio.trickytrialsbackport.palegarden.client;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.palegarden.BiomePaleGarden;
 import com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent;
-import com.exiledradio.trickytrialsbackport.palegarden.boat.client.RenderModBoat;
 import com.exiledradio.trickytrialsbackport.palegarden.wood.WoodSign;
 import com.exiledradio.trickytrialsbackport.palegarden.wood.client.WoodSignRenderer;
 
@@ -25,7 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.Random;
 
 /**
- * Client parts of the pale garden: the falling pale oak leaf, the sign and boat renderers, and the pale
+ * Client parts of the pale garden: the falling pale oak leaf, the sign renderer (the boats are Backport Core's), and the pale
  * garden's gray fog.
  */
 public final class PaleGardenClient {
@@ -41,7 +40,6 @@ public final class PaleGardenClient {
         }
         MinecraftForge.EVENT_BUS.register(new Events());
         ClientRegistry.bindTileEntitySpecialRenderer(WoodSign.Tile.class, new WoodSignRenderer());
-        RenderModBoat.register();
     }
 
     /** Called from the leaves' random display tick: one leaf just under the block ({@code spawnParticleBelow}). */

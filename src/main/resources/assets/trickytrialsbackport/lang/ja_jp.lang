@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=旋風の装飾
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=ペールガーデンを生成
 config.trickytrialsbackport.paleGarden.eyeblossomLight=光るヒトミソウ
-entity.trickytrialsbackport.boat.name=ボート
 item.trickytrialsbackport.pale_oak_boat.name=ペールオークのボート
+item.trickytrialsbackport.pale_oak_chest_boat.name=チェスト付きのペールオークのボート
 item.trickytrialsbackport.pale_oak_door.name=ペールオークのドア
 item.trickytrialsbackport.pale_oak_sign.name=ペールオークの看板
 tile.trickytrialsbackport.closed_eyeblossom.name=閉じたヒトミソウ

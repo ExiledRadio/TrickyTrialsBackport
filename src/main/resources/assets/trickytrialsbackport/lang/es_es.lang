@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Diseño de armadura de espiral
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Generar jardines pálidos
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Miraflores luminosas
-entity.trickytrialsbackport.boat.name=Barca
 item.trickytrialsbackport.pale_oak_boat.name=Barca de roble pálido
+item.trickytrialsbackport.pale_oak_chest_boat.name=Barca de roble pálido con cofre
 item.trickytrialsbackport.pale_oak_door.name=Puerta de roble pálido
 item.trickytrialsbackport.pale_oak_sign.name=Cartel de roble pálido
 tile.trickytrialsbackport.closed_eyeblossom.name=Miraflor cerrada

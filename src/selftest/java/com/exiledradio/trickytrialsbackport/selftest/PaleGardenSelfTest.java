@@ -97,9 +97,22 @@ public final class PaleGardenSelfTest implements SelfTest {
             c.ok(i != null && Content.id(name).equals(i.getRegistryName()), name + " item registered");
         }
         c.ok(item("pale_oak_wall_sign") == null || item("pale_oak_wall_sign") == Items.AIR, "no wall sign item");
-        c.ok(EntityList.getClass(Content.id("boat")) != null, "boat entity registered");
-        c.eq(30, net.minecraftforge.fml.common.registry.EntityRegistry.instance().lookupModSpawn(
-                EntityList.getClass(Content.id("boat")), false).getModEntityId(), "boat entity id 30");
+        c.ok(EntityList.getClass(Content.id("boat")) == null, "no boat entity of our own: the boats are Backport Core's");
+        com.exiledradio.backportcore.boat.BoatWood paleOak = com.exiledradio.backportcore.boat.BoatWood.find("trickytrialsbackport:pale_oak");
+        c.ok(paleOak != null && paleOak.boatItem() == item("pale_oak_boat"), "pale oak is Core's wood, with our boat");
+        c.ok(paleOak != null && !paleOak.raft && "pale_oak_planks".equals(paleOak.planks().getItem().getRegistryName().getPath()),
+                "a crash drops pale oak planks");
+        c.eq(com.exiledradio.backportcore.boat.Boats.BOAT, com.exiledradio.backportcore.boat.Boats.renamedTo(Content.id("boat")),
+                "our old boats load as Core's");
+        boolean wild = com.exiledradio.trickytrialsbackport.common.Owners.present(com.exiledradio.trickytrialsbackport.common.Owners.WILD_UPDATE);
+        c.eq(wild, ForgeRegistries.ITEMS.containsKey(Content.id("pale_oak_chest_boat")), "chest boat only with Wild Update");
+        if (wild && paleOak != null) {
+            c.ok(paleOak.chestBoatItem() == item("pale_oak_chest_boat"), "pale oak's chest boat is ours");
+            com.exiledradio.backportcore.boat.EntityWoodChestBoat chest =
+                    new com.exiledradio.backportcore.boat.EntityWoodChestBoat(c.world, 0, 100, 0, paleOak);
+            c.eq(item("pale_oak_chest_boat"), chest.getItemBoat(), "a pale oak chest boat drops itself");
+            c.eq(1200, TileEntityFurnace.getItemBurnTime(new ItemStack(item("pale_oak_chest_boat"))), "chest boat burn");
+        }
         c.ok(PaleGardenContent.biome != null && ForgeRegistries.BIOMES.getValue(Content.id("pale_garden")) == PaleGardenContent.biome,
                 "pale garden biome registered");
     }

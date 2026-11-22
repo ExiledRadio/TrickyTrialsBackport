@@ -51,6 +51,8 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
         com.exiledradio.trickytrialsbackport.chambers.ChambersContent.preInit();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.preInit();
+        // Boats are Backport Core's (boat/); ours saved before load as Core's.
+        com.exiledradio.trickytrialsbackport.palegarden.boat.BoatContent.preInit();
         com.exiledradio.trickytrialsbackport.creaking.CreakingContent.preInit();
         com.exiledradio.trickytrialsbackport.resin.ResinContent.preInit();
         com.exiledradio.trickytrialsbackport.flora.FloraContent.preInit();

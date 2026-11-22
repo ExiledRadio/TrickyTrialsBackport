@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Harnasversiering 'windstroming'
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Bleke tuinen genereren
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Gloeiende gluurbloesems
-entity.trickytrialsbackport.boat.name=Boot
 item.trickytrialsbackport.pale_oak_boat.name=Bleke eikenhouten boot
+item.trickytrialsbackport.pale_oak_chest_boat.name=Bleke eikenhouten boot met kist
 item.trickytrialsbackport.pale_oak_door.name=Bleke eikenhouten deur
 item.trickytrialsbackport.pale_oak_sign.name=Bleek eikenhouten bord
 tile.trickytrialsbackport.closed_eyeblossom.name=Gesloten gluurbloesem

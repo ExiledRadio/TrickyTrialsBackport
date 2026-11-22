@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Отделка «Поток»
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Генерация бледных садов
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Светящиеся глазалии
-entity.trickytrialsbackport.boat.name=Лодка
 item.trickytrialsbackport.pale_oak_boat.name=Лодка из бледного дуба
+item.trickytrialsbackport.pale_oak_chest_boat.name=Грузовая лодка из бледного дуба
 item.trickytrialsbackport.pale_oak_door.name=Дверь из бледного дуба
 item.trickytrialsbackport.pale_oak_sign.name=Табличка из бледного дуба
 tile.trickytrialsbackport.closed_eyeblossom.name=Закрытая глазалия

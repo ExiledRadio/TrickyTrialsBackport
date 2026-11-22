@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Enfeite de Fluxo
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Gerar jardins pálidos
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Olhoquídeas Luminosas
-entity.trickytrialsbackport.boat.name=Bote
 item.trickytrialsbackport.pale_oak_boat.name=Bote de Carvalho Pálido
+item.trickytrialsbackport.pale_oak_chest_boat.name=Bote de Carvalho Pálido com Baú
 item.trickytrialsbackport.pale_oak_door.name=Porta de Carvalho Pálido
 item.trickytrialsbackport.pale_oak_sign.name=Placa de Carvalho Pálido
 tile.trickytrialsbackport.closed_eyeblossom.name=Olhoquídea Fechada

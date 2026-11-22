@@ -179,10 +179,12 @@ port_blockstate("potted_pale_oak_sapling", "potted_pale_oak_sapling", {})
 named("potted_pale_oak_sapling")
 for i in range(12):
     assets.texture("particle/pale_oak_%d" % i)
-port_item_model("pale_oak_boat")
-named("pale_oak_boat", kind="item")
+# The boats themselves are Backport Core's entities (its boat/); the chest boat is registered with Wild Update only.
+for item in ("pale_oak_boat", "pale_oak_chest_boat"):
+    port_item_model(item)
+    named(item, kind="item")
 assets.texture("entity/boat/" + W)
-lang.append("entity.%s.boat.name=%s" % (M, assets.name("entity.minecraft.boat")))
+assets.texture("entity/chest_boat/" + W)
 
 # --- pale moss, eyeblossoms, creaking heart ---------------------------------------------------------
 port_blockstate("pale_moss_block", "pale_moss_block", {})

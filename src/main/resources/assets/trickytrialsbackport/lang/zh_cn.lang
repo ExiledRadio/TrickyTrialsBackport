@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=涡流盔甲纹饰
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=生成苍白之园
 config.trickytrialsbackport.paleGarden.eyeblossomLight=发光的眼眸花
-entity.trickytrialsbackport.boat.name=船
 item.trickytrialsbackport.pale_oak_boat.name=苍白橡木船
+item.trickytrialsbackport.pale_oak_chest_boat.name=苍白橡木运输船
 item.trickytrialsbackport.pale_oak_door.name=苍白橡木门
 item.trickytrialsbackport.pale_oak_sign.name=苍白橡木告示牌
 tile.trickytrialsbackport.closed_eyeblossom.name=闭合的眼眸花

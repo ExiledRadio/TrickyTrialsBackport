@@ -164,6 +164,10 @@ V&P's class changes shape or `Unsafe` is unavailable, nothing is changed and the
 
 ## 9. One wood set and one boat entity for the family
 
+**Boats: done** in Core 1.4.4 (`boat/`, branch `core-boats`): pale oak is Core's wood, its boat (and, with Wild
+Update, its new chest boat) Core's entities; `trickytrialsbackport:boat` saved before loads as Core's. The wood set
+and signs are still open.
+
 Pale oak (stream 12) needed a whole wood set, signs with their own tile and renderer, and a boat entity.
 Trails & Tales has the same code for cherry and bamboo (`common/wood`, `boat`), Wild Update has mangrove, and
 26.3's poplar (stream 30) will need it again. **Want:** Core's own wood set (blocks extending vanilla's

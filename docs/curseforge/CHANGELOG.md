@@ -1,5 +1,7 @@
 # 1.0.1
 
+*   **The pale oak boat with chest**, with Wild Update Backport: a pale oak boat and a chest, as in 1.21.4.
+*   **Boats are now Backport Core's**, one boat and one boat with chest for every backport's wood (needs Backport Core 1.4.4). Pale oak boats look, float, steer and drop as before, and boats already in your worlds are kept, with whoever rides them.
 *   **Every painting in the creative inventory**: the Decoration Blocks tab and JEI list the random painting, then each painting on its own, 1.12.2's 26 and the 21 new ones, with title, artist and size in the tooltip. Such a painting hangs exactly that picture where it fits, and middle-clicking a hung painting picks that one. Paintings in survival stay random.
 *   **Poplar shelves** with Game Drops Backport, made from six stripped poplar logs like every other shelf.
 *   **Pale oaks at Game Drops Backport's abandoned camps** are full worldgen pale oaks, with their pale moss.

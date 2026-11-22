@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Fluss-Rüstungsbesatz
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Blasse Gärten generieren
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Leuchtende Augenblüten
-entity.trickytrialsbackport.boat.name=Boot
 item.trickytrialsbackport.pale_oak_boat.name=Blasseichenholzboot
+item.trickytrialsbackport.pale_oak_chest_boat.name=Blasseichenholztruhenboot
 item.trickytrialsbackport.pale_oak_door.name=Blasseichenholztür
 item.trickytrialsbackport.pale_oak_sign.name=Blasseichenholzschild
 tile.trickytrialsbackport.closed_eyeblossom.name=Geschlossene Augenblüte
