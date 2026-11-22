@@ -1,5 +1,6 @@
 package com.exiledradio.trickytrialsbackport.chambers;
 
+import com.exiledradio.backportcore.structure.ModernJigsaw;
 import com.exiledradio.backportcore.structure.ScatteredPlacement;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.google.gson.JsonArray;
@@ -11,10 +12,8 @@ import net.minecraft.util.ResourceLocation;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -34,8 +33,8 @@ public final class ChamberSettings {
     public final int startMaxY;
     public final int paddingBottom;
     public final int paddingTop;
-    /** {@code pool_aliases}, in file order. */
-    public final List<Alias> aliases;
+    /** {@code pool_aliases}, in file order (Backport Core resolves them). */
+    public final ModernJigsaw.PoolAliases aliases;
     /** The structure set's grid. */
     public final ScatteredPlacement grid;
     /** {@code #minecraft:has_structure/trial_chambers}: today's biome names. */
@@ -72,13 +71,7 @@ public final class ChamberSettings {
             this.paddingBottom = padding.getAsInt();
             this.paddingTop = padding.getAsInt();
         }
-        List<Alias> aliases = new ArrayList<Alias>();
-        if (structure.has("pool_aliases")) {
-            for (JsonElement e : structure.getAsJsonArray("pool_aliases")) {
-                aliases.add(Alias.read(e.getAsJsonObject()));
-            }
-        }
-        this.aliases = Collections.unmodifiableList(aliases);
+        this.aliases = ModernJigsaw.PoolAliases.read(structure.has("pool_aliases") ? structure.getAsJsonArray("pool_aliases") : null);
 
         JsonObject placement = set.getAsJsonObject("placement");
         if (!"minecraft:random_spread".equals(placement.get("type").getAsString())) {
@@ -125,116 +118,7 @@ public final class ChamberSettings {
         }
     }
 
-    /** A pool alias binding: {@code direct}, {@code random} or {@code random_group}. */
-    public static final class Alias {
-        final String type;
-        /** direct and random: the alias. */
-        final String alias;
-        /** direct: the one target; random: the weighted targets. */
-        final List<String> targets;
-        /** random and random_group: the weights, in order. */
-        final List<Integer> weights;
-        /** random_group: each group's bindings. */
-        final List<List<Alias>> groups;
-
-        private Alias(String type, String alias, List<String> targets, List<Integer> weights, List<List<Alias>> groups) {
-            this.type = type;
-            this.alias = alias;
-            this.targets = targets;
-            this.weights = weights;
-            this.groups = groups;
-        }
-
-        static Alias read(JsonObject o) {
-            String type = o.get("type").getAsString();
-            if (type.indexOf(':') < 0) {
-                type = "minecraft:" + type;
-            }
-            List<String> targets = new ArrayList<String>();
-            List<Integer> weights = new ArrayList<Integer>();
-            List<List<Alias>> groups = new ArrayList<List<Alias>>();
-            String alias = o.has("alias") ? o.get("alias").getAsString() : null;
-            switch (type) {
-                case "minecraft:direct":
-                    targets.add(o.get("target").getAsString());
-                    break;
-                case "minecraft:random":
-                    for (JsonElement e : o.getAsJsonArray("targets")) {
-                        targets.add(e.getAsJsonObject().get("data").getAsString());
-                        weights.add(e.getAsJsonObject().get("weight").getAsInt());
-                    }
-                    break;
-                case "minecraft:random_group":
-                    for (JsonElement e : o.getAsJsonArray("groups")) {
-                        List<Alias> group = new ArrayList<Alias>();
-                        for (JsonElement b : e.getAsJsonObject().getAsJsonArray("data")) {
-                            group.add(read(b.getAsJsonObject()));
-                        }
-                        groups.add(group);
-                        weights.add(e.getAsJsonObject().get("weight").getAsInt());
-                    }
-                    break;
-                default:
-                    throw new IllegalStateException("Unknown pool alias type " + type);
-            }
-            return new Alias(type, alias, targets, weights, groups);
-        }
-
-        /** {@code PoolAliasBinding.forEachResolved}. */
-        void resolve(LegacyRandom random, java.util.Map<String, String> out) {
-            switch (this.type) {
-                case "minecraft:direct":
-                    put(out, this.alias, this.targets.get(0));
-                    break;
-                case "minecraft:random":
-                    put(out, this.alias, this.targets.get(pick(this.weights, random)));
-                    break;
-                default:
-                    for (Alias a : this.groups.get(pick(this.weights, random))) {
-                        a.resolve(random, out);
-                    }
-            }
-        }
-
-        /** {@code ImmutableMap.Builder.put} then {@code build}: a key given twice is an error in vanilla too. */
-        private static void put(java.util.Map<String, String> out, String alias, String target) {
-            if (out.put(full(alias), full(target)) != null) {
-                throw new IllegalStateException("Pool alias " + alias + " is bound twice");
-            }
-        }
-
-        /** {@code WeightedList.getRandom}: {@code nextInt(totalWeight)}, then the entry that range falls in. */
-        private static int pick(List<Integer> weights, LegacyRandom random) {
-            int total = 0;
-            for (int w : weights) {
-                total += w;
-            }
-            int r = random.nextInt(total);
-            for (int i = 0; i < weights.size(); i++) {
-                r -= weights.get(i);
-                if (r < 0) {
-                    return i;
-                }
-            }
-            return weights.size() - 1;
-        }
-    }
-
     static String full(String name) {
         return name.indexOf(':') < 0 ? "minecraft:" + name : name;
-    }
-
-    /** {@code LegacyRandomSource}: java.util.Random's generator, as today's code draws from it. */
-    static final class LegacyRandom extends java.util.Random {
-        LegacyRandom(long seed) {
-            super(seed);
-        }
-
-        /** {@code Mth.getSeed(x, y, z)}. */
-        static long positionSeed(int x, int y, int z) {
-            long l = (long) (x * 3129871) ^ (long) z * 116129781L ^ (long) y;
-            l = l * l * 42317861L + l * 11L;
-            return l >> 16;
-        }
     }
 }

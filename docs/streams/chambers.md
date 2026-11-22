@@ -32,13 +32,15 @@ port 25910. Reference: 1.21.11's decompiled `JigsawPlacement`, `JigsawStructure`
     biome of the stub's quart, reached by reflection as Wild Update's ancient cities reach it, against the tag;
     in 1.12 terrain every overworld biome is in the tag, except where Wild Update's deep dark is (its `DeepDark.at`,
     by name). Starts are laid out from 9 chunks away (`range`), since a piece may reach that far.
-*   **Assembly** (`ChamberLayout`): 1.21.11's `JigsawPlacement` draw for draw. Core's `Jigsaw` is 1.16.5's, so this
-    is our own, on Core's pools, elements and templates. What 1.21 adds: jigsaws shuffled then stably sorted by
+*   **Assembly** (`ChamberLayout`): 1.21.11's `JigsawPlacement` draw for draw. The stub is ours; the placer is
+    Backport Core's `ModernJigsaw` (1.4.4; before, our own copy of it, which laid out the same pieces and blocks:
+    `JigsawDumpSelfTest`), on Core's pools, elements and templates. What 1.21 adds: jigsaws shuffled then stably sorted by
     `selection_priority`; opened pieces queued by `placement_priority` (FIFO within a priority); pools looked up
     through the aliases (`RandomSource.create(seed).forkPositional().at(chunk corner, start y)`); the free box 116
     out from the start piece's middle, clamped to the world's floor and roof less the padding; the start piece
     refused if it is within the padding. Shuffles are `Util.shuffle` (n - 1 draws; `Collections.shuffle` draws the
-    same). The priorities are read from the templates' jigsaw NBT, which Core's `ModernTemplate.Jigsaw` does not keep.
+    same). The priorities come from the templates' jigsaws (Core's `ModernTemplate.Jigsaw`), the aliases from Core's
+    `ModernJigsaw.PoolAliases`.
 *   **Heights**: the layout is always made in 1.21's y -64 to 319, so it is vanilla's piece for piece. In a world
     that goes down to -64 (`WorldHeights.minY`) it stays there. Elsewhere the whole layout moves by the
     proportional shift of its start, `(y + 64) * 256 / 384` (y -40 to -20 become 16 to 29; the shift is 49 to 56).

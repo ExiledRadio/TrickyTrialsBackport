@@ -6,6 +6,9 @@
 *   **Leaf litter in Game Drops Backport's dappled forest** takes 26.3's orange-brown dry foliage color.
 *   **Named paintings**: a painting renamed in an anvil hangs with its name. With Game Drops Backport, as in 26.3, the name shows when you look at the painting, and the painting drops back with its name when broken.
 *   **Fixed: a painting saved with a `minecraft:` variant id came back as Baroque.**
+*   Trial chambers are laid out by Backport Core's shared modern jigsaw placer, block for block as before.
+
+Needs Backport Core 1.4.4 or newer.
 
 # 1.0.0
 
