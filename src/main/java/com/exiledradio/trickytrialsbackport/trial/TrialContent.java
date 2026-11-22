@@ -27,7 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  *   <li>{@code trial_key} and {@code ominous_trial_key};</li>
  *   <li>the effect {@code trial_omen};</li>
  *   <li>{@code ominous_item_spawner} ({@link EntityOminousItemSpawner}, entity id 15);</li>
- *   <li>{@code ominous_bottle} (metadata 0-4 = Bad Omen I-V), 1.21's, which this mod owns since 1.0.2
+ *   <li>{@code ominous_bottle} (metadata 0-4 = Bad Omen I-V), 1.21's, which this mod owns since 1.0.1
  *       (Village &amp; Pillage 2.7.4 drops it from captains when it is here, and renames its older bottles to it);</li>
  *   <li>without Village &amp; Pillage, a copy of its {@code bad_omen} effect, which it remaps when added to the world.</li>
  * </ul>

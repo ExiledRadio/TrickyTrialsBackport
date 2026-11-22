@@ -1,9 +1,3 @@
-# 1.0.2
-
-*   **The ominous bottle is now this mod's**, since 1.21 added it, also with Village & Pillage Backport installed. Drinking one gives Bad Omen at the bottle's level, I to V, for 100 minutes. With Village & Pillage 2.7.4, pillager captains drop it instead of giving Bad Omen, and its Bad Omen turns into Raid Omen in a village, as in 1.21.
-*   **Ominous bottles from older Village & Pillage worlds become this mod's bottles**, with the same level, when Village & Pillage 2.7.4 is installed.
-*   **Fixed: a spawn egg used on a cow, pig or chicken made a temperate baby.** The baby now has its parent's variant, as in 1.21.5.
-
 # 1.0.1
 
 *   **The pale oak boat with chest**, with Wild Update Backport: a pale oak boat and a chest, as in 1.21.4.
@@ -15,6 +9,10 @@
 *   **Named paintings**: a painting renamed in an anvil hangs with its name. With Game Drops Backport, as in 26.3, the name shows when you look at the painting, and the painting drops back with its name when broken.
 *   **Fixed: a painting saved with a `minecraft:` variant id came back as Baroque.**
 *   Trial chambers are laid out by Backport Core's shared modern jigsaw placer, block for block as before.
+
+*   **The ominous bottle is now this mod's**, since 1.21 added it, also with Village & Pillage Backport installed. Drinking one gives Bad Omen at the bottle's level, I to V, for 100 minutes. With Village & Pillage 2.7.4, pillager captains drop it instead of giving Bad Omen, and its Bad Omen turns into Raid Omen in a village, as in 1.21.
+*   **Ominous bottles from older Village & Pillage worlds become this mod's bottles**, with the same level, when Village & Pillage 2.7.4 is installed.
+*   **Fixed: a spawn egg used on a cow, pig or chicken made a temperate baby.** The baby now has its parent's variant, as in 1.21.5.
 
 Needs Backport Core 1.4.4 or newer.
 
