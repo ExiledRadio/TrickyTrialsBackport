@@ -630,8 +630,8 @@ trim_pattern.trickytrialsbackport.flow=Flow Armor Trim
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Generate Pale Gardens
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Glowing Eyeblossoms
-entity.trickytrialsbackport.boat.name=Boat
 item.trickytrialsbackport.pale_oak_boat.name=Pale Oak Boat
+item.trickytrialsbackport.pale_oak_chest_boat.name=Pale Oak Boat with Chest
 item.trickytrialsbackport.pale_oak_door.name=Pale Oak Door
 item.trickytrialsbackport.pale_oak_sign.name=Pale Oak Sign
 tile.trickytrialsbackport.closed_eyeblossom.name=Closed Eyeblossom

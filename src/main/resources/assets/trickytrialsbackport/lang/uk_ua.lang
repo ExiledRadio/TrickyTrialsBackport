@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Орнамент обладунків «�
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Генерація блідих садів
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Сяйливі окоцвіти
-entity.trickytrialsbackport.boat.name=Човен
 item.trickytrialsbackport.pale_oak_boat.name=Блідо-дубовий човен
+item.trickytrialsbackport.pale_oak_chest_boat.name=Блідо-дубовий човен зі скринею
 item.trickytrialsbackport.pale_oak_door.name=Блідо-дубові двері
 item.trickytrialsbackport.pale_oak_sign.name=Блідо-дубова табличка
 tile.trickytrialsbackport.closed_eyeblossom.name=Закритий окоцвіт

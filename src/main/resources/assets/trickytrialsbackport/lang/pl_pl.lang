@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Zdobienie zbroi „Nurt”
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Generowanie bladych ogrodów
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Świecące okrotki
-entity.trickytrialsbackport.boat.name=Łódka
 item.trickytrialsbackport.pale_oak_boat.name=Bladodębowa łódka
+item.trickytrialsbackport.pale_oak_chest_boat.name=Bladodębowa łódka ze skrzynią
 item.trickytrialsbackport.pale_oak_door.name=Bladodębowe drzwi
 item.trickytrialsbackport.pale_oak_sign.name=Bladodębowa tabliczka
 tile.trickytrialsbackport.closed_eyeblossom.name=Zamknięta okrotka

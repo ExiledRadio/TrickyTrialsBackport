@@ -28,7 +28,7 @@ import org.apache.logging.log4j.Logger;
         name = TrickyTrialsBackport.MOD_NAME,
         version = TrickyTrialsBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.4.2,);before:quark"
+        dependencies = "required-after:backportcore@[1.4.4,);before:quark"
 )
 public final class TrickyTrialsBackport {
 
@@ -51,6 +51,8 @@ public final class TrickyTrialsBackport {
         com.exiledradio.trickytrialsbackport.common.WindBurst.FALL_AFTER_WIND_CHARGE.register();
         com.exiledradio.trickytrialsbackport.chambers.ChambersContent.preInit();
         com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent.preInit();
+        // Boats are Backport Core's (boat/); ours saved before load as Core's.
+        com.exiledradio.trickytrialsbackport.palegarden.boat.BoatContent.preInit();
         com.exiledradio.trickytrialsbackport.creaking.CreakingContent.preInit();
         com.exiledradio.trickytrialsbackport.resin.ResinContent.preInit();
         com.exiledradio.trickytrialsbackport.flora.FloraContent.preInit();

@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Ornamento stile flusso
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Genera giardini pallidi
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Occhidee luminose
-entity.trickytrialsbackport.boat.name=Barca
 item.trickytrialsbackport.pale_oak_boat.name=Barca di quercia pallida
+item.trickytrialsbackport.pale_oak_chest_boat.name=Barca di quercia pallida con baule
 item.trickytrialsbackport.pale_oak_door.name=Porta di quercia pallida
 item.trickytrialsbackport.pale_oak_sign.name=Cartello di quercia pallida
 tile.trickytrialsbackport.closed_eyeblossom.name=Occhidea chiusa

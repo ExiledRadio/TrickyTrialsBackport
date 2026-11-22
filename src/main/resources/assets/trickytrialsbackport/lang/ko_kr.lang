@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=흐름 갑옷 장식
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=창백한 정원 생성
 config.trickytrialsbackport.paleGarden.eyeblossomLight=빛나는 눈망울꽃
-entity.trickytrialsbackport.boat.name=보트
 item.trickytrialsbackport.pale_oak_boat.name=창백한 참나무 보트
+item.trickytrialsbackport.pale_oak_chest_boat.name=상자가 실린 창백한 참나무 보트
 item.trickytrialsbackport.pale_oak_door.name=창백한 참나무 문
 item.trickytrialsbackport.pale_oak_sign.name=창백한 참나무 표지판
 tile.trickytrialsbackport.closed_eyeblossom.name=감은 눈망울꽃

@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Ornement des tourbillons
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Générer des jardins pâles
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Oeilchidées lumineuses
-entity.trickytrialsbackport.boat.name=Bateau
 item.trickytrialsbackport.pale_oak_boat.name=Bateau en chêne pâle
+item.trickytrialsbackport.pale_oak_chest_boat.name=Bateau de stockage en chêne pâle
 item.trickytrialsbackport.pale_oak_door.name=Porte en chêne pâle
 item.trickytrialsbackport.pale_oak_sign.name=Pancarte en chêne pâle
 tile.trickytrialsbackport.closed_eyeblossom.name=Oeilchidée fermée

@@ -631,8 +631,8 @@ trim_pattern.trickytrialsbackport.flow=Akış Zırh Süslemesi
 # --- palegarden ---
 config.trickytrialsbackport.paleGarden.generateBiome=Solgun Bahçe Oluştur
 config.trickytrialsbackport.paleGarden.eyeblossomLight=Parlayan Göz Çiçekleri
-entity.trickytrialsbackport.boat.name=Tekne
 item.trickytrialsbackport.pale_oak_boat.name=Soluk Meşe Tekne
+item.trickytrialsbackport.pale_oak_chest_boat.name=Sandıklı Soluk Meşe Tekne
 item.trickytrialsbackport.pale_oak_door.name=Soluk Meşe Kapı
 item.trickytrialsbackport.pale_oak_sign.name=Soluk Meşe Tabela
 tile.trickytrialsbackport.closed_eyeblossom.name=Kapalı Göz Çiçeği

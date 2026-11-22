@@ -36,8 +36,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
  *
  * <ul>
  *   <li>The pale oak wood set ({@link WoodSet}, vanilla's wooden sounds as 1.21.4's {@code BlockSetType.PALE_OAK}
- *       has), pale oak leaves and sapling (2x2 only, {@link PaleOakTree}), the potted sapling and the boat
- *       ({@code boat.BoatContent}).</li>
+ *       has), pale oak leaves and sapling (2x2 only, {@link PaleOakTree}), the potted sapling, the boat and, with Wild
+ *       Update, the chest boat ({@code boat.BoatContent}; Backport Core's entities).</li>
  *   <li>Pale moss block (bone meal spreads a patch), pale moss carpet (side walls), pale hanging moss.</li>
  *   <li>Open and closed eyeblossoms and their pots, switching at dusk and dawn.</li>
  *   <li>The creaking heart. The creaking itself is stream 13; the heart reaches it by name only
