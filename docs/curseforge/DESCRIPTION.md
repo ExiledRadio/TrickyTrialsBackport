@@ -137,7 +137,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport)**: honeycomb waxes copper.
 
-**[Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-update-backport)**: netherite spears, nautilus armor and horse armor, and crimson and warped shelves.
+**[Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-backport)**: netherite spears, nautilus armor and horse armor, and crimson and warped shelves.
 
 **[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: the new sherds go on decorated pots, the new templates and resin trim armor, and pale oak, cherry and bamboo get hanging signs and shelves.
 
@@ -153,6 +153,14 @@ Minecraft 1.12.2 with Forge 14.23.5.2847 or newer, and [Backport Core](https://w
 
 ***
 
-Also by me: [Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport), all of 1.14 on 1.12.2, [Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport), all of 1.13 on 1.12.2, [Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport), all of 1.15 on 1.12.2, [Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-update-backport), all of 1.16 on 1.12.2, [Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport), all of 1.17 and 1.18 on 1.12.2, [Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport), all of 1.19 on 1.12.2, [Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport), all of 1.20 on 1.12.2, and [Enchantment Recipes](https://www.curseforge.com/minecraft/mc-mods/rlcraft-enchantment-recipes), which lets you craft enchanted books from mod materials.
+Also by me: [Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport), all of 1.14 on 1.12.2, [Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport), all of 1.13 on 1.12.2, [Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport), all of 1.15 on 1.12.2, [Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-backport), all of 1.16 on 1.12.2, [Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport), all of 1.17 and 1.18 on 1.12.2, [Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport), all of 1.19 on 1.12.2, [Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport), all of 1.20 on 1.12.2, and [Enchantment Recipes](https://www.curseforge.com/minecraft/mc-mods/rlcraft-enchantment-recipes), which lets you craft enchanted books from mod materials.
 
-Not affiliated with Mojang.
+## Credits
+
+**Original content: [Minecraft](https://www.minecraft.net), by [Mojang Studios](https://www.minecraft.net/en-us/about-minecraft).** Every feature this mod adds is from a later version of Minecraft. The textures, models, sounds, music and translations are Mojang's, taken from Minecraft's own game files, and remain theirs. The features' names and designs are Mojang's too.
+
+**How this mod differs from the original:** Minecraft's newer versions don't run on 1.12.2. This mod is a Forge mod for Minecraft 1.12.2 that reimplements those features on the older game, matching the newer versions as closely as it can. It is not a copy or port of another mod. Where 1.12.2 can't do something the same way, the description above says so.
+
+This is an unofficial fan project, made under Mojang's [Minecraft Usage Guidelines](https://www.minecraft.net/en-us/usage-guidelines). Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
+
+Source: [github.com/ExiledRadio/TrickyTrialsBackport](https://github.com/ExiledRadio/TrickyTrialsBackport)
