@@ -11,9 +11,9 @@ import javax.annotation.Nullable;
 /**
  * Bad Omen and Trial Omen.
  *
- * <p>Bad Omen is Village &amp; Pillage's ({@code villagerbackport:bad_omen}) when it is installed: its ominous
+ * <p>Bad Omen is Village &amp; Pillage's ({@code villagerbackport:bad_omen}) when it is installed: our ominous
  * bottle gives it, and its raids turn it into Raid Omen in a village. Without it, this stream registers
- * its own Bad Omen and ominous bottle (same names, levels and duration), which do nothing but feed trials.
+ * its own Bad Omen (same name and levels), which does nothing but feed trials.
  * Either way, a player with Bad Omen whom a trial spawner detects has it turned into Trial Omen.
  */
 public final class Omens {

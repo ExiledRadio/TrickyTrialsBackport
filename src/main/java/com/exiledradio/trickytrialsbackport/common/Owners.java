@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  *
  * <h2>Core's tables</h2>
  * Caves &amp; Cliffs' tuff and copper set are in Core's {@code BlockOwnership} table, and the items and effects
- * this mod copies (copper ingot, raw copper, honeycomb, the ominous bottle, Bad Omen) in its {@code ItemOwnership}
+ * this mod copies (copper ingot, raw copper, honeycomb, Bad Omen) in its {@code ItemOwnership}
  * (Backport Core 1.2.0, CORE_REQUESTS #1). Caves &amp; Cliffs hands a switched-off stream's blocks to a
  * pseudo-owner, so {@link BlockOwnership#owner} can return one; ask {@link #present} or {@link #copy}, never
  * compare an owner with a mod id. When an owner is added to a world that has our copies, Core renames them
@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 public final class Owners {
 
     public static final String UPDATE_AQUATIC = "updateaquaticbackport";
-    /** Bad Omen, raids, Raid Omen and the ominous bottle; the loom, smithing table, lantern, composter. */
+    /** Bad Omen, raids, Raid Omen; the loom, smithing table, lantern, composter. The ominous bottle is ours (1.21). */
     public static final String VILLAGE_AND_PILLAGE = "villagerbackport";
     /** Honeycomb (copper waxing), bees. */
     public static final String BUZZY_BEES = "buzzybeesbackport";

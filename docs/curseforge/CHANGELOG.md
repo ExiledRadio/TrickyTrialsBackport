@@ -1,3 +1,8 @@
+# 1.0.2
+
+*   **The ominous bottle is now this mod's**, since 1.21 added it, also with Village & Pillage Backport installed. Drinking one gives Bad Omen at the bottle's level, I to V, for 100 minutes. With Village & Pillage 2.7.4, pillager captains drop it instead of giving Bad Omen, and its Bad Omen turns into Raid Omen in a village, as in 1.21.
+*   **Ominous bottles from older Village & Pillage worlds become this mod's bottles**, with the same level, when Village & Pillage 2.7.4 is installed.
+
 # 1.0.1
 
 *   **The pale oak boat with chest**, with Wild Update Backport: a pale oak boat and a chest, as in 1.21.4.

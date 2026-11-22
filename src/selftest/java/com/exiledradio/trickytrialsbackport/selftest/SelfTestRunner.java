@@ -52,6 +52,7 @@ public final class SelfTestRunner {
             new BreezeSelfTest(),
             new TuffSelfTest(),
             new TrialSelfTest(),
+            new OminousBottleSelfTest(),
             new BundleSelfTest(),
             new EffectsSelfTest(),
             new DecorSelfTest(),

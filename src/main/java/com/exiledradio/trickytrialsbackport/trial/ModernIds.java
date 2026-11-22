@@ -43,7 +43,7 @@ public final class ModernIds {
                 return new ItemStack(Items.GOLDEN_APPLE, 1, 1);
             }
             if ("ominous_bottle".equals(rl.getPath())) {
-                Item bottle = Owners.item(Owners.VILLAGE_AND_PILLAGE, "ominous_bottle");
+                Item bottle = Owners.ours("ominous_bottle");
                 return bottle == null ? null : new ItemStack(bottle);
             }
         }

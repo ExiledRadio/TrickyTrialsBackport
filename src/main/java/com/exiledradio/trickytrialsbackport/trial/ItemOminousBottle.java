@@ -24,8 +24,10 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- * Our copy of the ominous bottle, registered only without Village &amp; Pillage (whose bottle it is):
- * drink it for 100 minutes of Bad Omen, I to V by its metadata (0-4), as 1.21's amplifier component.
+ * 1.21's ominous bottle: drink it for 100 minutes of Bad Omen, I to V by its metadata (0-4), as 1.21's amplifier
+ * component. The Bad Omen is Village &amp; Pillage's when it is installed (its raids turn it into Raid Omen in a
+ * village), otherwise our copy, which only feeds trials. A lower level than the Bad Omen already held changes
+ * nothing; the same or higher resets it (1.12.2's effect merge is 1.21's here).
  */
 public final class ItemOminousBottle extends Item {
 
@@ -66,8 +68,11 @@ public final class ItemOminousBottle extends Item {
             Potion bad = Omens.badOmen();
             if (bad != null) {
                 entity.addPotionEffect(new PotionEffect(bad, DURATION, level(stack), false, false));
-                world.playSound(null, entity.posX, entity.posY, entity.posZ, TrialContent.sound("event.mob_effect.bad_omen"),
-                        entity.getSoundCategory(), 1.0F, 1.0F);
+                if (TrialContent.copiesOmens()) {
+                    // Village & Pillage plays its own as its Bad Omen takes hold.
+                    world.playSound(null, entity.posX, entity.posY, entity.posZ, TrialContent.sound("event.mob_effect.bad_omen"),
+                            entity.getSoundCategory(), 1.0F, 1.0F);
+                }
             }
         }
         if (!(entity instanceof EntityPlayer) || !((EntityPlayer) entity).capabilities.isCreativeMode) {

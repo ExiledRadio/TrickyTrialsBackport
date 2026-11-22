@@ -93,10 +93,15 @@ public final class TrialSelfTest implements SelfTest {
         c.ok(TrialContent.trialOmen != null && !TrialContent.trialOmen.isBadEffect(), "Trial Omen, neutral");
         c.eq(0x16A6A6, TrialContent.trialOmen.getLiquidColor(), "Trial Omen's color");
         c.ok(EntityList.isRegistered(Content.id("ominous_item_spawner")), "ominous item spawner entity");
-        // No Village & Pillage in the dev run: our copies.
-        c.ok(TrialContent.copiesOmens(), "no Village & Pillage here");
-        c.ok(TrialContent.badOmen != null && Omens.badOmen() == TrialContent.badOmen, "our Bad Omen is the one read");
-        c.ok(TrialContent.ominousBottle != null, "our ominous bottle");
+        // Bad Omen: our copy without Village & Pillage, its own with it (its dev jar in eclipse/mods).
+        if (net.minecraftforge.fml.common.Loader.isModLoaded("villagerbackport")) {
+            c.ok(!TrialContent.copiesOmens() && TrialContent.badOmen == null, "Village & Pillage here: no Bad Omen of ours");
+            c.ok(Omens.badOmen() != null && "villagerbackport".equals(Omens.badOmen().getRegistryName().getNamespace()), "its Bad Omen is the one read");
+        } else {
+            c.ok(TrialContent.copiesOmens(), "no Village & Pillage here");
+            c.ok(TrialContent.badOmen != null && Omens.badOmen() == TrialContent.badOmen, "our Bad Omen is the one read");
+        }
+        c.ok(TrialContent.ominousBottle != null, "our ominous bottle, with or without Village & Pillage");
         ItemStack bottle = ModernIds.stack("minecraft:ominous_bottle");
         c.ok(bottle != null && bottle.getItem() == TrialContent.ominousBottle, "minecraft:ominous_bottle resolves to ours");
         c.ok(ModernIds.stack("minecraft:trial_key").getItem() == TrialContent.trialKey, "minecraft:trial_key resolves to ours");

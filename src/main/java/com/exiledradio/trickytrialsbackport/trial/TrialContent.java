@@ -1,5 +1,6 @@
 package com.exiledradio.trickytrialsbackport.trial;
 
+import com.exiledradio.backportcore.ownership.ItemOwnership;
 import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
 import com.exiledradio.trickytrialsbackport.common.Content;
@@ -26,8 +27,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  *   <li>{@code trial_key} and {@code ominous_trial_key};</li>
  *   <li>the effect {@code trial_omen};</li>
  *   <li>{@code ominous_item_spawner} ({@link EntityOminousItemSpawner}, entity id 15);</li>
- *   <li>without Village &amp; Pillage, copies of its {@code bad_omen} effect and {@code ominous_bottle}
- *       (metadata 0-4), which it remaps when added to the world.</li>
+ *   <li>{@code ominous_bottle} (metadata 0-4 = Bad Omen I-V), 1.21's, which this mod owns since 1.0.2
+ *       (Village &amp; Pillage 2.7.4 drops it from captains when it is here, and renames its older bottles to it);</li>
+ *   <li>without Village &amp; Pillage, a copy of its {@code bad_omen} effect, which it remaps when added to the world.</li>
  * </ul>
  * Packet id 35 ({@link TrialMessage}). Spawner configs and loot tables are vanilla's own files
  * ({@link TrialData}).
@@ -50,8 +52,9 @@ public final class TrialContent {
     public static Item trialKey;
     public static Item ominousTrialKey;
     public static Potion trialOmen;
-    /** Our copies, null when Village &amp; Pillage provides them. */
+    /** Our copy of Bad Omen, null when Village &amp; Pillage provides it. */
     public static Potion badOmen;
+    /** 1.21's ominous bottle, ours whenever trials are on. */
     public static Item ominousBottle;
 
     private TrialContent() {
@@ -61,7 +64,7 @@ public final class TrialContent {
         return ModConfig.trials.enabled;
     }
 
-    /** Copies of Village &amp; Pillage's Bad Omen and ominous bottle, only without it. */
+    /** A copy of Village &amp; Pillage's Bad Omen, only without it. */
     public static boolean copiesOmens() {
         return !Owners.present(Owners.VILLAGE_AND_PILLAGE);
     }
@@ -83,6 +86,8 @@ public final class TrialContent {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
+        // Backport Core 1.4.5 lists the ominous bottle as ours; others ask whether we register it.
+        ItemOwnership.provides(TrialContent::enabled, "ominous_bottle");
         if (!enabled()) {
             return;
         }
@@ -91,12 +96,12 @@ public final class TrialContent {
         trialKey = Content.item(event.getRegistry(), "trial_key", new Item());
         ominousTrialKey = Content.item(event.getRegistry(), "ominous_trial_key", new Item());
         sound("event.mob_effect.trial_omen");
+        ominousBottle = Content.item(event.getRegistry(), "ominous_bottle", new ItemOminousBottle());
+        for (int level = 1; level < ItemOminousBottle.LEVELS; level++) {
+            Content.model(ominousBottle, level, "ominous_bottle");
+        }
+        sound("item.ominous_bottle.dispose");
         if (copiesOmens()) {
-            ominousBottle = Content.item(event.getRegistry(), "ominous_bottle", new ItemOminousBottle());
-            for (int level = 1; level < ItemOminousBottle.LEVELS; level++) {
-                Content.model(ominousBottle, level, "ominous_bottle");
-            }
-            sound("item.ominous_bottle.dispose");
             sound("event.mob_effect.bad_omen");
         }
         for (String e : new String[] {"about_to_spawn_item", "ambient", "ambient_ominous", "close_shutter", "detect_player", "eject_item",

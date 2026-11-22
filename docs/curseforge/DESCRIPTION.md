@@ -131,7 +131,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport)**: copper and tuff are its own. In its 1.18 worlds, trial chambers start at 1.21's depth. Without it, this mod brings its own copper and tuff.
 
-**[Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport)**: Trial Omen comes from its Bad Omen and ominous bottle. Its loom takes the new banner patterns, its stonecutter cuts tuff, and its composter takes the new plants. Without it, this mod has its own Bad Omen and ominous bottle.
+**[Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport)**: Its pillager captains drop this mod's ominous bottle, which gives its Bad Omen: raids in villages, ominous trials at trial spawners. Its loom takes the new banner patterns, its stonecutter cuts tuff, and its composter takes the new plants. Without it, this mod has its own Bad Omen.
 
 **[Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport)**: its pufferfish tame the nautilus, and its drowned ride zombie nautiluses.
 
