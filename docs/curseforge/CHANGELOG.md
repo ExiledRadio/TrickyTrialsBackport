@@ -1,5 +1,6 @@
 # 1.0.1
 
+*   **Fixed: trial chambers showing at the surface.** A chamber now sits low enough to keep at least six blocks of ground over every part of it, and one too tall to fit under the ground or sea bed where it starts is not built there, so none break through into fields, oceans or Realistic Terrain Generation's low land. `/locate` and trial explorer maps only find chambers that are built. Worlds with Caves & Cliffs Backport's extended height keep 1.21's depths unchanged.
 *   **The pale oak boat with chest**, with Wild Update Backport: a pale oak boat and a chest, as in 1.21.4.
 *   **Boats are now Backport Core's**, one boat and one boat with chest for every backport's wood (needs Backport Core 1.4.4). Pale oak boats look, float, steer and drop as before, and boats already in your worlds are kept, with whoever rides them.
 *   **Every painting in the creative inventory**: the Decoration Blocks tab and JEI list the random painting, then each painting on its own, 1.12.2's 26 and the 21 new ones, with title, artist and size in the tooltip. Such a painting hangs exactly that picture where it fits, and middle-clicking a hung painting picks that one. Paintings in survival stay random.

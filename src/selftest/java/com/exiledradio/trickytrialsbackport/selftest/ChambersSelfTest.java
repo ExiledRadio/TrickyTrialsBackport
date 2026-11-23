@@ -72,6 +72,7 @@ public final class ChambersSelfTest implements SelfTest {
         templates(c);
         vanilla(c);
         world(c);
+        cover(c);
     }
 
     // ---- vanilla's files
@@ -344,7 +345,7 @@ public final class ChambersSelfTest implements SelfTest {
 
         // This world's seed is in the oracle: the layout here is vanilla's, moved to this world's heights.
         ChamberLayout.Stub stub = TrialChambersStructure.stub(world, cx, cz);
-        int dy = TrialChambersStructure.shift(world, stub.startY);
+        int dy = TrialChambersStructure.moved(world, cx, cz);
         List<ChamberPiece> layout = TrialChambersStructure.layout(world, cx, cz);
         for (Vanilla v : oracle()) {
             if (v.seed == world.getSeed() && v.cx == cx && v.cz == cz) {
@@ -360,7 +361,8 @@ public final class ChambersSelfTest implements SelfTest {
             all.expandTo(p.getBoundingBox());
         }
         int startY = stub.startY + dy;
-        c.ok(extended ? startY >= -40 && startY <= -20 : startY >= 16 && startY <= 29, "the start height is y " + startY);
+        // Moved down under the ground where the mapped height would reach it, never up.
+        c.ok(extended ? startY >= -40 && startY <= -20 : startY >= WorldHeights.minY(world) + 1 && startY <= 29, "the start height is y " + startY);
         c.ok(all.minY >= WorldHeights.minY(world) + 1 && all.maxY < WorldHeights.maxYExclusive(world), "the chambers sit in y " + all.minY + "-" + all.maxY);
 
         // Build it: every chunk it touches, and a ring around so each is populated.
@@ -381,6 +383,66 @@ public final class ChambersSelfTest implements SelfTest {
         contents(c, world, all, layout);
         attached(c, world, all);
         vaults(c, world, all);
+    }
+
+    /**
+     * Every start within six regions of the origin is under the bare terrain's ground (or sea bed) with a block of it
+     * over every piece column, a start that cannot be is refused, and /locate only ever finds starts that are under it.
+     */
+    private void cover(Check c) throws Exception {
+        WorldServer world = c.world;
+        ScatteredStructure s = ScatteredStructure.of(world, Structures.TRIAL_CHAMBERS);
+        com.exiledradio.backportcore.terrain.TerrainHeights terrain = com.exiledradio.backportcore.terrain.TerrainHeights.forWorld(world);
+        if (!(s instanceof TrialChambersStructure) || terrain == null) {
+            c.fail("trial chambers and terrain heights in this world");
+            return;
+        }
+        boolean extended = WorldHeights.minY(world) < 0;
+        ScatteredPlacement grid = ChamberSettings.get().grid;
+        int spacing = grid.spacing();
+        int starts = 0, exposed = 0, refused = 0;
+        for (int gx = -6; gx <= 6; gx++) {
+            for (int gz = -6; gz <= 6; gz++) {
+                ChunkPos at = grid.candidate(world.getSeed(), gx * spacing, gz * spacing);
+                if (!s.startsAt(world, at.x, at.z)) {
+                    if (!extended && TrialChambersStructure.stub(world, at.x, at.z) != null && TrialChambersStructure.exposed(world, at.x, at.z)) {
+                        refused++;
+                    }
+                    continue;
+                }
+                starts++;
+                if (extended) {
+                    continue;
+                }
+                terrain = com.exiledradio.backportcore.terrain.TerrainHeights.forWorld(world);
+                boolean open = false;
+                for (ChamberPiece p : TrialChambersStructure.layout(world, at.x, at.z)) {
+                    StructureBoundingBox b = p.getBoundingBox();
+                    for (int x = b.minX; x <= b.maxX && !open; x++) {
+                        for (int z = b.minZ; z <= b.maxZ && !open; z++) {
+                            open = b.maxY >= terrain.floor(x, z) - 1;
+                        }
+                    }
+                }
+                if (open) {
+                    exposed++;
+                    c.fail("trial chambers at chunk " + at.x + ", " + at.z + " reach the ground");
+                }
+            }
+        }
+        TrickyLog.info("chambers: " + starts + " starts within six regions, " + refused + " refused (too tall for the ground there)");
+        c.ok(starts > 0, "chambers start within six regions (" + starts + ")");
+        c.eq(0, exposed, "no chambers reach the ground (" + starts + " starts, " + refused + " refused)");
+        for (int i = 0; i < 4; i++) {
+            BlockPos from = new BlockPos((i % 2 == 0 ? -1 : 1) * 3000, 64, (i < 2 ? -1 : 1) * 3000);
+            StructureLocate.Found found = StructureLocate.nearest(world, from, "minecraft:trial_chambers");
+            if (found == null || found.pos == null) {
+                continue;
+            }
+            int fx = found.pos.getX() >> 4, fz = found.pos.getZ() >> 4;
+            c.ok(s.startsAt(world, fx, fz) && (extended || !TrialChambersStructure.exposed(world, fx, fz)),
+                    "/locate from " + from + " finds chambers under the ground at chunk " + fx + ", " + fz);
+        }
     }
 
     private void contents(Check c, WorldServer world, StructureBoundingBox all, List<ChamberPiece> layout) {

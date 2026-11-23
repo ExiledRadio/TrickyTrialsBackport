@@ -1,5 +1,12 @@
 # 0.1.0 (unreleased)
 
+*   **Fixed: trial chambers broke through the ground.** Mapped to a world that starts at y 0, 1.21's start heights
+    (y 16 to 29) keep the layout's full height, so tops reached y 64 to 87: 122 of 169 layouts on seed 1144 met the
+    ground or sea bed on vanilla terrain, 156 of 289 on RTG. The layout now moves down until the bare terrain
+    (`TerrainHeights.floor`) is 6 blocks over every piece column, never below y 1; a layout that still reaches the
+    ground is refused in `canStartAt`, which generation, `/locate` and the explorer map share. Extended worlds keep
+    1.21's heights. Self-test `chambers`: no start within six regions reaches the ground.
+
 *   **Open eyeblossoms glow**: at night an open eyeblossom, planted or potted, gives off a dim light level 5, and the
     light goes out when it closes at dawn. Not in Minecraft; turn off **Glowing Eyeblossoms** on the Pale Garden
     settings page for vanilla's unlit flowers.
