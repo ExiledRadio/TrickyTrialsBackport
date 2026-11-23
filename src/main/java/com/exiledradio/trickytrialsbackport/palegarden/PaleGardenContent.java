@@ -228,5 +228,21 @@ public final class PaleGardenContent {
         biome.setRegistryName(Content.id("pale_garden"));
         event.getRegistry().register(biome);
         BiomePaleGarden.addTypes(biome);
+        // A pale garden is a dark forest's kind of ground: RTG's roofed forest.
+        rtgTerrain(biome, "ROOFED_FOREST");
+    }
+
+    /**
+     * Realistic Terrain Generation builds only biomes registered with it, and makes any other one plains. Backport
+     * Core's {@code RtgBiomes} (1.4.5) registers this biome on the terrain of the vanilla biome named here; reached by
+     * name, so with an older Core the biome simply stays RTG's patch biome in RTG worlds.
+     */
+    private static void rtgTerrain(Biome biome, String template) {
+        try {
+            Class.forName("com.exiledradio.backportcore.terrain.RtgBiomes").getMethod("register", Biome.class, String.class)
+                    .invoke(null, biome, template);
+        } catch (ReflectiveOperationException | LinkageError e) {
+            // A Backport Core without RtgBiomes.
+        }
     }
 }
