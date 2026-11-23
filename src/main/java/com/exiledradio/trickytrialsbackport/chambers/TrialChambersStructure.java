@@ -35,6 +35,9 @@ import java.util.function.Consumer;
  * near sea level, as Realistic Terrain Generation makes, otherwise showed its top floor in the grass. A layout too tall
  * to go under the ground there at all (a sea bed, or low land over a tall layout) does not start; generation,
  * {@code /locate} and the explorer map all ask {@link #canStartAt}, so they agree.
+ *
+ * <p>Where a piece still meets open space (a sea bed in a world that keeps 1.21's heights, a cave or an aquifer),
+ * 1.21's {@code encapsulate} wraps it in rock ({@link ChamberShell}).
  */
 public final class TrialChambersStructure extends ScatteredStructure {
 
@@ -281,7 +284,14 @@ public final class TrialChambersStructure extends ScatteredStructure {
             StructureBoundingBox chunk = new StructureBoundingBox(box.minX, Math.min(box.minY, WorldHeights.minY(world)), box.minZ,
                     box.maxX, Math.max(box.maxY, WorldHeights.maxYExclusive(world) - 1), box.maxZ);
             try (AutoCloseable full = WorldHeights.enterFullHeight()) {
-                QuietGen.run(world, () -> super.generateStructure(world, random, chunk));
+                QuietGen.run(world, () -> {
+                    // 1.12.2's terrain got the shell in its primer (ChamberShell.PrimerShell); a 1.18 terrain that
+                    // does not encapsulate gets it here, before the pieces.
+                    if (ChamberShell.modern(world) && !ChamberShell.terrainEncapsulates(world)) {
+                        ChamberShell.wrap(world, this.components, chunk);
+                    }
+                    super.generateStructure(world, random, chunk);
+                });
             } catch (RuntimeException e) {
                 throw e;
             } catch (Exception e) {

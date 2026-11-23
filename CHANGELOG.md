@@ -6,6 +6,9 @@
     (`TerrainHeights.floor`) is 6 blocks over every piece column, never below y 1; a layout that still reaches the
     ground is refused in `canStartAt`, which generation, `/locate` and the explorer map share. Extended worlds keep
     1.21's heights. Self-test `chambers`: no start within six regions reaches the ground.
+*   **Fixed: trial chambers stood bare in the sea or a cave.** As in 1.21 (`encapsulate`), rock now wraps every piece
+    that meets water or open air, about five blocks thick: in Caves & Cliffs' extended worlds, which keep 1.21's
+    heights, a tall layout can still reach the sea bed.
 
 *   **Open eyeblossoms glow**: at night an open eyeblossom, planted or potted, gives off a dim light level 5, and the
     light goes out when it closes at dawn. Not in Minecraft; turn off **Glowing Eyeblossoms** on the Pale Garden

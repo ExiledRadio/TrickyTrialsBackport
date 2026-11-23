@@ -45,7 +45,7 @@ public final class ChambersContent {
 
     /**
      * Blocks of the chambers' templates that other family mods own: Village &amp; Pillage's barrel (its loot moves to a
-     * chest), Trails &amp; Tales' decorated pot, Caves &amp; Cliffs' candles, deepslate, moss, dripstone and powder snow,
+     * chest), Trails &amp; Tales' decorated pot, Caves & Cliffs' candles, deepslate, moss, dripstone and powder snow,
      * Nether Update's chain, Wild Update's mangrove and mud.
      */
     static final String[][] FALLBACKS = {
@@ -118,6 +118,9 @@ public final class ChambersContent {
                 ((TrialChambersStructure) s).startsNear(world, cx, cz, out);
             }
         });
+        // 1.21 encapsulate, which neither 1.12.2's terrain nor Caves & Cliffs' 1.18 terrain does: ChamberShell.
+        // Forge posts ReplaceBiomeBlocks on the main bus, not the terrain one.
+        MinecraftForge.EVENT_BUS.register(new ChamberShell.PrimerShell());
         MinecraftForge.EVENT_BUS.register(new ChamberLoot());
         MinecraftForge.EVENT_BUS.register(new Events());
     }
