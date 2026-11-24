@@ -10,6 +10,17 @@ and asset index (`tools/assets.py`), the 1.21.5, 1.21.8 and 1.21.11 jars for the
 decompiled client for the numbers (`FramerateLimitTracker`, `Gui.renderAirBubbles`, `LevelLoadingScreen`,
 `ChatScreen`, `LevelRenderer.renderBlockOutline`, `AtmosphericFogEnvironment`, `Items`).
 
+## Since 1.0.2: Backport Core owns most of it
+
+Backport Core 1.4.7 moved every piece here that is not tied to this mod's content into Core
+(`presentation/versions/Look121`, client side `versions/look121/client`, assets under
+`assets/backportcore/look/1.21.x/`), so they apply whichever backport is the newest installed one: the five options
+(same ids), their handlers, the air bubbles and `backportcore:ui.hud.bubble_pop`, the chat drafts, the rarity
+tooltips and `Rarities`, the fog and sky steps, `LoadingScreen1219`, the F3 entity line, the slot highlight, music
+toast and 1.21.6 ghast textures, the splash files, the startup logo and `vanilla_text/`. `Rules` moved with them.
+This mod keeps the version declarations, the 1.21.11 panorama and overlay, the menu music adds and removes, the
+cave ambience and `SpawnerSounds`. The sections below describe the pieces as they were written here.
+
 ## Changelog section
 
 *   **Title screen**: the Mounts of Mayhem panorama, the new splashes ("Chicken Jockey!", "Flint and Steel!",

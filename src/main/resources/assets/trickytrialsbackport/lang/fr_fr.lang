@@ -673,20 +673,6 @@ music.game.broken_clocks=Amos Roddy - Broken Clocks
 music.game.fireflies=Amos Roddy - Fireflies
 music.game.lilypad=Amos Roddy - Lilypad
 music.game.os_piano=Amos Roddy - O's Piano
-options.accessibility.high_contrast_block_outline.tooltip=Augmente le contraste du contour du bloc ciblé.
-options.accessibility.high_contrast_block_outline=Contraste élevé du contour des blocs
-options.chat.drafts.tooltip=Les messages non envoyés seront sauvegardés et pourront être envoyés à la prochaine ouverture du tchat.
-options.chat.drafts=Sauvegarder les brouillons
-options.inactivityFpsLimit.afk.tooltip=Limite le nombre d'images par seconde à 30 lorsque le joueur est inactif pendant plus d'une minute et à 10 images par seconde après 9 minutes d'inactivité supplémentaires.
-options.inactivityFpsLimit.afk=Inactif
-options.inactivityFpsLimit.minimized.tooltip=Limite le nombre d'images par seconde seulement lorsque la fenêtre de jeu est réduite.
-options.inactivityFpsLimit.minimized=Fenêtre réduite
-options.inactivityFpsLimit=Réduire les FPS si
-options.invertMouseX=Inverser l'axe X
-options.sprintWindow.tooltip=Intervalle de temps en ticks pendant lequel appuyer deux fois sur la touche "Avancer" permet de courir.
-options.sprintWindow=Intervalle pour courir
-options.value=%s
-subtitles.trickytrialsbackport.ui.hud.bubble_pop=Oxygène qui baisse
 
 # --- creaking ---
 advancements.adventure.heart_transplanter.description=Placez un cœur de grinceur avec le bon alignement entre deux bûches de chêne pâle.

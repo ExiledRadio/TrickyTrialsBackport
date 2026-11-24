@@ -673,20 +673,6 @@ music.game.broken_clocks=Эймос Родди — Broken Clocks
 music.game.fireflies=Эймос Родди — Fireflies
 music.game.lilypad=Эймос Родди — Lilypad
 music.game.os_piano=Эймос Родди — O's Piano
-options.accessibility.high_contrast_block_outline.tooltip=Улучшает видимость обводки при наведении на блок.
-options.accessibility.high_contrast_block_outline=Контрастная обводка блоков
-options.chat.drafts.tooltip=Неотправленные сообщения сохранятся и могут быть отправлены при следующем открытии чата.
-options.chat.drafts=Сохранять черновики
-options.inactivityFpsLimit.afk.tooltip=Ограничивает частоту кадров до 30 спустя минуту ожидания действий со стороны игрока. Спустя ещё 9 минут ограничивает до 10.
-options.inactivityFpsLimit.afk=В простое
-options.inactivityFpsLimit.minimized.tooltip=Ограничивает частоту кадров только при сворачивании игры.
-options.inactivityFpsLimit.minimized=В фоне
-options.inactivityFpsLimit=Ограничение FPS
-options.invertMouseX=Инверсия оси мыши X
-options.sprintWindow.tooltip=Временной промежуток в тактах, в котором двойное нажатие клавиши движения вперёд включает бег.
-options.sprintWindow=Интервал разбега
-options.value=%s
-subtitles.trickytrialsbackport.ui.hud.bubble_pop=Запас воздуха убывает
 
 # --- creaking ---
 advancements.adventure.heart_transplanter.description=Разместите скрипцевину между двух брёвен бледного дуба в правильном положении

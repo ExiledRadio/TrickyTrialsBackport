@@ -673,20 +673,6 @@ music.game.broken_clocks=Amos Roddy - Broken Clocks
 music.game.fireflies=Amos Roddy - Fireflies
 music.game.lilypad=Amos Roddy - Lilypad
 music.game.os_piano=Amos Roddy - O's Piano
-options.accessibility.high_contrast_block_outline.tooltip=視点を合わせたブロックの輪郭のコントラストを強調します。
-options.accessibility.high_contrast_block_outline=ブロック輪郭のコントラスト強化
-options.chat.drafts.tooltip=未送信のメッセージを保存し、次にチャット欄を開いた際に送れるようにします。
-options.chat.drafts=未送信のチャットの保存
-options.inactivityFpsLimit.afk.tooltip=プレイヤーからの入力が1分以上無い場合にフレームレートを30に制限します。さらに9分経過するとフレームレートを10に制限します。
-options.inactivityFpsLimit.afk=放置時
-options.inactivityFpsLimit.minimized.tooltip=ゲームウィンドウを最小化したときにフレームレートを制限します。
-options.inactivityFpsLimit.minimized=最小化時
-options.inactivityFpsLimit=FPS制限の条件
-options.invertMouseX=横方向のマウス操作の反転
-options.sprintWindow.tooltip=前進キーの2回入力でダッシュが発動する時間の間隔をティック単位で指定します。
-options.sprintWindow=ダッシュ操作の間隔
-options.value=%s
-subtitles.trickytrialsbackport.ui.hud.bubble_pop=酸素ゲージが減る
 
 # --- creaking ---
 advancements.adventure.heart_transplanter.description=クリーキングの心臓を2つのペールオークの原木の間に正しい向きで配置する

@@ -673,20 +673,6 @@ music.game.broken_clocks=Amos Roddy - Broken Clocks
 music.game.fireflies=Amos Roddy - Fireflies
 music.game.lilypad=Amos Roddy - Lilypad
 music.game.os_piano=Amos Roddy - O's Piano
-options.accessibility.high_contrast_block_outline.tooltip=Mejora el contraste del borde del bloque apuntado.
-options.accessibility.high_contrast_block_outline=Bordes de alto contraste
-options.chat.drafts.tooltip=Los mensajes no enviados se guardarán y se podrán enviar la próxima vez que se abra el chat.
-options.chat.drafts=Guardar msjs. sin enviar
-options.inactivityFpsLimit.afk.tooltip=Limita los FPS a 30 al pasar un minuto sin actividad. El límite aumentará a 10 FPS tras pasar 10 minutos sin actividad.
-options.inactivityFpsLimit.afk=Al ausentarse
-options.inactivityFpsLimit.minimized.tooltip=Solo se reducirán los FPS cuando el juego esté minimizado.
-options.inactivityFpsLimit.minimized=Al minimizar
-options.inactivityFpsLimit=Reducir FPS
-options.invertMouseX=Invertir eje X del mouse
-options.sprintWindow.tooltip=Intervalo de tiempo en tics necesario para empezar a correr cuando se presiona dos veces la tecla de avanzar.
-options.sprintWindow=Intervalo para correr
-options.value=%s
-subtitles.trickytrialsbackport.ui.hud.bubble_pop=Nivel de oxígeno agotándose
 
 # --- creaking ---
 advancements.adventure.heart_transplanter.description=Coloca un corazón de crepitante en la alineación correcta entre dos troncos de roble pálido

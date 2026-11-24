@@ -1676,12 +1676,6 @@
     ],
     "subtitle": "subtitles.trickytrialsbackport.item.axe.strip"
   },
-  "ui.hud.bubble_pop": {
-    "sounds": [
-      "trickytrialsbackport:ui/hud/hud_bubble"
-    ],
-    "subtitle": "subtitles.trickytrialsbackport.ui.hud.bubble_pop"
-  },
   "block.spawner.break": {
     "sounds": [
       "trickytrialsbackport:block/spawner/break1",

@@ -673,20 +673,6 @@ music.game.broken_clocks=Amos Roddy — Broken Clocks
 music.game.fireflies=Amos Roddy — Fireflies
 music.game.lilypad=Amos Roddy — Lilypad
 music.game.os_piano=Amos Roddy — O's Piano
-options.accessibility.high_contrast_block_outline.tooltip=Wzmacnia kontrast obrysu bloku pod kursorem.
-options.accessibility.high_contrast_block_outline=Kontrastowe obrysy bloków
-options.chat.drafts.tooltip=Niewysłane wiadomości zostaną zapisane i będzie można je wysłać przy następnym otwarciu czatu.
-options.chat.drafts=Zapisz niewysłane wiadomości
-options.inactivityFpsLimit.afk.tooltip=Ogranicza liczbę klatek na sekundę do 30, jeżeli gra nie otrzymuje żadnych danych wejściowych od gracza przez ponad minutę. Ogranicza ją dalej do 10 po kolejnych 9 minutach.
-options.inactivityFpsLimit.afk=bezczynności
-options.inactivityFpsLimit.minimized.tooltip=Ogranicza liczbę klatek na sekundę tylko wtedy, gdy okno gry jest zminimalizowane.
-options.inactivityFpsLimit.minimized=zminimalizowania
-options.inactivityFpsLimit=Zmniejsz liczbę FPS podczas
-options.invertMouseX=Odwróć oś myszy w poziomie
-options.sprintWindow.tooltip=Czas (w tikach), w którym dwukrotne naciśnięcie klawisza ruchu wprzód włączy bieganie.
-options.sprintWindow=Interwał biegu
-options.value=%s
-subtitles.trickytrialsbackport.ui.hud.bubble_pop=Wskaźnik oddechu spada
 
 # --- creaking ---
 advancements.adventure.heart_transplanter.description=Umieść trzeszczące serce pomiędzy dwoma pionowymi bladodębowymi pniami
