@@ -6,7 +6,7 @@ All of 1.21 Tricky Trials and the drops after it, through 1.21.11, on Minecraft 
 
 ## Trial chambers
 
-Trial chambers generate underground, built from 1.21's own structure files, where 1.21 puts them for the same seed. Trial spawners wake when a player comes near, send a wave sized to the number of players, and pay out loot once it's beaten. Trial keys open vaults; each vault opens once per player.
+Trial chambers generate underground. Trial spawners wake when a player comes near, send a wave sized to the number of players, and pay out loot once it's beaten. Trial keys open vaults; each vault opens once per player.
 
 Drink an ominous bottle near a trial spawner and Bad Omen turns into Trial Omen. Spawners go ominous: stronger, armed mobs, items falling from above, and ominous keys for ominous vaults, which hold the heavy core.
 
@@ -71,7 +71,7 @@ The creaking walks there after dark. It freezes while you watch it and can't be 
 
 ## Spring
 
-Leaf litter and wildflowers carpet forests, fireflies drift around firefly bushes at night, and fallen trees, bushes, dry grass and cactus flowers turn up where 1.21.5 puts them.
+Leaf litter and wildflowers carpet forests, fireflies drift around firefly bushes at night, and fallen trees, bushes, dry grass and cactus flowers turn up across the world.
 
 Cows, pigs and chickens come in warm and cold variants by biome. Blue and brown eggs hatch the matching chicken. Wolves get their sound variants.
 
@@ -129,7 +129,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 ## Compatibility
 
-**[Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport)**: copper and tuff are its own. In its 1.18 worlds, trial chambers start at 1.21's depth. Without it, this mod brings its own copper and tuff.
+**[Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport)**: copper and tuff are its own. In its 1.18 worlds, trial chambers generate at their full depth. Without it, this mod brings its own copper and tuff.
 
 **[Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport)**: Its pillager captains drop this mod's ominous bottle, which gives its Bad Omen: raids in villages, ominous trials at trial spawners. Its loom takes the new banner patterns, its stonecutter cuts tuff, and its composter takes the new plants. Without it, this mod has its own Bad Omen.
 
@@ -143,6 +143,8 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport)**: the bogged spawn in its mangrove swamps, and pale oak gets a chest boat and mangrove a shelf.
 
+**[Game Drops Backport](https://www.curseforge.com/minecraft/mc-mods/game-drops-backport)**: leaf litter grows under its poplars, note blocks on copper play its trumpet, its explorer maps lead to trial chambers, and paintings show their names. Its menu screens replace this mod's 1.21.11 ones.
+
 **OptiFine**: works, shaders included.
 
 **Fluidlogged API** (optional): copper grates and trapdoors, copper chests and statues, tuff, resin and copper stairs and slabs, shelves, the heavy core and the dried ghast hold water. Without it they stay dry and everything else works.
@@ -153,11 +155,11 @@ Minecraft 1.12.2 with Forge 14.23.5.2847 or newer, and [Backport Core](https://w
 
 ***
 
-Also by me: [Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport), all of 1.14 on 1.12.2, [Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport), all of 1.13 on 1.12.2, [Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport), all of 1.15 on 1.12.2, [Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-backport), all of 1.16 on 1.12.2, [Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport), all of 1.17 and 1.18 on 1.12.2, [Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport), all of 1.19 on 1.12.2, [Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport), all of 1.20 on 1.12.2, and [Enchantment Recipes](https://www.curseforge.com/minecraft/mc-mods/rlcraft-enchantment-recipes), which lets you craft enchanted books from mod materials.
+Also by me: [Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport), all of 1.14 on 1.12.2, [Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport), all of 1.13 on 1.12.2, [Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport), all of 1.15 on 1.12.2, [Nether Update Backport](https://www.curseforge.com/minecraft/mc-mods/nether-backport), all of 1.16 on 1.12.2, [Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport), all of 1.17 and 1.18 on 1.12.2, [Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport), all of 1.19 on 1.12.2, [Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport), all of 1.20 on 1.12.2, [Game Drops Backport](https://www.curseforge.com/minecraft/mc-mods/game-drops-backport), the 26.x game drops on 1.12.2, and [Enchantment Recipes](https://www.curseforge.com/minecraft/mc-mods/rlcraft-enchantment-recipes), which lets you craft enchanted books from mod materials.
 
 ## Credits
 
-**Original content: [Minecraft](https://www.minecraft.net), by [Mojang Studios](https://www.minecraft.net/en-us/about-minecraft).** Every feature this mod adds is from a later version of Minecraft. The textures, models, sounds, music and translations are Mojang's, taken from Minecraft's own game files, and remain theirs. The features' names and designs are Mojang's too.
+**Original content: [Minecraft](https://www.minecraft.net), by [Mojang Studios](https://www.minecraft.net/en-us/about-minecraft).** Every feature this mod adds is from a later version of Minecraft. The textures, models, sounds, music and translations are Mojang's and remain theirs. The features' names and designs are Mojang's too.
 
 **How this mod differs from the original:** Minecraft's newer versions don't run on 1.12.2. This mod is a Forge mod for Minecraft 1.12.2 that reimplements those features on the older game, matching the newer versions as closely as it can. It is not a copy or port of another mod. Where 1.12.2 can't do something the same way, the description above says so.
 
