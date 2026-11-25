@@ -75,6 +75,11 @@ public final class PaleGardenFeatures {
         if (PaleGardenContent.set == null) {
             return false;
         }
+        // With Dynamic Trees - Backport, a dynamic pale oak grows in a generated pale oak's place. A creaking heart's
+        // tree stays static (the heart lives in its trunk); saplings become dynamic through Forge's sapling event.
+        if (kind == TreeKind.PALE_OAK && com.exiledradio.backportcore.compat.DynamicTrees.grow(world, origin, rand, "dtbackport:paleoak")) {
+            return true;
+        }
         // DarkOakTrunkPlacer(6, 2, 1): 6 + [0, 2] + [0, 1].
         int height = 6 + rand.nextInt(3) + rand.nextInt(2);
         // DarkOakFoliagePlacer: foliage height 4, radius and offset 0 - no draws.
