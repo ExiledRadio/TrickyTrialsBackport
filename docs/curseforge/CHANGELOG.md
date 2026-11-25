@@ -1,3 +1,9 @@
+# 1.0.3
+
+*   **Dynamic pale oaks** with Dynamic Trees - Backport installed: pale gardens grow its dynamic pale oaks, and pale oak saplings grow into them.
+
+Needs Backport Core 1.4.9 or newer.
+
 # 1.0.2
 
 *   **1.21's look and feel is now Backport Core's**: Reduce FPS when, High Contrast Block Outlines, Invert Mouse X, Sprint Window and Save Unsent Chats, the air bubbles and their pop, chat drafts, item rarity colors, the rain and nether fog, the sunrise in rain, the loading screen, the F3 entity line, the slot highlight, music toast and ghast textures, the splashes, the startup logo and 1.21.11's wording. They look and work as before, and with any newer backport installed they stay even without this mod. Saved option values carry over.
