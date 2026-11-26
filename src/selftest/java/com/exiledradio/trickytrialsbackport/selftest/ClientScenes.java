@@ -1,6 +1,8 @@
 package com.exiledradio.trickytrialsbackport.selftest;
 
+import com.exiledradio.trickytrialsbackport.ModConfig;
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
+import com.exiledradio.trickytrialsbackport.asm.DesertSoundsTransformer;
 import com.exiledradio.trickytrialsbackport.bundle.BundleContent;
 import com.exiledradio.trickytrialsbackport.bundle.BundleContents;
 import com.exiledradio.trickytrialsbackport.bundle.BundleTooltipLines;
@@ -11,9 +13,12 @@ import com.exiledradio.trickytrialsbackport.crafter.client.GuiCrafter;
 import com.exiledradio.trickytrialsbackport.creaking.EntityCreaking;
 import com.exiledradio.trickytrialsbackport.creaking.client.ModelCreaking;
 import com.exiledradio.trickytrialsbackport.ghast.EntityHappyGhast;
+import com.exiledradio.trickytrialsbackport.flora.FloraHooks;
+import com.exiledradio.trickytrialsbackport.flora.client.FloraClient;
 import com.exiledradio.trickytrialsbackport.ghast.GhastContent;
 import com.exiledradio.trickytrialsbackport.nautilus.EntityNautilus;
 import com.exiledradio.trickytrialsbackport.nautilus.client.GuiNautilus;
+import com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent;
 import com.exiledradio.trickytrialsbackport.shelf.BlockShelf;
 import com.exiledradio.trickytrialsbackport.shelf.ShelfContent;
 import com.exiledradio.trickytrialsbackport.shelf.ShelfWood;
@@ -23,6 +28,9 @@ import com.exiledradio.trickytrialsbackport.spear.ItemSpear;
 import com.exiledradio.trickytrialsbackport.spear.SpearContent;
 import com.exiledradio.trickytrialsbackport.spear.SpearPoseMath;
 import com.exiledradio.trickytrialsbackport.spear.SpearTier;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockOldLeaf;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -62,6 +70,7 @@ import net.minecraft.util.MovementInput;
 import net.minecraft.util.ScreenShotHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.GameType;
 import net.minecraft.world.WorldServer;
@@ -78,6 +87,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
@@ -119,6 +129,7 @@ final class ClientScenes {
         this.ok = ok;
         this.steps.add(this::platform);
         copperTorch();
+        fallingLeaves();
         spear();
         ghast();
         nautilus();
@@ -658,6 +669,102 @@ final class ClientScenes {
         });
         this.steps.add(() -> {
             shot("copper_torch.png");
+            return 1;
+        });
+    }
+
+    // ---- falling leaves (1.21.5's TintedParticleLeavesBlock, through P3) -----------------------------------------
+
+    private BlockPos leafFeet;
+    private int leavesBefore;
+
+    private BlockPos leafAt(int dx, int dz) {
+        return this.leafFeet.add(dx, 4, dz);
+    }
+
+    private static IBlockState oldLeaf(BlockPlanks.EnumType t) {
+        return Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, t).withProperty(BlockLeaves.DECAYABLE, false);
+    }
+
+    /** {@code n} display ticks of the block at {@code at} through P3's hook; @return the tinted leaves it made */
+    private int displayTicks(BlockPos at, int n, Random r) {
+        IBlockState state = this.mc.world.getBlockState(at);
+        int before = FloraClient.spawned;
+        for (int i = 0; i < n; i++) {
+            FloraHooks.displayTick(state.getBlock(), state, this.mc.world, at, r);
+        }
+        return FloraClient.spawned - before;
+    }
+
+    private void fallingLeaves() {
+        this.steps.add(() -> {
+            this.leafFeet = this.base.add(0, 0, -40);
+            onServer(() -> {
+                WorldServer w = serverWorld();
+                for (int dx = -4; dx <= 4; dx++) {
+                    for (int dz = 1; dz <= 9; dz++) {
+                        w.setBlockState(leafAt(dx, dz), oldLeaf(BlockPlanks.EnumType.OAK), 2);
+                    }
+                }
+                w.setBlockState(leafAt(-7, 5), oldLeaf(BlockPlanks.EnumType.BIRCH), 2);
+                w.setBlockState(leafAt(7, 5), oldLeaf(BlockPlanks.EnumType.SPRUCE), 2);
+                w.setBlockState(leafAt(-9, 5), oldLeaf(BlockPlanks.EnumType.OAK), 2);
+                w.setBlockState(leafAt(-9, 5).down(), Blocks.STONE.getDefaultState(), 2);
+                if (PaleGardenContent.leaves != null) {
+                    w.setBlockState(leafAt(9, 5), PaleGardenContent.leaves.getDefaultState()
+                            .withProperty(BlockLeaves.DECAYABLE, false), 2);
+                }
+                return null;
+            });
+            look(this.leafFeet, 0.0F, -45.0F);
+            return 40;
+        });
+        this.steps.add(() -> {
+            ok(DesertSoundsTransformer.applied, "falling leaves: P3 is applied to WorldClient");
+            Random r = new Random(0x1EAFL);
+            int n = 20000;
+            BlockPos oak = leafAt(0, 5);
+            int oakLeaves = displayTicks(oak, n, r);
+            ok(oakLeaves >= 140 && oakLeaves <= 260, "falling leaves: oak, about one display tick in a hundred: "
+                    + oakLeaves + " in " + n);
+            int oakColor = this.mc.getBlockColors().colorMultiplier(this.mc.world.getBlockState(oak), this.mc.world, oak, 0);
+            ok(FloraClient.lastColor == oakColor && oakColor != -1, "falling leaves: oak's in its foliage color: "
+                    + Integer.toHexString(FloraClient.lastColor) + " (block " + Integer.toHexString(oakColor) + ")");
+            int birch = displayTicks(leafAt(-7, 5), n, r);
+            ok(birch >= 140 && birch <= 260, "falling leaves: birch too: " + birch);
+            ok(FloraClient.lastColor == ColorizerFoliage.getFoliageColorBirch(), "falling leaves: birch's in birch's color: "
+                    + Integer.toHexString(FloraClient.lastColor));
+            ok(displayTicks(leafAt(7, 5), n, r) == 0, "falling leaves: none from spruce");
+            ok(displayTicks(leafAt(-9, 5), n, r) == 0, "falling leaves: none over a full top face");
+            ModConfig.flora.fallingLeaves = false;
+            try {
+                ok(displayTicks(oak, n, r) == 0, "falling leaves: none with flora.fallingLeaves off");
+            } finally {
+                ModConfig.flora.fallingLeaves = true;
+            }
+            return 2;
+        });
+        this.steps.add(() -> {
+            // The particle manager takes new particles in on its next tick: count, then tick pale oak alone.
+            this.leavesBefore = particles();
+            if (PaleGardenContent.leaves != null) {
+                ok(displayTicks(leafAt(9, 5), 20000, new Random(0x9A1EL)) == 0, "falling leaves: pale oak makes no tinted leaves");
+            }
+            return 2;
+        });
+        this.steps.add(() -> {
+            if (PaleGardenContent.leaves != null) {
+                // Its own 2%: about 400 pale leaves from 20000 display ticks.
+                ok(particles() - this.leavesBefore >= 250, "falling leaves: pale oak still drops its own: "
+                        + this.leavesBefore + " -> " + particles());
+            }
+            this.leavesBefore = FloraClient.spawned;
+            return 300;
+        });
+        this.steps.add(() -> {
+            ok(FloraClient.spawned > this.leavesBefore, "falling leaves: the game's own ambient loop drops them: "
+                    + (FloraClient.spawned - this.leavesBefore) + " in 15 s");
+            shot("falling_leaves.png");
             return 1;
         });
     }

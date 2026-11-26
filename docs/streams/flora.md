@@ -30,6 +30,9 @@ port 25917. Reference: 1.21.11's decompiled `BushBlock`, `FireflyBushBlock`, `Ca
     them and vines on oak and jungle stumps, in the forests, plains, taigas, jungles, savannas and windswept hills.
 *   **Dead bushes** stand on farmland, grass and every kind of dirt, and rustle on sand and terracotta.
 *   **Sand** makes an idle sound in deserts.
+*   **Falling leaves**: oak, birch, jungle, acacia and dark oak leaves, and other mods' leaves, now and then drop a
+    leaf in their own color. Spruce drops none; pale oak, cherry and poplar keep their own falling leaves. Switch it
+    off with `flora.fallingLeaves`.
 *   With a composter installed, all of the new plants compost at 30%. Dry grass and leaf litter burn in furnaces.
 *   Only new chunks get the new plants.
 
@@ -65,7 +68,26 @@ port 25917. Reference: 1.21.11's decompiled `BushBlock`, `FireflyBushBlock`, `Ca
 *   **Bytecode patches** (`docs/PATCHES.md`): P1 replaces 1.12.2's cactus tick with 1.21.5's (cacti three tall keep
     ageing; at age 8 a flower one time in ten, one in four at three tall or more, where a cactus could grow); P2 lets
     the dead bush stand on `#dry_vegetation_may_place_on`; P3 routes `WorldClient`'s ambient display-tick call
-    through `FloraHooks.displayTick` for the sand and dead bush sounds (`AmbientDesertBlockSoundsPlayer`).
+    through `FloraHooks.displayTick` for the sand and dead bush sounds (`AmbientDesertBlockSoundsPlayer`), and for
+    the falling leaves below.
+*   **Falling leaves** (`FallingLeaves`, `FloraClient.fallingLeaf`, `client/FallingLeafParticle`), from 26.3's
+    client jar (`TintedParticleLeavesBlock`, `FallingParticlesLeavesBlock`, `FallingLeavesParticle`,
+    `FallingParticle`, `Blocks`): after the block's own display tick, `rand.nextFloat() < 0.01F`; then nothing if the
+    block below has a full top face (1.12.2: `getBlockFaceShape(UP) == SOLID`, as pale oak already checks); then a
+    leaf at a random x and z of the block, 0.05 under it (`ParticleUtils.spawnParticleBelow`). Its color is the
+    leaves' tint 0 (`getClientLeafTintColor`: 1.12.2's `BlockColors.colorMultiplier(state, world, pos, 0)`, white
+    where a block has no handler). The particle is `TintedLeavesProvider`'s, the same numbers as pale oak's (gravity
+    0.07 x 1.2 x 0.0025, wind 10, swirl, no flow-away, size 2 x (0.05 or 0.075), falling at 0.021 from the start, up
+    to 300 ticks, gone on landing or when stopped), so pale oak now uses the same class. Sprites
+    `particle/leaf_0` to `leaf_11` (`particles/tinted_leaves.json`), copied from the jar.
+    *   Every `BlockLeaves` gets it, other mods' and Dynamic Trees' included, except: spruce (26.3's spruce leaves are
+        a plain `LeavesBlock`), this mod's pale oak, Trails & Tales Backport's cherry and Game Drops Backport's three
+        poplars (their own particle types, drawn by their own blocks). A Dynamic Trees leaves block is judged by its
+        primitive leaves (`getProperties(state).getPrimitiveLeaves()`, by reflection), since Dynamic Trees - Backport
+        hands the display tick to the primitive's. The answer is kept per block state.
+    *   Caves & Cliffs Backport's azalea and flowering azalea leaves have no color handler; 26.3 gives theirs a fixed
+        `-9399763` (`#70922D`), and so does this.
+    *   `flora.fallingLeaves` (client, no restart) switches it off; with `flora.enabled` off P3 adds nothing.
 *   **Generation, one place** (`FloraFeatures`, `FallenTrees`, `FloraBiomes`): every placed feature of 1.21.11 as
     data says, random draw for random draw (count, rarity, `in_square`, heightmap, biome filter, the patch's offsets,
     its inner filter, the state), heights through Core's `WorldHeights`:
@@ -136,17 +158,24 @@ with `--rerun-tasks`: reobfuscated (`func_` names), no test classes, `FMLCorePlu
 *   The server booting at all proves no client type is reached from server code (P3's target and hook are client
     only).
 
+`./gradlew runClient -Pselftest=client` (the falling leaves scene in `ClientScenes`): P3 applied; 20000 display
+ticks of oak leaves through `FloraHooks.displayTick` made 214 leaves (one in a hundred: 140-260 accepted) in oak's
+foliage color (`77ab2f`, the block's own); birch 194, in birch's `80a755`; spruce, leaves over stone and leaves with
+`flora.fallingLeaves` off none; pale oak no tinted leaves but still its own (405 more particles); the game's own
+ambient loop under a 9x9 oak canopy dropped 22-23 in 15 seconds. The photo `falling_leaves.png` shows them.
+`CLIENT SELFTEST DONE pass=99 fail=0`. The server suite checks which leaves get them (`FloraSelfTest.fallingLeaves`).
+
 ## Not tested
 
 *   Anything drawn: models, the tints, the firefly particle, the cactus flower's animated texture.
 *   Sounds playing: the firefly buzz, dry grass wind, sand and dead bush (P3 runs only in a client).
 *   The 1.18-terrain path (Caves & Cliffs has not wired it yet).
+*   Falling leaves with Dynamic Trees, Trails & Tales Backport's cherry, Game Drops Backport's poplars or Caves &
+    Cliffs Backport's azaleas installed (none of them is in the dev run; Dynamic Trees needs Forge 2859).
 *   Composting (needs Village & Pillage).
 
 ## Left out, and why
 
-*   **Falling leaf particles on every leaf block** (1.21.5's `TintedParticleLeavesBlock`): not in the plan for this
-    stream. P3's hook would carry it if a later stream (look and feel, or tweaks) takes it.
 *   **Flowers, saplings and grass on farmland** (1.21.5's `VegetationBlock.mayPlaceOn` for every plant): a change to
     vanilla blocks beyond this stream's plan; only the dead bush (planned) gets it.
 *   **The firefly bush's glow layer** (`cross_emissive`): 1.12.2's models have no emissive quads, so the glowing

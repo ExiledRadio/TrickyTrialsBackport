@@ -2,6 +2,7 @@ package com.exiledradio.trickytrialsbackport.flora;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCactus;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -94,7 +95,9 @@ public final class FloraHooks {
 
     /**
      * Replaces the {@code randomDisplayTick} call in {@code WorldClient}'s ambient loop: the block's own display tick,
-     * then 1.21.5's desert sounds for 1.12.2's sand and dead bush, which have no display tick of their own to override.
+     * then 1.21.5's desert sounds for 1.12.2's sand and dead bush, which have no display tick of their own to override,
+     * and 1.21.5's falling leaves ({@code TintedParticleLeavesBlock}) for every leaves block, any mod's, that does not
+     * draw its own ({@link FallingLeaves}).
      */
     @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT)
     public static void displayTick(Block block, IBlockState state, World world, BlockPos pos, Random rand) {
@@ -106,6 +109,11 @@ public final class FloraHooks {
             sand(world, pos, rand);
         } else if (block == Blocks.DEADBUSH) {
             deadBush(world, pos, rand);
+        } else if (block instanceof BlockLeaves && FallingLeaves.on()) {
+            IBlockState source = FallingLeaves.source(state);
+            if (source != null) {
+                com.exiledradio.trickytrialsbackport.flora.client.FloraClient.fallingLeaf(state, source, world, pos, rand);
+            }
         }
     }
 

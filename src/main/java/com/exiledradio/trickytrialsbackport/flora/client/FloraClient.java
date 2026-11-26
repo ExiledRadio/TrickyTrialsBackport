@@ -1,8 +1,12 @@
 package com.exiledradio.trickytrialsbackport.flora.client;
 
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
+import com.exiledradio.trickytrialsbackport.client.FallingLeafParticle;
+import com.exiledradio.trickytrialsbackport.flora.FallingLeaves;
 import com.exiledradio.trickytrialsbackport.flora.FloraContent;
 
+import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -13,6 +17,7 @@ import net.minecraft.client.resources.IResourceManagerReloadListener;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -37,6 +42,8 @@ import java.util.Random;
 public final class FloraClient {
 
     private static TextureAtlasSprite firefly;
+    /** {@code particles/tinted_leaves.json}: {@code leaf_0} to {@code leaf_11}. */
+    private static final TextureAtlasSprite[] LEAF = new TextureAtlasSprite[12];
     /** {@code DryFoliageColor}'s map; {@code FOLIAGE_DRY_DEFAULT} until it is loaded. */
     private static int[] dryFoliage = new int[0];
     private static final int DRY_DEFAULT = -10732494;
@@ -77,6 +84,44 @@ public final class FloraClient {
             }
         }
     }
+
+    // ===========================================================================================
+    // Falling leaves (1.21.5's TintedParticleLeavesBlock, through P3)
+    // ===========================================================================================
+
+    /**
+     * {@code FallingParticlesLeavesBlock.makeFallingLeavesParticles} with 26.3's chance for every tinted leaves block
+     * ({@link FallingLeaves#CHANCE}): one time in a hundred, when the block below has no full top face, a {@code tinted_leaves}
+     * particle just under the leaves ({@code ParticleUtils.spawnParticleBelow}), colored as the leaves are drawn
+     * ({@code getClientLeafTintColor}: the block color handler's tint 0, or white where there is none).
+     *
+     * @param source the leaves the particle is judged by ({@link FallingLeaves#source})
+     */
+    public static void fallingLeaf(IBlockState state, IBlockState source, World world, BlockPos pos, Random rand) {
+        if (rand.nextFloat() >= FallingLeaves.CHANCE) {
+            return;
+        }
+        BlockPos below = pos.down();
+        if (world.getBlockState(below).getBlockFaceShape(world, below, EnumFacing.UP) == BlockFaceShape.SOLID) {
+            return;
+        }
+        double x = pos.getX() + rand.nextDouble();
+        double y = pos.getY() - 0.05D;
+        double z = pos.getZ() + rand.nextDouble();
+        if (LEAF[0] == null) {
+            return;
+        }
+        Integer fixed = FallingLeaves.fixedColor(source);
+        int color = fixed != null ? fixed : Minecraft.getMinecraft().getBlockColors().colorMultiplier(state, world, pos, 0);
+        Minecraft.getMinecraft().effectRenderer.addEffect(
+                new FallingLeafParticle(world, x, y, z, LEAF[rand.nextInt(LEAF.length)], rand).tint(color));
+        spawned++;
+        lastColor = color;
+    }
+
+    /** How many falling leaves this client has made, and the last one's color; the client self-test reads them. */
+    public static int spawned;
+    public static int lastColor;
 
     private static boolean night(World world) {
         if (!world.provider.isSurfaceWorld()) {
@@ -180,6 +225,9 @@ public final class FloraClient {
         @SubscribeEvent
         public void stitch(TextureStitchEvent.Pre event) {
             firefly = event.getMap().registerSprite(new ResourceLocation(TrickyTrialsBackport.MOD_ID, "particle/firefly"));
+            for (int i = 0; i < LEAF.length; i++) {
+                LEAF[i] = event.getMap().registerSprite(new ResourceLocation(TrickyTrialsBackport.MOD_ID, "particle/leaf_" + i));
+            }
         }
 
         @SubscribeEvent

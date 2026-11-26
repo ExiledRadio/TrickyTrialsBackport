@@ -1,3 +1,7 @@
+# 1.0.5
+
+*   **Falling leaves**: oak, birch, jungle, acacia and dark oak leaves, and other mods' leaves, Dynamic Trees' too, now and then drop a leaf in their own color, as in 1.21.5. Spruce drops none; pale oak, cherry and poplar keep their own. Switch it off with Spring Plants > Falling Leaves.
+
 # 1.0.3
 
 *   **Dynamic pale oaks** with Dynamic Trees - Backport installed: pale gardens grow its dynamic pale oaks, and pale oak saplings grow into them.

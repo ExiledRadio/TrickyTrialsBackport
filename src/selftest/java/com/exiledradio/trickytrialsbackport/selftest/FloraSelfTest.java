@@ -6,15 +6,21 @@ import com.exiledradio.trickytrialsbackport.asm.CactusFlowerTransformer;
 import com.exiledradio.trickytrialsbackport.asm.DeadBushSoilTransformer;
 import com.exiledradio.trickytrialsbackport.common.Content;
 import com.exiledradio.trickytrialsbackport.flora.BlockSegmented;
+import com.exiledradio.trickytrialsbackport.flora.FallingLeaves;
 import com.exiledradio.trickytrialsbackport.flora.FallenTrees;
 import com.exiledradio.trickytrialsbackport.flora.FloraBiomes;
 import com.exiledradio.trickytrialsbackport.flora.FloraContent;
 import com.exiledradio.trickytrialsbackport.flora.FloraFeatures;
 import com.exiledradio.trickytrialsbackport.flora.FloraGen;
+import com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCactus;
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockNewLeaf;
+import net.minecraft.block.BlockOldLeaf;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -71,6 +77,50 @@ public final class FloraSelfTest implements SelfTest {
         fallen(c);
         litterUnderTrees(c);
         generation(c);
+        fallingLeaves(c);
+    }
+
+    /** 1.21.5's falling leaves (FallingLeaves, drawn through P3): which leaves get them, and 26.3's numbers. */
+    private void fallingLeaves(Check c) {
+        c.eq(0.01F, FallingLeaves.CHANCE, "falling leaves: one display tick in a hundred");
+        c.eq(-9399763 & 0xFFFFFF, FallingLeaves.AZALEA, "falling leaves: the azaleas' fixed color");
+        c.ok(com.exiledradio.trickytrialsbackport.ModConfig.flora.fallingLeaves, "falling leaves: on by default");
+        for (BlockPlanks.EnumType t : new BlockPlanks.EnumType[] {BlockPlanks.EnumType.OAK, BlockPlanks.EnumType.BIRCH,
+                BlockPlanks.EnumType.JUNGLE}) {
+            IBlockState s = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, t);
+            c.ok(FallingLeaves.source(s) == s, "falling leaves: " + t.getName() + " leaves drop them");
+            c.ok(FallingLeaves.fixedColor(s) == null, "falling leaves: " + t.getName() + " in its block color");
+        }
+        for (BlockPlanks.EnumType t : new BlockPlanks.EnumType[] {BlockPlanks.EnumType.ACACIA, BlockPlanks.EnumType.DARK_OAK}) {
+            IBlockState s = Blocks.LEAVES2.getDefaultState().withProperty(BlockNewLeaf.VARIANT, t);
+            c.ok(FallingLeaves.source(s) == s, "falling leaves: " + t.getName() + " leaves drop them");
+        }
+        IBlockState decaying = Blocks.LEAVES.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, true)
+                .withProperty(BlockLeaves.DECAYABLE, false);
+        c.ok(FallingLeaves.source(decaying) == decaying, "falling leaves: whatever the decay flags");
+        IBlockState spruce = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.SPRUCE);
+        c.ok(FallingLeaves.source(spruce) == null, "falling leaves: none from spruce (26.3)");
+        if (PaleGardenContent.leaves != null) {
+            c.ok(FallingLeaves.source(PaleGardenContent.leaves.getDefaultState()) == null,
+                    "falling leaves: pale oak keeps its own, not the tinted one too");
+        }
+        c.ok(FallingLeaves.source(Blocks.STONE.getDefaultState()) == null, "falling leaves: not from stone");
+        c.ok(FallingLeaves.source(Blocks.GRASS.getDefaultState()) == null, "falling leaves: not from grass");
+        // Every other mod's leaves in this game: the ones with their own particles are left out, the rest drop them.
+        int others = 0;
+        for (Block b : ForgeRegistries.BLOCKS) {
+            if (!(b instanceof BlockLeaves) || b.getRegistryName() == null) {
+                continue;
+            }
+            String id = b.getRegistryName().toString();
+            boolean own = id.equals("trailsandtalesbackport:cherry_leaves") || id.endsWith("_poplar_leaves")
+                    || b instanceof com.exiledradio.trickytrialsbackport.palegarden.BlockPaleOakLeaves;
+            if (b != Blocks.LEAVES && b != Blocks.LEAVES2) {
+                others++;
+                c.eq(!own, FallingLeaves.source(b.getDefaultState()) != null, "falling leaves: " + id + (own ? " keeps its own" : " drops them"));
+            }
+        }
+        c.ok(others >= 1, "falling leaves: other leaves blocks checked: " + others);
     }
 
     private static Block block(String name) {

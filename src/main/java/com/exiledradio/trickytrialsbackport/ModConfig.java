@@ -407,6 +407,10 @@ public final class ModConfig {
         public boolean enabled = true;
 
         // --- Flora fields ---
+        @Config.Comment({"Leaves drop falling leaf particles in their own color, any mod's leaves too (1.21.5). Spruce has",
+                "none; pale oak, cherry and poplar keep their own. Client only."})
+        @Config.LangKey("config.trickytrialsbackport.flora.fallingLeaves")
+        public boolean fallingLeaves = true;
         // --- end Flora ---
     }
 

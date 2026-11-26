@@ -12,7 +12,7 @@ Names are matched as MCP (dev) or SRG (a real instance). SortingIndex 1001, afte
 | --- | --- | --- | --- |
 | P1 | flora | `BlockCactus.updateTick` (`func_180650_b`) | head: `if (FloraHooks.cactusTick(this, world, pos, state, rand)) return;` |
 | P2 | flora | `BlockDeadBush.canSustainBush` (`func_185514_i`) | head: `if (FloraHooks.deadBushSoil(state)) return true;` |
-| P3 | flora | `WorldClient` (client only) | the ambient loop's `block.randomDisplayTick(...)` becomes `FloraHooks.displayTick(block, ...)` |
+| P3 | flora | `WorldClient` (client only) | the ambient loop's `block.randomDisplayTick(...)` becomes `FloraHooks.displayTick(block, ...)` (also the falling leaves) |
 | P4 | tweaks | `EntityMoveHelper.onUpdateMoveHelper` (`func_75641_c`) | the blocked strafe's `f1 = f` becomes `f1 = TweaksHooks.blockedStrafeSpeed(f, f1)` |
 | P5 | tweaks | `Entity.getPortalCooldown` (`func_82147_ab`) | its `300` becomes `PortalTravel.cooldown(this)` |
 | P6 | tweaks | `EntityLivingBase.attackEntityFrom` (`func_70097_a`) | before `if (attacker != null) { ... knockBack(...) }`: `if (MechanicsHooks.projectileKnockback(this, source, attacker)) goto <after the if-else>` |
@@ -64,6 +64,10 @@ terracotta two blocks deep (two times in three skipped on red sand or terracotta
 1.12.2's sand and dead bush have no display tick of their own to override, so the one call `WorldClient` makes for
 every block of its ambient loop is routed through `FloraHooks.displayTick`, which makes the same call and then plays
 these. The stack is unchanged, so nothing else in the method moves. The dry grass's own sound is in its block class.
+
+The same hook gives every leaves block 1.21.5's falling leaf (`TintedParticleLeavesBlock`, 26.3's chance 0.01), other
+mods' too, after the block's own display tick; spruce, pale oak, cherry and poplar are left out
+(`flora/FallingLeaves`, `docs/streams/flora.md`).
 
 ## P4: a blocked strafe keeps the strafing speed (1.16 and later, through 1.21.11)
 

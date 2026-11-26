@@ -1,13 +1,13 @@
 package com.exiledradio.trickytrialsbackport.palegarden.client;
 
 import com.exiledradio.trickytrialsbackport.TrickyTrialsBackport;
+import com.exiledradio.trickytrialsbackport.client.FallingLeafParticle;
 import com.exiledradio.trickytrialsbackport.palegarden.BiomePaleGarden;
 import com.exiledradio.trickytrialsbackport.palegarden.PaleGardenContent;
 import com.exiledradio.trickytrialsbackport.palegarden.wood.WoodSign;
 import com.exiledradio.trickytrialsbackport.palegarden.wood.client.WoodSignRenderer;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -47,8 +47,8 @@ public final class PaleGardenClient {
         if (SPRITES[0] == null) {
             return;
         }
-        Minecraft.getMinecraft().effectRenderer.addEffect(new Leaf(world,
-                pos.getX() + rand.nextDouble(), pos.getY() - 0.05D, pos.getZ() + rand.nextDouble(), rand));
+        Minecraft.getMinecraft().effectRenderer.addEffect(new FallingLeafParticle(world, pos.getX() + rand.nextDouble(),
+                pos.getY() - 0.05D, pos.getZ() + rand.nextDouble(), SPRITES[rand.nextInt(SPRITES.length)], rand));
     }
 
     public static final class Events {
@@ -97,67 +97,6 @@ public final class PaleGardenClient {
             event.setRed(event.getRed() + (r - event.getRed()) * share);
             event.setGreen(event.getGreen() + (g - event.getGreen()) * share);
             event.setBlue(event.getBlue() + (b - event.getBlue()) * share);
-        }
-    }
-
-    /**
-     * 1.21.11's {@code FallingLeavesParticle.PaleOakProvider}: gravity 0.07 (x 1.2 x 0.0025), wind 10, swirl on,
-     * flow-away off, size 2 x (0.05 or 0.075), falling at 0.021 from the start; lives up to 300 ticks and is
-     * gone when it lands or stops against something.
-     */
-    static final class Leaf extends Particle {
-        private final double swirlPeriod;
-        private final float windBig = 10.0F;
-        private float rotSpeed;
-        private final float spinAcceleration;
-        private int life = 300;
-
-        Leaf(World world, double x, double y, double z, Random rand) {
-            super(world, x, y, z);
-            setParticleTexture(SPRITES[rand.nextInt(SPRITES.length)]);
-            this.rotSpeed = (float) Math.toRadians(rand.nextBoolean() ? -30.0D : 30.0D);
-            this.spinAcceleration = (float) Math.toRadians(rand.nextBoolean() ? -5.0D : 5.0D);
-            this.particleMaxAge = 300;
-            this.particleGravity = 0.07F * 1.2F * 0.0025F;
-            float size = 2.0F * (rand.nextBoolean() ? 0.05F : 0.075F);
-            // 1.12.2 draws a quad 0.1 * particleScale across; modern particles give the size directly.
-            this.particleScale = size * 10.0F;
-            setSize(size, size);
-            this.motionX = 0.0D;
-            this.motionY = -0.021D;
-            this.motionZ = 0.0D;
-            float f = rand.nextFloat();
-            this.swirlPeriod = Math.toRadians(1000.0F + f * 3000.0F);
-            this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
-        }
-
-        @Override
-        public int getFXLayer() {
-            return 1;
-        }
-
-        @Override
-        public void onUpdate() {
-            this.prevPosX = this.posX;
-            this.prevPosY = this.posY;
-            this.prevPosZ = this.posZ;
-            if (this.life-- <= 0) {
-                setExpired();
-                return;
-            }
-            float t = Math.min((300 - this.life) / 300.0F, 1.0F);
-            double ax = t * Math.cos(t * this.swirlPeriod) * this.windBig;
-            double az = t * Math.sin(t * this.swirlPeriod) * this.windBig;
-            this.motionX += ax * 0.0025F;
-            this.motionZ += az * 0.0025F;
-            this.motionY -= this.particleGravity;
-            this.rotSpeed += this.spinAcceleration / 20.0F;
-            this.prevParticleAngle = this.particleAngle;
-            this.particleAngle += this.rotSpeed / 20.0F;
-            move(this.motionX, this.motionY, this.motionZ);
-            if (this.onGround || this.life < 299 && (this.motionX == 0.0D || this.motionZ == 0.0D)) {
-                setExpired();
-            }
         }
     }
 }
